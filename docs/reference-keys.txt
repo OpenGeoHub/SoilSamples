@@ -1,3 +1,5 @@
+fig:soil-pnts
+fig:soil-db
 about
 rationale
 recommended-columns

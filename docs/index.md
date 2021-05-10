@@ -9,12 +9,7 @@ output:
       toolbar:
         position: fixed
       includes:
-        in_header: [social.html]
-        before: |  
-            <br/><center><b><a href="./index.html">&nbsp&nbspAn Open Compendium of Soil Datasets</a></b></center></li>
-        after: |  
-            <li><center><a href="https://bookdown.org/yihui/bookdown/">
-            Published with bookdown</a></center></li>
+        in_header: social.html
       toc:
         collapse: subsection
         scroll_highlight: yes
@@ -69,8 +64,8 @@ correction and then a [pull
 request](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
 
 <div class="figure">
-<img src="https://gitlab.com/openlandmap/compiled-ess-point-data-sets/-/raw/master/img/sol_chem.pnts_sites.png" alt="Soil profiles and soil samples with chemical and physical properties global compilation." width="100%" />
-<p class="caption">(\#fig:soil_pnts)Soil profiles and soil samples with chemical and physical properties global compilation.</p>
+<img src="https://gitlab.com/openlandmap/compiled-ess-point-data-sets/-/raw/master/img/sol_chem.pnts_sites.png" alt="Soil profiles and soil samples with chemical and physical properties global compilation. For more info see: https://gitlab.com/openlandmap/compiled-ess-point-data-sets." width="100%" />
+<p class="caption">(\#fig:soil-pnts)Soil profiles and soil samples with chemical and physical properties global compilation. For more info see: https://gitlab.com/openlandmap/compiled-ess-point-data-sets.</p>
 </div>
 
 Soil variables of interest include:
@@ -120,12 +115,12 @@ general scheme to organize Soil Observations & Measurements:
 
 <div class="figure">
 <img src="img/design_soil_om_sheme.png" alt="Recommended soil profiles and soil samples database schema." width="100%" />
-<p class="caption">(\#fig:soil_db)Recommended soil profiles and soil samples database schema.</p>
+<p class="caption">(\#fig:soil-db)Recommended soil profiles and soil samples database schema.</p>
 </div>
 
-For the `site` table please add (at least) the following columns:
+For the **site** table please add (at least) the following columns:
 
-1. Unique site ID generated using some UUID generator tool; example: `id.ossl_uuid_c = '672d1fd6-b186-11eb-8a61-7446a0925130'`\
+1. Unique site ID generated using some UUID generator tool; example: `id.site_uuid_c = '672d1fd6-b186-11eb-8a61-7446a0925130'`\
 2. Unique [Open Location Codes](https://opensource.google/projects/open-location-code) ID which identifies the site location; example: `id.location_olc_c = '84MVX5FH+PJ'`\
 3. [Observation OGC](https://www.ogc.org/standards/om) schema title; example: `observation.ogc.schema.title_ogc_txt = 'Open Soil Spectroscopy Library'`\
 4. [Observation OGC](https://www.ogc.org/standards/om) schema URL; example: `observation.ogc.schema_idn_url = ''`\
@@ -135,29 +130,29 @@ For the `site` table please add (at least) the following columns:
 8. Country(ies) the data was/were collected; example: `location.country_iso.3166_c = 'USA'`\
 9. Location method e.g. GPS; example: `location.method_any_c = 'GPS'`\
 10. Field surveyor title or organization; example: `surveyor.title_utf8_txt = 'USDA Natural Resource Conservation Service (NRCS) staff'`\
-11. Field surveyor contact email; example: `surveyor.contact_ietf_email = ''`\
+11. Field surveyor contact email; example: `surveyor.contact_ietf_email = 'support@usda.gov'`\
 12. Field surveyor address as Street and number, Local postcode, Town, County, State; example: `surveyor.address_utf8_txt = 'USDA-NRCS-NSSC, Federal Building, Room 152, Mail Stop, 100 Centennial Mall North, Lincoln, NE'`\
 13. Site [WGS84 longitude](https://spatialreference.org/ref/epsg/wgs-84/) coordinate; example: `longitude_wgs84_dd = '-122.8208847'`\
 14. Site [WGS84 latitude](https://spatialreference.org/ref/epsg/wgs-84/) coordinate; example: `latitude_wgs84_dd = '43.9742584'`\
-15. Approximate location error (for GPS coordinates use 30 m); example: `location.error_any_m = '30'`
-Title of the dataset; example: `dataset.title_utf8_txt = 'Kellog's lab SSL'`\
-16. Code identification of the dataset; example: `dataset.code_ascii_txt = 'KSSL'`\
-17. The URL address of the dataset web page; example: `dataset.address_idn_url = 'https://ncsslabdatamart.sc.egov.usda.gov/'`\
-18. Data license title for the dataset; example: `dataset.license.title_ascii_txt = 'CC-0'`\
-19. Data license URL for the dataset; example: `dataset.license.address_idn_url = 'https://creativecommons.org/share-your-work/public-domain/cc0/'`\
-20. International DOI foundation code for the corresponding dataset version; example: `dataset.doi_idf_c = '10.2136/sssaj2019.06.0205'`\
-21. Person responsible for the dataset; example: `dataset.contact.name_utf8_txt = 'Richard R. Ferguson'`
+15. Approximate location error (for GPS coordinates use 30 m); example: `location.error_any_m = '30'`\
+16. Title of the dataset; example: `dataset.title_utf8_txt = 'Kellog's lab SSL'`\
+17. Code identification of the dataset; example: `dataset.code_ascii_txt = 'KSSL'`\
+18. The URL address of the dataset web page; example: `dataset.address_idn_url = 'https://ncsslabdatamart.sc.egov.usda.gov/'`\
+19. Data license title for the dataset; example: `dataset.license.title_ascii_txt = 'CC-0'`\
+20. Data license URL for the dataset; example: `dataset.license.address_idn_url = 'https://creativecommons.org/share-your-work/public-domain/cc0/'`\
+21. International DOI foundation code for the corresponding dataset version; example: `dataset.doi_idf_c = '10.2136/sssaj2019.06.0205'`\
+22. Person responsible for the dataset; example: `dataset.contact.name_utf8_txt = 'Richard R. Ferguson'`
 Email contact of the person responsible for the dataset; example: `dataset.contact.email_ietf_email = 'support@usda.gov'`\
-22. Local dataset ID of the site; example: `id.dataset.site_ascii_c = '603'`\
-23. Local user assigned ID of the site; example: `id.user.site_ascii_c = '01-DRJ-01'`\
-24. Layer sequence number; example: `layer.sequence_usda_uint16 = '11'`\
-25. Layer type; example: `layer.type_usda_c = 'horizon'`\
-26. Unique project code; example: `id.project_ascii_c = '33'`\
+23. Local dataset ID of the site; example: `id.dataset.site_ascii_c = '603'`\
+24. Local user assigned ID of the site; example: `id.user.site_ascii_c = '01-DRJ-01'`\
+25. Layer sequence number; example: `layer.sequence_usda_uint16 = '11'`\
+26. Layer type; example: `layer.type_usda_c = 'horizon'`\
+27. Unique project code; example: `id.project_ascii_c = 'TEX18'`\
 
-For the `samples` table please use any of the columns:
+For the **samples** table please use some of the columns:
 
-1. Unique site ID generated using some UUID generator tool; example: `id.ossl_uuid_c = '672d1fd6-b186-11eb-8a61-7446a0925130'`\
-2. Unique sample ID generated using some UUID generator tool.
+1. Unique site ID generated using some UUID generator tool; example: `id.site_uuid_c = '672d1fd6-b186-11eb-8a61-7446a0925130'`\
+2. Unique sample ID generated using some UUID generator tool; example: `id.sample_uuid_c = '31d454be-b1ac-11eb-8a61-7446a0925130'`\
 3. Layer field label used e.g. for soil samples; example: `layer.field.label_any_c = 'S00OR-039-001-2'`\
 4. Layer upper depth in cm; example: `layer.upper.depth_usda_cm = '13'`\
 5. Layer lower depth in cm; example: `layer.lower.depth_usda_cm = '36'`\
@@ -166,9 +161,56 @@ For the `samples` table please use any of the columns:
 8. Layer horizon structure type based on USDA system; example: `layer.structure.type_usda_c = ''`\
 9. Layers horizon structure grade based on the USDA system; example: `layer.structure.grade_usda_c = ''`\
 10. Layer texture class based on the USDA system; example: `layer.texture_usda_c = 'Gravelly Clay'`\
+11. Sand content; description: `sand.tot_3a1a1a_wpct` = Total sand is the soil separate with 0.05 to 2.0 mm article diameter. It is reported a gravimetric percent on a <2 mm base. H prep.\
+12. Silt content; description: `silt.tot_3a1a1a_wpct` = Total silt is the soil separate with 0.002 to 0.05 mm particle size. It is reported as a gravimetric percent on a <2 mm base.\
+13. Clay content; description: `clay.tot_3a1a1a_wpct` = Total clay is the soil separate with <0.002 mm particle diameter. Clay size carbonate is included. Total clay is reported as a weight percent of the <2 mm fraction.\
+14. Coarse Fragments, Greater 2mm, ; description: `wpg2_3a2_wpct` = The gravimetric percentage of greater than 2 mm diameter particles reported on a whole soil base.\
+15. Water Retention, 15 Bar, <2mm,  Air-dry; description: `wr.1500kbar_3c2a1a.b_wpct` = 15 bar water on air dry soil is the gravimetric water content of <2 mm air dry samples after equilibration at 15 bars water tension. It is reported on a <2 mm base. The value is influenced by clay %, mineralogy, and organic carbon %.\
+16. Water Retention, 1/3 Bar, <2mm Clod; description: `wr.33kbar_3c1a.e1a_wpct` = 1/3 bar water, clods is the gravimetric percent water in natural fabric (clods) after equilibration at 1/3 bar water tension. It is reported on a <2 mm base.\
+17. Aggregate stability; description: `aggstb_1b1b2a1_wpct` = Aggregate stability is the weight percent of 0.5mm - 2mm aggregates remaining after wet sieving.
+18. Bulk density clod, <2 mm fraction, 1/3 bar; description: `bd.clod_3b1a_gcm3` = Bulk density, <2 mm fraction, 1/3 bar is the weight per unit volume of the <2 mm fraction, with volume being measured after equilibration at 1/3 bar water tension. It is reported as grams per cubic centimeter on a <2 mm base.\
+19. Bulk density, core, <2 mm fraction; description: `bd.core_3b4a_gcm3` = Bulk density, <2mm fraction, field moist is the weight per unit volume of the <2 mm fraction, with volume measured at field (sampling) moisture. Measurements are made on known volume cores. It is reported as grams per cubic centimeter, <2 mm base.\
+20. Total carbon; description: `c.tot_4h2a1.3a1_wpct` = Total carbon is a measure of all organic and inorganic carbon, including that found in carbonate minerals.\
+21. Total nitrogen; description: `n.tot_4h2a1.3a1_wpct` = Total nitrogen is a measure of all organic and inorganic nitrogen, including that found in nitrogen minerals.\
+22. Total sulfur; description: `s.tot_4h2a1.3a1_wpct` = Total sulfur is a measure of all organic and inorganic sulfur, including that found in sulfide minerals.\
+23. Total organic carbon; description: `oc.tot_est.calc_wpct` = Estimated Organic Carbon based on Total C, GP prep.\
+24. Total organic carbon based on dry combustion; description: `oc.tot_4h2a1.3a1_wpct` = CMS analyte. Organic carbon is a measure of all organic forms of carbon in the soil, including organic carbon within minerals.
+25. Effervescence, 1N HCl; description: `na2co3.pres_1b1b2d4_class` = The visual effervescence of the prepared sample when treated with 1N HCl.\
+26. Calcium carbonate content; description: `caco3_4e1a1a1a1.2_wpct` = Carbonate in the < 2mm fraction is measured by CO2 evolution after acid treatment. It is reported as gravimetric percent CaCO3 on a <2 mm base, even though carbonates of Mg, Na, K, and Fe may be present and react with the acid.\
+27. Calcium, NH4OAc Extractable, 2M KCl displacement; description: `ca.ext_4b1a1b1.4a.b1_cmolkg` = NH4OAC extractable calcium is the fraction removed by pH 7.0 NH4OAC. It is assumed to represent the exchangeable Ca. It is reported as meq per 100 grams on a <2 mm base. It is not reported for samples containing carbonates or soluble salts.\
+28. CEC, NH4OAc, pH 7.0, 2M KCl displacement; description: `pcec.ext_4b1a1a1a1a.b1_cmolkg` = CEC by NH4OAC is the cation exchange capacity of the sample, determined by 1N NH4OAC in a system highly buffered at pH 7.0 The NH4 is displaced by 2M KCl to obtain a solution without solids. It is reported as meq per 100 grams sample, on a <2 mm base.\
+29. Magnesium, NH4OAc Extractable, 2M KCl displacement; description: `mg.ext_4b1a1b1.4a.b1_cmolkg` = NH4OAC extractable magnesium is the fraction removed by pH 7.0 NH4OAC. It is assumed to represent the exchangeable Mg if MgCO3 is not present. It is reported as meq per 100 grams on a <2 mm base.\
+30. Potassium, NH4OAc Extractable, 2M KCl displacement; description: `k.ext_4b1a1b1.4a.b1_cmolkg` = NH4OAC extractable potassium is the fraction removed by pH 7.0 NH4OAC. It is assumed to represent the exchangeable K. It is reported as meq per 100 grams on a <2 mm base.\
+31. Sodium, NH4OAc Extractable, 2M KCl displacement; description: `na.ext_4b1a1b1.4a.b1_cmolkg` = NH4OAC extractable sodium is the fraction removed by pH 7.0 NH4OAC. It is assumed to represent the exchangeable Na. It is reported as meq per 100 grams on a <2 mm base.\
+32. Iron, ammonium oxalate extractable; description: `fe.ox_4g2a1a1.5a.b1_wpct` = Ammonium oxalate extractable iron is considered a measure of the noncrystalline Fe in soils. It provides some inferences of the amount of Fe in various forms. It is reported as gravimetric % on a <2mm base.\
+33. Iron, dithinoite-citrate extractable; description: `fe.dith_4g1b1.4a.b1_wpct` = Dithionite citrate extractable iron is considered a general measure of total pedogenic iron. It provides inferences on the amount of iron in various forms, P fixing potential, aggregate stability, and degree of weathering. Reported as grav % on <2mm.\
+34. Iron, sodium pyrophosphate extractable; description: `fe.pyp_4g3a1.3a.b1_wpct` = Sodium pyrophosphate extractable iron is assumed to be the fraction associated with organic complexes. It is reported as gravimetric percent on a <2 mm base.\
+35. Aluminum, ammonium oxalate extractable; description: `al.ox_4g2a1a1.5a.b1_wpct` = Ammonium oxalate extractable aluminum is an estimate of the total pedogenic Al, much of which may be in noncrystalline materials or complexed by organic matter. It is reported as gravimetric percent on a <2 mm base.\
+36. Aluminum, dithinoite-citrate extractable; description: `al.dith_4g1b1.4a.b1_wpct` = Dithionite citrate extractable aluminum is an indicator of the amount of aluminum substituted for iron in iron oxides. It does not necessarily represent total pedogenic Al.\
+37. Aluminum, sodium pyrophosphate extractable; description: `al.pyp_4g3a1.3a.b1_wpct` = Sodium pyrophosphate extractable aluminum is the fraction extracted by 0.1M sodium pyrophosphate. It was originally considered the portion associated with organic compounds, although subsequent evidence indicates other forms are also removed.\
+38. Aluminum, KCl extractable; description: `al.kcl_4b3b1a1.b1_cmolkg` = KCl extractable aluminum approximates the exchangeable Al, and is a measure of the active acidity present in soils with a 1:1 water pH less than 5.5. It relates to the immediate lime requirement and the CEC of the soil.\
+39. Aluminum, ammonium oxalate extractable; description: `al.ox_4g2a1a1.5a.b1_wpct` = Ammonium oxalate extractable aluminum is an estimate of the total pedogenic Al, much of which may be in noncrystalline materials or complexed by organic matter. It is reported as gravimetric percent on a <2 mm base.\
+39. Aluminum, dithinoite-citrate extractable; description: `al.dith_4g1b1.4a.b1_wpct` = Dithionite citrate extractable aluminum is an indicator of the amount of aluminum substituted for iron in iron oxides. It does not necessarily represent total pedogenic Al.\
+40. Aluminum, sodium pyrophosphate extractable; description: `al.pyp_4g3a1.3a.b1_wpct` = Sodium pyrophosphate extractable aluminum is the fraction extracted by 0.1M sodium pyrophosphate. It was originally considered the portion associated with organic compounds, although subsequent evidence indicates other forms are also removed.\
+41. Aluminum, KCl extractable; description: `al.kcl_4b3b1a1.b1_cmolkg` = KCl extractable aluminum approximates the exchangeable Al, and is a measure of the active acidity present in soils with a 1:1 water pH less than 5.5. It relates to the immediate lime requirement and the CEC of the soil.\
+42. Base saturation, NH4OAc, pH7; description: `bsat_4b4c1_pct` = NH4OAC base saturation (pH 7.0) is calculated by (BASE_SUM/CEC_NH4)*100.\
+43. Aluminum saturation; description: `alsat_4b4d1a_pct` = Aluminum saturation is calculated by (AL_KCL/(Sum of bases))*100. It provides some inference of potential Al toxicity problems, although many other factors influence Al toxicity.\
+44. Soil pH 1:1 water; description: `ph.h2o_4c1a2a1a.b1_index` = The pH, 1:1 soil-water suspension is the pH of a sample measured in distilled water at a 1:1 soil:solution ratio. If wider ratios increase the pH, salts are indicated.\
+45. Soil pH 1:2 0.01-M calcium choride; description: `ph.cacl2_4c1a2a2a.b1_index` = The pH, 1:2 soil-CaCl2 is the pH of a sample measured in 0.01M CaCl2 at a 1:2 soil:solution ratio.\
+46. Electrical Conductivity, Predict, 1:2 (w/w); description: `ec.w_4f1b1a1_dsm` = The salt predict electrical conductivity is used to determine whether additional salt analyses are needed, and to estimate appropriate dilution ratios for additional tests. It is reported as mmhos per centimeter of a 1:2 soil:water mixture by weight.\
+47. Electrical Conductivity, Saturation Extract; description: `ec.ext.sat_4f2b1a1_dsm` = Electrical Conductivity, Saturation Extract 
+48. Sodium adsorption ratio; description: `sodium.ads.ratio_4f3b_index` = The sodium absorption ratio is calculated by NA_SATX/sqrt((CA_SATX+MG_SATX)/2). It is approximately equal to the exchangeable sodium percentage.\
+49. Exchangeable sodium percentage saturated; description: `na.exch_4f3a2_pct` = This is the exchangeable sodium percentage (ESP), reported on a <2 mm base. If salts are present, ESP has been corrected for the water soluble Na.\
+50. Corrected Gypsum, < 2mm; description: `gyp_4e2b1a1a1.2_wpct` = Corrected Gypsum ( Uncorrected Gypsum * Factor)\
+51. Phosphorus, Mehlich3 extractable; description: `p.meh3_4d6a1a.b1_mgkg` = The phosphorus extracted by the Mehlich III solution.\
+52. Phosphorus, Olsen extractable; description: `p.olsn_4d5a1a.b1_mgkg` = The Olsen extractable phosphorus is used as an indicator of available phosphorus in calcareous soil materials (pH >6).
 
-For the `spectra` table please use the following columns:
+For the **spectra** table please use the following columns:
 
+1. Unique sample ID generated using some UUID generator tool; example: `id.sample_uuid_c = '31d454be-b1ac-11eb-8a61-7446a0925130'`\
+2. Layer field label used e.g. for soil samples; example: `layer.field.label_any_c = 'S00OR-039-001-2'`\
+3. Aborbance per wavelength e.g. `a.w2450_mir_pct`\
+...\
 
 ## Contributing
 
@@ -196,8 +238,8 @@ License](https://creativecommons.org/licenses/by/3.0/).
 
 ## Soil Spectroscopy for Global Good
 
-**SoilSpec4GG** is a USDA-funded Food and Agriculture Cyberinformatics
-Tools Coordinated Innovation Network project. It brings together soil
+[**SoilSpec4GG**](https://soilspectroscopy.org/) is a USDA-funded [Food and Agriculture Cyberinformatics
+Tools Coordinated Innovation Network NIFA Award #2020-67021-32467](https://nifa.usda.gov/press-release/nifa-invests-over-7-million-big-data-artificial-intelligence-and-other) project. It brings together soil
 scientists, spectroscopists, informaticians, data scientists and
 software engineers to overcome some of the current bottlenecks
 preventing wider and more efficient use of soil spectroscopy. A series
