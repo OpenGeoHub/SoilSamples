@@ -118,7 +118,10 @@ general scheme to organize Soil Observations & Measurements:
 <p class="caption">(\#fig:soil-db)Recommended soil profiles and soil samples database schema.</p>
 </div>
 
-For the **site** table please add (at least) the following columns:
+We recommend using the USDA [National Cooperative Soil Survey (NCSS) Soil 
+Characterization Database](https://ncsslabdatamart.sc.egov.usda.gov/) codes and specification as much as possible. These are explained in detail in the [**Kellogg Soil Survey Laboratory Methods Manual**](https://www.nrcs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb1253872.pdf).
+
+For the **site** table please use (at least) the following columns:
 
 1. Unique site ID generated using some UUID generator tool; example: `id.site_uuid_c = '672d1fd6-b186-11eb-8a61-7446a0925130'`\
 2. Unique [Open Location Codes](https://opensource.google/projects/open-location-code) ID which identifies the site location; example: `id.location_olc_c = '84MVX5FH+PJ'`\

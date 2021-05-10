@@ -24,6 +24,7 @@ hydros-soil-hydraulic-functions-of-international-soils-compilation
 isric-wise-harmonized-soil-profile-data-compilation
 isric-world-soil-reference-collection
 global-icrafisric-soil-spectroscopy-library---icrafisric
+global-database-of-soil-saturated-hydraulic-conductivity-measurements-ksat-compilation
 landpks-observations
 mangrove-forest-soil-db-compilation
 remnant-native-soc-database-compilation

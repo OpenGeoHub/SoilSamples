@@ -96,6 +96,18 @@ Nations Avenue, Nairobi, Kenya.
 - 📋 Unique complete rows:   
 - 📝 Import steps: [sslsprops.ICRAF_ISRIC](https://gitlab.com/soilspec4gg)
 
+### Global database of soil saturated hydraulic conductivity measurements --- KSat (compilation) 
+
+_Description_: Contains a total of 13,258 Ksat measurements from 1908 sites were assembled from the published literature.
+
+- 📕 Gupta, S., Hengl, T., Lehmann, P., Bonetti, S., and Or, D.: (2021) [SoilKsatDB: global database of soil saturated hydraulic conductivity measurements for geoscience applications](https://doi.org/10.5194/essd-13-1593-2021), Earth Syst. Sci. Data, 13, 1593–1612, <https://doi.org/10.5194/essd-13-1593-2021>.   
+- 🔗 Project website:   
+- 📂 Data download URL: <https://doi.org/10.5281/zenodo.3752721>  
+- 📍 Unique locations: 1908  
+- 📋 Unique complete rows:   
+- 📝 Import steps: [hydrosprops](https://gitlab.com/openlandmap/compiled-ess-point-data-sets/-/tree/master/themes/sol/SoilHydroDB)
+
+
 ### LandPKS observations
 
 _Description_: Data collected by various people through the LandPKS App for mobile 
