@@ -81,6 +81,21 @@ environmental research: A subset of FAO, ISRIC and NRCS profiles (Version 1.0) (
 - 📋 Unique complete rows: 5637  
 - 📝 Import steps: [hydrosprops.ISIS](https://gitlab.com/openlandmap/compiled-ess-point-data-sets/-/tree/master/themes/sol/SoilHydroDB#isric-isis)
 
+### Global ICRAF/ISRIC Soil Spectroscopy Library ---- (ICRAF/ISRIC)
+
+_Description_: A Globally Distributed Soil Spectral Library Mid Infrared Diffuse 
+Reflectance Spectra. MIR scans for some 785 profiles from the ISRIC World Soil Reference Collection.
+The samples are from 58 countries spanning Africa, Asia, Europe, North America, and South America. 
+Data available under the CC-BY 4.0 license.
+
+- 📕 World Agroforestry Centre, (2014). [The ICRAF/ISRIC spectral library](https://worldagroforestry.org/sites/default/files/Description_ICRAF-ISRIC%20Soil%20VNIR%20Spectral%20Library.pdf), Soil-Plant Spectral Diagnostics laboratory, United
+Nations Avenue, Nairobi, Kenya.   
+- 🔗 Project website: <https://www.worldagroforestry.org/sd/landhealth/soil-plant-spectral-diagnostics-laboratory/soil-spectra-library>  
+- 📂 Data download URL: <https://files.isric.org/public/other/ICRAF-ISRICVNIRSoilDatabase.zip>  
+- 📍 Unique locations: 785  
+- 📋 Unique complete rows:   
+- 📝 Import steps: [sslsprops.ICRAF_ISRIC](https://gitlab.com/soilspec4gg)
+
 ### LandPKS observations
 
 _Description_: Data collected by various people through the LandPKS App for mobile 
@@ -485,11 +500,13 @@ _Description_: Legacy soil profile dataset.
 - 📋 Unique complete rows: 2953  
 - 📝 Import steps: [chemsprops.LandPKS](https://gitlab.com/openlandmap/compiled-ess-point-data-sets/-/tree/master/themes/sol/SoilChemDB#landpks-observations) 
 
+### Switzerland
+
 #### Swiss National Soil Spectral Model Library
 
 _Description_: National SS library. 
 
-- 📕 Baumann, P., Helfenstein, A., Gubler, A., Keller, A., Meuli, R. G., Wächter, D., ... & Six, J. (2021). Developing the Swiss soil spectral library for local estimation and monitoring. SOIL Discussions, 1-32. <https://doi.org/10.5194/soil-2020-105>  
+- 📕 Baumann, P., Helfenstein, A., Gubler, A., Keller, A., Meuli, R. G., Wächter, D., ... & Six, J. (2021). [Developing the Swiss soil spectral library for local estimation and monitoring](https://doi.org/10.5194/soil-2020-105). SOIL Discussions, 1-32. <https://doi.org/10.5194/soil-2020-105>  
 - 🔗 Project website:   
 - 📂 Data download URL:   
 - 📍 Unique locations:   
@@ -524,6 +541,18 @@ maintained by the USDA National Cooperative Soil Survey. Data is available under
 - 📍 Unique locations: 19861  
 - 📋 Unique complete rows: 136011  
 - 📝 Import steps: [chemsprops.NCSS](https://gitlab.com/openlandmap/compiled-ess-point-data-sets/-/tree/master/themes/sol/SoilChemDB#national-cooperative-soil-survey-characterization-database)  
+
+#### USDA National Soil Survey Center's Kellogg Soil Survey Laboratory ---- (NSSC KSSL)
+
+_Description_: MIR spectral library and associated soil characterization database, which now
+includes >50,000 MIR spectra collected on soils primarily from the United States. Currently not available publicly for use. 
+
+- 📕 Seybold, C. A., Ferguson, R., Wysocki, D., Bailey, S., Anderson, J., Nester, B., ... & Thomas, P. (2019). [Application of Mid‐Infrared Spectroscopy in Soil Survey](https://doi.org/10.2136/sssaj2019.06.0205). Soil Science Society of America Journal, 83(6), 1746-1759. <https://doi.org/10.2136/sssaj2019.06.0205> / Sanderman, J., Savage, K., & Dangal, S. R. (2020). Mid‐infrared spectroscopy for prediction of soil health indicators in the United States. Soil Science Society of America Journal, 84(1), 251-261. <https://doi.org/10.1002/saj2.20009>   
+- 🔗 Project website: <https://www.nrcs.usda.gov/wps/portal/nrcs/main/soils/research/>  
+- 📂 Data download URL:   
+- 📍 Unique locations: 61103  
+- 📋 Unique complete rows:   
+- 📝 Import steps: [sslsprops.KSSL](https://gitlab.com/soilspec4gg)
 
 #### Rapid Carbon Assessment: RaCA
 

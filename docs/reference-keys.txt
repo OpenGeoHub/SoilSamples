@@ -1,7 +1,9 @@
 about
 rationale
+recommended-columns
 contributing
 contributors
+disclaimer
 licence
 soil-spectroscopy-for-global-good
 about-opengeohub
@@ -19,6 +21,7 @@ global-soil-respiration-db-compilation
 hydros-soil-hydraulic-functions-of-international-soils-compilation
 isric-wise-harmonized-soil-profile-data-compilation
 isric-world-soil-reference-collection
+global-icrafisric-soil-spectroscopy-library---icrafisric
 landpks-observations
 mangrove-forest-soil-db-compilation
 remnant-native-soc-database-compilation
@@ -68,10 +71,12 @@ iran-islamic-republic-of-iran
 iran-soil-profile-db
 namibia
 a-soter-database-for-namibia-namsoter
+switzerland
 swiss-national-soil-spectral-model-library
 russian-federation
 the-unified-state-register-of-soil-resources-egrpr
 usa
 national-cooperative-soil-survey-characterization-database
+usda-national-soil-survey-centers-kellogg-soil-survey-laboratory---nssc-kssl
 rapid-carbon-assessment-raca
 other-datasets
