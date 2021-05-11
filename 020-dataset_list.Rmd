@@ -81,7 +81,7 @@ environmental research: A subset of FAO, ISRIC and NRCS profiles (Version 1.0) (
 - `r emo::ji("clipboard")` Unique complete rows: 5637  
 - `r emo::ji("memo")` Import steps: [hydrosprops.ISIS](https://gitlab.com/openlandmap/compiled-ess-point-data-sets/-/tree/master/themes/sol/SoilHydroDB#isric-isis)
 
-### Global ICRAF/ISRIC Soil Spectroscopy Library ---- (ICRAF/ISRIC)
+### Global ICRAF/ISRIC Soil Spectroscopy Library --- (ICRAF/ISRIC)
 
 _Description_: A Globally Distributed Soil Spectral Library Mid Infrared Diffuse 
 Reflectance Spectra. MIR scans for some 785 profiles from the ISRIC World Soil Reference Collection.
@@ -342,6 +342,18 @@ _Description_: Legacy soil profile dataset for Flemish Region.
 
 ### Brazil
 
+#### A National Soil Profile Database for Brazil (compilation)
+
+_Description_: National compilation of representative soil profiles. This dataset has been 
+used in FEBR. Data comes primarily from the Radam project (Projeto Radambrasil, 1973–1986).
+
+- `r emo::ji("closed_book")` Cooper, M., Mendes, L. M. S., Silva, W. L. C., & Sparovek, G. (2005). [A national soil profile database for Brazil available to international scientists](https://doi.org/10.2136/sssaj2004.0140). Soil Science Society of America Journal, 69(3), 649-652. <https://doi.org/10.2136/sssaj2004.0140> / Benedetti, M. M., Curi, N., Sparovek, G., Carvalho Filho, A., & Silva, S. H. G. (2011). Updated Brazilian’s georeferenced soil database-an improvement for international scientific information exchanging. Embrapa, 1, 309-332.  
+- `r emo::ji("link")` Project website:   
+- `r emo::ji("open_file_folder")` Data download URL:    
+- `r emo::ji("round_pushpin")` Unique locations: 5086  
+- `r emo::ji("clipboard")` Unique complete rows: 10,034  
+- `r emo::ji("memo")` Import steps: 
+
 #### Brazilian Soil Spectral Library --- BSSL (compilation)
 
 _Description_: Compilation of SS data from various projects. 
@@ -354,7 +366,7 @@ _Description_: Compilation of SS data from various projects.
 - `r emo::ji("memo")` Import steps:  
 
 
-#### Free Brazilian Repository for Open Soil Data: febr (compilation)
+#### Free Brazilian Repository for Open Soil Data --- febr (compilation)
 
 _Description_: Soil legacy data from various projects in Brazil standardized and bind together. 
 
@@ -419,6 +431,18 @@ _Description_: Soil carbon samples only.
 - `r emo::ji("memo")` Import steps: [chemsprops.CHLSOC](https://gitlab.com/openlandmap/compiled-ess-point-data-sets/-/tree/master/themes/sol/SoilChemDB#chilean-soil-organic-carbon-database) 
 
 ### China (People's Republic of China)
+
+#### China data set of soil properties for land surface modeling
+
+_Description_: National compilation of representative soil profiles. The point data is 
+not available publicly.
+
+- `r emo::ji("closed_book")` Shangguan, W., Dai, Y., Liu, B., Zhu, A., Duan, Q., Wu, L., ... & Zhang, Y. (2013). [A China data set of soil properties for land surface modeling](https://doi.org/10.1002/jame.20026). Journal of Advances in Modeling Earth Systems, 5(2), 212-224. <https://doi.org/10.1002/jame.20026>  
+- `r emo::ji("link")` Project website: <http://globalchange.bnu.edu.cn/research/data>  
+- `r emo::ji("open_file_folder")` Data download URL:    
+- `r emo::ji("round_pushpin")` Unique locations: 8979  
+- `r emo::ji("clipboard")` Unique complete rows:   
+- `r emo::ji("memo")` Import steps:   
 
 #### SOTER soil profiles for China
 
@@ -554,7 +578,7 @@ maintained by the USDA National Cooperative Soil Survey. Data is available under
 - `r emo::ji("clipboard")` Unique complete rows: 136011  
 - `r emo::ji("memo")` Import steps: [chemsprops.NCSS](https://gitlab.com/openlandmap/compiled-ess-point-data-sets/-/tree/master/themes/sol/SoilChemDB#national-cooperative-soil-survey-characterization-database)  
 
-#### USDA National Soil Survey Center's Kellogg Soil Survey Laboratory ---- (NSSC KSSL)
+#### USDA National Soil Survey Center's Kellogg Soil Survey Laboratory --- (NSSC KSSL)
 
 _Description_: MIR spectral library and associated soil characterization database, which now
 includes >50,000 MIR spectra collected on soils primarily from the United States. Currently not available publicly for use. 

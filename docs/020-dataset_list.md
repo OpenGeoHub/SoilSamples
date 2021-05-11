@@ -81,7 +81,7 @@ environmental research: A subset of FAO, ISRIC and NRCS profiles (Version 1.0) (
 - 📋 Unique complete rows: 5637  
 - 📝 Import steps: [hydrosprops.ISIS](https://gitlab.com/openlandmap/compiled-ess-point-data-sets/-/tree/master/themes/sol/SoilHydroDB#isric-isis)
 
-### Global ICRAF/ISRIC Soil Spectroscopy Library ---- (ICRAF/ISRIC)
+### Global ICRAF/ISRIC Soil Spectroscopy Library --- (ICRAF/ISRIC)
 
 _Description_: A Globally Distributed Soil Spectral Library Mid Infrared Diffuse 
 Reflectance Spectra. MIR scans for some 785 profiles from the ISRIC World Soil Reference Collection.
@@ -342,6 +342,18 @@ _Description_: Legacy soil profile dataset for Flemish Region.
 
 ### Brazil
 
+#### A National Soil Profile Database for Brazil (compilation)
+
+_Description_: National compilation of representative soil profiles. This dataset has been 
+used in FEBR. Data comes primarily from the Radam project (Projeto Radambrasil, 1973–1986).
+
+- 📕 Cooper, M., Mendes, L. M. S., Silva, W. L. C., & Sparovek, G. (2005). [A national soil profile database for Brazil available to international scientists](https://doi.org/10.2136/sssaj2004.0140). Soil Science Society of America Journal, 69(3), 649-652. <https://doi.org/10.2136/sssaj2004.0140> / Benedetti, M. M., Curi, N., Sparovek, G., Carvalho Filho, A., & Silva, S. H. G. (2011). Updated Brazilian’s georeferenced soil database-an improvement for international scientific information exchanging. Embrapa, 1, 309-332.  
+- 🔗 Project website:   
+- 📂 Data download URL:    
+- 📍 Unique locations: 5086  
+- 📋 Unique complete rows: 10,034  
+- 📝 Import steps: 
+
 #### Brazilian Soil Spectral Library --- BSSL (compilation)
 
 _Description_: Compilation of SS data from various projects. 
@@ -354,7 +366,7 @@ _Description_: Compilation of SS data from various projects.
 - 📝 Import steps:  
 
 
-#### Free Brazilian Repository for Open Soil Data: febr (compilation)
+#### Free Brazilian Repository for Open Soil Data --- febr (compilation)
 
 _Description_: Soil legacy data from various projects in Brazil standardized and bind together. 
 
@@ -419,6 +431,18 @@ _Description_: Soil carbon samples only.
 - 📝 Import steps: [chemsprops.CHLSOC](https://gitlab.com/openlandmap/compiled-ess-point-data-sets/-/tree/master/themes/sol/SoilChemDB#chilean-soil-organic-carbon-database) 
 
 ### China (People's Republic of China)
+
+#### China data set of soil properties for land surface modeling
+
+_Description_: National compilation of representative soil profiles. The point data is 
+not available publicly.
+
+- 📕 Shangguan, W., Dai, Y., Liu, B., Zhu, A., Duan, Q., Wu, L., ... & Zhang, Y. (2013). [A China data set of soil properties for land surface modeling](https://doi.org/10.1002/jame.20026). Journal of Advances in Modeling Earth Systems, 5(2), 212-224. <https://doi.org/10.1002/jame.20026>  
+- 🔗 Project website: <http://globalchange.bnu.edu.cn/research/data>  
+- 📂 Data download URL:    
+- 📍 Unique locations: 8979  
+- 📋 Unique complete rows:   
+- 📝 Import steps:   
 
 #### SOTER soil profiles for China
 
@@ -554,7 +578,7 @@ maintained by the USDA National Cooperative Soil Survey. Data is available under
 - 📋 Unique complete rows: 136011  
 - 📝 Import steps: [chemsprops.NCSS](https://gitlab.com/openlandmap/compiled-ess-point-data-sets/-/tree/master/themes/sol/SoilChemDB#national-cooperative-soil-survey-characterization-database)  
 
-#### USDA National Soil Survey Center's Kellogg Soil Survey Laboratory ---- (NSSC KSSL)
+#### USDA National Soil Survey Center's Kellogg Soil Survey Laboratory --- (NSSC KSSL)
 
 _Description_: MIR spectral library and associated soil characterization database, which now
 includes >50,000 MIR spectra collected on soils primarily from the United States. Currently not available publicly for use. 

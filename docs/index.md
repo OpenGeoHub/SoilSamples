@@ -31,7 +31,7 @@ Observations and Measurements of soil properties and characteristics).
 Datasets listed here, assuming compatible open license, are afterwards
 imported into the [**Global compilation of soil chemical and physical
 properties and soil classes**](https://gitlab.com/openlandmap/) and
-eventually used to create better open soil information across countries.
+eventually used to create a better open soil information across countries.
 The specific objectives of this initiative are:
 
 -   To enable data digitization, import and binding + harmonization,\
@@ -69,10 +69,9 @@ Information outdated or missing? Please open an issue or best do a
 correction and then a [pull
 request](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
 
-<div class="figure">
-<img src="img/sol_chem.pnts_sites.png" alt="Soil profiles and soil samples with chemical and physical properties global compilation. For more info see: https://gitlab.com/openlandmap/compiled-ess-point-data-sets." width="100%" />
-<p class="caption">(\#fig:soil-pnts)Soil profiles and soil samples with chemical and physical properties global compilation. For more info see: https://gitlab.com/openlandmap/compiled-ess-point-data-sets.</p>
-</div>
+\begin{figure}
+\includegraphics[width=1\linewidth]{img/sol_chem.pnts_sites} \caption{Soil profiles and soil samples with chemical and physical properties global compilation. For more info see: https://gitlab.com/openlandmap/compiled-ess-point-data-sets.}(\#fig:soil-pnts)
+\end{figure}
 
 Soil variables of interest include:
 
@@ -120,10 +119,9 @@ As a general rule of thumb we recommend all contributors to use the following
 general scheme to organize Soil Observations & Measurements with three main tables 
 and metadata + legends organized in other tables:
 
-<div class="figure">
-<img src="img/design_soil_om_sheme.png" alt="Recommended soil profiles and soil samples database schema." width="100%" />
-<p class="caption">(\#fig:soil-db)Recommended soil profiles and soil samples database schema.</p>
-</div>
+\begin{figure}
+\includegraphics[width=1\linewidth]{img/design_soil_om_sheme} \caption{Recommended soil profiles and soil samples database schema.}(\#fig:soil-db)
+\end{figure}
 
 We recommend using the USDA [National Cooperative Soil Survey (NCSS) Soil 
 Characterization Database](https://ncsslabdatamart.sc.egov.usda.gov/) codes and specification as much as possible. These are explained in detail in the [**Kellogg Soil Survey Laboratory Methods Manual**](https://www.nrcs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb1253872.pdf).
