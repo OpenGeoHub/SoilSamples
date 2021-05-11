@@ -31,7 +31,7 @@ Observations and Measurements of soil properties and characteristics).
 Datasets listed here, assuming compatible open license, are afterwards
 imported into the [**Global compilation of soil chemical and physical
 properties and soil classes**](https://gitlab.com/openlandmap/) and
-eventually used to create better open soil information across countries.
+eventually used to create a better open soil information across countries.
 The specific objectives of this initiative are:
 
 -   To enable data digitization, import and binding + harmonization,\

@@ -13,7 +13,7 @@ bookdown::gitbook:
         <li><a href="https://opengeohub.org/about">T. (Tom) Hengl and contributors</a></li>
       scroll_highlight: yes
     edit : https://github.com/OpenGeoHub/SoilSamples/edit/main/%s
-    download: ["Open_Compendium_Soil_Obs_Measurements_book.pdf", "Open_Compendium_Soil_Obs_Measurements_book.epub"]
+    download: ["Open_Compendium_Soil_Obs_Measurements_book.pdf"]
 bookdown::pdf_book:
   includes:
     in_header: latex/preamble.tex

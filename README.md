@@ -7,10 +7,10 @@ bind to single GeoPackage file via [the OpenLandMap repository](https://gitlab.c
 
 To cite this book please use:
 
-- Hengl, T., and others, (2021). An Open Compendium of Soil Datasets: Soil Observations and Measurements. OpenGeoHub foundation, Wageningen, the Netherlands, <https://opengeohub.github.io/SoilSamples/>, DOI: .
+- Hengl, T., and others, (2021). [**An Open Compendium of Soil Datasets: Soil Observations and Measurements**](https://opengeohub.github.io/SoilSamples/). OpenGeoHub foundation, Wageningen, the Netherlands, <https://opengeohub.github.io/SoilSamples/>, DOI: <https://doi.org/10.5281/zenodo.4748499>.
 
 To download the most up-to-date snapshot of all publicly available soil points 
-bind and compiled as GeoPKG, please visit:[https://gitlab.com/openlandmap/compiled-ess-point-data-sets/](https://gitlab.com/openlandmap/compiled-ess-point-data-sets/-/tree/master/out/gpkg).
+bind and compiled as GeoPKG, please visit: [https://gitlab.com/openlandmap/compiled-ess-point-data-sets/](https://gitlab.com/openlandmap/compiled-ess-point-data-sets/-/tree/master/out/gpkg).
 
 <img src="img/sol_chem.pnts_sites.png" alt="Soil profiles and soil samples with chemical and physical properties global compilation. For more info see: https://gitlab.com/openlandmap/compiled-ess-point-data-sets." width="90%" />
 
