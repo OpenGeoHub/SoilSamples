@@ -73,6 +73,29 @@ request](https://docs.github.com/en/github/collaborating-with-issues-and-pull-re
 knitr::include_graphics("img/sol_chem.pnts_sites.png")
 ```
 
+## Existing soil data projects and initiatives
+
+Multiple international organizations from [FAO's Global Soil Partnership](http://www.fao.org/global-soil-partnership/en/) to [UNCCD's Land Degredation Neutrality](https://www.unccd.int/actions/ldn-target-setting-programme), [European Commission](https://esdac.jrc.ec.europa.eu/) and similar, 
+support soil data collation projects and especially curation of the legacy soil data. 
+Some existing soil Observations and Measurements (O&M) soil data initiatives include:
+
+  - [**Fine Root Ecology Database (FRED)**](https://roots.ornl.gov/),\
+  - [**FLUXNET global network**](https://fluxnet.fluxdata.org/),\
+  - [**Global database of soil nematodes**](https://www.nature.com/articles/s41597-020-0437-3),\
+  - [**Global soil macrofauna database**](http://macrofauna.earthworms.info/),\
+  - [**Global soil respiration database (SRDB)**](https://github.com/bpbond/srdb),\
+  - [**International Soil Moisture Network**](https://ismn.geo.tuwien.ac.at/en/),\
+  - [**International Soil Carbon Network**](http://iscn.fluxdata.org/),\
+  - [**LandPKS project**](http://portal.landpotential.org/#/landpksmap),\
+  - [**Long Term Ecological Research (LTER) Network sites**](https://lternet.edu/site/),\
+  - [**WoSIS Soil Profile Database**](https://www.isric.org/explore/wosis),
+
+A more in-depth inventory of all various national and international soil datasets can be found in:
+
+- Rossiter, D.G.,: [**Compendium of Soil Geographical Databases**](https://www.isric.org/explore/soil-geographic-databases)\
+
+## Target soil variables
+
 Soil variables of interest include:
 
 1.  **Chemical soil properties**:

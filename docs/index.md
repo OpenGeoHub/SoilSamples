@@ -1,7 +1,7 @@
 ---
 title: "An Open Compendium of Soil Datasets"
 author: "Tomislav Hengl (OpenGeoHub)"
-date: "11 May, 2021"
+date: "14 May, 2021"
 knit: bookdown::render_book
 site: bookdown::bookdown_site
 documentclass: svmono
@@ -69,9 +69,33 @@ Information outdated or missing? Please open an issue or best do a
 correction and then a [pull
 request](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
 
-\begin{figure}
-\includegraphics[width=1\linewidth]{img/sol_chem.pnts_sites} \caption{Soil profiles and soil samples with chemical and physical properties global compilation. For more info see: https://gitlab.com/openlandmap/compiled-ess-point-data-sets.}(\#fig:soil-pnts)
-\end{figure}
+<div class="figure">
+<img src="img/sol_chem.pnts_sites.png" alt="Soil profiles and soil samples with chemical and physical properties global compilation. For more info see: https://gitlab.com/openlandmap/compiled-ess-point-data-sets." width="100%" />
+<p class="caption">(\#fig:soil-pnts)Soil profiles and soil samples with chemical and physical properties global compilation. For more info see: https://gitlab.com/openlandmap/compiled-ess-point-data-sets.</p>
+</div>
+
+## Existing soil data projects and initiatives
+
+Multiple international organizations from [FAO's Global Soil Partnership](http://www.fao.org/global-soil-partnership/en/) to [UNCCD's Land Degredation Neutrality](https://www.unccd.int/actions/ldn-target-setting-programme), [European Commission](https://esdac.jrc.ec.europa.eu/) and similar, 
+support soil data collation projects and especially curation of the legacy soil data. 
+Some existing soil Observations and Measurements (O&M) soil data initiatives include:
+
+  - [**Fine Root Ecology Database (FRED)**](https://roots.ornl.gov/),\
+  - [**FLUXNET global network**](https://fluxnet.fluxdata.org/),\
+  - [**Global database of soil nematodes**](https://www.nature.com/articles/s41597-020-0437-3),\
+  - [**Global soil macrofauna database**](http://macrofauna.earthworms.info/),\
+  - [**Global soil respiration database (SRDB)**](https://github.com/bpbond/srdb),\
+  - [**International Soil Moisture Network**](https://ismn.geo.tuwien.ac.at/en/),\
+  - [**International Soil Carbon Network**](http://iscn.fluxdata.org/),\
+  - [**LandPKS project**](http://portal.landpotential.org/#/landpksmap),\
+  - [**Long Term Ecological Research (LTER) Network sites**](https://lternet.edu/site/),\
+  - [**WoSIS Soil Profile Database**](https://www.isric.org/explore/wosis),
+
+A more in-depth inventory of all various national and international soil datasets can be found in:
+
+- Rossiter, D.G.,: [**Compendium of Soil Geographical Databases**](https://www.isric.org/explore/soil-geographic-databases)\
+
+## Target soil variables
 
 Soil variables of interest include:
 
@@ -119,9 +143,10 @@ As a general rule of thumb we recommend all contributors to use the following
 general scheme to organize Soil Observations & Measurements with three main tables 
 and metadata + legends organized in other tables:
 
-\begin{figure}
-\includegraphics[width=1\linewidth]{img/design_soil_om_sheme} \caption{Recommended soil profiles and soil samples database schema.}(\#fig:soil-db)
-\end{figure}
+<div class="figure">
+<img src="img/design_soil_om_sheme.png" alt="Recommended soil profiles and soil samples database schema." width="100%" />
+<p class="caption">(\#fig:soil-db)Recommended soil profiles and soil samples database schema.</p>
+</div>
 
 We recommend using the USDA [National Cooperative Soil Survey (NCSS) Soil 
 Characterization Database](https://ncsslabdatamart.sc.egov.usda.gov/) codes and specification as much as possible. These are explained in detail in the [**Kellogg Soil Survey Laboratory Methods Manual**](https://www.nrcs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb1253872.pdf).

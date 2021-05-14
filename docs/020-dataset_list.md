@@ -489,7 +489,7 @@ _Description_: National legacy soil profile database for Costa Rica.
 _Description_: For protection of data privacy, the coordinate was randomly generated 
 within a radius of 4-km around the planned sampling point. 
 
-- 📕 Poeplau, C., Jacobs, A., Don, A., Vos, C., Schneider, F., Wittnebel, M., ... & Flessa, H. (2020). Stocks of organic carbon in German agricultural soils---Key results of the first comprehensive inventory. Journal of Plant Nutrition and Soil Science, 183(6), 665-681.  
+- 📕 Poeplau, C., Jacobs, A., Don, A., Vos, C., Schneider, F., Wittnebel, M., ... & Flessa, H. (2020). [Stocks of organic carbon in German agricultural soils---Key results of the first comprehensive inventory](https://doi.org/10.1002/jpln.202000113). Journal of Plant Nutrition and Soil Science, 183(6), 665-681.  
 - 🔗 Project website: <https://www.thuenen.de/de/ak/>  
 - 📂 Data download URL: <https://doi.org/10.3220/DATA20200203151139>   
 - 📍 Unique locations: 3104  
