@@ -389,7 +389,6 @@ _Description_: Contains hydrophysical data for Brazilian soils that seeks to con
 - 📋 Unique complete rows:   
 - 📝 Import steps: [hydrosprops.HYBRAS](https://gitlab.com/openlandmap/compiled-ess-point-data-sets/-/tree/master/themes/sol/SoilHydroDB#hybras) 
 
-
 ### Canada 
 
 #### Agriculture and Agri-Food Canada National Pedon Database
@@ -495,6 +494,20 @@ within a radius of 4-km around the planned sampling point.
 - 📍 Unique locations: 3104  
 - 📋 Unique complete rows: 17187  
 - 📝 Import steps: [chemsprops.BZE_LW](https://gitlab.com/openlandmap/compiled-ess-point-data-sets/-/tree/master/themes/sol/SoilChemDB#stocks-of-organic-carbon-in-german-agricultural-soils-bze_lw) 
+
+### Ghana
+
+#### National soil profile legacy DB
+
+_Description_: Described in literature but not yet imported to AfSPDB. 
+
+- 📕 Owusu, S., Yigini, Y., Olmedo, G. F., & Omuto, C. T. (2020). [Spatial prediction of soil organic carbon stocks in Ghana using legacy data](https://doi.org/10.1016/j.geoderma.2019.114008). Geoderma, 360, 114008.  
+- 🔗 Project website:   
+- 📂 Data download URL:    
+- 📍 Unique locations:   
+- 📋 Unique complete rows:   
+- 📝 Import steps:  
+
 
 ### Israel
 

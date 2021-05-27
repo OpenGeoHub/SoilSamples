@@ -389,7 +389,6 @@ _Description_: Contains hydrophysical data for Brazilian soils that seeks to con
 - `r emo::ji("clipboard")` Unique complete rows:   
 - `r emo::ji("memo")` Import steps: [hydrosprops.HYBRAS](https://gitlab.com/openlandmap/compiled-ess-point-data-sets/-/tree/master/themes/sol/SoilHydroDB#hybras) 
 
-
 ### Canada 
 
 #### Agriculture and Agri-Food Canada National Pedon Database
@@ -495,6 +494,20 @@ within a radius of 4-km around the planned sampling point.
 - `r emo::ji("round_pushpin")` Unique locations: 3104  
 - `r emo::ji("clipboard")` Unique complete rows: 17187  
 - `r emo::ji("memo")` Import steps: [chemsprops.BZE_LW](https://gitlab.com/openlandmap/compiled-ess-point-data-sets/-/tree/master/themes/sol/SoilChemDB#stocks-of-organic-carbon-in-german-agricultural-soils-bze_lw) 
+
+### Ghana
+
+#### National soil profile legacy DB
+
+_Description_: Described in literature but not yet imported to AfSPDB. 
+
+- `r emo::ji("closed_book")` Owusu, S., Yigini, Y., Olmedo, G. F., & Omuto, C. T. (2020). [Spatial prediction of soil organic carbon stocks in Ghana using legacy data](https://doi.org/10.1016/j.geoderma.2019.114008). Geoderma, 360, 114008.  
+- `r emo::ji("link")` Project website:   
+- `r emo::ji("open_file_folder")` Data download URL:    
+- `r emo::ji("round_pushpin")` Unique locations:   
+- `r emo::ji("clipboard")` Unique complete rows:   
+- `r emo::ji("memo")` Import steps:  
+
 
 ### Israel
 

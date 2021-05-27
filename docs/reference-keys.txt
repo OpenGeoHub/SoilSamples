@@ -73,6 +73,8 @@ costa-rica
 soil-profile-db-for-costa-rica
 germany
 stocks-of-organic-carbon-in-german-agricultural-soils-bze_lw
+ghana
+national-soil-profile-legacy-db
 israel
 the-national-soil-spectral-library-of-israel
 iran-islamic-republic-of-iran
