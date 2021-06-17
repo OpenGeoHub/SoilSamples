@@ -12,10 +12,9 @@ request](https://docs.github.com/en/github/collaborating-with-issues-and-pull-re
 5.  Once received we will check it and if you have followed the instructions closely, 
     the reference will appear in the document as soon as the code is merged with the master,\
 
-<div class="figure">
-<img src="img/example_pull_request.jpg" alt="Example of a pull request on Github.com." width="50%" />
-<p class="caption">(\#fig:pull-request)Example of a pull request on Github.com.</p>
-</div>
+\begin{figure}
+\includegraphics[width=0.5\linewidth]{img/example_pull_request} \caption{Example of a pull request on Github.com.}(\#fig:pull-request)
+\end{figure}
 
 If you're new to markdown and want to learn how to use it, please refer to [this tutorial](https://guides.github.com/features/mastering-markdown/).
 

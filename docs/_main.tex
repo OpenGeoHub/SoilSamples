@@ -218,7 +218,7 @@
 
 \title{An Open Compendium of Soil Datasets}
 \author{Tomislav Hengl (OpenGeoHub)}
-\date{27 May, 2021}
+\date{17 June, 2021}
 
 \begin{document}
 \maketitle
@@ -474,202 +474,54 @@ by Oscar Baruffa.
 \section{Recommended columns}\label{recommended-columns}}
 
 As a general rule of thumb we recommend all contributors to use the following
-general scheme to organize Soil Observations \& Measurements with three main tables
+general scheme to organize Soil Observations \& Measurements with 3--4 main tables
 and metadata + legends organized in other tables:
 
-\begin{figure}
-\includegraphics[width=1\linewidth]{img/design_soil_om_sheme} \caption{Recommended soil profiles and soil samples database schema.}\label{fig:soil-db}
-\end{figure}
+\begin{itemize}
+\tightlist
+\item
+  Soil site information (geographical coordinates, land use / land cover, soil classification etc),
+\item
+  Soil horizon information (soil observations and measurements specific to soil layers / diagnostic horizons),
+\item
+  Proximal soil sensing information including soil scans,
+\end{itemize}
 
-We recommend using the USDA \href{https://ncsslabdatamart.sc.egov.usda.gov/}{National Cooperative Soil Survey (NCSS) Soil
+For making soil observations and measurements we recommend following the USDA \href{https://ncsslabdatamart.sc.egov.usda.gov/}{National Cooperative Soil Survey (NCSS) Soil
 Characterization Database} codes and specification as much as possible. These are explained in detail in the \href{https://www.nrcs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb1253872.pdf}{\textbf{Kellogg Soil Survey Laboratory Methods Manual}}
 and \href{https://www.nrcs.usda.gov/wps/portal/nrcs/detail/soils/research/guide/}{\textbf{The Field Book for Describing and Sampling Soils}}.
 Likewise, \href{http://www.fao.org/3/a0541e/a0541e.pdf}{\textbf{FAO Guidelines for soil description}},
 and the FAO's \href{http://www.fao.org/documents/card/en/c/cb0509en/}{GSOC measurement, monitoring, reporting and verification (MRV) protocol} also explain in
 detail how to collect soil samples and setup a system for monitoring soil organic carbon.
 
-For the \textbf{site} table please use (at least) the following columns:
+It is recommended that one should, as much as possible, use the international standards
+and references. Some highly recommended protocols and standards include:
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
+\begin{itemize}
 \tightlist
 \item
-  Unique site ID generated using some \href{https://cran.r-project.org/package=uuid}{UUID generator tool}; example: \texttt{id.site\_uuid\_c\ =\ \textquotesingle{}672d1fd6-b186-11eb-8a61-7446a0925130\textquotesingle{}}\\
+  \href{https://cran.r-project.org/package=uuid}{UUID generator tool} to generate unique ID's for unique soil sites, horizons, samples etc,
 \item
-  Unique \href{https://opensource.google/projects/open-location-code}{Open Location Codes} ID which identifies the site location; example: \texttt{id.location\_olc\_c\ =\ \textquotesingle{}84MVX5FH+PJ\textquotesingle{}}\\
+  \href{https://opensource.google/projects/open-location-code}{Open Location Codes} to generate geographic location codes,
 \item
-  \href{https://www.ogc.org/standards/om}{Observation OGC} schema title; example: \texttt{observation.ogc.schema.title\_ogc\_txt\ =\ \textquotesingle{}Open\ Soil\ Spectroscopy\ Library\textquotesingle{}}\\
+  \href{https://www.ogc.org/standards/om}{OGC standards} to prepare metadata and exchange data across field / computer systems;
 \item
-  \href{https://www.ogc.org/standards/om}{Observation OGC} schema URL; example: \texttt{observation.ogc.schema\_idn\_url\ =\ \textquotesingle{}\textquotesingle{}}\\
+  \href{https://en.wikipedia.org/wiki/ISO_8601}{ISO8601} to save time and date information,
 \item
-  Observation date begin (\href{https://en.wikipedia.org/wiki/ISO_8601}{ISO8601}); example: \texttt{observation.date.begin\_iso.8601\_yyyy.mm.dd\ =\ \textquotesingle{}2000.02.10\textquotesingle{}}\\
+  \href{https://en.wikipedia.org/wiki/ISO_3166-1}{ISO3166} for country / administrative codes,
 \item
-  Observation date end (\href{https://en.wikipedia.org/wiki/ISO_8601}{ISO8601}); example: \texttt{observation.date.end\_\ iso.8601\_yyyy.mm.dd\ =\ \textquotesingle{}2000.02.10\textquotesingle{}}\\
+  \href{https://www.gps.gov/}{GPS} and WGS84 longitude and latitude in decimal degrees to save the location information,
 \item
-  Location address as Street and number, Local postcode, Town, County, State; example: \texttt{location.address\_utf8\_txt\ =\ \textquotesingle{}\textquotesingle{}}\\
+  \href{https://en.wikipedia.org/wiki/Digital_object_identifier}{International DOI foundation} to refer to specific dataset and/or publication,
 \item
-  Country(ies) the data was/were collected (\href{https://en.wikipedia.org/wiki/ISO_3166-1}{ISO3166}); example: \texttt{location.country\_iso.3166\_c\ =\ \textquotesingle{}USA\textquotesingle{}}\\
+  \href{https://www.nrcs.usda.gov/wps/portal/nrcs/main/soils/survey/class/}{USDA soil classification system} and \href{http://www.fao.org/soils-portal/data-hub/soil-classification/world-reference-base/en/}{World Reference Base} to classify soils,
 \item
-  Location method e.g.~\href{https://www.gps.gov/}{GPS}; example: \texttt{location.method\_any\_c\ =\ \textquotesingle{}GPS\textquotesingle{}}\\
+  \href{https://www.nrcs.usda.gov/wps/portal/nrcs/detail/soils/survey/?cid=nrcs142p2_054167}{USDA soil texture calculator} to determine and share soil texture classes including texture-by-hand,
 \item
-  Field surveyor title or organization; example: \texttt{surveyor.title\_utf8\_txt\ =\ \textquotesingle{}USDA\ Natural\ Resource\ Conservation\ Service\ (NRCS)\ staff\textquotesingle{}}\\
+  \href{https://www.nrcs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb1253872.pdf}{Kellogg Soil Survey Laboratory Methods Manual} for reference physical and chemical soil property determination in laboratory,
 \item
-  Field surveyor contact email; example: \texttt{surveyor.contact\_ietf\_email\ =\ \textquotesingle{}support@usda.gov\textquotesingle{}}\\
-\item
-  Field surveyor address as Street and number, Local postcode, Town, County, State; example: \texttt{surveyor.address\_utf8\_txt\ =\ \textquotesingle{}USDA-NRCS-NSSC,\ Federal\ Building,\ Room\ 152,\ Mail\ Stop,\ 100\ Centennial\ Mall\ North,\ Lincoln,\ NE\textquotesingle{}}\\
-\item
-  Site \href{https://spatialreference.org/ref/epsg/wgs-84/}{WGS84 longitude} coordinate; example: \texttt{longitude\_wgs84\_dd\ =\ \textquotesingle{}-122.8208847\textquotesingle{}}\\
-\item
-  Site \href{https://spatialreference.org/ref/epsg/wgs-84/}{WGS84 latitude} coordinate; example: \texttt{latitude\_wgs84\_dd\ =\ \textquotesingle{}43.9742584\textquotesingle{}}\\
-\item
-  Approximate location error (for \href{https://www.gps.gov/systems/gps/performance/accuracy/}{GPS coordinates} use 30 m); example: \texttt{location.error\_any\_m\ =\ \textquotesingle{}30\textquotesingle{}}\\
-\item
-  Title of the dataset; example: \texttt{dataset.title\_utf8\_txt\ =\ \textquotesingle{}Kellog\textquotesingle{}s\ lab\ SSL\textquotesingle{}}\\
-\item
-  Code identification of the dataset; example: \texttt{dataset.code\_ascii\_txt\ =\ \textquotesingle{}KSSL\textquotesingle{}}\\
-\item
-  The URL address of the dataset web page; example: \texttt{dataset.address\_idn\_url\ =\ \textquotesingle{}https://ncsslabdatamart.sc.egov.usda.gov/\textquotesingle{}}\\
-\item
-  Data license title for the dataset; example: \texttt{dataset.license.title\_ascii\_txt\ =\ \textquotesingle{}CC-0\textquotesingle{}}\\
-\item
-  Data license URL for the dataset; example: \texttt{dataset.license.address\_idn\_url\ =\ \textquotesingle{}https://creativecommons.org/share-your-work/public-domain/cc0/\textquotesingle{}}\\
-\item
-  \href{https://en.wikipedia.org/wiki/Digital_object_identifier}{International DOI foundation} code for the corresponding dataset version; example: \texttt{dataset.doi\_idf\_c\ =\ \textquotesingle{}10.2136/sssaj2019.06.0205\textquotesingle{}}\\
-\item
-  Person responsible for the dataset; example: \texttt{dataset.contact.name\_utf8\_txt\ =\ \textquotesingle{}Richard\ R.\ Ferguson\textquotesingle{}}
-  Email contact of the person responsible for the dataset; example: \texttt{dataset.contact.email\_ietf\_email\ =\ \textquotesingle{}support@usda.gov\textquotesingle{}}\\
-\item
-  Local dataset ID of the site; example: \texttt{id.dataset.site\_ascii\_c\ =\ \textquotesingle{}603\textquotesingle{}}\\
-\item
-  Local user assigned ID of the site; example: \texttt{id.user.site\_ascii\_c\ =\ \textquotesingle{}01-DRJ-01\textquotesingle{}}\\
-\item
-  Unique project code; example: \texttt{id.project\_ascii\_c\ =\ \textquotesingle{}TEX18\textquotesingle{}}\\
-\end{enumerate}
-
-For the \textbf{samples} table please use some of the columns:
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  Unique site ID generated using some \href{https://cran.r-project.org/package=uuid}{UUID generator tool}; example: \texttt{id.site\_uuid\_c\ =\ \textquotesingle{}672d1fd6-b186-11eb-8a61-7446a0925130\textquotesingle{}}\\
-\item
-  Unique sample ID generated using some \href{https://cran.r-project.org/package=uuid}{UUID generator tool}; example: \texttt{id.sample\_uuid\_c\ =\ \textquotesingle{}31d454be-b1ac-11eb-8a61-7446a0925130\textquotesingle{}}\\
-\item
-  Layer sequence number; example: \texttt{layer.sequence\_usda\_uint16\ =\ \textquotesingle{}1\textquotesingle{}}\\
-\item
-  Layer type; example: \texttt{layer.type\_usda\_c\ =\ \textquotesingle{}horizon\textquotesingle{}}\\
-\item
-  Layer field label used e.g.~for soil samples; example: \texttt{layer.field.label\_any\_c\ =\ \textquotesingle{}S00OR-039-001-2\textquotesingle{}}\\
-\item
-  Layer upper depth in cm; example: \texttt{layer.upper.depth\_usda\_cm\ =\ \textquotesingle{}13\textquotesingle{}}\\
-\item
-  Layer lower depth in cm; example: \texttt{layer.lower.depth\_usda\_cm\ =\ \textquotesingle{}36\textquotesingle{}}\\
-\item
-  Layer horizon designation \href{https://www.nrcs.usda.gov/wps/portal/nrcs/detail/soils/research/guide/?cid=nrcs142p2_054184}{based on the USDA system}; example: \texttt{horizon.designation\_usda\_c\ =\ \textquotesingle{}A2\textquotesingle{}}\\
-\item
-  Layer horizon designation discontinuity \href{https://www.nrcs.usda.gov/wps/portal/nrcs/detail/soils/research/guide/?cid=nrcs142p2_054184}{based on the USDA system}; example: \texttt{horizon.designation.discontinuity\_usda\_c\ =\ \textquotesingle{}\textquotesingle{}}\\
-\item
-  Layer horizon structure type \href{https://www.nrcs.usda.gov/wps/portal/nrcs/detail/soils/research/guide/?cid=nrcs142p2_054184}{based on the USDA system}; example: \texttt{layer.structure.type\_usda\_c\ =\ \textquotesingle{}\textquotesingle{}}\\
-\item
-  Layers horizon structure grade \href{https://www.nrcs.usda.gov/wps/portal/nrcs/detail/soils/research/guide/?cid=nrcs142p2_054184}{based on the USDA system}; example: \texttt{layer.structure.grade\_usda\_c\ =\ \textquotesingle{}\textquotesingle{}}\\
-\item
-  Layer texture class \href{https://www.nrcs.usda.gov/wps/portal/nrcs/detail/soils/survey/?cid=nrcs142p2_054167}{based on the USDA system}; example: \texttt{layer.texture\_usda\_c\ =\ \textquotesingle{}Gravelly\ Clay\textquotesingle{}}\\
-\item
-  Sand content; \href{https://www.nrcs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb1253872.pdf\#page=76}{description}: \texttt{sand.tot\_3a1a1a\_wpct} = Total sand is the soil separate with 0.05 to 2.0 mm article diameter. It is reported a gravimetric percent on a \textless2 mm base. H prep.\\
-\item
-  Silt content; \href{https://www.nrcs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb1253872.pdf\#page=76}{description}: \texttt{silt.tot\_3a1a1a\_wpct} = Total silt is the soil separate with 0.002 to 0.05 mm particle size. It is reported as a gravimetric percent on a \textless2 mm base.\\
-\item
-  Clay content; \href{https://www.nrcs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb1253872.pdf\#page=76}{description}: \texttt{clay.tot\_3a1a1a\_wpct} = Total clay is the soil separate with \textless0.002 mm particle diameter. Clay size carbonate is included. Total clay is reported as a weight percent of the \textless2 mm fraction.\\
-\item
-  Coarse Fragments, Greater than 2mm; \href{https://www.nrcs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb1253872.pdf\#page=119}{description}: \texttt{wpg2\_3a2\_wpct} = The gravimetric percentage of greater than 2 mm diameter particles reported on a whole soil base.\\
-\item
-  Water Retention, 15 Bar, \textless2mm, Air-dry; \href{https://www.nrcs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb1253872.pdf\#page=205}{description}: \texttt{wr.1500kbar\_3c2a1a.b\_wpct} = 15 bar water on air dry soil is the gravimetric water content of \textless2 mm air dry samples after equilibration at 15 bars water tension. It is reported on a \textless2 mm base. The value is influenced by clay \%, mineralogy, and organic carbon \%.\\
-\item
-  Water Retention, 1/3 Bar, \textless2mm Clod; \href{https://www.nrcs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb1253872.pdf\#page=205}{description}: \texttt{wr.33kbar\_3c1a.e1a\_wpct} = 1/3 bar water, clods is the gravimetric percent water in natural fabric (clods) after equilibration at 1/3 bar water tension. It is reported on a \textless2 mm base.\\
-\item
-  Aggregate stability; \href{https://www.nrcs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb1253872.pdf\#page=119}{description}: \texttt{aggstb\_1b1b2a1\_wpct} = Aggregate stability is the weight percent of 0.5mm - 2mm aggregates remaining after wet sieving.
-\item
-  Bulk density clod, \textless2 mm fraction, 1/3 bar; \href{https://www.nrcs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb1253872.pdf\#page=130}{description}: \texttt{bd.clod\_3b1a\_gcm3} = Bulk density, \textless2 mm fraction, 1/3 bar is the weight per unit volume of the \textless2 mm fraction, with volume being measured after equilibration at 1/3 bar water tension. It is reported as grams per cubic centimeter on a \textless2 mm base.\\
-\item
-  Bulk density, core, \textless2 mm fraction; \href{https://www.nrcs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb1253872.pdf\#page=161}{description}: \texttt{bd.core\_3b4a\_gcm3} = Bulk density, \textless2mm fraction, field moist is the weight per unit volume of the \textless2 mm fraction, with volume measured at field (sampling) moisture. Measurements are made on known volume cores. It is reported as grams per cubic centimeter, \textless2 mm base.\\
-\item
-  Total carbon; \href{https://www.nrcs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb1253872.pdf\#page=492}{description}: \texttt{c.tot\_4h2a1.3a1\_wpct} = Total carbon is a measure of all organic and inorganic carbon, including that found in carbonate minerals.\\
-\item
-  Total nitrogen; \href{https://www.nrcs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb1253872.pdf\#page=492}{description}: \texttt{n.tot\_4h2a1.3a1\_wpct} = Total nitrogen is a measure of all organic and inorganic nitrogen, including that found in nitrogen minerals.\\
-\item
-  Total sulfur; \href{https://www.nrcs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb1253872.pdf\#page=492}{description}: \texttt{s.tot\_4h2a1.3a1\_wpct} = Total sulfur is a measure of all organic and inorganic sulfur, including that found in sulfide minerals.\\
-\item
-  Total organic carbon; description: \texttt{oc.tot\_est.calc\_wpct} = Estimated Organic Carbon based on Total C, GP prep.\\
-\item
-  Total organic carbon based on dry combustion; \href{https://www.nrcs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb1253872.pdf\#page=464}{description}: \texttt{oc.tot\_4h2a1.3a1\_wpct} = CMS analyte. Organic carbon is a measure of all organic forms of carbon in the soil, including organic carbon within minerals.
-\item
-  Effervescence, 1N HCl; \href{https://www.nrcs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb1253872.pdf\#page=63}{description}: \texttt{na2co3.pres\_1b1b2d4\_class} = The visual effervescence of the prepared sample when treated with 1N HCl.\\
-\item
-  Calcium carbonate content; \href{https://www.nrcs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb1253872.pdf\#page=398}{description}: \texttt{caco3\_4e1a1a1a1.2\_wpct} = Carbonate in the \textless{} 2mm fraction is measured by CO2 evolution after acid treatment. It is reported as gravimetric percent CaCO3 on a \textless2 mm base, even though carbonates of Mg, Na, K, and Fe may be present and react with the acid.\\
-\item
-  Calcium, NH4OAc Extractable, 2M KCl displacement; \href{https://www.nrcs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb1253872.pdf\#page=269}{description}: \texttt{ca.ext\_4b1a1b1.4a.b1\_cmolkg} = NH4OAC extractable calcium is the fraction removed by pH 7.0 NH4OAC. It is assumed to represent the exchangeable Ca. It is reported as meq per 100 grams on a \textless2 mm base. It is not reported for samples containing carbonates or soluble salts.\\
-\item
-  CEC, NH4OAc, pH 7.0, 2M KCl displacement; \href{https://www.nrcs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb1253872.pdf\#page=258}{description}: \texttt{pcec.ext\_4b1a1a1a1a.b1\_cmolkg} = CEC by NH4OAC is the cation exchange capacity of the sample, determined by 1N NH4OAC in a system highly buffered at pH 7.0 The NH4 is displaced by 2M KCl to obtain a solution without solids. It is reported as meq per 100 grams sample, on a \textless2 mm base.\\
-\item
-  Magnesium, NH4OAc Extractable, 2M KCl displacement; \href{https://www.nrcs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb1253872.pdf\#page=269}{description}: \texttt{mg.ext\_4b1a1b1.4a.b1\_cmolkg} = NH4OAC extractable magnesium is the fraction removed by pH 7.0 NH4OAC. It is assumed to represent the exchangeable Mg if MgCO3 is not present. It is reported as meq per 100 grams on a \textless2 mm base.\\
-\item
-  Potassium, NH4OAc Extractable, 2M KCl displacement; \href{https://www.nrcs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb1253872.pdf\#page=269}{description}: \texttt{k.ext\_4b1a1b1.4a.b1\_cmolkg} = NH4OAC extractable potassium is the fraction removed by pH 7.0 NH4OAC. It is assumed to represent the exchangeable K. It is reported as meq per 100 grams on a \textless2 mm base.\\
-\item
-  Sodium, NH4OAc Extractable, 2M KCl displacement; \href{https://www.nrcs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb1253872.pdf\#page=269}{description}: \texttt{na.ext\_4b1a1b1.4a.b1\_cmolkg} = NH4OAC extractable sodium is the fraction removed by pH 7.0 NH4OAC. It is assumed to represent the exchangeable Na. It is reported as meq per 100 grams on a \textless2 mm base.\\
-\item
-  Iron, ammonium oxalate extractable; \href{https://www.nrcs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb1253872.pdf\#page=460}{description}: \texttt{fe.ox\_4g2a1a1.5a.b1\_wpct} = Ammonium oxalate extractable iron is considered a measure of the noncrystalline Fe in soils. It provides some inferences of the amount of Fe in various forms. It is reported as gravimetric \% on a \textless2mm base.\\
-\item
-  Iron, dithinoite-citrate extractable; \href{https://www.nrcs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb1253872.pdf\#page=454}{description}: \texttt{fe.dith\_4g1a1.3\_wpct} = Dithionite citrate extractable iron is considered a general measure of total pedogenic iron. It provides inferences on the amount of iron in various forms, P fixing potential, aggregate stability, and degree of weathering. Reported as grav \% on \textless2mm.\\
-\item
-  Iron, sodium pyrophosphate extractable; \href{https://www.nrcs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb1253872.pdf\#page=468}{description}: \texttt{fe.pyp\_4g3a1.3a.b1\_wpct} = Sodium pyrophosphate extractable iron is assumed to be the fraction associated with organic complexes. It is reported as gravimetric percent on a \textless2 mm base.\\
-\item
-  Aluminum, ammonium oxalate extractable; \href{https://www.nrcs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb1253872.pdf\#page=460}{description}: \texttt{al.ox\_4g2a1a1.5a.b1\_wpct} = Ammonium oxalate extractable aluminum is an estimate of the total pedogenic Al, much of which may be in noncrystalline materials or complexed by organic matter. It is reported as gravimetric percent on a \textless2 mm base.\\
-\item
-  Aluminum, dithinoite-citrate extractable; \href{https://www.nrcs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb1253872.pdf\#page=460}{description}: \texttt{al.dith\_4g1a1.3a.b1\_wpct} = Dithionite citrate extractable aluminum is an indicator of the amount of aluminum substituted for iron in iron oxides. It does not necessarily represent total pedogenic Al.\\
-\item
-  Aluminum, sodium pyrophosphate extractable; \href{https://www.nrcs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb1253872.pdf\#page=468}{description}: \texttt{al.pyp\_4g3a1.3a1\_wpct} = Sodium pyrophosphate extractable aluminum is the fraction extracted by 0.1M sodium pyrophosphate. It was originally considered the portion associated with organic compounds, although subsequent evidence indicates other forms are also removed.\\
-\item
-  Aluminum, KCl extractable; \href{https://www.nrcs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb1253872.pdf\#page=282}{description}: \texttt{al.kcl\_4b3a1a1.2\_cmolkg} = KCl extractable aluminum approximates the exchangeable Al, and is a measure of the active acidity present in soils with a 1:1 water pH less than 5.5. It relates to the immediate lime requirement and the CEC of the soil.\\
-\item
-  Base saturation, NH4OAc, pH7; \href{https://www.nrcs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb1253872.pdf\#page=290}{description}: \texttt{bsat\_4b4c1\_pct} = NH4OAC base saturation (pH 7.0) is calculated by (BASE\_SUM/CEC\_NH4)*100.\\
-\item
-  Aluminum saturation; \href{https://www.nrcs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb1253872.pdf\#page=292}{description}: \texttt{alsat\_4b4d1a\_pct} = Aluminum saturation is calculated by (AL\_KCL/(Sum of bases))*100. It provides some inference of potential Al toxicity problems, although many other factors influence Al toxicity.\\
-\item
-  Soil pH 1:1 water; \href{https://www.nrcs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb1253872.pdf\#page=304}{description}: \texttt{ph.h2o\_4c1a2a1a.b1\_index} = The pH, 1:1 soil-water suspension is the pH of a sample measured in distilled water at a 1:1 soil:solution ratio. If wider ratios increase the pH, salts are indicated.\\
-\item
-  Soil pH 1:2 0.01-M calcium choride; \href{https://www.nrcs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb1253872.pdf\#page=304}{description}: \texttt{ph.cacl2\_4c1a2a2a.b1\_index} = The pH, 1:2 soil-CaCl2 is the pH of a sample measured in 0.01M CaCl2 at a 1:2 soil:solution ratio.\\
-\item
-  Electrical Conductivity, Predict, 1:2 (w/w); \href{https://www.nrcs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb1253872.pdf\#page=425}{description}: \texttt{ec.w\_4f1b1a1\_dsm} = The salt predict electrical conductivity is used to determine whether additional salt analyses are needed, and to estimate appropriate dilution ratios for additional tests. It is reported as mmhos per centimeter of a 1:2 soil:water mixture by weight.\\
-\item
-  Electrical Conductivity, Saturation Extract; \href{https://www.nrcs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb1253872.pdf\#page=425}{description}: \texttt{ec.ext.sat\_4f2b1a1\_dsm} = Electrical Conductivity, Saturation Extract
-\item
-  Sodium adsorption ratio; description: \texttt{sodium.ads.ratio\_4f3b\_index} = The sodium absorption ratio is calculated by NA\_SATX/sqrt((CA\_SATX+MG\_SATX)/2). It is approximately equal to the exchangeable sodium percentage.\\
-\item
-  Exchangeable sodium percentage saturated; \href{https://www.nrcs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb1253872.pdf\#page=446}{description}: \texttt{na.exch\_4f3a2\_pct} = This is the exchangeable sodium percentage (ESP), reported on a \textless2 mm base. If salts are present, ESP has been corrected for the water soluble Na.\\
-\item
-  Corrected Gypsum, \textless{} 2mm; \href{https://www.nrcs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb1253872.pdf\#page=408}{description}: \texttt{gyp\_4e2b1a1a1.2\_wpct} = Corrected Gypsum (Uncorrected Gypsum * Factor)\\
-\item
-  Phosphorus, Mehlich3 extractable; \href{https://www.nrcs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb1253872.pdf\#page=364}{description}: \texttt{p.meh3\_4d6a1a.b1\_mgkg} = The phosphorus extracted by the Mehlich III solution.\\
-\item
-  Phosphorus, Olsen extractable; \href{https://www.nrcs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb1253872.pdf\#page=364}{description}: \texttt{p.olsn\_4d5a1a.b1\_mgkg} = The Olsen extractable phosphorus is used as an indicator of available phosphorus in calcareous soil materials (pH \textgreater6).
-\end{enumerate}
-
-For the \textbf{spectra} table please use the following columns:
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  Unique sample ID generated using some UUID generator tool; example: \texttt{id.sample\_uuid\_c\ =\ \textquotesingle{}31d454be-b1ac-11eb-8a61-7446a0925130\textquotesingle{}}\\
-\item
-  Layer field label used e.g.~for soil samples; example: \texttt{layer.field.label\_any\_c\ =\ \textquotesingle{}S00OR-039-001-2\textquotesingle{}}\\
-\item
-  Instrument code and mode;
-\item
-  Aborbance per wavelength e.g.~\texttt{a.w2450\_mir\_pct}\\
-  \ldots{}\\
-\end{enumerate}
+  \href{https://kstatelibraries.pressbooks.pub/soilslabmanual/}{Soils Laboratory Manual, K-State Edition},
+\end{itemize}
 
 \hypertarget{contributing}{%
 \section{Contributing}\label{contributing}}
@@ -726,6 +578,9 @@ sciences) is in transparency and reproducibility of the computer code
 used to generate results (read more in: \href{https://opengeohub.medium.com/}{``Everyone has a right to know
 what is happening with the planet''}).
 
+\hypertarget{literature}{%
+\section{Literature}\label{literature}}
+
 Some other connected publications and initiatives describing collation
 and import of legacy soil observations and measurements that might interest
 you:
@@ -743,20 +598,24 @@ you:
   T., \& de Jesus, J. M. (2017). \href{http://www.earth-syst-sci-data.net/9/1/2017/}{\textbf{WoSIS: providing standardised soil
   profile data for the world}}. Earth System Science Data, 9(1), 1. \url{https://doi.org/10.5194/essd-9-1-2017}~
 \item
-  Gupta, S., Hengl, T., Lehmann, P., Bonetti, S., \& Or, D. (2021). \href{https://doi.org/10.5194/essd-13-1593-2021}{\textbf{SoilKsatDB:
-  global database of soil saturated hydraulic conductivity measurements for
-  geoscience applications}}. Earth System Science Data, 13(4), 1593-1612.
-  \url{https://doi.org/10.5194/essd-13-1593-2021}\\
-\item
   Billings, S. A., Lajtha, K., Malhotra, A., Berhe, A. A., de Graaff, M. A.,
   Earl, S., \ldots{} \& Wieder, W. (2021). \href{https://doi.org/10.1002/eap.2290}{\textbf{Soil organic carbon is not just for soil
   scientists: measurement recommendations for diverse practitioners}}. Ecological
   Applications, 31(3), e02290. \url{https://doi.org/10.1002/eap.2290}\\
 \item
+  Brown, G., Demeterio, W. and Samuel-Rosa, A. (2021). \href{https://blog.scielo.org/en/2021/01/08/towards-a-more-open-soil-science/}{\textbf{Towards a more open Soil Science}}. SciELO in Perspective, 2021 {[}viewed 17 June 2021{]}.
+\item
+  Gupta, S., Hengl, T., Lehmann, P., Bonetti, S., \& Or, D. (2021). \href{https://doi.org/10.5194/essd-13-1593-2021}{\textbf{SoilKsatDB:
+  global database of soil saturated hydraulic conductivity measurements for
+  geoscience applications}}. Earth System Science Data, 13(4), 1593-1612.
+  \url{https://doi.org/10.5194/essd-13-1593-2021}\\
+\item
   Hengl, T., MacMillan, R.A., (2019). \href{https://soilmapper.org/}{\textbf{Predictive Soil Mapping with
   R}}. OpenGeoHub foundation, Wageningen, the
   Netherlands, 370 pages, \url{https://soilmapper.org}, ISBN:
   978-0-359-30635-0.\\
+\item
+  Moorberg, C. J., \& Crouse, D. A. (2017). \href{https://doi.org/10.4195/nse2017.06.0013}{\textbf{An open‐source laboratory manual for introductory, undergraduate soil science courses}}. Natural Sciences Education, 46(1), 1-8.\\
 \item
   Ramcharan, A., Hengl, T., Beaudette, D., \& Wills, S. (2017). \href{https://doi.org/10.2136/sssaj2016.12.0421}{\textbf{A soil
   bulk density pedotransfer function based on machine learning: A case
