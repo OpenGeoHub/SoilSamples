@@ -142,10 +142,7 @@ Soil variables of interest include:
 
 -   Soil absorbance in VIS-NIR and MIR part of spectra,
 
-This document is based on the <https://www.bigbookofr.com/> repository
-by Oscar Baruffa.
-
-## Recommended columns
+## Recommended O&M standards
 
 As a general rule of thumb we recommend all contributors to use the following 
 general scheme to organize Soil Observations & Measurements with 3–4 main tables 
@@ -192,6 +189,9 @@ below:
 [Tomislav Hengl](https://twitter.com/tom_hengl), [Jonathan Sanderman](https://twitter.com/sandersoil), [Mario Antonio Guevara
 Santamaria](https://orcid.org/0000-0002-9788-9947),
 
+This document is based on the <https://www.bigbookofr.com/> repository
+by Oscar Baruffa.
+
 ## Disclaimer
 
 The data is provided "as is". [OpenGeoHub foundation](https://opengeohub.org/about) and its suppliers and licensors hereby disclaim all warranties of any kind, express or implied, including, without limitation, the warranties of merchantability, fitness for a particular purpose and non-infringement. Neither OpenGeoHub foundation nor its suppliers and licensors, makes any warranty that the Website will be error free or that access thereto will be continuous or uninterrupted. You understand that you download from, or otherwise obtain content or services through, the Website at your own discretion and risk.
@@ -216,7 +216,7 @@ to: <https://soilspectroscopy.org/>
 
 ## About OpenGeoHub
 
-**OpenGeoHub foundation** is a non-for-profit research foundation
+**OpenGeoHub foundation** is a not-for-profit research foundation
 located in Wageningen, the Netherlands. We specifically promote
 publishing and sharing of Open Geographical and Geoscientific Data,
 using and developing Open Source Software and encouraging and empowering
@@ -243,8 +243,7 @@ you:
     profile data for the world**](http://www.earth-syst-sci-data.net/9/1/2017/). Earth System Science Data, 9(1), 1. <https://doi.org/10.5194/essd-9-1-2017>\ 
 -   Billings, S. A., Lajtha, K., Malhotra, A., Berhe, A. A., de Graaff, M. A., 
     Earl, S., ... & Wieder, W. (2021). [**Soil organic carbon is not just for soil 
-    scientists: measurement recommendations for diverse practitioners**](https://doi.org/10.1002/eap.2290). Ecological 
-    Applications, 31(3), e02290. <https://doi.org/10.1002/eap.2290>\
+    scientists: measurement recommendations for diverse practitioners**](https://doi.org/10.1002/eap.2290). Ecological     Applications, 31(3), e02290. <https://doi.org/10.1002/eap.2290>\
 -   Brown, G., Demeterio, W. and Samuel-Rosa, A. (2021). [**Towards a more open Soil Science**](https://blog.scielo.org/en/2021/01/08/towards-a-more-open-soil-science/). SciELO in Perspective, 2021 [viewed 17 June 2021].
 -   Gupta, S., Hengl, T., Lehmann, P., Bonetti, S., & Or, D. (2021). [**SoilKsatDB: 
     global database of soil saturated hydraulic conductivity measurements for 

@@ -468,6 +468,20 @@ _Description_: National legacy soil profile dataset. Somewhat over-represents fo
 - 📋 Unique complete rows: 5746  
 - 📝 Import steps: [chemsprops.bpht](https://gitlab.com/openlandmap/compiled-ess-point-data-sets/-/tree/master/themes/sol/SoilChemDB#croatian-soil-pedon-data) 
 
+### Congo, Democratic Republic of
+
+#### Soil spectral library for central Africa (CASSL)
+
+_Description_: Contains over 1,800 soil samples with total carbon and total N from ten distinct geo-climatic regions throughout the Congo Basin and wider African Great Lakes region. Points are spatially clustered around six core sampling regions.
+
+- 📕 Summerauer, L., Baumann, P., Ramirez-Lopez, L., Barthel, M., Bauters, M., Bukombe, B., ... & Six, J. (2021). [Filling a key gap: a soil infrared library for central Africa](https://doi.org/10.5194/soil-2020-99). Soil Discussions, 1-28.  
+- 🔗 Project website: <https://github.com/laura-summerauer/ssl-central-africa>  
+- 📂 Data download URL: <https://doi.org/10.5281/zenodo.4320395>  
+- 📍 Unique locations: 920  
+- 📋 Unique complete rows: 1852  
+- 📝 Import steps:  
+
+
 ### Costa Rica 
 
 #### Soil Profile DB for Costa Rica
