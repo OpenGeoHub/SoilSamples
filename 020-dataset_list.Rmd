@@ -598,12 +598,24 @@ the most comprehensive and most detailed soil profile dataset in the World. It i
 maintained by the USDA National Cooperative Soil Survey. Data is available under the 
 [CC-0 license](https://creativecommons.org/share-your-work/public-domain/cc0/). 
 
-- `r emo::ji("closed_book")` O'Geen, A., Walkinshaw, M., & Beaudette, D. (2017). SoilWeb: A multifaceted interface to soil survey information. Soil Science Society of America Journal, 81(4), 853-862. <https://doi.org/10.2136/sssaj2016.11.0386n>  
+- `r emo::ji("closed_book")` National Cooperative Soil Survey. National Cooperative Soil Characterization Database. Available online. Accessed [8/31/2021]
 - `r emo::ji("link")` Project website: <http://ncsslabdatamart.sc.egov.usda.gov/>  
 - `r emo::ji("open_file_folder")` Data download URL: <http://ncsslabdatamart.sc.egov.usda.gov/>  
 - `r emo::ji("round_pushpin")` Unique locations: 19861  
 - `r emo::ji("clipboard")` Unique complete rows: 136011  
 - `r emo::ji("memo")` Import steps: [chemsprops.NCSS](https://gitlab.com/openlandmap/compiled-ess-point-data-sets/-/tree/master/themes/sol/SoilChemDB#national-cooperative-soil-survey-characterization-database)  
+
+#### SSURGO Database
+
+_Description_: The SSURGO database contains information about soil as collected by the National Cooperative Soil Survey over the course of a century. The information can be displayed in tables or as maps and is available for most areas in the United States and the Territories, Commonwealths, and Island Nations served by the USDA-NRCS. The information was gathered by walking over the land and observing the soil. Many soil samples were analyzed in laboratories. The maps outline areas called map units. The map units describe soils and other components that have unique properties, interpretations, and productivity. The information was collected at scales ranging from 1:12,000 to 1:63,360. More details were gathered at a scale of 1:12,000 than at a scale of 1:63,360. The mapping is intended for natural resource planning and management by landowners, townships, and counties. Some knowledge of soils data and map scale is necessary to avoid misunderstandings.
+
+The maps are linked in the database to information about the component soils and their properties for each map unit. Each map unit may contain one to three major components and some minor components. The map units are typically named for the major components. Examples of information available from the database include available water capacity, soil reaction, electrical conductivity, and frequency of flooding; yields for cropland, woodland, rangeland, and pastureland; and limitations affecting recreational development, building site development, and other engineering uses.
+
+SSURGO datasets consist of map data, tabular data, and information about how the maps and tables were created. The extent of a SSURGO dataset is a soil survey area, which may consist of a single county, multiple counties, or parts of multiple counties. SSURGO map data can be viewed in the Web Soil Survey or downloaded in ESRI® Shapefile format. The coordinate systems are Geographic. Attribute data can be downloaded in text format that can be imported into a Microsoft® Access® database. 
+
+- `r emo::ji("closed_book")` Soil Survey Staff, Natural Resources Conservation Service, United States Department of Agriculture. Soil Survey Geographic (SSURGO) Database. Available online. Accessed [8/31/2021]
+- `r emo::ji("link")` Project website: <https://www.nrcs.usda.gov/wps/portal/nrcs/detail/soils/survey/geo/?cid=nrcs142p2_053627>  
+- `r emo::ji("open_file_folder")` Data download URL: <https://datagateway.nrcs.usda.gov/>  
 
 #### USDA National Soil Survey Center's Kellogg Soil Survey Laboratory --- (NSSC KSSL)
 
