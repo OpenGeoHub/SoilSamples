@@ -81,6 +81,18 @@ environmental research: A subset of FAO, ISRIC and NRCS profiles (Version 1.0) (
 - 📋 Unique complete rows: 5637  
 - 📝 Import steps: [hydrosprops.ISIS](https://gitlab.com/openlandmap/compiled-ess-point-data-sets/-/tree/master/themes/sol/SoilHydroDB#isric-isis)
 
+### Global Reforestation Opportunity Assessment (GROA) (compilation)
+
+_Description_: These data were assembled by the Nature Conservancy and a team of scientists from 19 institutions to quantify carbon sequestration in naturally regenerating forests around the world.
+
+- 📕 Cook-Patton, S. C., Leavitt, S. M., Gibbs, D., Harris, N. L., Lister, K., Anderson-Teixeira, K. J., ... & Griscom, B. W. (2020). Mapping carbon accumulation potential from global natural forest regrowth. Nature, 585(7826), 545-550. <https://doi.org/10.1038/s41586-020-2686-x>  
+- 🔗 Project website: <https://github.com/forc-db/groa>  
+- 📂 Data download URL: <https://doi.org/10.5281/zenodo.3983644>  
+- 📍 Unique locations: 1921  
+- 📋 Unique complete rows: 1921   
+- 📝 Import steps: chemsprops.GROA
+
+
 ### Global ICRAF/ISRIC Soil Spectroscopy Library --- (ICRAF/ISRIC)
 
 _Description_: A Globally Distributed Soil Spectral Library Mid Infrared Diffuse 
@@ -598,7 +610,7 @@ the most comprehensive and most detailed soil profile dataset in the World. It i
 maintained by the USDA National Cooperative Soil Survey. Data is available under the 
 [CC-0 license](https://creativecommons.org/share-your-work/public-domain/cc0/). 
 
-- 📕 O'Geen, A., Walkinshaw, M., & Beaudette, D. (2017). SoilWeb: A multifaceted interface to soil survey information. Soil Science Society of America Journal, 81(4), 853-862. <https://doi.org/10.2136/sssaj2016.11.0386n>  
+- 📕 USDA-NRCS, (2016). [General description for NCSS Soil Characterization Data](https://www.nrcs.usda.gov/wps/portal/nrcs/detail/soils/home/?cid=nrcs142p2_053543). USDA, Natural Resources Conservation Service. / O'Geen, A., Walkinshaw, M., & Beaudette, D. (2017). SoilWeb: A multifaceted interface to soil survey information. Soil Science Society of America Journal, 81(4), 853-862. <https://doi.org/10.2136/sssaj2016.11.0386n>  
 - 🔗 Project website: <http://ncsslabdatamart.sc.egov.usda.gov/>  
 - 📂 Data download URL: <http://ncsslabdatamart.sc.egov.usda.gov/>  
 - 📍 Unique locations: 19861  
@@ -628,6 +640,29 @@ only reflect the general position of each site.
 - 📍 Unique locations: 6332  
 - 📋 Unique complete rows: 143006  
 - 📝 Import steps: [chemsprops.RaCa](https://gitlab.com/openlandmap/compiled-ess-point-data-sets/-/tree/master/themes/sol/SoilChemDB#rapid-carbon-assessment-raca) 
+
+#### USGS Geochemical and mineralogical data for soils
+
+_Description_: Systematic geochemical and mineralogical survey of soil horizons analyzed using a consistent set of methods, sample spacing 1 per 1,600 sq km. Data is available under the 
+[CC-0 license](https://creativecommons.org/share-your-work/public-domain/cc0/). 
+
+- 📕 Smith, D.B., Cannon, W.F., Woodruff, L.G., Solano, Federico, Kilburn, J.E., and Fey, D.L., (2013). [Geochemical and mineralogical data for soils of the conterminous United States](http://pubs.usgs.gov/ds/801/). U.S. Geological Survey Data Series 801, 19 p., <http://pubs.usgs.gov/ds/801/>.  
+- 🔗 Project website: <https://mrdata.usgs.gov/ds-801/>  
+- 📂 Data download URL: <https://mrdata.usgs.gov/ds-801/>  
+- 📍 Unique locations: 4857  
+- 📋 Unique complete rows: 9446  
+- 📝 Import steps: [chemsprops.USGS.NGS](https://gitlab.com/openlandmap/compiled-ess-point-data-sets/-/tree/master/themes/sol/SoilChemDB#national-geochemical-database-soil)  
+
+#### The Forest Inventory and Analysis Database (FIADB)
+
+_Description_: Systematic inventory of forest plots.  
+
+- 📕 Domke, G. M., Perry, C. H., Walters, B. F., Nave, L. E., Woodall, C. W., & Swanston, C. W. (2017). [Toward inventory‐based estimates of soil organic carbon in forests of the United States](https://doi.org/10.1002/eap.1516). Ecological Applications, 27(4), 1223-1235. <https://doi.org/10.1002/eap.1516/> / Forest Inventory and Analysis, (2014). The Forest Inventory and Analysis Database: Database description and user guide version 6.0.1 for Phase 3. U.S. Department of Agriculture, Forest Service. 182 p. [Online]. Available: <https://www.fia.fs.fed.us/library/database-documentation/>  
+- 🔗 Project website: <https://www.fia.fs.fed.us>  
+- 📂 Data download URL: <https://apps.fs.usda.gov/fia/datamart/datamart.html>  
+- 📍 Unique locations: 5149  
+- 📋 Unique complete rows: 23208  
+- 📝 Import steps: [chemsprops.FIADB](https://gitlab.com/openlandmap/compiled-ess-point-data-sets/-/tree/master/themes/sol/SoilChemDB#forest-inventory-and-analysis-database)  
 
 ## Other datasets
 

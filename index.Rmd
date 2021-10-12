@@ -174,6 +174,7 @@ and references. Some highly recommended protocols and standards include:
 - [USDA soil texture calculator](https://www.nrcs.usda.gov/wps/portal/nrcs/detail/soils/survey/?cid=nrcs142p2_054167) to determine and share soil texture classes including texture-by-hand, 
 - [Kellogg Soil Survey Laboratory Methods Manual](https://www.nrcs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb1253872.pdf) for reference physical and chemical soil property determination in laboratory,
 - [Soils Laboratory Manual, K-State Edition](https://kstatelibraries.pressbooks.pub/soilslabmanual/),
+- [GLOSOLAN Standard Operating Procedures (SOPs)](http://www.fao.org/global-soil-partnership/glosolan/soil-analysis/standard-operating-procedures/en/#c763834),
 
 ## Contributing
 

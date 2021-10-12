@@ -1,7 +1,7 @@
 ---
 title: "An Open Compendium of Soil Datasets"
 author: "Tomislav Hengl (OpenGeoHub)"
-date: "24 June, 2021"
+date: "12 October, 2021"
 knit: bookdown::render_book
 site: bookdown::bookdown_site
 documentclass: svmono
@@ -69,9 +69,10 @@ Information outdated or missing? Please open an issue or best do a
 correction and then a [pull
 request](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
 
-\begin{figure}
-\includegraphics[width=1\linewidth]{img/sol_chem.pnts_sites} \caption{Soil profiles and soil samples with chemical and physical properties global compilation. For more info see: https://gitlab.com/openlandmap/compiled-ess-point-data-sets.}(\#fig:soil-pnts)
-\end{figure}
+<div class="figure">
+<img src="img/sol_chem.pnts_sites.png" alt="Soil profiles and soil samples with chemical and physical properties global compilation. For more info see: https://gitlab.com/openlandmap/compiled-ess-point-data-sets." width="100%" />
+<p class="caption">(\#fig:soil-pnts)Soil profiles and soil samples with chemical and physical properties global compilation. For more info see: https://gitlab.com/openlandmap/compiled-ess-point-data-sets.</p>
+</div>
 
 ## Existing soil data projects and initiatives
 
@@ -174,6 +175,7 @@ and references. Some highly recommended protocols and standards include:
 - [USDA soil texture calculator](https://www.nrcs.usda.gov/wps/portal/nrcs/detail/soils/survey/?cid=nrcs142p2_054167) to determine and share soil texture classes including texture-by-hand, 
 - [Kellogg Soil Survey Laboratory Methods Manual](https://www.nrcs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb1253872.pdf) for reference physical and chemical soil property determination in laboratory,
 - [Soils Laboratory Manual, K-State Edition](https://kstatelibraries.pressbooks.pub/soilslabmanual/),
+- [GLOSOLAN Standard Operating Procedures (SOPs)](http://www.fao.org/global-soil-partnership/glosolan/soil-analysis/standard-operating-procedures/en/#c763834),
 
 ## Contributing
 
