@@ -646,7 +646,7 @@ only reflect the general position of each site.
 _Description_: Systematic geochemical and mineralogical survey of soil horizons analyzed using a consistent set of methods, sample spacing 1 per 1,600 sq km. Data is available under the 
 [CC-0 license](https://creativecommons.org/share-your-work/public-domain/cc0/). 
 
-- 📕 Smith, D.B., Cannon, W.F., Woodruff, L.G., Solano, Federico, Kilburn, J.E., and Fey, D.L., (2013). [Geochemical and mineralogical data for soils of the conterminous United States](http://pubs.usgs.gov/ds/801/). U.S. Geological Survey Data Series 801, 19 p., <http://pubs.usgs.gov/ds/801/>.  
+- 📕 Smith, D.B., Cannon, W.F., Woodruff, L.G., Solano, Federico, Kilburn, J.E., and Fey, D.L., (2013). [Geochemical and mineralogical data for soils of the conterminous United States](http://pubs.usgs.gov/ds/801/). U.S. Geological Survey Data Series 801, 19 p., <http://pubs.usgs.gov/ds/801/> / Smith, D. B., W. F. Cannon, and L. G. Woodruff (2011). [A national-scale geochemical and mineralogical survey of soils of the conterminous United States](https://doi.org/10.1016/j.apgeochem.2011.03.116). Appl. Geochem., 26, S250–S255. <https://doi.org/10.1016/j.apgeochem.2011.03.116>.  
 - 🔗 Project website: <https://mrdata.usgs.gov/ds-801/>  
 - 📂 Data download URL: <https://mrdata.usgs.gov/ds-801/>  
 - 📍 Unique locations: 4857  
