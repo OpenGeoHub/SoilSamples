@@ -120,6 +120,18 @@ _Description_: Contains a total of 13,258 Ksat measurements from 1908 sites were
 - 📝 Import steps: [hydrosprops](https://gitlab.com/openlandmap/compiled-ess-point-data-sets/-/tree/master/themes/sol/SoilHydroDB)
 
 
+### Global database of soil hydraulic properties --- GSHP (compilation) 
+
+_Description_: Contains a total of 15,153 soil water characteristics curve (SWCC) measurements from 2659 sites assembled from the published literature.
+
+- 📕 Gupta, S., Papritz, A., Lehmann, P., Hengl, T., Bonetti, S., and Or, D., (2020): GSHP: Global soil hydraulic properties database”. Manuscript submitted to Scientific Data.   
+- 🔗 Project website: https://github.com/ETHZ-repositories/GSHP-database  
+- 📂 Data download URL: <https://doi.org/10.5281/zenodo.5547338>  
+- 📍 Unique locations: 2659  
+- 📋 Unique complete rows:   
+- 📝 Import steps: [GSHP-database](https://github.com/ETHZ-repositories/GSHP-database)
+
+
 ### LandPKS observations
 
 _Description_: Data collected by various people through the LandPKS App for mobile 
@@ -427,6 +439,18 @@ are not counted).
 - 📍 Unique locations: 2347  
 - 📋 Unique complete rows: 15162  
 - 📝 Import steps: [chemsprops.CUFS](https://gitlab.com/openlandmap/compiled-ess-point-data-sets/-/tree/master/themes/sol/SoilChemDB#canadian-upland-forest-soil-profile-and-carbon-stocks-database) 
+
+#### Alberta AESA (Alberta Environmentally Sustainable Agriculture) Soil Quality Benchmark Program
+
+_Description_: Established in 1998 to provide a [monitoring network across Alberta](https://www.alberta.ca/environmentally-sustainable-agriculture-tracking-survey.aspx) for each of the 43 Ecodistricts. Only limited amount of sampling locations (42 benchmark sites) but revisited every year. It reports that only Phosphorous shows significant changes over time, while SOC, total N, pH stay relatively constant across Alberta.
+
+- 📕 Cathcart, J., Mason, H., Sey, B. Heinz, J. and Cannon, K. (2008). [Nine Years of Soil Quality Data
+from the Alberta Benchmark Program](https://open.alberta.ca/publications/spatial-variability-soil-nutrients-selected-aesa-soil-quality-benchmark-sites). Resource Sciences Branch, Alberta Agriculture and Rural Development, Edmonton, Alberta, Canada. 84 pp.   
+- 🔗 Project website: <https://open.canada.ca/data/en/>  
+- 📂 Data download URL:   
+- 📍 Unique locations: 130  
+- 📋 Unique complete rows: 2484  
+- 📝 Import steps:   
 
 ### Chile
 

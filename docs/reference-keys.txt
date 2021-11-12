@@ -29,6 +29,7 @@ isric-world-soil-reference-collection
 global-reforestation-opportunity-assessment-groa-compilation
 global-icrafisric-soil-spectroscopy-library-icrafisric
 global-database-of-soil-saturated-hydraulic-conductivity-measurements-ksat-compilation
+global-database-of-soil-hydraulic-properties-gshp-compilation
 landpks-observations
 mangrove-forest-soil-db-compilation
 remnant-native-soc-database-compilation
@@ -63,6 +64,7 @@ hydrophysical-database-for-brazilian-soils-hybras-compilation
 canada
 agriculture-and-agri-food-canada-national-pedon-database
 canadian-upland-forest-soil-profile-and-carbon-stocks-database
+alberta-aesa-alberta-environmentally-sustainable-agriculture-soil-quality-benchmark-program
 chile
 chilean-soil-organic-carbon-database
 china-peoples-republic-of-china
