@@ -84,6 +84,8 @@ israel
 the-national-soil-spectral-library-of-israel
 iran-islamic-republic-of-iran
 iran-soil-profile-db
+nigeria
+nigeria-legacy-soils-and-national-surveys-compilation
 namibia
 a-soter-database-for-namibia-namsoter
 switzerland

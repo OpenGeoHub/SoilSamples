@@ -242,7 +242,7 @@ estimated not measured. Sampling year has not been but literature indicates:
 _Description_: A compilation of legacy soil profiles from hundreds of profiles. 
 Produced for the purpose of the Africa Soil Information Services (AfSIS) project.
 
-- 📕 Leenaars, J. G., Van Oostrum, A. J. M., & Ruiperez Gonzalez, M. (2014). [Africa soil profiles database version 1.2. A compilation of georeferenced and standardized legacy soil profile data for Sub-Saharan Africa (with dataset)](https://www.isric.org/projects/africa-soil-profiles-database-afsp). Wageningen: ISRIC Report 2014/01; 2014.  
+- 📕 Leenaars, J. G., Van Oostrum, A. J. M., & Ruiperez Gonzalez, M. (2014). [Africa soil profiles database version 1.2. A compilation of georeferenced and standardized legacy soil profile data for Sub-Saharan Africa (with dataset)](https://www.isric.org/projects/africa-soil-profiles-database-afsp). Wageningen: ISRIC Report 2014/01.  
 - 🔗 Project website: <https://www.isric.org/projects/africa-soil-profiles-database-afsp>  
 - 📂 Data download URL: <https://data.isric.org/>   
 - 📍 Unique locations: 15630  
@@ -563,9 +563,9 @@ _Description_: Described in literature but not yet imported to AfSPDB.
 
 #### The National Soil Spectral Library of Israel
 
-_Description_: Compilation of SS data from various projects. 
+_Description_: Compilation of soil spectral data from various projects. 
 
-- 📕   
+- 📕 NA  
 - 🔗 Project website: <https://www.modelfarm-aro.org/subject-areas/the-national-soil-spectral-library-of-israel/?lang=en>  
 - 📂 Data download URL:   
 - 📍 Unique locations:   
@@ -585,6 +585,18 @@ _Description_: National legacy soil profile dataset.
 - 📋 Unique complete rows: 4759  
 - 📝 Import steps: [chemsprops.IRANSPDB](https://gitlab.com/openlandmap/compiled-ess-point-data-sets/-/tree/master/themes/sol/SoilChemDB#iran-soil-profile-db) 
 
+### Nigeria
+
+#### Nigeria Legacy soils and National surveys (compilation)
+
+_Description_: Soil profile observation compiled from Nigeria National Legacy data and IITA Project sites. Submitted by Tunrayo Alabi, CGIAR - Consortium for Spatial Information (CGIAR-CSI). Overlaps with the [Africa Soil profiles dataset](https://opengeohub.github.io/SoilSamples/datasets.html#africa).
+
+- 📕 Leenaars, J. G., Van Oostrum, A. J. M., & Ruiperez Gonzalez, M. (2014). [Africa soil profiles database version 1.2. A compilation of georeferenced and standardized legacy soil profile data for Sub-Saharan Africa (with dataset)](https://www.isric.org/projects/africa-soil-profiles-database-afsp). Wageningen: ISRIC Report 2014/01. / Akpa, S. I., Odeh, I. O., Bishop, T. F., Hartemink, A. E., & Amapu, I. Y. (2016). [Total soil organic carbon and carbon sequestration potential in Nigeria](https://doi.org/10.1016/j.geoderma.2016.02.021). Geoderma, 271, 202-215.  
+- 🔗 Project website: <https://www.africageoportal.com>  
+- 📂 Data download URL: <https://www.africageoportal.com/datasets/CSI::legacy-soils-and-national-surveys/about>   
+- 📍 Unique locations:   
+- 📋 Unique complete rows: 2569  
+- 📝 Import steps:  
 
 ### Namibia
 
