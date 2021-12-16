@@ -28,7 +28,7 @@ graphics: yes
 This is a public compendium of global, regional, national and
 sub-national **soil samples** and/or **soil profile** datasets (points with
 Observations and Measurements of soil properties and characteristics).
-Datasets listed here, assuming compatible open license, are afterwards
+Datasets listed here, assuming [compatible open data license](https://opendefinition.org/licenses/), are afterwards
 imported into the [**Global compilation of soil chemical and physical
 properties and soil classes**](https://gitlab.com/openlandmap/) and
 eventually used to create a better open soil information across countries.
@@ -79,6 +79,7 @@ Multiple international organizations from [FAO's Global Soil Partnership](http:/
 support soil data collation projects and especially curation of the legacy soil data. 
 Some existing soil Observations and Measurements (O&M) soil data initiatives include:
 
+  - [**FAO's Data Hub**](https://www.fao.org/soils-portal/data-hub/en/),\
   - [**Fine Root Ecology Database (FRED)**](https://roots.ornl.gov/),\
   - [**FLUXNET global network**](https://fluxnet.fluxdata.org/),\
   - [**Global database of soil nematodes**](https://www.nature.com/articles/s41597-020-0437-3),\
@@ -91,6 +92,7 @@ Some existing soil Observations and Measurements (O&M) soil data initiatives inc
   - [**LandPKS project**](http://portal.landpotential.org/#/landpksmap),\
   - [**Long Term Ecological Research (LTER) Network sites**](https://lternet.edu/site/),\
   - [**National Ecological Observatory Network (NEON)**](https://www.neonscience.org),\
+  - [**Open Soil Spectral Library (OSSL)**](https://soilspectroscopy.org),\
   - [**Soils Data Harmonization (SoDaH)**](https://lter.github.io/som-website),\
   - [**WoSIS Soil Profile Database**](https://www.isric.org/explore/wosis),
 
@@ -145,7 +147,7 @@ Soil variables of interest include:
 ## Recommended O&M standards
 
 As a general rule of thumb we recommend all contributors to use the following 
-general scheme to organize Soil Observations & Measurements with 3–4 main tables 
+[general scheme](https://soilspectroscopy.github.io/ossl-manual/) to organize Soil Observations & Measurements with 3–4 main tables 
 and metadata + legends organized in other tables:
 
 - Soil site information (geographical coordinates, land use / land cover, soil classification etc),
@@ -163,7 +165,7 @@ detail how to collect soil samples and setup a system for monitoring soil organi
 It is recommended that one should, as much as possible, use the international standards 
 and references. Some highly recommended protocols and standards include:
 
-- [UUID generator tool](https://cran.r-project.org/package=uuid) to generate unique ID's for unique soil sites, horizons, samples etc,
+- [UUID generator tool](https://cran.r-project.org/package=uuid) to generate unique ID's for unique soil sites, horizons, samples etc (to convert an existing local ID to UUID, best use `openssl::md5(local_id)`),
 - [Open Location Codes](https://opensource.google/projects/open-location-code) to generate geographic location codes,
 - [OGC standards](https://www.ogc.org/standards/om) to prepare metadata and exchange data across field / computer systems;
 - [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) to save time and date information,
@@ -184,7 +186,7 @@ instructions.
 
 ## Contributors
 
-If you've contribute, add also your name and Twitter, ORCID or blog link
+If you contribute, add also your name and Twitter, ORCID or blog link
 below:
 
 [Tomislav Hengl](https://twitter.com/tom_hengl), [Jonathan Sanderman](https://twitter.com/sandersoil), [Mario Antonio Guevara
@@ -200,8 +202,7 @@ The data is provided "as is". [OpenGeoHub foundation](https://opengeohub.org/abo
 ## Licence
 
 This website/book is free to use, and is licensed under the [Creative
-Commons Attribution 3.0
-License](https://creativecommons.org/licenses/by/3.0/).
+Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
 
 ## Soil Spectroscopy for Global Good
 
@@ -209,10 +210,7 @@ License](https://creativecommons.org/licenses/by/3.0/).
 Tools Coordinated Innovation Network NIFA Award #2020-67021-32467](https://nifa.usda.gov/press-release/nifa-invests-over-7-million-big-data-artificial-intelligence-and-other) project. It brings together soil
 scientists, spectroscopists, informaticians, data scientists and
 software engineers to overcome some of the current bottlenecks
-preventing wider and more efficient use of soil spectroscopy. A series
-of working groups will be formed to address topics including calibration
-transfer, model choice, outreach & demonstration, and use of
-spectroscopy to inform global carbon cycle modeling. For more info refer
+preventing wider and more efficient use of soil spectroscopy. For more info refer
 to: <https://soilspectroscopy.org/>
 
 ## About OpenGeoHub
@@ -239,6 +237,10 @@ you:
     legacy data rescue via GlobalSoilMap and other international and
     national initiatives**](https://doi.org/10.1016/j.grj.2017.06.001).
     GeoResJ, 14, 1-19.\
+-   Beillouin, D., Cardinael, R., Berre, D., Boyer, A., Corbeels, M., 
+    Fallot, A., ... & Demenois, J. (2021). A global overview of studies 
+    about land management, land‐use change, and climate change effects 
+    on soil organic carbon. Global Change Biology. <https://doi.org/10.1111/gcb.15998>\ 
 -   Batjes, N. H., Ribeiro, E., van Oostrum, A., Leenaars, J., Hengl,
     T., & de Jesus, J. M. (2017). [**WoSIS: providing standardised soil
     profile data for the world**](http://www.earth-syst-sci-data.net/9/1/2017/). Earth System Science Data, 9(1), 1. <https://doi.org/10.5194/essd-9-1-2017>\ 

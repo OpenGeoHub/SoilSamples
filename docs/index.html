@@ -157,8 +157,9 @@
 <li class="chapter" data-level="4.8.14" data-path="datasets.html"><a href="datasets.html#nigeria"><i class="fa fa-check"></i><b>4.8.14</b> Nigeria</a></li>
 <li class="chapter" data-level="4.8.15" data-path="datasets.html"><a href="datasets.html#namibia"><i class="fa fa-check"></i><b>4.8.15</b> Namibia</a></li>
 <li class="chapter" data-level="4.8.16" data-path="datasets.html"><a href="datasets.html#switzerland"><i class="fa fa-check"></i><b>4.8.16</b> Switzerland</a></li>
-<li class="chapter" data-level="4.8.17" data-path="datasets.html"><a href="datasets.html#russian-federation"><i class="fa fa-check"></i><b>4.8.17</b> Russian Federation</a></li>
-<li class="chapter" data-level="4.8.18" data-path="datasets.html"><a href="datasets.html#usa"><i class="fa fa-check"></i><b>4.8.18</b> USA</a></li>
+<li class="chapter" data-level="4.8.17" data-path="datasets.html"><a href="datasets.html#tanzania"><i class="fa fa-check"></i><b>4.8.17</b> Tanzania</a></li>
+<li class="chapter" data-level="4.8.18" data-path="datasets.html"><a href="datasets.html#russian-federation"><i class="fa fa-check"></i><b>4.8.18</b> Russian Federation</a></li>
+<li class="chapter" data-level="4.8.19" data-path="datasets.html"><a href="datasets.html#usa"><i class="fa fa-check"></i><b>4.8.19</b> USA</a></li>
 </ul></li>
 <li class="chapter" data-level="4.9" data-path="datasets.html"><a href="datasets.html#other-datasets"><i class="fa fa-check"></i><b>4.9</b> Other datasets</a></li>
 </ul></li>
@@ -185,7 +186,7 @@
 <div id="header">
 <h1 class="title">An Open Compendium of Soil Datasets</h1>
 <p class="author"><em>Tomislav Hengl (OpenGeoHub)</em></p>
-<p class="date" style="margin-top: 1.5em;"><em>20 November, 2021</em></p>
+<p class="date" style="margin-top: 1.5em;"><em>16 December, 2021</em></p>
 </div>
 <div id="about" class="section level1" number="1">
 <h1><span class="header-section-number">1</span> About</h1>
@@ -194,7 +195,7 @@
 <p>This is a public compendium of global, regional, national and
 sub-national <strong>soil samples</strong> and/or <strong>soil profile</strong> datasets (points with
 Observations and Measurements of soil properties and characteristics).
-Datasets listed here, assuming compatible open license, are afterwards
+Datasets listed here, assuming <a href="https://opendefinition.org/licenses/">compatible open data license</a>, are afterwards
 imported into the <a href="https://gitlab.com/openlandmap/"><strong>Global compilation of soil chemical and physical
 properties and soil classes</strong></a> and
 eventually used to create a better open soil information across countries.
@@ -254,6 +255,8 @@ Figure 1.1: Soil profiles and soil samples with chemical and physical properties
 support soil data collation projects and especially curation of the legacy soil data.
 Some existing soil Observations and Measurements (O&amp;M) soil data initiatives include:</p>
 <ul>
+<li><a href="https://www.fao.org/soils-portal/data-hub/en/"><strong>FAO’s Data Hub</strong></a>,<br />
+</li>
 <li><a href="https://roots.ornl.gov/"><strong>Fine Root Ecology Database (FRED)</strong></a>,<br />
 </li>
 <li><a href="https://fluxnet.fluxdata.org/"><strong>FLUXNET global network</strong></a>,<br />
@@ -277,6 +280,8 @@ Some existing soil Observations and Measurements (O&amp;M) soil data initiatives
 <li><a href="https://lternet.edu/site/"><strong>Long Term Ecological Research (LTER) Network sites</strong></a>,<br />
 </li>
 <li><a href="https://www.neonscience.org"><strong>National Ecological Observatory Network (NEON)</strong></a>,<br />
+</li>
+<li><a href="https://soilspectroscopy.org"><strong>Open Soil Spectral Library (OSSL)</strong></a>,<br />
 </li>
 <li><a href="https://lter.github.io/som-website"><strong>Soils Data Harmonization (SoDaH)</strong></a>,<br />
 </li>
@@ -345,7 +350,7 @@ similar,</li>
 <div id="recommended-om-standards" class="section level2" number="1.4">
 <h2><span class="header-section-number">1.4</span> Recommended O&amp;M standards</h2>
 <p>As a general rule of thumb we recommend all contributors to use the following
-general scheme to organize Soil Observations &amp; Measurements with 3–4 main tables
+<a href="https://soilspectroscopy.github.io/ossl-manual/">general scheme</a> to organize Soil Observations &amp; Measurements with 3–4 main tables
 and metadata + legends organized in other tables:</p>
 <ul>
 <li>Soil site information (geographical coordinates, land use / land cover, soil classification etc),</li>
@@ -361,7 +366,7 @@ detail how to collect soil samples and setup a system for monitoring soil organi
 <p>It is recommended that one should, as much as possible, use the international standards
 and references. Some highly recommended protocols and standards include:</p>
 <ul>
-<li><a href="https://cran.r-project.org/package=uuid">UUID generator tool</a> to generate unique ID’s for unique soil sites, horizons, samples etc,</li>
+<li><a href="https://cran.r-project.org/package=uuid">UUID generator tool</a> to generate unique ID’s for unique soil sites, horizons, samples etc (to convert an existing local ID to UUID, best use <code>openssl::md5(local_id)</code>),</li>
 <li><a href="https://opensource.google/projects/open-location-code">Open Location Codes</a> to generate geographic location codes,</li>
 <li><a href="https://www.ogc.org/standards/om">OGC standards</a> to prepare metadata and exchange data across field / computer systems;</li>
 <li><a href="https://en.wikipedia.org/wiki/ISO_8601">ISO8601</a> to save time and date information,</li>
@@ -383,7 +388,7 @@ instructions.</p>
 </div>
 <div id="contributors" class="section level2" number="1.6">
 <h2><span class="header-section-number">1.6</span> Contributors</h2>
-<p>If you’ve contribute, add also your name and Twitter, ORCID or blog link
+<p>If you contribute, add also your name and Twitter, ORCID or blog link
 below:</p>
 <p><a href="https://twitter.com/tom_hengl">Tomislav Hengl</a>, <a href="https://twitter.com/sandersoil">Jonathan Sanderman</a>, <a href="https://orcid.org/0000-0002-9788-9947">Mario Antonio Guevara
 Santamaria</a>,</p>
@@ -396,9 +401,8 @@ by Oscar Baruffa.</p>
 </div>
 <div id="licence" class="section level2" number="1.8">
 <h2><span class="header-section-number">1.8</span> Licence</h2>
-<p>This website/book is free to use, and is licensed under the <a href="https://creativecommons.org/licenses/by/3.0/">Creative
-Commons Attribution 3.0
-License</a>.</p>
+<p>This website/book is free to use, and is licensed under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative
+Commons Attribution 4.0 International (CC BY 4.0)</a>.</p>
 </div>
 <div id="soil-spectroscopy-for-global-good" class="section level2" number="1.9">
 <h2><span class="header-section-number">1.9</span> Soil Spectroscopy for Global Good</h2>
@@ -406,10 +410,7 @@ License</a>.</p>
 Tools Coordinated Innovation Network NIFA Award #2020-67021-32467</a> project. It brings together soil
 scientists, spectroscopists, informaticians, data scientists and
 software engineers to overcome some of the current bottlenecks
-preventing wider and more efficient use of soil spectroscopy. A series
-of working groups will be formed to address topics including calibration
-transfer, model choice, outreach &amp; demonstration, and use of
-spectroscopy to inform global carbon cycle modeling. For more info refer
+preventing wider and more efficient use of soil spectroscopy. For more info refer
 to: <a href="https://soilspectroscopy.org/" class="uri">https://soilspectroscopy.org/</a></p>
 </div>
 <div id="about-opengeohub" class="section level2" number="1.10">
@@ -437,6 +438,10 @@ legacy data rescue via GlobalSoilMap and other international and
 national initiatives</strong></a>.
 GeoResJ, 14, 1-19.<br />
 </li>
+<li>Beillouin, D., Cardinael, R., Berre, D., Boyer, A., Corbeels, M.,
+Fallot, A., … &amp; Demenois, J. (2021). A global overview of studies
+about land management, land‐use change, and climate change effects
+on soil organic carbon. Global Change Biology. <a href="https://doi.org/10.1111/gcb.15998" class="uri">https://doi.org/10.1111/gcb.15998</a> </li>
 <li>Batjes, N. H., Ribeiro, E., van Oostrum, A., Leenaars, J., Hengl,
 T., &amp; de Jesus, J. M. (2017). <a href="http://www.earth-syst-sci-data.net/9/1/2017/"><strong>WoSIS: providing standardised soil
 profile data for the world</strong></a>. Earth System Science Data, 9(1), 1. <a href="https://doi.org/10.5194/essd-9-1-2017" class="uri">https://doi.org/10.5194/essd-9-1-2017</a> </li>

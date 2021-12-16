@@ -33,6 +33,7 @@ years for PREVIOUS SOC and SOIL CHARACTERISTICS.
 - 📋 Unique complete rows: 1526  
 - 📝 Import steps: [chemsprops.SOCPDB](https://gitlab.com/openlandmap/compiled-ess-point-data-sets/-/tree/master/themes/sol/SoilChemDB#global-harmonized-dataset-of-soc-change-under-perennial-crops) 
 
+
 ### Global Soil Respiration DB (compilation)
 
 _Description_: The database encompasses all published studies that report at least one of the following data measured in the field (not laboratory): annual soil respiration, mean seasonal soil respiration, a seasonal or annual partitioning of soil respiration into its source fluxes, soil respiration temperature response (Q10), or soil respiration at 10 degrees C.
@@ -81,6 +82,7 @@ environmental research: A subset of FAO, ISRIC and NRCS profiles (Version 1.0) (
 - 📋 Unique complete rows: 5637  
 - 📝 Import steps: [hydrosprops.ISIS](https://gitlab.com/openlandmap/compiled-ess-point-data-sets/-/tree/master/themes/sol/SoilHydroDB#isric-isis)
 
+
 ### Global Reforestation Opportunity Assessment (GROA) (compilation)
 
 _Description_: These data were assembled by the Nature Conservancy and a team of scientists from 19 institutions to quantify carbon sequestration in naturally regenerating forests around the world.
@@ -90,8 +92,7 @@ _Description_: These data were assembled by the Nature Conservancy and a team of
 - 📂 Data download URL: <https://doi.org/10.5281/zenodo.3983644>  
 - 📍 Unique locations: 1921  
 - 📋 Unique complete rows: 1921   
-- 📝 Import steps: chemsprops.GROA
-
+- 📝 Import steps:   
 
 ### Global ICRAF/ISRIC Soil Spectroscopy Library --- (ICRAF/ISRIC)
 
@@ -107,6 +108,7 @@ Nations Avenue, Nairobi, Kenya.
 - 📍 Unique locations: 785  
 - 📋 Unique complete rows:   
 - 📝 Import steps: [sslsprops.ICRAF_ISRIC](https://gitlab.com/soilspec4gg)
+
 
 ### Global database of soil saturated hydraulic conductivity measurements --- KSat (compilation) 
 
@@ -558,6 +560,18 @@ _Description_: Described in literature but not yet imported to AfSPDB.
 - 📋 Unique complete rows:   
 - 📝 Import steps:  
 
+#### GhanSIS (Ghana Soil Information Services)
+
+_Description_: Soil samples (0-20 cm, 20-50 cm) collected within the AfSIS-II project. 
+Coordinates of points are not available. Sample reference and soil spectral data available under CC-0 license.
+
+- 📕 Hengl, T., Miller, M.A.E., Križan, J. et al. (2021). African soil properties and nutrients mapped at 30 m spatial resolution using two-scale ensemble machine learning. Scientific Reports, 11, 6130. <https://dx.doi.org/10.1038/s41598-021-85639-y>  
+- 🔗 Project website: <https://data.worldagroforestry.org/dataverse/icraf_soils>  
+- 📂 Data download URL: <https://doi.org/10.34725/DVN/SPRSFN>   
+- 📍 Unique locations:   
+- 📋 Unique complete rows: 3013  
+- 📝 Import steps: [AfSIS2](https://github.com/soilspectroscopy/ossl-imports/tree/main/dataset/AFSIS2) 
+
 
 ### Israel
 
@@ -623,6 +637,20 @@ _Description_: National SS library.
 - 📍 Unique locations:   
 - 📋 Unique complete rows:   
 - 📝 Import steps:  
+
+### Tanzania
+
+#### TanSIS (AfSIS-II)
+
+_Description_: Tanzanian Soil Information Service. Coordinates of points are available 
+from <https://registry.opendata.aws/afsis/>. Sample data available under CC-0 license.
+
+- 📕 Hengl, T., Miller, M.A.E., Križan, J. et al. (2021). African soil properties and nutrients mapped at 30 m spatial resolution using two-scale ensemble machine learning. Scientific Reports, 11, 6130. <https://dx.doi.org/10.1038/s41598-021-85639-y>  
+- 🔗 Project website: <https://data.worldagroforestry.org/dataverse/icraf_soils>  
+- 📂 Data download URL: <https://doi.org/10.34725/DVN/XUDGJY>  
+- 📍 Unique locations:   
+- 📋 Unique complete rows: 26,772  
+- 📝 Import steps: [AfSIS2](https://github.com/soilspectroscopy/ossl-imports/tree/main/dataset/AFSIS2) 
 
 ### Russian Federation
 

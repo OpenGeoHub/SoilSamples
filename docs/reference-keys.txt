@@ -80,6 +80,7 @@ germany
 stocks-of-organic-carbon-in-german-agricultural-soils-bze_lw
 ghana
 national-soil-profile-legacy-db
+ghansis-ghana-soil-information-services
 israel
 the-national-soil-spectral-library-of-israel
 iran-islamic-republic-of-iran
@@ -90,6 +91,8 @@ namibia
 a-soter-database-for-namibia-namsoter
 switzerland
 swiss-national-soil-spectral-model-library
+tanzania
+tansis-afsis-ii
 russian-federation
 the-unified-state-register-of-soil-resources-egrpr
 usa
