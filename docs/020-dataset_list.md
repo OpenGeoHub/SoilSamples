@@ -517,6 +517,19 @@ _Description_: National legacy soil profile dataset. Somewhat over-represents fo
 - 📋 Unique complete rows: 5746  
 - 📝 Import steps: [chemsprops.bpht](https://gitlab.com/openlandmap/compiled-ess-point-data-sets/-/tree/master/themes/sol/SoilChemDB#croatian-soil-pedon-data) 
 
+### Colombia 
+
+#### Soil texture dataset (based on SISLAC)
+
+_Description_: Texture fractions harmonized at five standard depths (5, 15, 30, 60, and 100 cm) using SISLAC soil profile data for Colombia. Data set available under CC BY license.
+
+- 📕 Varón-Ramírez, V. M., Araujo-Carrillo, G. A., & Guevara, M. (2022). Colombian soil texture: Building a spatial ensemble model. Earth System Science Data Discussions, 1-30. <https://doi.org/10.5194/essd-2021-437>  
+- 🔗 Project website: <https://www.agrosavia.co/>  
+- 📂 Data download URL: <https://dx.doi.org/10.6073/pasta/6dded07af834834ee21a134b247507fd>   
+- 📍 Unique locations: 4203  
+- 📋 Unique complete rows:  
+- 📝 Import steps:  
+
 ### Congo, Democratic Republic of
 
 #### Soil spectral library for central Africa (CASSL)

@@ -73,6 +73,8 @@ china-data-set-of-soil-properties-for-land-surface-modeling
 soter-soil-profiles-for-china
 croatia
 croatian-soil-pedon-data
+colombia
+soil-texture-dataset-based-on-sislac
 congo-democratic-republic-of
 soil-spectral-library-for-central-africa-cassl
 costa-rica
