@@ -403,6 +403,17 @@ _Description_: Soil legacy data from various projects in Brazil standardized and
 - 📋 Unique complete rows: 7842  
 - 📝 Import steps: [chemsprops.FEBR](https://gitlab.com/openlandmap/compiled-ess-point-data-sets/-/tree/master/themes/sol/SoilChemDB#febr) 
 
+####  PronaSolos - 2020 (compilation)
+
+_Description_: Contains various soil samples (complete profiles, partial profiles, extra samples) from the Soil Database database ([BDsolos](https://www.bdsolos.cnptia.embrapa.br /consulta_publica.html)). Spatial location accuracy is variable: where possible geographic coordinates available in the Free Brazilian Repository for Open Soil Data ([FEBR](https://www.pedometria.org/febr/)) were used, otherwise locations were assigned to the center of the municipality. Data set is available publicly via the [PronaSolos Platform](https://geoportal.cprm.gov.br/pronasolos/) under the [CC-BY-NC license](http://geoinfo.cnps.embrapa.br/layers/geonode%3Aperfis_pronasolos_20201202v2/metadata_read). 
+
+- 📕 POLIDORO, J., COELHO, M., CARVALHO FILHO, A. D., LUMBRERAS, J., de OLIVEIRA, A. P., VASQUES, G. D. M., ... & BREFIN, M. (2021). [Programa Nacional de Levantamento e Interpretação de Solos do Brasil (PronaSolos): diretrizes para implementação](https://www.infoteca.cnptia.embrapa.br/infoteca/handle/doc/1135056). Embrapa Solos-Documentos (INFOTECA-E).  
+- 🔗 Project website: <https://geoportal.cprm.gov.br/pronasolos/>  
+- 📂 Data download URL: <http://geoinfo.cnps.embrapa.br/documents/3013/download>  
+- 📍 Unique locations: 9113  
+- 📋 Unique complete rows: 34,464  
+- 📝 Import steps:  
+
 
 ####  Hydrophysical database for Brazilian soils --- HYBRAS (compilation)
 
@@ -533,6 +544,19 @@ _Description_: National legacy soil profile database for Costa Rica.
 - 📋 Unique complete rows: 2042  
 - 📝 Import steps: [chemsprops.CostaRica](https://gitlab.com/openlandmap/compiled-ess-point-data-sets/-/tree/master/themes/sol/SoilChemDB#soil-profile-db-for-costa-rica) 
 
+### Estonia
+
+#### Eco-Hydrological modelling parameters dataset for Estonia (EstSoil-EH)
+
+_Description_: Soil polygon map of Estonia and various derived grids. Point data is not publicly available.  
+
+- 📕 Kmoch, A., Kanal, A., Astover, A., Kull, A., Virro, H., Helm, A., Pärtel, M., Ostonen, I., and Uuemaa, E. (2021). EstSoil-EH: a high-resolution eco-hydrological modelling parameters dataset for Estonia, Earth Syst. Sci. Data, 13, 83–97. <https://doi.org/10.5194/essd-13-83-2021>  
+- 🔗 Project website:   
+- 📂 Data download URL: <https://datadoi.ut.ee/handle/33/103>  
+- 📍 Unique locations: 3373  
+- 📋 Unique complete rows:   
+- 📝 Import steps:  
+
 ### Germany
 
 #### Stocks of organic carbon in German agricultural soils (BZE_LW)
@@ -572,18 +596,17 @@ Coordinates of points are not available. Sample reference and soil spectral data
 - 📋 Unique complete rows: 3013  
 - 📝 Import steps: [AfSIS2](https://github.com/soilspectroscopy/ossl-imports/tree/main/dataset/AFSIS2) 
 
+### Ireland
 
-### Israel
+#### Irish Soil Information System
 
-#### The National Soil Spectral Library of Israel
+_Description_: National legacy soil profile dataset. In 2012/2013, 246 profile pits were sampled and analysed as part of the Irish Soil Information System project to fill in gaps in the description of representative profile data for Ireland. The point data is not publicly available.
 
-_Description_: Compilation of soil spectral data from various projects. 
-
-- 📕 NA  
-- 🔗 Project website: <https://www.modelfarm-aro.org/subject-areas/the-national-soil-spectral-library-of-israel/?lang=en>  
-- 📂 Data download URL:   
-- 📍 Unique locations:   
-- 📋 Unique complete rows: 4000  
+- 📕 Creamer, R., & O’Sullivan, L. (Eds.). (2018). The soils of Ireland. Springer. ISBN: 9783319711898.  
+- 🔗 Project website: <http://soils.teagasc.ie/>  
+- 📂 Data download URL:    
+- 📍 Unique locations: 246  
+- 📋 Unique complete rows:   
 - 📝 Import steps:  
 
 ### Iran (Islamic Republic of Iran)
@@ -598,6 +621,19 @@ _Description_: National legacy soil profile dataset.
 - 📍 Unique locations: 1373  
 - 📋 Unique complete rows: 4759  
 - 📝 Import steps: [chemsprops.IRANSPDB](https://gitlab.com/openlandmap/compiled-ess-point-data-sets/-/tree/master/themes/sol/SoilChemDB#iran-soil-profile-db) 
+
+### Israel
+
+#### The National Soil Spectral Library of Israel
+
+_Description_: Compilation of soil spectral data from various projects. 
+
+- 📕 NA  
+- 🔗 Project website: <https://www.modelfarm-aro.org/subject-areas/the-national-soil-spectral-library-of-israel/?lang=en>  
+- 📂 Data download URL:   
+- 📍 Unique locations:   
+- 📋 Unique complete rows: 4000  
+- 📝 Import steps:  
 
 ### Nigeria
 
@@ -624,6 +660,20 @@ _Description_: Legacy soil profile dataset.
 - 📍 Unique locations: 1014  
 - 📋 Unique complete rows: 2953  
 - 📝 Import steps: [chemsprops.LandPKS](https://gitlab.com/openlandmap/compiled-ess-point-data-sets/-/tree/master/themes/sol/SoilChemDB#landpks-observations) 
+
+
+### Scotland
+
+#### National Soils Inventory for Scotland
+
+_Description_: Legacy dataset. The National Soil Inventory of Scotland (NSIS 1978-88) dataset was collected at sampling points arranged on a 10 km grid across the country. The data set is maintained and distributed by the James Hutton Institute under Ordnance Survey Open Data (Data).
+
+- 📕 Lilly, A., Bell, J.S., Hudson, G., Nolan, A.J. & Towers. W. (Compilers) (2010). National soil inventory of Scotland (NSIS_1); site location, sampling and profile description protocols. (1978-1988). Technical Bulletin. Macaulay Institute, Aberdeen. <https://doi.org/10.5281/zenodo.4650230>  
+- 🔗 Project website: <http://soils.environment.gov.scot/>  
+- 📂 Data download URL: <https://www.hutton.ac.uk/learning/natural-resource-datasets/soilshutton/soils-maps-scotland/download>  
+- 📍 Unique locations: 721  
+- 📋 Unique complete rows:   
+- 📝 Import steps:  
 
 ### Switzerland
 
@@ -730,3 +780,13 @@ _Description_: Systematic inventory of forest plots.
 
 ## Other datasets
 
+### Soil-hydraulic dataset for Qinghai-Tibet Plateau
+
+_Description_: Contains soil profile data at depths of 5 cm and 25 cm from 238 sampling sites for a high and cold mountainous area, Northeastern Qinghai-Tibet Plateau. Includes the soil hydraulic properties include clay, silt, sand, soil organic carbon, soil saturated hydraulic conductivity. Data available under CC-BY license.
+
+- 📕 Tian, J., Zhang, B., Wang, X., & He, C. (2022). An in situ observation dataset of soil hydraulic properties and soil moisture in a high and cold mountainous area on the northeastern Qinghai-Tibet Plateau. Earth System Science Data Discussions, 1-29. <https://doi.org/10.5194/essd-2022-21>  
+- 🔗 Project website: <https://data.tpdc.ac.cn/>  
+- 📂 Data download URL: <https://doi.org/10.5281/zenodo.5830583>  
+- 📍 Unique locations: 238  
+- 📋 Unique complete rows:   
+- 📝 Import steps:  
