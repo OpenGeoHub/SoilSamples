@@ -780,6 +780,17 @@ _Description_: Systematic inventory of forest plots.
 
 ## Other datasets
 
+#### Permafrost in subarctic Canada
+
+_Description_: This dataset consists of measurements of bulk density, carbon and nitrogen content in soil profiles from permafrost in subarctic Canada. Soil cores were sampled during early summer in 2013 and 2014. Data publicly available under the Open Government Licence.
+
+- `r emo::ji("closed_book")` Estop-Aragones, C.; Fisher, J.P.; Cooper, M.A.; Thierry, A.; Treharne, R.; Murton, J.B.; Phoenix, G.K.; Charman, D.J.; Williams, M.; Hartley, I.P. (2016). Bulk density, carbon and nitrogen content in soil profiles from permafrost in subarctic Canada. NERC Environmental Information Data Centre. <https://doi.org/10.5285/efa2a84b-3505-4221-a7da-12af3cdc1952>   
+- `r emo::ji("link")` Project website: <http://arp.arctic.ac.uk/projects/carbon-cycling-linkages-permafrost-systems-cyclops/>  
+- `r emo::ji("open_file_folder")` Data download URL: <https://catalogue.ceh.ac.uk/documents/efa2a84b-3505-4221-a7da-12af3cdc1952>  
+- `r emo::ji("round_pushpin")` Unique locations:  
+- `r emo::ji("clipboard")` Unique complete rows: 2932  
+- `r emo::ji("memo")` Import steps:   
+
 ### Soil-hydraulic dataset for Qinghai-Tibet Plateau
 
 _Description_: Contains soil profile data at depths of 5 cm and 25 cm from 238 sampling sites for a high and cold mountainous area, Northeastern Qinghai-Tibet Plateau. Includes the soil hydraulic properties include clay, silt, sand, soil organic carbon, soil saturated hydraulic conductivity. Data available under CC-BY license.
