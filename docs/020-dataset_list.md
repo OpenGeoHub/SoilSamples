@@ -572,11 +572,11 @@ _Description_: National legacy soil profile database for Costa Rica.
 
 #### Eco-Hydrological modelling parameters dataset for Estonia (EstSoil-EH)
 
-_Description_: Soil polygon map of Estonia and various derived grids. Point data is not publicly available.  
+_Description_: Soil polygon map of Estonia and various derived grids. Point data (1,121 samples) is not publicly available but can be obtained by contacting the authors.  
 
 - 📕 Kmoch, A., Kanal, A., Astover, A., Kull, A., Virro, H., Helm, A., Pärtel, M., Ostonen, I., and Uuemaa, E. (2021). EstSoil-EH: a high-resolution eco-hydrological modelling parameters dataset for Estonia, Earth Syst. Sci. Data, 13, 83–97. <https://doi.org/10.5194/essd-13-83-2021>  
-- 🔗 Project website:   
-- 📂 Data download URL: <https://datadoi.ut.ee/handle/33/103>  
+- 🔗 Project website: <https://landscape-geoinformatics.ut.ee/estsoil-eh-dataset>  
+- 📂 Data download URL: <https://doi.org/10.5281/zenodo.3473289>  
 - 📍 Unique locations: 3373  
 - 📋 Unique complete rows:   
 - 📝 Import steps:  
