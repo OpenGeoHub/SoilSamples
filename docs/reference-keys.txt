@@ -66,6 +66,7 @@ canada
 agriculture-and-agri-food-canada-national-pedon-database
 canadian-upland-forest-soil-profile-and-carbon-stocks-database
 alberta-aesa-alberta-environmentally-sustainable-agriculture-soil-quality-benchmark-program
+soil-texture-samples-provincial-ecoforest-map-of-quebec-canada
 chile
 chilean-soil-organic-carbon-database
 china-peoples-republic-of-china

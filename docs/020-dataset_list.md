@@ -465,6 +465,17 @@ from the Alberta Benchmark Program](https://open.alberta.ca/publications/spatial
 - 📋 Unique complete rows: 2484  
 - 📝 Import steps:   
 
+#### Soil texture samples provincial ecoforest map of Quebec, Canada
+
+_Description_: Soil texture data from 29,570 mineral soil samples from 17,901 soil profiles to model and map particle size composition in ecoforest polygons of the provincial ecoforest map of Quebec, Canada.
+
+- 📕 Duchesne, L., Ouimet, R., (2021). Digital mapping of soil texture in ecoforest polygons in Quebec, Canada. PeerJ 9:e11685 <https://doi.org/10.7717/peerj.11685>   
+- 🔗 Project website:   
+- 📂 Data download URL: <https://doi.org/10.7717/peerj.11685/supp-1>  
+- 📍 Unique locations: 17,901  
+- 📋 Unique complete rows:   
+- 📝 Import steps:   
+
 ### Chile
 
 #### Chilean Soil Organic Carbon database
