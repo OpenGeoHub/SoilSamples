@@ -303,8 +303,8 @@ _Description_: Top-soil samples only (0--20 cm).
 This is currently the largest systematic soil sample dataset for EU.
 
 - `r emo::ji("closed_book")` Orgiazzi, A., Ballabio, C., Panagos, P., Jones, A., & Fernandez-Ugalde, O. (2018). [LUCAS Soil, the largest expandable soil dataset for Europe: a review](https://doi.org/10.1111/ejss.12499). European Journal of Soil Science, 69(1), 140-153.  
-- `r emo::ji("link")` Project website: <https://esdac.jrc.ec.europa.eu/content/lucas-2015-topsoil-data>  
-- `r emo::ji("open_file_folder")` Data download URL: <https://esdac.jrc.ec.europa.eu/content/lucas-2015-topsoil-data>   
+- `r emo::ji("link")` Project website: <https://esdac.jrc.ec.europa.eu/content/lucas2015-topsoil-data>  
+- `r emo::ji("open_file_folder")` Data download URL: <https://esdac.jrc.ec.europa.eu/content/lucas2015-topsoil-data>   
 - `r emo::ji("round_pushpin")` Unique locations: 21859  
 - `r emo::ji("clipboard")` Unique complete rows: 21859  
 - `r emo::ji("memo")` Import steps: [chemsprops.LUCAS](https://gitlab.com/openlandmap/compiled-ess-point-data-sets/-/tree/master/themes/sol/SoilChemDB#lucas-soil) 
