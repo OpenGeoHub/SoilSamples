@@ -285,18 +285,41 @@ This data set consists of significantly higher soil organic carbon concentration
 
 ## Europe
 
-### Land Use and Coverage Area frame Survey: LUCAS soil
+### Land Use and Coverage Area frame Survey: LUCAS soil 2009/2012
 
-_Description_: Top-soil samples only (0--20 cm). Currently there are three 
-campaigns with LUCAS soil samples: 2009, 2015 and 2018. This is currently the largest 
-systematic soil sample dataset for EU.
+_Description_: Top-soil samples only (0--20 cm). In year 2012 additional 
+samples were collected from Romania and Bulgaria.
 
-- 📕 Orgiazzi, A., Ballabio, C., Panagos, P., Jones, A., & Fernandez-Ugalde, O. (2018). [LUCAS Soil, the largest expandable soil dataset for Europe: a review](https://doi.org/10.1111/ejss.12499). European Journal of Soil Science, 69(1), 140-153.  
+- 📕 Tóth, G., Jones, A., Montanarella, L., Alewell, C., Ballabio, C., Carre, F., ... & Hermann, T. (2013). [LUCAS Topsoil Survey—Methodology, Data and Results](https://esdac.jrc.ec.europa.eu/ESDB_Archive/eusoils_docs/other/EUR26102EN.pdf). JRC Technical Reports. Luxembourg. Publications Office of the European Union, EUR26102 – Scientific and Technical Research series – ISSN 1831-9424 (online); ISBN 978-92-79-32542-7; doi: 10.2788/97922.  
 - 🔗 Project website: <https://esdac.jrc.ec.europa.eu/content/lucas-2009-topsoil-data>  
 - 📂 Data download URL: <https://esdac.jrc.ec.europa.eu/content/lucas-2009-topsoil-data>   
 - 📍 Unique locations: 21272  
-- 📋 Unique complete rows: 21272 + 21859  
+- 📋 Unique complete rows: 21272  
 - 📝 Import steps: [chemsprops.LUCAS](https://gitlab.com/openlandmap/compiled-ess-point-data-sets/-/tree/master/themes/sol/SoilChemDB#lucas-soil) 
+
+### Land Use and Coverage Area frame Survey: LUCAS soil 2015
+
+_Description_: Top-soil samples only (0--20 cm). 
+This is currently the largest systematic soil sample dataset for EU.
+
+- 📕 Orgiazzi, A., Ballabio, C., Panagos, P., Jones, A., & Fernandez-Ugalde, O. (2018). [LUCAS Soil, the largest expandable soil dataset for Europe: a review](https://doi.org/10.1111/ejss.12499). European Journal of Soil Science, 69(1), 140-153.  
+- 🔗 Project website: <https://esdac.jrc.ec.europa.eu/content/lucas-2015-topsoil-data>  
+- 📂 Data download URL: <https://esdac.jrc.ec.europa.eu/content/lucas-2015-topsoil-data>   
+- 📍 Unique locations: 21859  
+- 📋 Unique complete rows: 21859  
+- 📝 Import steps: [chemsprops.LUCAS](https://gitlab.com/openlandmap/compiled-ess-point-data-sets/-/tree/master/themes/sol/SoilChemDB#lucas-soil) 
+
+### Land Use and Coverage Area frame Survey: LUCAS soil 2018
+
+_Description_: Top-soil samples only (0--20 cm) collected in 2018. 
+Several additional soil properties have been added.
+
+- 📕 Orgiazzi, A., Ballabio, C., Panagos, P., Jones, A., & Fernandez-Ugalde, O. (2018). [LUCAS Soil, the largest expandable soil dataset for Europe: a review](https://doi.org/10.1111/ejss.12499). European Journal of Soil Science, 69(1), 140-153.  
+- 🔗 Project website: <https://esdac.jrc.ec.europa.eu/projects/lucas>  
+- 📂 Data download URL: <https://esdac.jrc.ec.europa.eu/projects/lucas>   
+- 📍 Unique locations:  
+- 📋 Unique complete rows:  
+- 📝 Import steps:  
 
 ### GEMAS 2009
 

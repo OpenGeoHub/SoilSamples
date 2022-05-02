@@ -1,7 +1,7 @@
 ---
 title: "An Open Compendium of Soil Datasets"
 author: "Tomislav Hengl (OpenGeoHub)"
-date: "20 April, 2022"
+date: "02 May, 2022"
 knit: bookdown::render_book
 site: bookdown::bookdown_site
 documentclass: svmono

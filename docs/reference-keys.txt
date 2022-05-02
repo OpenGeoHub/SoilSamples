@@ -45,7 +45,9 @@ asia
 northern-circumpolar-permafrost-soil-profiles-compilation
 australia-oceania
 europe
-land-use-and-coverage-area-frame-survey-lucas-soil
+land-use-and-coverage-area-frame-survey-lucas-soil-20092012
+land-use-and-coverage-area-frame-survey-lucas-soil-2015
+land-use-and-coverage-area-frame-survey-lucas-soil-2018
 gemas-2009
 north-and-central-america
 south-america
