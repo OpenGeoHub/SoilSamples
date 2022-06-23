@@ -62,7 +62,7 @@ international soils measured with the Extended Evaporation Method (EEM) and the 
 
 _Description_: ISRIC-WISE database holds selected site and horizon data for 10,250 soil profiles from 149 countries. Profile data were extracted from a wide range of sources and harmonized with respect to the original (1974) and revised (1988) Legend of the FAO-Unesco Soil Map of the World. Profiles have been described, sampled, and analyzed according to methods and standards in use in the originating countries. WISE was specifically developed for land-related applications at continental and global scales.
 
-- `r emo::ji("closed_book")` Batjes, N.H. (2019). [Harmonized soil profile data for applications at global and continental scales: updates to the WISE database](http://dx.doi.org/10.1111/j.1475-2743.2009.00202.x). Soil Use and Management 5:124-127. DOI:10.1111/j.1475-2743.2009.00202.x  
+- `r emo::ji("closed_book")` Batjes, N.H. (2009). [Harmonized soil profile data for applications at global and continental scales: updates to the WISE database](http://dx.doi.org/10.1111/j.1475-2743.2009.00202.x). Soil Use and Management 5:124-127. DOI:10.1111/j.1475-2743.2009.00202.x  
 - `r emo::ji("link")` Project website: <https:/isric.org>  
 - `r emo::ji("open_file_folder")` Data download URL: <https://files.isric.org/public/wise/WD-WISE.zip>  
 - `r emo::ji("round_pushpin")` Unique locations: 6723  
