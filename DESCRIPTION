@@ -1,0 +1,33 @@
+Package: soilsamples
+Title: An Open Compendium of Soil Datasets: Soil Observations and Measurements.
+Version: 0.2
+Authors@R: c(
+    person("Tomislav", "Hengl", , "tom.hengl@opengeohub.org", role = c("aut", "cre")), 
+    person("Surya", "Gupta", , "surya.gupta@unibas.ch", role = c("aut", "cre"))
+  )
+URL: https://github.com/OpenGeoHub/SoilSamples/
+Depends: 
+    R (>= 3.1.0)
+Imports:
+    sp,
+    emo,
+    mlr
+Suggests:
+    bookdown,
+    bslib,
+    downlit,
+    htmltools,
+    htmlwidgets,
+    jpeg,
+    jsonlite,
+    knitr,
+    png,
+    sessioninfo,
+    xml2
+Remotes:
+    r-lib/downlit,
+    rstudio/bookdown,
+    rstudio/bslib,
+    tidyverse/stringr
+Encoding: UTF-8
+License: CC SA 4.0

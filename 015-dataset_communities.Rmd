@@ -1,5 +1,9 @@
 # Soil data communities and mailing lists
 
+```{r, results = "asis", echo = FALSE}
+status("drafting")
+```
+
 To follow progress of the soil data compilations consider connecting to some of the 
 active communities / registering for the mailing lists and/or discussion groups.
 

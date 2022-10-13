@@ -1,19 +1,24 @@
+bookdown::bs4_book:
+  theme:
+    primary: "#753d0f"
+  repo: https://github.com/OpenGeoHub/SoilSamples/
+  includes:
+    in_header: [ga_script.html]
+
 bookdown::gitbook:
+  includes:
+    in_header: [ga_script.html]
   config:
-    info: yes
-    toolbar:
-      position: fixed
-    includes:
-      in_header: social.html
     toc:
-      collapse: subsection
+      collapse: section
       before: |
-        <li><a href="./">An Open Compendium of Soil Datasets: Soil Observations and Measurements</a></li>
-      after: |
-        <li><a href="https://opengeohub.org/about">T. (Tom) Hengl and contributors</a></li>
-      scroll_highlight: yes
-    edit : https://github.com/OpenGeoHub/SoilSamples/edit/main/%s
-    download: ["Open_Compendium_Soil_Obs_Measurements_book.pdf", "Open_Compendium_Soil_Obs_Measurements_book.epub"]
+        <li><strong><a href="./">An Open Compendium of Soil Datasets: Soil Observations and Measurements</a></strong></li>
+    edit:
+      link: https://github.com/OpenGeoHub/SoilSamples/edit/master/%s
+      text: "Edit"
+    sharing: no
+  css: r4ds.css
+
 bookdown::pdf_book:
   includes:
     in_header: latex/preamble.tex
@@ -21,7 +26,7 @@ bookdown::pdf_book:
     after_body: latex/after_body.tex
   keep_tex: true
   dev: "cairo_pdf"
-  latex_engine: xelatex
+  latex_engine: "xelatex"
   citation_package: natbib
   template: null
   pandoc_args: --top-level-division=chapter
@@ -30,4 +35,3 @@ bookdown::pdf_book:
   toc_appendix: true
   quote_footer: ["\\VA{", "}{}"]
   highlight_bw: true
-bookdown::epub_book: default

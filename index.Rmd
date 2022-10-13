@@ -1,30 +1,34 @@
 ---
+knit: "bookdown::render_book"
 title: "An Open Compendium of Soil Datasets"
-author: "Tomislav Hengl (OpenGeoHub)"
-date: "`r format(Sys.time(), '%d %B, %Y')`"
-knit: bookdown::render_book
-site: bookdown::bookdown_site
+author: "Tom Hengl, Surya Gupta"
+description: "This is a public compendium of global, regional, national and sub-national soil samples and/or soil profile datasets (points with Observations and Measurements of soil properties and characteristics). Datasets listed here, assuming compatible open license, are afterwards imported into a common library. Contributions are welcome. To discuss issues or report a bug please use the repository homepage."
+url: 'https\://opengeohub.github.io/SoilSamples/'
+bibliography: ./tex/refs.bib
+csl: ./tex/apa.csl  
 documentclass: svmono
 classoption: graybox,natbib,nospthms
 geometry: "paperwidth=18.90cm, paperheight=24.58cm, top=2.1cm, bottom=2.1cm, inner=2cm, outer=2cm"
 monofont: "Source Code Pro"
 monofontoptions: "Scale=0.7"
-bibliography: refs.bib
 biblio-style: spbasic
+fig_caption: yes
 link-citations: yes
-twitter-handle: tom_hengl
-cover-image: img/sol_chem.pnts_sites.png
-description: "This is a public compendium of global, regional, national and sub-national soil samples and/or soil profile datasets (points with Observations and Measurements of soil properties and characteristics). Datasets listed here, assuming compatible open license, are afterwards imported into a common library."
-github-repo: OpenGeoHub/SoilSamples
-url: 'http\://github.com/OpenGeoHub/SoilSamples'
-colorlinks: yes
-graphics: yes
+gihub-repo: OpenGeoHub/SoilSamples/
+twitter-handle: opengeohub
+cover-image: cover.png
+site: bookdown::bookdown_site
 ---
 
-# About
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
 
-## Rationale
+# About {.unnumbered}
 
+## Rationale {.unnumbered}
+
+[![Access source code](cover.jpg){.cover width="250"}](https://opengeohub.github.io/SpatialSamples/) 
 This is a public compendium of global, regional, national and
 sub-national **soil samples** and/or **soil profile** datasets (points with
 Observations and Measurements of soil properties and characteristics).
@@ -40,6 +44,19 @@ The specific objectives of this initiative are:
     regional soil property and class maps (typically published via
     <https://OpenLandMap.org>),
 
+## Download compiled data {.unnumbered}
+
+Compiled data (imported, standardized, quality-controlled) is available 
+through a diversity of standard formats:
+
+- CSV file (compressed using giz to reduce download time);
+- RDS file (native R data format);
+- GPKG file ([Geopackage file](https://www.geopackage.org/) ready to be opened in QGIS);
+
+All files can be downloaded from the `/out` [directory](https://github.com/OpenGeoHub/SoilSamples/-/tree/master/out).
+
+## Add your own data {.unnumbered}
+
 The minimum requirements to submit a dataset for inclusion to [the
 OpenLandMap repository](https://gitlab.com/openlandmap/) are:
 
@@ -53,6 +70,10 @@ Datasets that do NOT satisfy the above listed minimum requirements might be
 removed. If you discover an issue with license, data description or
 version number of a dataset, please open a [Github
 issue](https://github.com/OpenGeoHub/SoilSamples/issues).
+
+```{r soil-pnts, echo=FALSE, fig.cap="Soil profiles and soil samples with chemical and physical properties global compilation. For more info see: https://gitlab.com/openlandmap/compiled-ess-point-data-sets.", out.width="100%"}
+knitr::include_graphics("img/sol_chem.pnts_sites.png")
+```
 
 Recommended settings for all datasets are:
 
@@ -69,11 +90,7 @@ Information outdated or missing? Please open an issue or best do a
 correction and then a [pull
 request](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
 
-```{r soil-pnts, echo=FALSE, fig.cap="Soil profiles and soil samples with chemical and physical properties global compilation. For more info see: https://gitlab.com/openlandmap/compiled-ess-point-data-sets.", out.width="100%"}
-knitr::include_graphics("img/sol_chem.pnts_sites.png")
-```
-
-## Existing soil data projects and initiatives
+## Existing soil data projects and initiatives {.unnumbered}
 
 Multiple international organizations from [FAO's Global Soil Partnership](http://www.fao.org/global-soil-partnership/en/) to [UNCCD's Land Degredation Neutrality](https://www.unccd.int/actions/ldn-target-setting-programme), [European Commission](https://esdac.jrc.ec.europa.eu/) and similar, 
 support soil data collation projects and especially curation of the legacy soil data. 
@@ -100,7 +117,7 @@ A more in-depth inventory of all various national and international soil dataset
 
 - Rossiter, D.G.,: [**Compendium of Soil Geographical Databases**](https://www.isric.org/explore/soil-geographic-databases)\
 
-## Target soil variables
+## Target soil variables {.unnumbered}
 
 Soil variables of interest include:
 
@@ -144,7 +161,7 @@ Soil variables of interest include:
 
 -   Soil absorbance in VIS-NIR and MIR part of spectra,
 
-## Recommended O&M standards
+## Recommended O&M standards {.unnumbered}
 
 As a general rule of thumb we recommend all contributors to use the following 
 [general scheme](https://soilspectroscopy.github.io/ossl-manual/) to organize Soil Observations & Measurements with 3–4 main tables 
@@ -178,13 +195,13 @@ and references. Some highly recommended protocols and standards include:
 - [Soils Laboratory Manual, K-State Edition](https://kstatelibraries.pressbooks.pub/soilslabmanual/),
 - [GLOSOLAN Standard Operating Procedures (SOPs)](http://www.fao.org/global-soil-partnership/glosolan/soil-analysis/standard-operating-procedures/en/#c763834),
 
-## Contributing
+## Contributing {.unnumbered}
 
 Please feel free to contribute entries. See [GitHub
 repository](https://github.com/OpenGeoHub/SoilSamples) for more detailed
 instructions.
 
-## Contributors
+## Contributors {.unnumbered}
 
 If you contribute, add also your name and Twitter, ORCID or blog link
 below:
@@ -195,38 +212,17 @@ Santamaria](https://orcid.org/0000-0002-9788-9947),
 This document is based on the <https://www.bigbookofr.com/> repository
 by Oscar Baruffa.
 
-## Disclaimer
+## Disclaimer {.unnumbered}
 
 The data is provided "as is". [OpenGeoHub foundation](https://opengeohub.org/about) and its suppliers and licensors hereby disclaim all warranties of any kind, express or implied, including, without limitation, the warranties of merchantability, fitness for a particular purpose and non-infringement. Neither OpenGeoHub foundation nor its suppliers and licensors, makes any warranty that the Website will be error free or that access thereto will be continuous or uninterrupted. You understand that you download from, or otherwise obtain content or services through, the Website at your own discretion and risk.
 
-## Licence
+## Licence {.unnumbered}
 
-This website/book is free to use, and is licensed under the [Creative
-Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
+[<img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />](http://creativecommons.org/licenses/by-sa/4.0/)
 
-## Soil Spectroscopy for Global Good
+This website/book is free to use, and is licensed under the [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/).
 
-[**SoilSpec4GG**](https://soilspectroscopy.org/) is a USDA-funded [Food and Agriculture Cyberinformatics
-Tools Coordinated Innovation Network NIFA Award #2020-67021-32467](https://nifa.usda.gov/press-release/nifa-invests-over-7-million-big-data-artificial-intelligence-and-other) project. It brings together soil
-scientists, spectroscopists, informaticians, data scientists and
-software engineers to overcome some of the current bottlenecks
-preventing wider and more efficient use of soil spectroscopy. For more info refer
-to: <https://soilspectroscopy.org/>
-
-## About OpenGeoHub
-
-**OpenGeoHub foundation** is a not-for-profit research foundation
-located in Wageningen, the Netherlands. We specifically promote
-publishing and sharing of Open Geographical and Geoscientific Data,
-using and developing Open Source Software and encouraging and empowering
-under-represented researchers e.g. those from ODA recipient countries
-and female researchers. We believe that the key measure of quality of
-research in all sciences (and especially in geographical information
-sciences) is in transparency and reproducibility of the computer code
-used to generate results (read more in: ["Everyone has a right to know
-what is happening with the planet"](https://opengeohub.medium.com/)).
-
-## Literature
+## Literature {.unnumbered}
 
 Some other connected publications and initiatives describing collation 
 and import of legacy soil observations and measurements that might interest
@@ -265,3 +261,31 @@ you:
     <https://doi.org/10.2136/sssaj2016.12.0421>
 -   Rossiter, D.G.,: [**Compendium of Soil Geographical
     Databases**](https://www.isric.org/explore/soil-geographic-databases).
+
+## About OpenGeoHub {.unnumbered}
+
+[<img src="./tex/opengeohub_logo_ml.png" alt="OpenGeoHub logo" width="350"/>](https://opengeohub.org)
+
+**OpenGeoHub foundation** is a not-for-profit research foundation
+located in Wageningen, the Netherlands. We specifically promote
+publishing and sharing of Open Geographical and Geoscientific Data,
+using and developing Open Source Software and encouraging and empowering
+under-represented researchers e.g. those from ODA recipient countries
+and female researchers. We believe that the key measure of quality of
+research in all sciences (and especially in geographical information
+sciences) is in transparency and reproducibility of the computer code
+used to generate results (read more in: ["Everyone has a right to know
+what is happening with the planet"](https://opengeohub.medium.com/)).
+
+## Acknowledgments {.unnumbered}
+
+[**SoilSpec4GG**](https://soilspectroscopy.org/) is a USDA-funded [Food and Agriculture Cyberinformatics
+Tools Coordinated Innovation Network NIFA Award #2020-67021-32467](https://nifa.usda.gov/press-release/nifa-invests-over-7-million-big-data-artificial-intelligence-and-other) project. It brings together soil
+scientists, spectroscopists, informaticians, data scientists and
+software engineers to overcome some of the current bottlenecks
+preventing wider and more efficient use of soil spectroscopy. For more info refer
+to: <https://soilspectroscopy.org/>
+
+**[EcoDataCube.eu](https://EcoDataCube.eu/)** project is co-financed by the European Union (**[CEF Telecom project 2018-EU-IA-0095](https://ec.europa.eu/inea/en/connecting-europe-facility/cef-telecom/2018-eu-ia-0095)**).
+
+**[EarthMonitor.org](https://EarthMonitor.org/)** project has received funding from the European Union's Horizon Europe research an innovation programme under grant agreement **[No. 101059548](https://cordis.europa.eu/project/id/101059548)**.
