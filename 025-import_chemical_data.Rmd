@@ -1,4 +1,4 @@
-## Soil chemical and physical properties
+# Soil chemical and physical properties
 
 ```{r, results = "asis", echo = FALSE}
 status("drafting")
@@ -13,7 +13,11 @@ if(length(new.packages)) install.packages(new.packages, repos="https://cloud.r-p
 lapply(ls, require, character.only = TRUE)
 ```
 
-Part of: [Compiled ESS point data sets](https://gitlab.com/openlandmap/compiled-ess-point-data-sets)
+## Overview
+
+This section describes import steps used to produce a global compilation of soil 
+laboratory data with chemical (and physical) soil properties that can be then 
+used for predictive soil mapping / modeling at global and regional scales.
 Last update:  `r Sys.Date()`
 
 Read more about soil chemical properties, global soil profile and sample data sets and functionality:
@@ -23,7 +27,7 @@ Read more about soil chemical properties, global soil profile and sample data se
 - Hengl, T., MacMillan, R.A., (2019). [Predictive Soil Mapping with R](https://soilmapper.org/). OpenGeoHub foundation, Wageningen, the Netherlands, 370 pages, www.soilmapper.org, ISBN: 978-0-359-30635-0.
 - Rossiter, D.G.,: [Compendium of Soil Geographical Databases](https://www.isric.org/explore/soil-geographic-databases).
 
-## ![alt text](../../../tex/R_logo.svg.png "Packages in use") Specifications
+## ![alt text](./tex/R_logo.svg.png "Packages in use") Specifications
 
 #### Data standards
 
@@ -49,7 +53,7 @@ library(vroom)
 #devtools::install_github('davidcarslaw/openair')
 library(openair)
 fig_nums <- captioner(prefix = "Fig.")
-#load.pigz("themes/sol/SoilChemDB/soilchem.RData")
+#load.pigz("soilchem.RData")
 source('./R/data_functions.R')
 ```
 
@@ -59,11 +63,24 @@ source('./R/data_functions.R')
 #### _Target variables:_
 
 ```{r}
-site.names = c("site_key", "usiteid", "site_obsdate", "longitude_decimal_degrees", "latitude_decimal_degrees")
-hor.names = c("labsampnum","site_key","layer_sequence","hzn_top","hzn_bot","hzn_desgn", "tex_psda", "clay_tot_psa", "silt_tot_psa", "sand_tot_psa", "oc", "oc_d", "c_tot", "n_tot", "ph_kcl", "ph_h2o", "ph_cacl2", "cec_sum", "cec_nh4", "ecec", "wpg2", "db_od", "ca_ext", "mg_ext", "na_ext", "k_ext", "ec_satp", "ec_12pre")
+site.names = c("site_key", "usiteid", "site_obsdate", "longitude_decimal_degrees", 
+               "latitude_decimal_degrees")
+hor.names = c("labsampnum","site_key","layer_sequence","hzn_top","hzn_bot", 
+              "hzn_desgn", "tex_psda", "clay_tot_psa", "silt_tot_psa", "sand_tot_psa", 
+              "oc", "oc_d", "c_tot", "n_tot", "ph_kcl", "ph_h2o", "ph_cacl2", 
+              "cec_sum", "cec_nh4", "ecec", "wpg2", "db_od", "ca_ext", "mg_ext", 
+              "na_ext", "k_ext", "ec_satp", "ec_12pre")
 ## target structure:
-col.names = c("site_key", "usiteid", "site_obsdate", "longitude_decimal_degrees", "latitude_decimal_degrees", "labsampnum", "layer_sequence","hzn_top","hzn_bot","hzn_desgn", "tex_psda", "clay_tot_psa", "silt_tot_psa", "sand_tot_psa", "oc", "oc_d", "c_tot", "n_tot", "ph_kcl", "ph_h2o", "ph_cacl2", "cec_sum", "cec_nh4", "ecec", "wpg2", "db_od", "ca_ext", "mg_ext", "na_ext", "k_ext", "ec_satp", "ec_12pre", "source_db", "confidence_degree", "project_url", "citation_url")
+col.names = c("site_key", "usiteid", "site_obsdate", "longitude_decimal_degrees", 
+              "latitude_decimal_degrees", "labsampnum", "layer_sequence", "hzn_top", 
+              "hzn_bot","hzn_desgn", "tex_psda", "clay_tot_psa", "silt_tot_psa", 
+              "sand_tot_psa", "oc", "oc_d", "c_tot", "n_tot", "ph_kcl", "ph_h2o", 
+              "ph_cacl2", "cec_sum", "cec_nh4", "ecec", "wpg2", "db_od", "ca_ext", 
+              "mg_ext", "na_ext", "k_ext", "ec_satp", "ec_12pre", "source_db", 
+              "confidence_degree", "project_url", "citation_url")
 ```
+
+Targe variables listed:
 
 - `clay_tot_psa`: Clay, Total in % wt for <2 mm soil fraction, 
 - `silt_tot_psa`: Silt, Total in % wt for <2 mm soil fraction, 
@@ -658,7 +675,9 @@ if(!exists("chemsprops.Mangroves")){
   mngALL$hzn_top = mngALL$U_depth * 100
   mngALL$hzn_bot = mngALL$L_depth * 100
   mngALL$wpg2 = 0
-  mng.col = c("Site.name", "Site..", "Year_sampled", "Longitude_Adjusted", "Latitude_Adjusted", "labsampnum", "layer_sequence","hzn_top","hzn_bot","hzn_desgn", "tex_psda", "clay_tot_psa", "silt_tot_psa", "sand_tot_psa", "oc", "oc_d", "c_tot", "n_tot", "ph_kcl", "ph_h2o", "ph_cacl2", "cec_sum", "cec_nh4", "ecec", "wpg2", "BD_final", "ca_ext", "mg_ext", "na_ext", "k_ext", "ec_satp", "ec_12pre")
+  #summary(mngALL$BD_reported) ## some very high values 3.26 t/m3
+  mngALL$Year = ifelse(is.na(mngALL$Year_sampled), mngALL$Years_collected, mngALL$Year_sampled)
+  mng.col = c("Site.name", "Site..", "Year", "Longitude_Adjusted", "Latitude_Adjusted", "labsampnum", "layer_sequence","hzn_top","hzn_bot","hzn_desgn", "tex_psda", "clay_tot_psa", "silt_tot_psa", "sand_tot_psa", "oc", "oc_d", "c_tot", "n_tot", "ph_kcl", "ph_h2o", "ph_cacl2", "cec_sum", "cec_nh4", "ecec", "wpg2", "BD_reported", "ca_ext", "mg_ext", "na_ext", "k_ext", "ec_satp", "ec_12pre")  
   x.na = mng.col[which(!mng.col %in% names(mngALL))]
   if(length(x.na)>0){ for(i in x.na){ mngALL[,i] = NA } }
   chemsprops.Mangroves = mngALL[,mng.col]
@@ -666,7 +685,7 @@ if(!exists("chemsprops.Mangroves")){
   chemsprops.Mangroves$confidence_degree = 4
   chemsprops.Mangroves$project_url = "http://maps.oceanwealth.org/mangrove-restoration/"
   chemsprops.Mangroves$citation_url = "https://doi.org/10.1088/1748-9326/aabe1c"
-  chemsprops.Mangroves = complete.vars(chemsprops.Mangroves, sel = c("oc","BD_final"), coords = c("Longitude_Adjusted", "Latitude_Adjusted"))
+  chemsprops.Mangroves = complete.vars(chemsprops.Mangroves, sel = c("oc","BD_reported"), coords = c("Longitude_Adjusted", "Latitude_Adjusted"))
   #head(chemsprops.Mangroves)
   #levels(as.factor(mngALL$OK.to.release.))
   mng.rm = chemsprops.Mangroves$Site.name[chemsprops.Mangroves$Site.name %in% mngALL$Site.name[grep("N", mngALL$OK.to.release., ignore.case = FALSE)]]
@@ -780,8 +799,8 @@ if(!exists("chemsprops.EGRPR")){
   russ.HOR$SOURCEID = paste(russ.HOR$CardID, russ.HOR$SOIL_ID, sep="_")
   russ.HOR$wpg2 = russ.HOR$TEXTSTNS
   russ.HOR$SNDPPT <- russ.HOR$TEXTSAF + russ.HOR$TEXSCM
-  russ.HOR$SLTPPT <- russ.HOR$TEXTSIC + russ.HOR$TEXTSIM + 0.8 * russ.HOR$TEXTSIF
-  russ.HOR$CLYPPT <- russ.HOR$TEXTCL + 0.2 * russ.HOR$TEXTSIF
+  russ.HOR$SLTPPT <- russ.HOR$TEXTSIC + russ.HOR$TEXTSIM + 0.8 * ifelse(is.na(russ.HOR$TEXTSIF), 0, russ.HOR$TEXTSIF)
+  russ.HOR$CLYPPT <- russ.HOR$TEXTCL + 0.2 * ifelse(is.na(russ.HOR$TEXTSIF), 0, russ.HOR$TEXTSIF)
   ## Correct texture fractions:
   sumTex <- rowSums(russ.HOR[,c("SLTPPT","CLYPPT","SNDPPT")])
   russ.HOR$SNDPPT <- russ.HOR$SNDPPT / ((sumTex - russ.HOR$CLYPPT) /(100 - russ.HOR$CLYPPT))
@@ -1788,7 +1807,11 @@ Other potential large soil profile DBs of interest:
 #ls(pattern=glob2rx("chemsprops.*"))
 tot_sprops = dplyr::bind_rows(lapply(ls(pattern=glob2rx("chemsprops.*")), function(i){ mutate_all(setNames(get(i), col.names), as.character) }))
 ## convert to numeric:
-for(j in c("longitude_decimal_degrees", "latitude_decimal_degrees", "layer_sequence", "hzn_top", "hzn_bot", "clay_tot_psa", "silt_tot_psa", "sand_tot_psa", "oc", "oc_d", "c_tot", "n_tot", "ph_kcl", "ph_h2o", "ph_cacl2", "cec_sum", "cec_nh4", "ecec", "wpg2", "db_od", "ca_ext", "mg_ext", "na_ext", "k_ext", "ec_satp", "ec_12pre")){
+for(j in c("longitude_decimal_degrees", "latitude_decimal_degrees", "layer_sequence", 
+           "hzn_top", "hzn_bot", "clay_tot_psa", "silt_tot_psa", "sand_tot_psa", 
+           "oc", "oc_d", "c_tot", "n_tot", "ph_kcl", "ph_h2o", "ph_cacl2", "cec_sum", 
+           "cec_nh4", "ecec", "wpg2", "db_od", "ca_ext", "mg_ext", "na_ext", "k_ext", 
+           "ec_satp", "ec_12pre")){
   tot_sprops[,j] = as.numeric(tot_sprops[,j])
 }
 #head(tot_sprops)
@@ -1861,7 +1884,7 @@ Remove points falling in the sea or similar:
 if(!exists("ov.sprops")){
   #mask = terra::rast("../../../layers1km/lcv_landmask_esacci.lc.l4_c_1km_s0..0cm_2000..2015_v1.0.tif")
   mask = terra::rast("/mnt/diskstation/data/LandGIS/layers250m/lcv_landmask_esacci.lc.l4_c_250m_s0..0cm_2000..2015_v1.0.tif")
-  ov.sprops <- terra::extract(mask, terra::vect(tot_sprops.pnts)) ## TAKES 3-4 mins
+  ov.sprops <- terra::extract(mask, terra::vect(tot_sprops.pnts)) ## TAKES 2 mins
   summary(as.factor(ov.sprops[,2]))
   if(sum(is.na(ov.sprops[,2]))>0 | sum(ov.sprops[,2]==2)>0){
     rem.lst = which(is.na(ov.sprops[,2]) | ov.sprops[,2]==2 | ov.sprops[,2]==4)
@@ -1871,7 +1894,7 @@ if(!exists("ov.sprops")){
 }
 ## final number of unique spatial locations:
 nrow(tot_sprops.pnts)
-## 203,044
+## 203,107
 ```
 
 #### Histogram plots
@@ -2100,6 +2123,6 @@ write.csv(tot_sprops.s, file=gzfile("../../../out/csv/sol_chem.pnts_horizons.csv
 Save temp object:
 
 ```{r, eval=FALSE}
-save.image.pigz(file="themes/sol/SoilChemDB/soilchem.RData")
-## rmarkdown::render("themes/sol/SoilChemDB/README.rmd")
+save.image.pigz(file="soilchem.RData")
+## rmarkdown::render("Index.rmd")
 ```

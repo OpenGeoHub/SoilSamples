@@ -1,0 +1,81 @@
+signific_ger_95,COUNTA of signific_ger_95,WRB_correlation_1,WRB_correlation_2,note
+BRUNISOL,402,Eutric Cambisols,Dystric Cambisols,in RP 2008: Brunisol Eutriques/Dystriques; hypereutric is not in the list of qualifiers for cambisols in WRB 2022; replaced by principal qualifier eutric
+CALCOSOL,321,Calcaric Cambisols,,
+CALCISOL,129,Eutric Cambisols,,hypereutric is not in the list of principal qualifiers for cambisols in WRB 2022; replaced by eutric
+LUVISOL,114,Haplic Luvisols,,"many subtypes, but no more information here to select the correct qualifiers"
+NEOLUVISOL,106,Luvic Cambisols,,luvic is not in the list of qualifiers for cambisols in WRB 2022; replace by ...?
+COLLUVIOSOL,93,Regosols (Colluvic),,colluvic qualifier does not exist in WRB 2022; addded as supplementary according to rules 
+LUVISOL-REDOXISOL,85,Luvic Stagnosols,,"just my suggestion, because WRB does not use double RSG"
+RANKOSOL,76,Umbric Leptosols,,
+RENDOSOL,75,Rendzic Leptosols,,
+ALOCRISOL,58,Dystric Cambisols,Cambic Umbrisols,
+REDOXISOL,56,Stagnic Gleysols,,
+ALOCRISOL TYPIQUE,48,Dystric Cambisols,,
+BRUNISOL SATURE,44,Mollic Umbrisols,Eutric Cambisols,in RP 2008: Brunisol Eutriques; hypereutric is not in the list of supplementary qualifiers for cambisols in WRB 2022; replaced by principal qualifier eutric
+FLUVIOSOL,41,Eutric Fluvisols,,"many subtypes, but no more information here to select the correct qualifiers"
+BRUNISOL OLIGO-SATURE,39,Mollic Umbrisols,Eutric Cambisols,in RP 2008: Brunisol Eutriques
+BRUNISOL MESOSATURE,38,Mollic Umbrisols,Eutric Cambisols,in RP 2008: Brunisol Eutriques; hypereutric is not in the list of supplementary qualifiers for cambisols in WRB 2022; replaced by principal qualifier eutric
+RENDISOL,31,Rendzic Leptosols,,
+LUVISOL TYPIQUE,31,Haplic Luvisols,,
+BRUNISOL-REDOXISOL,26,Eutric Stagnosols,,"just my suggestion, because WRB does not use double RSG"
+PODZOSOL MEUBLE,24,Albic Podzols,,
+FLUVIOSOL BRUNIFIE,24,Fluvic Cambisols,,
+REDUCTISOL,23,Stagnic Gleysols,,
+LUVISOL DEGRADE,22,Eutric Retisols,Gleyic Retisols,
+ALOCRISOL HUMIQUE,19,Cambic Umbrisols,Cambic Umbrisols (Hyperdystric),
+PLANOSOL TYPIQUE,16,Eutric Planosols,,
+ARENOSOL,15,Calcaric Arenosols,,
+PODZOSOL DURIQUE,11,Albic Podzols,,
+FLUVIOSOL TYPIQUE,11,Eutric Fluvisols,,
+FERSIALSOL,10,Chromic Cambisols,,haplic is not WRB 2022 qualifier for cambisols
+REDUCTISOL TYPIQUE,9,Stagnic Gleysols,,
+PODZOSOL,9,Rustic Podzols,,"many subtypes, but no more information here to select the correct qualifiers"
+PLANOSOL,9,Eutric Planosols,,"many subtypes, but no more information here to select the correct qualifiers"
+LITHOSOL,9,Lithic Leptosols,,
+FLUVIOSOL-REDOXISOL,8,Fluvic Stagnosols,,"just my suggestion, because WRB does not use double RSG"
+NEOLUVISOL-REDOXISOL,7,Luvic Stagnosols,,"just my suggestion, because WRB does not use double RSG"
+THALASSOSOL,6,Tidalic Fluvisols,,
+PSEUDO-LUVISOL,6,Regosols (Ruptic),,ruptic qualifier does not exist in WRB 2022; addded as supplementary according to rules 
+PODZOSOL OCRIQUE,6,Entic Podzols,,
+PODZOSOL HUMO-DURIQUE,6,Umbric Podzols,,
+ND,6,,,I do not know what does it mean. Probably not defined?
+DOLOMITOSOL,6,Dolomitic Cambisols,,
+CALCISOL-CALCOSOL,6,Calcaric Cambisols,,
+ANTHROPOSOL,6,Anthrosols,,
+VERACRISOL,5,Umbrisols (Vermic),,vermic qualifier doesn not exist for umbrisols in WRB 2022 ; addded as supplementary according to rules 
+PEYROSOL,5,Skeletic Leptosols,Skeletic Podzols,
+ANDOSOL,5,Vitric Andosols,,
+PODZOSOL HUMIQUE,4,Umbric Podzols,Entic Podzols,
+PEYROSOL CAILLOUTIQUE,4,Skeletic Leptosols,,
+PELOSOL,4,Vertic Cambisols,,
+LUVISOL TRONQUE,4,Abruptic Luvisols,,
+FERSIALSOL CALCIQUE,4,Chromic Cambisols,Eutric Chromic Cambisols,
+CALCOSOL-REDOXISOL,4,Calcaric Stagnosols,Calcaric Stagnosols (Cambic),
+THALASSOSOL-REDOXISOL,3,Fluvic Stagnosols,,
+REGOSOL,3,Nudilithic Leptosols,,
+PODZOSOL PLACIQUE,3,Albic Podzols,Albic Podzols (Placic),
+FERSIALSOL ELUVIQUE,3,Chromic Luvisols ,,
+ANTHROPOSOL RECONSTITUE,3,Technosols,Urbic Technosols,
+ALUANDOSOL HUMIQUE,3,Vitric Andosols,,
+REDUCTISOL DUPLIQUE,2,Stagnic Gleysols,,
+PEYROSOL PIERRIQUE,2,Skeletic Leptosols,,
+ORGANOSOL,2,Folic Umbrisols,Folic Umbrisols (Hyperhumic),
+MAGNESISOL,2,Eutric Cambisols,Eutric Cambisols (Magnesic),
+LITHOVERTISOL,2,Haplic Vertisols,,
+HISTOSOL,2,Fibric Histosols,,
+TOPOVERTISOL,1,Haplic Vertisols,,
+SALISOL CHLORURO-SULFATE,1,Haplic Solonchaks,"Solonchaks (Chloridic, Sulphatic)",
+REDOXISOL-LUVISOL,1,Stagnic Luvisols,,
+QUASI-LUVISOL,1,Luvisols (Ruptic),,ruptic qualifier does not exist in WRB 2022; addded as supplementary according to rules 
+PSEUDO-LUVISOL-REDOXISOL,1,Luvic Stagnosols (Ruptic),,ruptic qualifier does not exist in WRB 2023; addded as supplementary according to rules 
+PELOSOL DIFFERENCIE,1,Vertic Planosols,,
+PELOSOL BRUNIFIE,1,Chromic Cambisols,Chromic Cambisols (Clayic),
+HISTOSOL MESIQUE,1,Hemic Histosols,,
+HISTOSOL FIBRIQUE,1,Fibric Histosols,,
+HISTOSOL COMPOSITE,1,Haplic Vertisols,,
+FERSIALSOL INSATURE,1,Chromic Cambisols,,
+COLLUVIOSOL-REDOXISOL,1,Stagnosols (Colluvic) ,,colluvic qualifier does not exist in WRB 2022; addded as supplementary according to rules 
+CALCISOL-REDOXISOL,1,Calcaric Stagnosols,Calcaric Stagnosols (Cambic),
+BRUNISOL-REDUCTISOL,1,Eutric Stagnosols,Eutric Stagnosols (Cambic),
+ANTHROPOSOL TRANSFORME,1,Anthrosols,,
+Grand Total,2171,,,

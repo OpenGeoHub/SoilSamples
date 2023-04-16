@@ -1,7 +1,7 @@
 ---
 knit: "bookdown::render_book"
-title: "An Open Compendium of Soil Datasets"
-author: "Tom Hengl, Surya Gupta"
+title: "An Open Compendium of Soil Sample and Soil Profile Datasets"
+author: "Tom Hengl, Surya Gupta, Robert Minarik"
 description: "This is a public compendium of global, regional, national and sub-national soil samples and/or soil profile datasets (points with Observations and Measurements of soil properties and characteristics). Datasets listed here, assuming compatible open license, are afterwards imported into a common library. Contributions are welcome. To discuss issues or report a bug please use the repository homepage."
 url: 'https\://opengeohub.github.io/SoilSamples/'
 bibliography: ./tex/refs.bib
@@ -23,6 +23,8 @@ site: bookdown::bookdown_site
 
 
 # About {.unnumbered}
+
+[![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.4748499.svg)](https://doi.org/10.5281/zenodo.4748499)
 
 ## Rationale {.unnumbered}
 
@@ -47,7 +49,6 @@ The specific objectives of this initiative are:
 Compiled data (imported, standardized, quality-controlled) is available 
 through a diversity of standard formats:
 
-- CSV file (compressed using giz to reduce download time);
 - RDS file (native R data format);
 - GPKG file ([Geopackage file](https://www.geopackage.org/) ready to be opened in QGIS);
 
@@ -61,7 +62,7 @@ OpenLandMap repository](https://gitlab.com/openlandmap/) are:
 -   License and terms of use clearly specified AND,\
 -   Complete and consistent metadata that can ensure correct
     standardization and harmonization steps AND,\
--   At least 50 unique spatial locations AND,\
+-   **At least 50 unique spatial locations** AND,\
 -   No broken or invalid URLs,
 
 Datasets that do NOT satisfy the above listed minimum requirements might be
@@ -109,6 +110,7 @@ Some existing soil Observations and Measurements (O&M) soil data initiatives inc
   - [**Long Term Ecological Research (LTER) Network sites**](https://lternet.edu/site/),\
   - [**National Ecological Observatory Network (NEON)**](https://www.neonscience.org),\
   - [**Open Soil Spectral Library (OSSL)**](https://soilspectroscopy.org),\
+  - [**Open Bodem Index**](https://agrocares.github.io/Open-Bodem-Index-Calculator/),\
   - [**Soils Data Harmonization (SoDaH)**](https://lter.github.io/som-website),\
   - [**WoSIS Soil Profile Database**](https://www.isric.org/explore/wosis),
 
@@ -192,7 +194,8 @@ and references. Some highly recommended protocols and standards include:
 - [USDA soil texture calculator](https://www.nrcs.usda.gov/wps/portal/nrcs/detail/soils/survey/?cid=nrcs142p2_054167) to determine and share soil texture classes including texture-by-hand, 
 - [Kellogg Soil Survey Laboratory Methods Manual](https://www.nrcs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb1253872.pdf) for reference physical and chemical soil property determination in laboratory,
 - [Soils Laboratory Manual, K-State Edition](https://kstatelibraries.pressbooks.pub/soilslabmanual/),
-- [GLOSOLAN Standard Operating Procedures (SOPs)](http://www.fao.org/global-soil-partnership/glosolan/soil-analysis/standard-operating-procedures/en/#c763834),
+- [GLOSOLAN Standard Operating Procedures (SOPs)](http://www.fao.org/global-soil-partnership/glosolan/soil-analysis/standard-operating-procedures/en/#c763834),  
+- [Open Bodem Index specification](),
 
 ## Contributing {.unnumbered}
 
@@ -220,6 +223,21 @@ The data is provided "as is". [OpenGeoHub foundation](https://opengeohub.org/abo
 [<img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />](http://creativecommons.org/licenses/by-sa/4.0/)
 
 This website/book is free to use, and is licensed under the [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/).
+
+To cite this dataset please use:
+
+```
+@dataset{hengl_t_2023_4748499,
+  author       = {Hengl, T. and Gupta, S. and Minarik, R.},
+  title        = {{An Open Compendium of Soil Datasets: Soil Observations and Measurements}},
+  year         = 2023,
+  publisher    = {OpenGeoHub foundation},
+  address      = {Wageningen},
+  version      = {v0.2},
+  doi          = {10.5281/zenodo.4748499},
+  url          = {https://doi.org/10.5281/zenodo.4748499}
+}
+```
 
 ## Literature {.unnumbered}
 
@@ -258,6 +276,8 @@ you:
     database**](https://doi.org/10.2136/sssaj2016.12.0421). Soil Science
     Society of America Journal, 81(6), 1279-1287.
     <https://doi.org/10.2136/sssaj2016.12.0421>
+-   Ros, G. H., Verweij, S. E., Janssen, S. J., De Haan, J., & Fujita, Y. (2022). [**An Open Soil 
+    Health Assessment Framework Facilitating Sustainable Soil Management**](https://doi.org/10.1021/acs.est.2c04516). Environmental Science & Technology, 56(23), 17375-17384.
 -   Rossiter, D.G.,: [**Compendium of Soil Geographical
     Databases**](https://www.isric.org/explore/soil-geographic-databases).
 
@@ -288,3 +308,8 @@ to: <https://soilspectroscopy.org/>
 **[EcoDataCube.eu](https://EcoDataCube.eu/)** project is co-financed by the European Union (**[CEF Telecom project 2018-EU-IA-0095](https://ec.europa.eu/inea/en/connecting-europe-facility/cef-telecom/2018-eu-ia-0095)**).
 
 **[EarthMonitor.org](https://EarthMonitor.org/)** project has received funding from the European Union's Horizon Europe research an innovation programme under grant agreement **[No. 101059548](https://cordis.europa.eu/project/id/101059548)**.
+
+**[AI4SoilHealth.eu](https://AI4SoilHealth.eu/)** project has received funding from 
+the European Union's Horizon Europe research an innovation programme under grant 
+agreement **[No. 101086179](https://cordis.europa.eu/project/id/101086179)**.
+

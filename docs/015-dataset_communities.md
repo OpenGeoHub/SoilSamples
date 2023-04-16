@@ -1,7 +1,7 @@
 # Soil data communities and mailing lists
 
 ::: {.rmdnote}
-You are reading the work-in-progress An Open Compendium of Soil Datasets. This chapter is currently draft version, a peer-review publication is pending. You can find the polished first edition at <https://opengeohub.github.io/SoilSamples/>.
+You are reading the work-in-progress An Open Compendium of Soil Sample and Soil Profile Datasets. This chapter is currently draft version, a peer-review publication is pending. You can find the polished first edition at <https://opengeohub.github.io/SoilSamples/>.
 :::
 
 To follow progress of the soil data compilations consider connecting to some of the 

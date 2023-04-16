@@ -846,3 +846,17 @@ _Description_: Contains soil profile data at depths of 5 cm and 25 cm from 238 s
 - `r emo::ji("round_pushpin")` Unique locations: 238  
 - `r emo::ji("clipboard")` Unique complete rows:   
 - `r emo::ji("memo")` Import steps:  
+
+# Soil variables
+
+## Chemical soil variables
+
+## Physical soil variables
+
+## Biological soil variables
+
+## Soil classification
+
+## Site observations
+
+

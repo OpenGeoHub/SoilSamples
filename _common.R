@@ -30,7 +30,7 @@ status <- function(type) {
 
   cat(paste0(
     "::: {.rmdnote}\n",
-    "You are reading the work-in-progress An Open Compendium of Soil Datasets. ",
+    "You are reading the work-in-progress An Open Compendium of Soil Sample and Soil Profile Datasets. ",
     "This chapter is currently ", status, ". ",
     "You can find the polished first edition at <https://opengeohub.github.io/SoilSamples/>.\n",
     ":::\n"

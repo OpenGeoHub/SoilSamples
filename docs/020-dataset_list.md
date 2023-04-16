@@ -1,7 +1,7 @@
 # Datasets
 
 ::: {.rmdnote}
-You are reading the work-in-progress An Open Compendium of Soil Datasets. This chapter is currently draft version, a peer-review publication is pending. You can find the polished first edition at <https://opengeohub.github.io/SoilSamples/>.
+You are reading the work-in-progress An Open Compendium of Soil Sample and Soil Profile Datasets. This chapter is currently draft version, a peer-review publication is pending. You can find the polished first edition at <https://opengeohub.github.io/SoilSamples/>.
 :::
 
 ## Global Datasets
@@ -846,3 +846,17 @@ _Description_: Contains soil profile data at depths of 5 cm and 25 cm from 238 s
 - 📍 Unique locations: 238  
 - 📋 Unique complete rows:   
 - 📝 Import steps:  
+
+# Soil variables
+
+## Chemical soil variables
+
+## Physical soil variables
+
+## Biological soil variables
+
+## Soil classification
+
+## Site observations
+
+

@@ -104,3 +104,15 @@ the-forest-inventory-and-analysis-database-fiadb
 other-datasets
 permafrost-in-subarctic-canada
 soil-hydraulic-dataset-for-qinghai-tibet-plateau
+soil-variables
+chemical-soil-variables
+physical-soil-variables
+biological-soil-variables
+soil-classification
+site-observations
+wrb-soil-types
+overview
+wosis-point-datasets
+hwsdv2
+additional-point-datasets-with-wrb-classes
+final-compilation-of-analysis-ready-points

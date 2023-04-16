@@ -8,9 +8,10 @@ rmd_files: [
   "010-start_here.Rmd",
   "015-dataset_communities.Rmd",
   "020-dataset_list.Rmd",
-#  "025-import_chemical_data.Rmd",
-#  "030-import_physical_data.Rmd",
-#  "035-import_taxa_data.Rmd",
+  #"025-import_chemical_data.Rmd",
+  #"030-import_physical_data.Rmd",
+  "035-import_wrb_data.Rmd",
+  #"040-import_usda_data.Rmd",
 
 ]
 

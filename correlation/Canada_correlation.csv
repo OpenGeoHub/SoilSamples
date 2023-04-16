@@ -1,0 +1,32 @@
+CSSC_Soil_Order,CSSC_Great_Groups,CSSC_Soil_Order_Code,TAX_SBGRP,USDA_suborder,WRB_subgroup
+Chernozemic,Brown Chernozem,CH,GA,Aridic Boroll,Aridic Kastanozem
+Chernozemic,Dark Brown Chernozem,CH,GB,Typic Boroll,Haplic Kastanozem
+Chernozemic,Black Chernozem,CH,GC,Udic Boroll,Haplic Chernozem
+Chernozemic,Dark Gray Chernozem,CH,GD,Boralfic Boroll / Albolls,Greyzem
+Solonetzic,Solonetz,SO,FD,Natraqualf / Natrustoll,Mollic Solonetz / Haplic Solonetz / Gleyic Solonetz
+Solonetzic,Solodized Solonetz,SO,FC,Natraqualf / Natrustoll,Mollic Solonetz / Haplic Solonetz / Gleyic Solonetz
+Solonetzic,Solod,SO,FB,Glossic Natriborolls / Natralbolls,Solodic Planosol
+Solonetzic,Vertic Solonetz,SO,FA,Haplocryerts,Sodic Vertisol
+Luvisolic,Gray Brown Luvisol,LU,HA,Hapludalfs / Glossudalfs,Albic Luvisol / Haplic Luvisol
+Luvisolic,Gray Luvisol,LU,HB,Boralfs,Albic Luvisol / Gleyic Luvisol
+Podzolic,Humic Podzol,PO,DA,Cryaquods / Humods,Humic Podzol
+Podzolic,Ferro-Humic Podzol,PO,DB,Humic Cryorthods / Humic Haplorthods,Orthic Podzol
+Podzolic,Humo-Ferric Podzol,PO,DC,Cryorthods / Haplorthods,Orthic Podzol
+Brunisolic,Melanic Brunisol,BR,IA,Cryochrepts / Eutrochrepts / Hapludolls,Eutric Cambisol
+Brunisolic,Eutric Brunisol,BR,IB,Cryochrepts / Eutrochrepts,Eutric Cambisol / Calcic Cambisol
+Brunisolic,Sombric Brunisol,BR,IC,Humbric Dystrochrepts,Dystric Cambisol / Umbric Cambisol
+Brunisolic,Dystric Brunisol,BR,ID,Dystrochrepts / Cryochrepts,Dystric Cambisol
+Regosolic,Regosol,RE,JB,Orthents / Orthels,Haplic Regosols
+Regosolic,Humic Regosol,RE,JA,Orthents / Humods,Haplic Regosols / Umbric Gleysols
+Gleysolic,Humic Gleysol,GL,EB,Aquolls / Humaquepts,Mollic Gleysol / Umbric Gleysol / Calcic Gleysol
+Gleysolic,Gleysol,GL,EC,Aquents / Fluvents / Aquepts,Haplic Gleysol
+Gleysolic,Luvic Gleysol,GL,EA,Argialbolls / Argiaquolls / Aqualfs,Planosol
+Organic,Fibrisol,OR,BB,Fibrists,Fibric Histosol
+Organic,Mesisol,OR,BC,Hemists,Hemic Histosol
+Organic,Humisol,OR,BD,Saprists,Sapric Histosol
+Organic,Folisol,OR,BA,Folists,Histosol
+Cryosolic,Turbic Cryosol,CR,AB,Turbels,Turbic Cryosol
+Cryosolic,Static Cryosol,CR,AC,Orthels,Cryosol
+Cryosolic,Organic Cryosol,CR,AA,Histels,Cryic Histosol
+Vertisolic,Vertisol,VE,CA,Haplocryerts,Calcic Vertisol / Eutric Vertisol
+Vertisolic,Humic Vertisol,VE,CB,Humicryerts,Dystric Vertisol

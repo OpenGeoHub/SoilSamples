@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>5 WRB soil types | An Open Compendium of Soil Sample and Soil Profile Datasets</title>
+<meta name="author" content="Tom Hengl, Surya Gupta, Robert Minarik">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.14/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-1BH6J2NKGP"></script><script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-1BH6J2NKGP');
+    </script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS -->
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">An Open Compendium of Soil Sample and Soil Profile Datasets</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">About</a></li>
+<li><a class="" href="new-to-markdown.html"><span class="header-section-number">1</span> New to markdown</a></li>
+<li><a class="" href="soil-data-communities-and-mailing-lists.html"><span class="header-section-number">2</span> Soil data communities and mailing lists</a></li>
+<li><a class="" href="datasets.html"><span class="header-section-number">3</span> Datasets</a></li>
+<li><a class="" href="soil-variables.html"><span class="header-section-number">4</span> Soil variables</a></li>
+<li><a class="active" href="wrb-soil-types.html"><span class="header-section-number">5</span> WRB soil types</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/OpenGeoHub/SoilSamples/">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="wrb-soil-types" class="section level1" number="5">
+<h1>
+<span class="header-section-number">5</span> WRB soil types<a class="anchor" aria-label="anchor" href="#wrb-soil-types"><i class="fas fa-link"></i></a>
+</h1>
+<div class="rmdnote">
+<p>You are reading the work-in-progress An Open Compendium of Soil Sample and Soil Profile Datasets. This chapter is currently draft version, a peer-review publication is pending. You can find the polished first edition at <a href="https://opengeohub.github.io/SoilSamples/" class="uri">https://opengeohub.github.io/SoilSamples/</a>.</p>
+</div>
+<div id="overview" class="section level2" number="5.1">
+<h2>
+<span class="header-section-number">5.1</span> Overview<a class="anchor" aria-label="anchor" href="#overview"><i class="fas fa-link"></i></a>
+</h2>
+<p>This section describes import steps used to produce a global compilation of
+FAO’s IUSS’s <a href="https://www.fao.org/soils-portal/data-hub/soil-classification/world-reference-base/en/">World Reference Base (WRB)</a> observations of soil types.
+Classes are either used as-is or a translated from some local or international system.
+Correlation tables are available in the folder <code>./correlation</code> and is based on
+various literature sources. Correlation is not trivial and often not 1:1 so we
+typically use 2–3 options for translating soil types <span class="citation">(<a href="wrb-soil-types.html#ref-krasilnikov2009handbook" role="doc-biblioref">Krasilnikov, Arnold, Marti, &amp; Shoba, 2009</a>)</span>. Output compilations are
+available in the folder <code>./out</code>. Please refer to the dataset version / DOI for
+full reproducibility of your modeling.</p>
+<p>This dataset is currently used to produce <a href="https://github.com/OpenGeoHub/SoilTypeMapping/">soil type maps of the world</a> at various
+spatial resolutions.
+To add new dataset please open a <a href="https://github.com/OpenGeoHub/SoilSamples/issues">new issue</a> or do a merge request.</p>
+</div>
+<div id="wosis-point-datasets" class="section level2" number="5.2">
+<h2>
+<span class="header-section-number">5.2</span> WoSIS point datasets<a class="anchor" aria-label="anchor" href="#wosis-point-datasets"><i class="fas fa-link"></i></a>
+</h2>
+<p>There are currently several global datasets that reference distribution of WRB
+classes. For building training points for predictive soil type mapping the most
+comprehensive dataset seems to be World Soil Information Service (WoSIS) soil profile database (available via:
+<a href="https://www.isric.org/explore/wosis" class="uri">https://www.isric.org/explore/wosis</a>) <span class="citation">(<a href="wrb-soil-types.html#ref-batjes2020standardised" role="doc-biblioref">Batjes, Ribeiro, &amp; Van Oostrum, 2020</a>)</span> .</p>
+<p>You can download a snapshot of the most up-to-date WOSIS Geopackage file directly from .</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">wosis</span> <span class="op">=</span> <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf</a></span><span class="op">(</span><span class="st">"/mnt/landmark/HWSDv2/wosis_latest_profiles.gpkg"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">wosis</span><span class="op">$</span><span class="va">cwrb_version</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<p>The WRB soil types can be generate by combining multiple columns:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">wosis</span><span class="op">$</span><span class="va">wrb4</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">wosis</span><span class="op">$</span><span class="va">cwrb_prefix_qualifier</span><span class="op">)</span>, <span class="st">""</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">wosis</span><span class="op">$</span><span class="va">cwrb_prefix_qualifier</span>, <span class="st">" "</span><span class="op">)</span><span class="op">)</span>, <span class="va">wosis</span><span class="op">$</span><span class="va">cwrb_reference_soil_group</span>, <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">wosis</span><span class="op">$</span><span class="va">cwrb_suffix_qualifier</span><span class="op">)</span>, <span class="st">""</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">" "</span>, <span class="va">wosis</span><span class="op">$</span><span class="va">cwrb_suffix_qualifier</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">wosis</span><span class="op">$</span><span class="va">wrb4</span><span class="op">)</span>, maxsum<span class="op">=</span><span class="fl">20</span><span class="op">)</span></code></pre></div>
+<p>This finally gives about 30,000 soil points with soil classification:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">wosis.wrb</span> <span class="op">=</span> <span class="va">wosis</span><span class="op">[</span><span class="op">!</span><span class="va">wosis</span><span class="op">$</span><span class="va">wrb4</span><span class="op">==</span><span class="st">"NA"</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"profile_id"</span>, <span class="st">"geom_accuracy"</span>, <span class="st">"latitude"</span>, <span class="st">"longitude"</span>, <span class="st">"wrb4"</span>, <span class="st">"dataset_id"</span><span class="op">)</span><span class="op">]</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">wosis.wrb</span><span class="op">)</span>
+<span class="co">#plot(wosis.wrb[,c("longitude","latitude")])</span></code></pre></div>
+<p>We can write the summary distribution of soil types by using:</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">xs0</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">wosis.wrb</span><span class="op">$</span><span class="va">wrb4</span><span class="op">)</span>, maxsum <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">wosis.wrb</span><span class="op">$</span><span class="va">wrb4</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/write.table.html">write.csv</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>WRB<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/attr.html">attr</a></span><span class="op">(</span><span class="va">xs0</span>, <span class="st">"names"</span><span class="op">)</span>, count<span class="op">=</span><span class="va">xs0</span><span class="op">)</span>, <span class="st">"./correlation/wosis.wrb_summary.csv"</span><span class="op">)</span></code></pre></div>
+<p>After some clean-up, we can prepare a harmonized legend that now has consistently
+WRB soil types up to the level of great-group + prefix and with soil points
+that have a location accuracy of not worse than 1 km:</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">h.wosis</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"./correlation/WOSIS_WRB_legend.csv"</span><span class="op">)</span>
+<span class="va">h.wosis</span><span class="op">$</span><span class="va">wrb4</span> <span class="op">=</span> <span class="va">h.wosis</span><span class="op">$</span><span class="va">WRB</span>
+<span class="va">wosis.wrb</span><span class="op">$</span><span class="va">h_wrb4</span> <span class="op">=</span> <span class="fu">plyr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/plyr/man/join.html">join</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">wosis.wrb</span><span class="op">[</span><span class="st">"wrb4"</span><span class="op">]</span><span class="op">)</span>, <span class="va">h.wosis</span><span class="op">)</span><span class="op">$</span><span class="va">h_wrb4</span>
+<span class="co">## copy values</span>
+<span class="va">wosis.wrb2</span> <span class="op">=</span> <span class="va">wosis.wrb</span>
+<span class="va">wosis.wrb2</span><span class="op">$</span><span class="va">h_wrb4</span> <span class="op">=</span> <span class="fu">plyr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/plyr/man/join.html">join</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">wosis.wrb2</span><span class="op">[</span><span class="st">"wrb4"</span><span class="op">]</span><span class="op">)</span>, <span class="va">h.wosis</span><span class="op">)</span><span class="op">$</span><span class="va">h_wrb4.2</span>
+<span class="co">#summary(as.factor(wosis.wrb$h_wrb4))</span>
+<span class="co">#str(levels(as.factor(wosis.wrb$h_wrb4)))</span>
+<span class="co">## remove points with poor location accuracy</span>
+<span class="va">h.wosis.wrb</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span>
+     <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">wosis.wrb</span><span class="op">[</span><span class="op">!</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">wosis.wrb</span><span class="op">$</span><span class="va">h_wrb4</span><span class="op">)</span><span class="op">|</span><span class="va">wosis.wrb</span><span class="op">$</span><span class="va">h_wrb4</span><span class="op">==</span><span class="st">""</span><span class="op">|</span><span class="va">wosis.wrb</span><span class="op">$</span><span class="va">geom_accuracy</span><span class="op">&gt;</span><span class="fl">0.08334</span><span class="op">)</span>,<span class="op">]</span><span class="op">)</span>, 
+     <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">wosis.wrb2</span><span class="op">[</span><span class="op">!</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">wosis.wrb2</span><span class="op">$</span><span class="va">h_wrb4</span><span class="op">)</span><span class="op">|</span><span class="va">wosis.wrb2</span><span class="op">$</span><span class="va">h_wrb4</span><span class="op">==</span><span class="st">""</span><span class="op">|</span><span class="va">wosis.wrb2</span><span class="op">$</span><span class="va">geom_accuracy</span><span class="op">&gt;</span><span class="fl">0.08334</span><span class="op">)</span>,<span class="op">]</span><span class="op">)</span><span class="op">)</span>
+<span class="va">h.wosis.wrb</span><span class="op">$</span><span class="va">source_db</span> <span class="op">=</span> <span class="va">h.wosis.wrb</span><span class="op">$</span><span class="va">dataset_id</span>
+<span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">h.wosis.wrb</span><span class="op">)</span>
+<span class="fu">saveRDS.gz</span><span class="op">(</span><span class="va">h.wosis.wrb</span>, <span class="st">"./correlation/h.wosis.wrb.rds"</span><span class="op">)</span></code></pre></div>
+<p>which can be now considered an analysis-ready point dataset with <code>h_wrb4</code> being the
+harmonized value of the soil type:</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">h.wosis.wrb</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span><span class="op">(</span><span class="st">"./correlation/h.wosis.wrb.rds"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">h.wosis.wrb</span><span class="op">)</span>
+<span class="co">#&gt;   profile_id geom_accuracy latitude longitude      wrb4</span>
+<span class="co">#&gt; 1      47431      0.000100   6.5875    2.1525  Planosol</span>
+<span class="co">#&gt; 2      47478      0.010000   6.5875    2.1900  Planosol</span>
+<span class="co">#&gt; 3      47503      0.000100   6.5875    2.2262  Planosol</span>
+<span class="co">#&gt; 4      47596      0.000100   6.8733    2.3458   Acrisol</span>
+<span class="co">#&gt; 5      52678      0.000278   1.0700   34.9000  Vertisol</span>
+<span class="co">#&gt; 6      52686      0.000278   0.9400   34.9500 Ferralsol</span>
+<span class="co">#&gt;                   dataset_id                  geom           h_wrb4</span>
+<span class="co">#&gt; 1  {AF-AfSP,BJSOTER,WD-WISE} POINT (2.1525 6.5875) Eutric Planosols</span>
+<span class="co">#&gt; 2  {AF-AfSP,BJSOTER,WD-WISE}   POINT (2.19 6.5875) Eutric Planosols</span>
+<span class="co">#&gt; 3  {AF-AfSP,BJSOTER,WD-WISE} POINT (2.2262 6.5875) Eutric Planosols</span>
+<span class="co">#&gt; 4  {AF-AfSP,BJSOTER,WD-WISE} POINT (2.3458 6.8733)  Haplic Acrisols</span>
+<span class="co">#&gt; 5 {AF-AfSP,KE-SOTER,WD-WISE}     POINT (34.9 1.07) Haplic Vertisols</span>
+<span class="co">#&gt; 6 {AF-AfSP,KE-SOTER,WD-WISE}    POINT (34.95 0.94) Geric Ferralsols</span>
+<span class="co">#&gt;                    source_db</span>
+<span class="co">#&gt; 1  {AF-AfSP,BJSOTER,WD-WISE}</span>
+<span class="co">#&gt; 2  {AF-AfSP,BJSOTER,WD-WISE}</span>
+<span class="co">#&gt; 3  {AF-AfSP,BJSOTER,WD-WISE}</span>
+<span class="co">#&gt; 4  {AF-AfSP,BJSOTER,WD-WISE}</span>
+<span class="co">#&gt; 5 {AF-AfSP,KE-SOTER,WD-WISE}</span>
+<span class="co">#&gt; 6 {AF-AfSP,KE-SOTER,WD-WISE}</span></code></pre></div>
+</div>
+<div id="hwsdv2" class="section level2" number="5.3">
+<h2>
+<span class="header-section-number">5.3</span> HWSDv2<a class="anchor" aria-label="anchor" href="#hwsdv2"><i class="fas fa-link"></i></a>
+</h2>
+<p>A disadvantage of using only legacy soil profiles, however, is that these are often
+spatially clustered i.e. large gaps exists where almost no data available. This applies especially
+for African and Asian continents. To increase spatial coverage of the training points for
+<a href="https://github.com/OpenGeoHub/SoilTypeMapping">global soil type mapping</a>, we can add points generated from the global soil polygon map
+e.g. <a href="https://iiasa.ac.at/models-tools-data/hwsd">Harmonized World Soil Database</a> (HWSD) <span class="citation">(<a href="wrb-soil-types.html#ref-hwsd2023" role="doc-biblioref">FAO &amp; IIASA, 2023</a>)</span>.
+This can be done in three steps: first, we prepare summary of all WRB soil types using the HWSDv2 table:</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">hwsd</span> <span class="op">&lt;-</span> <span class="fu">mdb.get</span><span class="op">(</span><span class="st">"/mnt/landmark/HWSDv2/HWSD2.mdb"</span><span class="op">)</span>
+<span class="co">#str(hwsd)</span>
+<span class="va">wrb.leg</span> <span class="op">=</span> <span class="va">hwsd</span><span class="op">$</span><span class="va">D_WRB4</span>
+<span class="co">#str(wrb.leg)</span>
+<span class="va">wrb.leg</span><span class="op">$</span><span class="va">WRB4</span> <span class="op">=</span> <span class="va">wrb.leg</span><span class="op">$</span><span class="va">CODE</span>
+<span class="va">layer</span> <span class="op">=</span> <span class="va">hwsd</span><span class="op">$</span><span class="va">HWSD2_LAYERS</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"HWSD2.SMU.ID"</span>, <span class="st">"WRB4"</span><span class="op">)</span><span class="op">]</span>
+<span class="va">layer</span><span class="op">$</span><span class="va">VALUE</span> <span class="op">=</span> <span class="fu">plyr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/plyr/man/join.html">join</a></span><span class="op">(</span><span class="va">layer</span>, <span class="va">wrb.leg</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"VALUE"</span>,<span class="st">"WRB4"</span><span class="op">)</span><span class="op">]</span>, match<span class="op">=</span><span class="st">"first"</span><span class="op">)</span><span class="op">$</span><span class="va">VALUE</span>
+<span class="va">xs</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">layer</span><span class="op">$</span><span class="va">VALUE</span><span class="op">)</span>, maxsum <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">wrb.leg</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/write.table.html">write.csv</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>WRB4<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/attr.html">attr</a></span><span class="op">(</span><span class="va">xs</span>, <span class="st">"names"</span><span class="op">)</span>, count<span class="op">=</span><span class="va">xs</span><span class="op">)</span>, <span class="st">"./correlation/hwsd2_summary.csv"</span><span class="op">)</span></code></pre></div>
+<p>The <code>./correlation/hwsd2_summary.csv</code> table shows which are the most frequent soil types
+for the world based on the HWSDv2. Note, these are primarily expert based and of
+unknown uncertainty / confidence, so should be used with caution.</p>
+<p>Second, we can prepare a raster layer that we can use to randomly draw training points
+using some probability sampling e.g. <a href="https://opengeohub.github.io/spatial-sampling-ml/">Simple Random Sampling</a>.
+Because we want to draw samples from an equal area space, a good idea is to convert the
+original HWSD raster to the <a href="https://epsg.io/54052">IGH projection</a>:</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">rgdal</span><span class="fu">::</span><span class="fu"><a href="http://rgdal.r-forge.r-project.org/reference/readGDAL.html">GDALinfo</a></span><span class="op">(</span><span class="st">"/mnt/landmark/HWSDv2/HWSD2.bil"</span><span class="op">)</span>
+<span class="co">## 1km resolution</span>
+<span class="va">te</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">20037508</span>,<span class="op">-</span><span class="fl">6728980</span>, <span class="fl">20037508</span>, <span class="fl">8421750</span><span class="op">)</span>
+<span class="va">gh.prj</span> <span class="op">=</span> <span class="st">"+proj=igh +ellps=WGS84 +units=m +no_defs"</span>
+<span class="fu"><a href="https://rdrr.io/r/base/system.html">system</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">'gdalwarp /mnt/landmark/HWSDv2/HWSD2.bil /mnt/landmark/HWSDv2/HWSD2_gh_1km.tif -r \"near\" 
+      --config CHECK_WITH_INVERT_PROJ TRUE -t_srs \"'</span>, <span class="va">gh.prj</span>, 
+      <span class="st">'\" -co \"COMPRESS=DEFLATE\" -tr 1000 1000 -overwrite -te '</span>, 
+      <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">te</span>, collapse <span class="op">=</span> <span class="st">" "</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<p>Now we can sample random points from the projected raster by using the terra package functionality <span class="citation">(<a href="wrb-soil-types.html#ref-hijmans2019spatial" role="doc-biblioref">Hijmans, 2019</a>)</span>.
+We generate 100,000 random points, although in principle we can later on subset the points to much less
+points as needed.</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">rnd.hwsd</span> <span class="op">=</span> <span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/sample.html">spatSample</a></span><span class="op">(</span><span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/rast.html">rast</a></span><span class="op">(</span><span class="st">"/mnt/landmark/HWSDv2/HWSD2_gh_1km.tif"</span><span class="op">)</span>, 
+                             size<span class="op">=</span><span class="fl">1e5</span>, method<span class="op">=</span><span class="st">"random"</span>, na.rm<span class="op">=</span><span class="cn">TRUE</span>, xy<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
+<span class="co">## merge and make WRB4 layer</span>
+<span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">rnd.hwsd</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">=</span> <span class="st">"HWSD2.SMU.ID"</span>
+<span class="va">rnd.hwsd</span><span class="op">$</span><span class="va">WRB4</span> <span class="op">=</span> <span class="fu">plyr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/plyr/man/join.html">join</a></span><span class="op">(</span><span class="va">rnd.hwsd</span>, <span class="va">layer</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"HWSD2.SMU.ID"</span>,<span class="st">"VALUE"</span><span class="op">)</span><span class="op">]</span>, match<span class="op">=</span><span class="st">"first"</span><span class="op">)</span><span class="op">$</span><span class="va">VALUE</span>
+<span class="va">rnd.sf</span> <span class="op">=</span> <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_as_sf.html">st_as_sf</a></span><span class="op">(</span><span class="va">rnd.hwsd</span>, coords <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span>, crs<span class="op">=</span><span class="va">gh.prj</span><span class="op">)</span>
+<span class="va">rnd.ll</span> <span class="op">&lt;-</span> <span class="va">rnd.sf</span> <span class="op">%&gt;%</span> <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html">st_transform</a></span><span class="op">(</span><span class="fl">4326</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/unlink.html">unlink</a></span><span class="op">(</span><span class="st">"./correlation/sim_hwsdv2_pnts.gpkg"</span><span class="op">)</span>
+<span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_write.html">write_sf</a></span><span class="op">(</span><span class="va">rnd.ll</span>, <span class="st">"./correlation/sim_hwsdv2_pnts.gpkg"</span>, driver <span class="op">=</span> <span class="st">"GPKG"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">saveRDS</a></span><span class="op">(</span><span class="va">rnd.ll</span>, <span class="st">"./correlation/sim_hwsdv2_pnts.rds"</span><span class="op">)</span></code></pre></div>
+<p>We can further harmonize values using a correlation legend:</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">rnd.ll</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span><span class="op">(</span><span class="st">"./correlation/sim_hwsdv2_pnts.rds"</span><span class="op">)</span>
+<span class="va">h.hwsd</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"./correlation/HWSDv2_WRB_legend.csv"</span><span class="op">)</span>
+<span class="va">hwsd.wrb</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">rnd.ll</span>, <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_coordinates.html">st_coordinates</a></span><span class="op">(</span><span class="va">rnd.ll</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<span class="va">hwsd.wrb</span> <span class="op">=</span> <span class="fu">plyr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/plyr/man/rename.html">rename</a></span><span class="op">(</span><span class="va">hwsd.wrb</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"X"</span><span class="op">=</span><span class="st">"longitude"</span>, <span class="st">"Y"</span><span class="op">=</span><span class="st">"latitude"</span><span class="op">)</span><span class="op">)</span>
+<span class="va">hwsd.wrb</span><span class="op">$</span><span class="va">h_wrb4</span> <span class="op">=</span> <span class="fu">plyr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/plyr/man/join.html">join</a></span><span class="op">(</span><span class="va">hwsd.wrb</span>, <span class="va">h.hwsd</span><span class="op">)</span><span class="op">$</span><span class="va">h_wrb4</span>
+<span class="co">#&gt; Joining by: WRB4</span>
+<span class="va">hwsd.wrb</span><span class="op">$</span><span class="va">source_db</span> <span class="op">=</span> <span class="st">"HWSDv2"</span>
+<span class="va">hwsd.wrb</span><span class="op">$</span><span class="va">profile_id</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"SIM"</span>, <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">hwsd.wrb</span><span class="op">)</span><span class="op">)</span>
+<span class="co">## subset to complete points</span>
+<span class="va">hwsd.wrb</span> <span class="op">=</span> <span class="va">hwsd.wrb</span><span class="op">[</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">hwsd.wrb</span><span class="op">$</span><span class="va">WRB4</span><span class="op">)</span>,<span class="op">]</span></code></pre></div>
+<p>which now also has a harmonized column <code>h_wrb4</code> compatible to the column produced
+using the WoSIS points:</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">hwsd.wrb</span><span class="op">)</span>
+<span class="co">#&gt;   HWSD2.SMU.ID               WRB4  longitude latitude</span>
+<span class="co">#&gt; 1         1467    Ferric Lixisols   8.290244 13.93512</span>
+<span class="co">#&gt; 2        11321         Anthrosols  82.118452 41.73180</span>
+<span class="co">#&gt; 3        26612 Calcaric Cambisols  33.212770 15.03106</span>
+<span class="co">#&gt; 4        16664   Eutric Cambisols  38.366071 10.60237</span>
+<span class="co">#&gt; 5         3387    Cambic Cryosols -64.448944 55.92456</span>
+<span class="co">#&gt; 6        11805    Haplic Acrisols 118.358546 25.82881</span>
+<span class="co">#&gt;                     geometry             h_wrb4 source_db profile_id</span>
+<span class="co">#&gt; 1  POINT (8.290244 13.93512)    Ferric Lixisols    HWSDv2       SIM1</span>
+<span class="co">#&gt; 2   POINT (82.11845 41.7318)               &lt;NA&gt;    HWSDv2       SIM2</span>
+<span class="co">#&gt; 3  POINT (33.21277 15.03106) Calcaric Cambisols    HWSDv2       SIM3</span>
+<span class="co">#&gt; 4  POINT (38.36607 10.60237)   Eutric Cambisols    HWSDv2       SIM4</span>
+<span class="co">#&gt; 5 POINT (-64.44894 55.92456)    Cambic Cryosols    HWSDv2       SIM5</span>
+<span class="co">#&gt; 6  POINT (118.3585 25.82881)    Haplic Acrisols    HWSDv2       SIM6</span></code></pre></div>
+<p>So in summary we have prepared two point datasets from WoSIS and HSWDv2.
+WoSIS are the actual observations of soil types and should be considered ground-truth.
+The HWSDv2 contains the WRB 2022 version soil types per mapping unit, but these are
+potentially of variable accuracy and should be only used to fill gaps in training data.</p>
+<p>There are many more point datasets with WRB classification or compatible classification
+that could be added to the list of training points. Below we list most recent
+datsets with soil types imported to produce the most up-to-date compilation of
+soil training data.</p>
+</div>
+<div id="additional-point-datasets-with-wrb-classes" class="section level2" number="5.4">
+<h2>
+<span class="header-section-number">5.4</span> Additional point datasets with WRB classes<a class="anchor" aria-label="anchor" href="#additional-point-datasets-with-wrb-classes"><i class="fas fa-link"></i></a>
+</h2>
+<p>In addition to WoSIS and HWSDv2, we can also add some additional point datasets
+that are not yet included in any global compilation but potentially contain <em>ground-truth</em>
+observations of soil types.
+For example, we can use point observations coming from the land-surface observations e.g. 
+to represent shifting sand and bare-rock areas. For example, global land cover validation data
+sets that are produced by photo-interpretation of very high resolution satellite imagery
+(e.g. 20 cm resolution) often contain useful observations of the shifting sand,
+permanent ice and bare-rocks <span class="citation">(<a href="wrb-soil-types.html#ref-tsendbazar2021towards" role="doc-biblioref">Tsendbazar et al., 2021</a>)</span>. These specific surface materials
+are often missing or are systematically under-represented in the legacy soil profile datasets:</p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">lc.xy</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span><span class="op">(</span><span class="st">"./correlation/photointerpretation_leptosol.rds"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">lc.xy</span><span class="op">$</span><span class="va">h_wrb4</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; Lithic Leptosols   Shifting sands </span>
+<span class="co">#&gt;             3928             2156</span></code></pre></div>
+<p>Note that we define the <code>Shifting sands</code> as an additional category of soil type as these
+are arbitrarily either masked out or (controversially) classified to different soil types.
+We consider that it is more consistent to map shifting sands as a separate category of land.</p>
+<p>Another dataset interesting for soil type mapping are the legacy soil observations
+focused on tropical peatlands, published in literature then digitized manually <span class="citation">(<a href="wrb-soil-types.html#ref-gumbricht2017expert" role="doc-biblioref">Gumbricht et al., 2017</a>; <a href="wrb-soil-types.html#ref-hengl2016global" role="doc-biblioref">Hengl, 2016</a>)</span>:</p>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">peat.xy</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"/mnt/diskstation/data/Soil_points/INT/CIFOR_peatlands/SOC_literature_CIFOR_v1.csv"</span>, na.strings <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">""</span>, <span class="st">"NA"</span><span class="op">)</span><span class="op">)</span>
+<span class="va">peat.xy</span> <span class="op">=</span> <span class="fu">plyr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/plyr/man/rename.html">rename</a></span><span class="op">(</span><span class="va">peat.xy</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"TAXNWRB"</span><span class="op">=</span><span class="st">"h_wrb4"</span>, <span class="st">"modelling.x"</span><span class="op">=</span><span class="st">"longitude"</span>, <span class="st">"modelling.y"</span><span class="op">=</span><span class="st">"latitude"</span>, <span class="st">"SOURCEID"</span><span class="op">=</span><span class="st">"profile_id"</span><span class="op">)</span><span class="op">)</span>
+<span class="va">peat.xy</span><span class="op">$</span><span class="va">source_db</span> <span class="op">=</span> <span class="st">"CIFOR_peatlands"</span>
+<span class="va">peat.xy</span> <span class="op">=</span> <span class="va">peat.xy</span><span class="op">[</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">peat.xy</span><span class="op">$</span><span class="va">longitude</span><span class="op">)</span> <span class="op">&amp;</span> <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">peat.xy</span><span class="op">$</span><span class="va">h_wrb4</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"profile_id"</span>, <span class="st">"source_db"</span>,<span class="st">"longitude"</span>, <span class="st">"latitude"</span>, <span class="st">"h_wrb4"</span><span class="op">)</span><span class="op">]</span></code></pre></div>
+<p>Peatlands and inaccessible tropical soil types are often under-represented and hence this
+dataset helps reduce the bias in under-representing tropical soils.</p>
+<p>Croatian soil profile database also contains soil types still in FAO
+classification system <span class="citation">(<a href="wrb-soil-types.html#ref-antonic2003spatial" role="doc-biblioref">Antonić, Pernar, &amp; Jelaska, 2003</a>)</span>:</p>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">hr.xy</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span><span class="op">(</span><span class="st">"./correlation/hrspdb_pnts.rds"</span><span class="op">)</span>
+<span class="va">hr.xy2</span> <span class="op">=</span> <span class="va">hr.xy</span><span class="op">[</span>,<span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">hr.xy</span><span class="op">)</span> <span class="op">==</span> <span class="st">"h_wrb4"</span><span class="op">)</span><span class="op">]</span>
+<span class="va">hr.xy2</span> <span class="op">=</span> <span class="fu">plyr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/plyr/man/rename.html">rename</a></span><span class="op">(</span><span class="va">hr.xy2</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"h_wrb4.2"</span><span class="op">=</span><span class="st">"h_wrb4"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<p>Legacy soil observations for Italy <span class="citation">(<a href="wrb-soil-types.html#ref-righini2001banca" role="doc-biblioref">Righini, Costantini, &amp; Sulli, 2001</a>; <a href="wrb-soil-types.html#ref-vecchio2002regional" role="doc-biblioref">Vecchio, Barberis, &amp; Bourlot, 2002</a>)</span>:</p>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">it.xy</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span><span class="op">(</span><span class="st">"/mnt/landmark/HWSDv2/taxa/WRB_points_Italy.rds"</span><span class="op">)</span>
+<span class="va">it.xy</span> <span class="op">=</span> <span class="fu">plyr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/plyr/man/rename.html">rename</a></span><span class="op">(</span><span class="va">it.xy</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"wrb2015"</span><span class="op">=</span><span class="st">"h_wrb4"</span>, <span class="st">"id_site"</span><span class="op">=</span><span class="st">"profile_id"</span>, <span class="st">"lat"</span><span class="op">=</span><span class="st">"latitude"</span>, <span class="st">"long"</span><span class="op">=</span><span class="st">"longitude"</span><span class="op">)</span><span class="op">)</span>
+<span class="va">it.xy</span><span class="op">$</span><span class="va">source_db</span> <span class="op">=</span> <span class="st">"Italian_SPDB"</span></code></pre></div>
+<p>German agricultural soil inventory dataset <span class="citation">(<a href="wrb-soil-types.html#ref-poeplau2020stocks" role="doc-biblioref">Poeplau et al., 2020</a>)</span>:</p>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">de.xy</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span><span class="op">(</span><span class="st">"/mnt/landmark/HWSDv2/taxa/WRB_points_Germany.rds"</span><span class="op">)</span>
+<span class="va">de.xy</span> <span class="op">=</span> <span class="fu">plyr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/plyr/man/rename.html">rename</a></span><span class="op">(</span><span class="va">de.xy</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"WRB_correlation_1"</span><span class="op">=</span><span class="st">"h_wrb4"</span>, <span class="st">"PointID"</span><span class="op">=</span><span class="st">"profile_id"</span>, <span class="st">"lat"</span><span class="op">=</span><span class="st">"latitude"</span>, <span class="st">"lon"</span><span class="op">=</span><span class="st">"longitude"</span><span class="op">)</span><span class="op">)</span>
+<span class="va">de.xy</span><span class="op">$</span><span class="va">Specific.soil.subtype</span> <span class="op">=</span> <span class="cn">NULL</span>
+<span class="va">de.xy</span><span class="op">$</span><span class="va">source_db</span> <span class="op">=</span> <span class="st">"BZE_LW"</span>
+<span class="va">de.xy2</span> <span class="op">=</span> <span class="va">de.xy</span><span class="op">[</span>,<span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">de.xy</span><span class="op">)</span> <span class="op">==</span> <span class="st">"h_wrb4"</span><span class="op">)</span><span class="op">]</span>
+<span class="va">de.xy2</span> <span class="op">=</span> <span class="fu">plyr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/plyr/man/rename.html">rename</a></span><span class="op">(</span><span class="va">de.xy2</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"WRB_correlation_2"</span><span class="op">=</span><span class="st">"h_wrb4"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<p>French RMQS soil profile and monitoring dataset <span class="citation">(<a href="wrb-soil-types.html#ref-AIQ9WS_2020" role="doc-biblioref">Saby et al., 2020</a>)</span>:</p>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">fr.xy</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span><span class="op">(</span><span class="st">"/mnt/landmark/HWSDv2/taxa/WRB_points_France.rds"</span><span class="op">)</span>
+<span class="va">fr.xy</span> <span class="op">=</span> <span class="fu">plyr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/plyr/man/rename.html">rename</a></span><span class="op">(</span><span class="va">fr.xy</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"WRB_correlation_1"</span><span class="op">=</span><span class="st">"h_wrb4"</span>, <span class="st">"id_site"</span><span class="op">=</span><span class="st">"profile_id"</span>, <span class="st">"lat"</span><span class="op">=</span><span class="st">"latitude"</span>, <span class="st">"lon"</span><span class="op">=</span><span class="st">"longitude"</span><span class="op">)</span><span class="op">)</span>
+<span class="va">fr.xy</span><span class="op">$</span><span class="va">signific_ger_95</span> <span class="op">=</span> <span class="cn">NULL</span>
+<span class="va">fr.xy</span><span class="op">$</span><span class="va">source_db</span> <span class="op">=</span> <span class="st">"RMQS1"</span>
+<span class="va">fr.xy2</span> <span class="op">=</span> <span class="va">fr.xy</span><span class="op">[</span>,<span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">fr.xy</span><span class="op">)</span> <span class="op">==</span> <span class="st">"h_wrb4"</span><span class="op">)</span><span class="op">]</span>
+<span class="va">fr.xy2</span> <span class="op">=</span> <span class="fu">plyr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/plyr/man/rename.html">rename</a></span><span class="op">(</span><span class="va">fr.xy2</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"WRB_correlation_2"</span><span class="op">=</span><span class="st">"h_wrb4"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+</div>
+<div id="final-compilation-of-analysis-ready-points" class="section level2" number="5.5">
+<h2>
+<span class="header-section-number">5.5</span> Final compilation of analysis-ready points<a class="anchor" aria-label="anchor" href="#final-compilation-of-analysis-ready-points"><i class="fas fa-link"></i></a>
+</h2>
+<p>Multiple imported point datasets can be finally combined into a single global
+consistent analysis-ready training dataset (here we limit to max 20,000 simulated points):</p>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">sel.cn</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"profile_id"</span>,<span class="st">"latitude"</span>, <span class="st">"longitude"</span>, <span class="st">"h_wrb4"</span>, <span class="st">"source_db"</span><span class="op">)</span>
+<span class="va">tr.pnts</span> <span class="op">=</span> <span class="fu">plyr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/plyr/man/rbind.fill.html">rbind.fill</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">h.wosis.wrb</span><span class="op">[</span>, <span class="va">sel.cn</span><span class="op">]</span>, 
+      <span class="va">hwsd.wrb</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample.int</a></span><span class="op">(</span><span class="fl">2e4</span>, n <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">hwsd.wrb</span><span class="op">)</span><span class="op">)</span>, <span class="va">sel.cn</span><span class="op">]</span>,
+      <span class="va">lc.xy</span>, <span class="va">hr.xy2</span><span class="op">[</span>, <span class="va">sel.cn</span><span class="op">]</span>, 
+      <span class="va">peat.xy</span><span class="op">[</span>, <span class="va">sel.cn</span><span class="op">]</span>,
+      <span class="va">hr.xy</span><span class="op">[</span>, <span class="va">sel.cn</span><span class="op">]</span>,
+      <span class="va">it.xy</span><span class="op">[</span>, <span class="va">sel.cn</span><span class="op">]</span>, <span class="va">de.xy</span><span class="op">[</span>, <span class="va">sel.cn</span><span class="op">]</span>, <span class="va">de.xy2</span><span class="op">[</span>, <span class="va">sel.cn</span><span class="op">]</span>, 
+      <span class="va">fr.xy</span><span class="op">[</span>, <span class="va">sel.cn</span><span class="op">]</span>, <span class="va">fr.xy2</span><span class="op">[</span>, <span class="va">sel.cn</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<p>We can clean-up some systematic naming issues common in many soil DBs:</p>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">tr.pnts</span><span class="op">$</span><span class="va">h_wrb4</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html">gsub</a></span><span class="op">(</span><span class="st">","</span>, <span class="st">" "</span>, <span class="va">tr.pnts</span><span class="op">$</span><span class="va">h_wrb4</span><span class="op">)</span>
+<span class="va">tr.pnts</span><span class="op">$</span><span class="va">h_wrb4</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html">gsub</a></span><span class="op">(</span><span class="st">"distric"</span>, <span class="st">"dystric"</span>, <span class="va">tr.pnts</span><span class="op">$</span><span class="va">h_wrb4</span>, ignore.case <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="va">tr.pnts</span><span class="op">$</span><span class="va">h_wrb4</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html">gsub</a></span><span class="op">(</span><span class="st">"sol "</span>, <span class="st">"sols "</span>, <span class="va">tr.pnts</span><span class="op">$</span><span class="va">h_wrb4</span>, ignore.case <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="va">tr.pnts</span><span class="op">$</span><span class="va">h_wrb4</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html">gsub</a></span><span class="op">(</span><span class="st">"sol$"</span>, <span class="st">"sols"</span>, <span class="va">tr.pnts</span><span class="op">$</span><span class="va">h_wrb4</span>, ignore.case <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="va">tr.pnts</span><span class="op">$</span><span class="va">h_wrb4</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">tr.pnts</span><span class="op">$</span><span class="va">h_wrb4</span><span class="op">==</span><span class="st">""</span>, <span class="cn">NA</span>, <span class="va">tr.pnts</span><span class="op">$</span><span class="va">h_wrb4</span><span class="op">)</span>
+<span class="co">## subset to complete points:</span>
+<span class="va">tr.pnts</span> <span class="op">=</span> <span class="va">tr.pnts</span><span class="op">[</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">tr.pnts</span><span class="op">$</span><span class="va">h_wrb4</span><span class="op">)</span><span class="op">&amp;</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">tr.pnts</span><span class="op">$</span><span class="va">longitude</span><span class="op">)</span>,<span class="op">]</span></code></pre></div>
+<p>This gives a total of about 70,000 training points with WRB soil type. Note that correlation
+between different national systems is not trivial and hence you should always check
+the folder <code>./correlation</code> to see if some soil types are possibly incorrectly
+correlated. Also, IUSS and FAO are kind to maintain the <a href="https://www.fao.org/soils-portal/data-hub/soil-classification/world-reference-base/en/">World Reference Base (WRB)</a>,
+but a table correlating various versions of WRB is <a href="https://docs.google.com/spreadsheets/d/1GaNpiH65yiuHusNVkUrKog2FCiVUO6kz_wNdIzHbdfg/edit#gid=1418992436">often not trivial</a> and we have to
+somewhat improvise (or ignore) that some soil type have changed over time.</p>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">wrb.pnts_profiles_sf</span> <span class="op">&lt;-</span> <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_as_sf.html">st_as_sf</a></span><span class="op">(</span><span class="va">tr.pnts</span>, coords <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"longitude"</span>,<span class="st">"latitude"</span><span class="op">)</span>, crs<span class="op">=</span><span class="st">"EPSG:4326"</span><span class="op">)</span>
+<span class="kw">if</span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/files.html">file.exists</a></span><span class="op">(</span><span class="st">"./img/sol_wrb.pnts_profiles.png"</span><span class="op">)</span><span class="op">)</span><span class="op">{</span>
+  <span class="fu">plot_gh</span><span class="op">(</span><span class="va">wrb.pnts_profiles_sf</span>, out.pdf<span class="op">=</span><span class="st">"./img/sol_wrb.pnts_profiles.pdf"</span><span class="op">)</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/system.html">system</a></span><span class="op">(</span><span class="st">"pdftoppm ./img/sol_wrb.pnts_profiles.pdf ./img/sol_wrb.pnts_profiles -png -f 1 -singlefile"</span><span class="op">)</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/system.html">system</a></span><span class="op">(</span><span class="st">"convert -crop 1280x575+36+114 ./img/sol_wrb.pnts_profiles.png ./img/sol_wrb.pnts_profiles.png"</span><span class="op">)</span>
+<span class="op">}</span></code></pre></div>
+<div class="figure" style="text-align: center">
+<img src="img/sol_wrb.pnts_profiles.png" alt="Soil profiles with WRB soil type classification global compilation." width="100%"><p class="caption">
+(#fig:sol_wrb.pnts_profiles)Soil profiles with WRB soil type classification global compilation.
+</p>
+</div>
+<p>Fig. 1: Soil profiles with WRB soil type classification global compilation.</p>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">wrb.pnts_profilesL_sf</span> <span class="op">&lt;-</span> <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_as_sf.html">st_as_sf</a></span><span class="op">(</span><span class="va">tr.pnts</span><span class="op">[</span><span class="op">!</span><span class="va">tr.pnts</span><span class="op">$</span><span class="va">source_db</span><span class="op">==</span><span class="st">"HWSDv2"</span>,<span class="op">]</span>, coords <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"longitude"</span>,<span class="st">"latitude"</span><span class="op">)</span>, crs<span class="op">=</span><span class="st">"EPSG:4326"</span><span class="op">)</span>
+<span class="kw">if</span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/files.html">file.exists</a></span><span class="op">(</span><span class="st">"./img/sol_wrb.pnts_tot.profiles.png"</span><span class="op">)</span><span class="op">)</span><span class="op">{</span>
+  <span class="fu">plot_gh</span><span class="op">(</span><span class="va">wrb.pnts_profilesL_sf</span>, out.pdf<span class="op">=</span><span class="st">"./img/sol_wrb.pnts_tot.profiles.pdf"</span><span class="op">)</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/system.html">system</a></span><span class="op">(</span><span class="st">"pdftoppm ./img/sol_wrb.pnts_tot.profiles.pdf ./img/sol_wrb.pnts_tot.profiles -png -f 1 -singlefile"</span><span class="op">)</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/system.html">system</a></span><span class="op">(</span><span class="st">"convert -crop 1280x575+36+114 ./img/sol_wrb.pnts_tot.profiles.png ./img/sol_wrb.pnts_tot.profiles.png"</span><span class="op">)</span>
+<span class="op">}</span></code></pre></div>
+<div class="figure" style="text-align: center">
+<img src="img/sol_wrb.pnts_tot.profiles.png" alt="Soil profiles with WRB soil type classification global compilation: subset to actual observations." width="100%"><p class="caption">
+(#fig:sol_wrb.pnts_tot.profiles)Soil profiles with WRB soil type classification global compilation: subset to actual observations.
+</p>
+</div>
+<p>Fig. 2: Soil profiles with WRB soil type classification global compilation: subset to actual observations.</p>
+<p>We can export the final training points to Geopackage file by using e.g.:</p>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_write.html">write_sf</a></span><span class="op">(</span><span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_as_sf.html">st_as_sf</a></span><span class="op">(</span><span class="va">tr.pnts</span><span class="op">[</span><span class="op">!</span><span class="va">tr.pnts</span><span class="op">$</span><span class="va">source_db</span><span class="op">==</span><span class="st">"Italian_SPDB"</span>,<span class="op">]</span>, 
+                          coords <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"longitude"</span>,<span class="st">"latitude"</span><span class="op">)</span>, crs<span class="op">=</span><span class="st">"EPSG:4326"</span><span class="op">)</span>, 
+      <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"./out/gpkg/sol_wrb.pnts_profiles.gpkg"</span><span class="op">)</span>, driver <span class="op">=</span> <span class="st">"GPKG"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">saveRDS</a></span><span class="op">(</span><span class="va">tr.pnts</span><span class="op">[</span><span class="op">!</span><span class="va">tr.pnts</span><span class="op">$</span><span class="va">source_db</span><span class="op">==</span><span class="st">"Italian_SPDB"</span>,<span class="op">]</span>, <span class="st">"./out/rds/sol_wrb.pnts_profiles.rds"</span><span class="op">)</span>
+<span class="co">#save.image.pigz(file="soilwrb.RData")</span></code></pre></div>
+
+<div id="refs" class="references csl-bib-body hanging-indent" line-spacing="2">
+<div id="ref-antonic2003spatial" class="csl-entry">
+Antonić, O., Pernar, N., &amp; Jelaska, S. D. (2003). Spatial distribution of main forest soil groups in croatia as a function of basic pedogenetic factors. <em>Ecological Modelling</em>, <em>170</em>(2-3), 363–371. doi:<a href="https://doi.org/10.1016/S0304-3800(03)00239-4">10.1016/S0304-3800(03)00239-4</a>
+</div>
+<div id="ref-batjes2020standardised" class="csl-entry">
+Batjes, N. H., Ribeiro, E., &amp; Van Oostrum, A. (2020). Standardised soil profile data to support global mapping and modelling (WoSIS snapshot 2019). <em>Earth System Science Data</em>, <em>12</em>(1), 299–320. doi:<a href="https://doi.org/10.5194/essd-12-299-2020">10.5194/essd-12-299-2020</a>
+</div>
+<div id="ref-hwsd2023" class="csl-entry">
+FAO &amp; IIASA. (2023). <em><span class="nocase">Harmonized World Soil Database version 2.0</span></em>. Rome; Laxenburg: FAO. doi:<a href="https://doi.org/10.4060/cc3823en">10.4060/cc3823en</a>
+</div>
+<div id="ref-gumbricht2017expert" class="csl-entry">
+Gumbricht, T., Roman-Cuesta, R. M., Verchot, L., Herold, M., Wittmann, F., Householder, E., … Murdiyarso, D. (2017). An expert system model for mapping tropical wetlands and peatlands reveals south america as the largest contributor. <em>Global Change Biology</em>, <em>23</em>(9), 3581–3599. doi:<a href="https://doi.org/10.1111/gcb.13689">10.1111/gcb.13689</a>
+</div>
+<div id="ref-hengl2016global" class="csl-entry">
+Hengl, T. (2016). Global assessment of soil organic carbon stocks and spatial distribution of histosols: The machine learning approach. In <em>EGU general assembly conference abstracts</em> (pp. EPSC2016–9447).
+</div>
+<div id="ref-hijmans2019spatial" class="csl-entry">
+Hijmans, R. J. (2019). <em><span class="nocase">Spatial data in R</span></em>. Davis, CA: United States: GFC for the Innovation Lab for Collaborative Research on Sustainable Intensification. Retrieved from <a href="https://rspatial.org/">https://rspatial.org/</a>
+</div>
+<div id="ref-krasilnikov2009handbook" class="csl-entry">
+Krasilnikov, P., Arnold, R., Marti, J. J. I., &amp; Shoba, S. (2009). <em>A handbook of soil terminology, correlation and classification</em>. Taylor &amp; Francis Group.
+</div>
+<div id="ref-poeplau2020stocks" class="csl-entry">
+Poeplau, C., Jacobs, A., Don, A., Vos, C., Schneider, F., Wittnebel, M., … Flessa, H. (2020). Stocks of organic carbon in german agricultural soils—key results of the first comprehensive inventory. <em>Journal of Plant Nutrition and Soil Science</em>, <em>183</em>(6), 665–681. doi:<a href="https://doi.org/10.1002/jpln.202000113">10.1002/jpln.202000113</a>
+</div>
+<div id="ref-righini2001banca" class="csl-entry">
+Righini, G., Costantini, E. A., &amp; Sulli, L. (2001). La banca dati delle regioni pedologiche italiane. <em>Boll. Soc. It. Scienza Del Suolo</em>, <em>50</em>(Suppl.), 261–271.
+</div>
+<div id="ref-AIQ9WS_2020" class="csl-entry">
+Saby, N. P. A., Chenu, J.-P., Szergi, T., Csorba, A., Bertuzzi, P., Toutain, B., … Creamer, R. (2020). <span class="nocase">French RMQS soil profile and monitoring dataset with related management practices data</span>. Recherche Data Gouv. doi:<a href="https://doi.org/10.15454/AIQ9WS">10.15454/AIQ9WS</a>
+</div>
+<div id="ref-tsendbazar2021towards" class="csl-entry">
+Tsendbazar, N., Herold, M., Li, L., Tarko, A., De Bruin, S., Masiliunas, D., et al.others. (2021). Towards operational validation of annual global land cover maps. <em>Remote Sensing of Environment</em>, <em>266</em>, 112686. doi:<a href="https://doi.org/10.1016/j.rse.2021.112686">10.1016/j.rse.2021.112686</a>
+</div>
+<div id="ref-vecchio2002regional" class="csl-entry">
+Vecchio, A. del, Barberis, E., &amp; Bourlot, G. (2002). [The regional data base of agricultural soils. An essential tool for the knowledge of territory and planning in agriculture [piedmont]]. <em>Agricoltura Ricerca (Italy)</em>, <em>24</em>, 3–14.
+</div>
+</div>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="soil-variables.html"><span class="header-section-number">4</span> Soil variables</a></div>
+<div class="empty"></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#wrb-soil-types"><span class="header-section-number">5</span> WRB soil types</a></li>
+<li><a class="nav-link" href="#overview"><span class="header-section-number">5.1</span> Overview</a></li>
+<li><a class="nav-link" href="#wosis-point-datasets"><span class="header-section-number">5.2</span> WoSIS point datasets</a></li>
+<li><a class="nav-link" href="#hwsdv2"><span class="header-section-number">5.3</span> HWSDv2</a></li>
+<li><a class="nav-link" href="#additional-point-datasets-with-wrb-classes"><span class="header-section-number">5.4</span> Additional point datasets with WRB classes</a></li>
+<li><a class="nav-link" href="#final-compilation-of-analysis-ready-points"><span class="header-section-number">5.5</span> Final compilation of analysis-ready points</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/OpenGeoHub/SoilSamples//blob/master/035-import_wrb_data.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/OpenGeoHub/SoilSamples//edit/master/035-import_wrb_data.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>An Open Compendium of Soil Sample and Soil Profile Datasets</strong>" was written by Tom Hengl, Surya Gupta, Robert Minarik. </p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>

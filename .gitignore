@@ -1,4 +1,4 @@
+*.RData
 .Rproj.user
 .Rhistory
-.RData
-.Ruserdata
+tmp_*

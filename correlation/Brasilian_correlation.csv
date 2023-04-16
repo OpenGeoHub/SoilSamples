@@ -1,0 +1,46 @@
+SiBCS_2006_code,SiBCS_2006,SOIL_TAXONOMY_EUA_1999,WRB_1998
+,-,Andisol,Andosol
+,Argissolo,Ultisol or Alfisol,Acrisol or Alisol or Lixisol
+,Argissolo distrófico or álico Ta,Udult or Ustult,Haplic Alisol
+,Argissolo distrófico or álico Tb,Udult or Ustult,Haplic Acrisol
+,Argissolo eutrófico Tb,Udalf or Ustalf,Haplic Lixisol
+,Cambissolo,Inceptisol,Cambisol
+,Cambissolo Háplico,Ochrept or Umbrept,Dystric or Eutric or Cromic Cambisol
+,Cambissolo Húmico Alumínico típico,Dystrudept,
+,Chernossolo,Mollisols,Chernozem
+,Chernossolo,Mollisols,Kastanozem
+,Chernossolo,Mollisols,Phaeozem
+,Chernossolo Argilúvico,Udoll or Ustoll,Luvic Phaeozém
+,Espodossolo,Spodosol,Podzol
+,Espodossolo Ferrilúvico,Ferrod,Ferric Podzol
+,Espodossolo Humilúvico,Humod,Carbic Podzol
+,Gleissolo Háplico,Aqualf or Aquult or Aquox,Dystric or Eutric Gleysol
+,Gleissolo Melânico,Aquoll,Mollic or Umbric Gleysol
+,Latossolo,Oxisol,Ferralsol
+,Latossolo Amarelo,Udox or Ustox,Ferralsol
+,Latossolo Vermelho,Udox or Ustox,Ferralsol
+,Latossolo Vermelho-Amarelo,Udox or Ustox,Ferralsol
+,Luvissolo,Alfisol,Luvisol
+,Luvissolo Crômico or Háplico,Udalf or Ustalf,Haplic Luvisol
+TCp,Luvissolo Crômico Pálico saprolítico,Argiudoll,
+TXo,Luvissolo Háplico Órtico típico,Endoaqualf,
+,Neossolo,Entisol,"Leptosol, Arenosol, Fluvisol"
+,Neossolo Flúvico,Fluvent,Eutric or Dystric or Mollic or Umbric Fluvisol
+,Neossolo Litólico A moderado,Udorthent or Ustorthent,Lithic Leptosol
+RLd,Neossolo Litólico Distrófico típico,Udorthent,
+,Neossolo Quartzarênico,Psamment,Ferralic Arenosol
+,Nitossolo,Oxisol,Nitisol
+,Nitossolo Vermelho,Udox or Ustox,Rhodic Nitisol
+NVdf,Nitossolo Vermelho Distroférrico latossólico,Paleodult,
+,Organossolo,Histosol,Histosol
+,Organossolo Háplico,Fibrist or Hemist,Fibric Histosol
+,Planossolo,Alfisol or Ultisol,Planosol
+SXe1,Planossolo Háplico Eutrófico arênico,Albaqualf,
+SXe2,Planossolo Háplico Eutrófico típico,Endoaqualf,
+,Planossolo Nátrico,Udalf or Ustalf,Haplic Solonetz
+,Plintossolo,Oxisol,Plinthosol
+,Plintossolo Háplico distrófico or álico,Udox or Ustox,Dystric Plinthosol
+,Plintossolo Háplico eutrófico,Udox or Ustox,Eutric Plinthosol
+,Vertissolo,Vertisol,Vertisol
+VEo,Vertissolo Ebânico Órtico típico,Hapludert,
+,Vertissolo Háplico,Udert or Uster,Eutric Vertisol
