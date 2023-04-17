@@ -13,24 +13,25 @@ You are reading the work-in-progress An Open Compendium of Soil Sample and Soil 
 This section describes import steps used to produce a global compilation of 
 FAO's IUSS's [World Reference Base (WRB)](https://www.fao.org/soils-portal/data-hub/soil-classification/world-reference-base/en/) observations of soil types. 
 Classes are either used as-is or a translated from some local or international system. 
-Correlation tables are available in the folder `./correlation` and is based on 
+[Correlation tables](https://github.com/OpenGeoHub/SoilSamples/tree/main/correlation) are available in the folder `./correlation` and is based on 
 various literature sources. Correlation is not trivial and often not 1:1 so we 
 typically use 2–3 options for translating soil types [@krasilnikov2009handbook]. Output compilations are 
-available in the folder `./out`. Please refer to the dataset version / DOI for 
-full reproducibility of your modeling.
+available in the [folder](https://github.com/OpenGeoHub/SoilSamples/tree/main/out) `./out`. 
+Please refer to the dataset version / DOI to ensure full reproducibility of your modeling.
 
-This dataset is currently used to produce [soil type maps of the world](https://github.com/OpenGeoHub/SoilTypeMapping/) at various 
-spatial resolutions. 
-To add new dataset please open a [new issue](https://github.com/OpenGeoHub/SoilSamples/issues) or do a merge request.
+This dataset is currently used to produce [soil type maps of the world](https://github.com/OpenGeoHub/SoilTypeMapping/) 
+at various spatial resolutions. To add new dataset please open a [new issue](https://github.com/OpenGeoHub/SoilSamples/issues) or do a merge request. 
 
 ## WoSIS point datasets
 
 There are currently several global datasets that reference distribution of WRB 
 classes. For building training points for predictive soil type mapping the most 
 comprehensive dataset seems to be World Soil Information Service (WoSIS) soil profile database (available via: 
-https://www.isric.org/explore/wosis) [@batjes2020standardised] .
+https://www.isric.org/explore/wosis) [@batjes2020standardised].
 
-You can download a snapshot of the most up-to-date WOSIS Geopackage file directly from .
+You can download the most up-to-date snapshot of the most up-to-date WOSIS Geopackage file directly 
+by using the [ISRIC's Web Feature Service](https://www.isric.org/explore/wosis/accessing-wosis-derived-datasets#Access_data). 
+Below is an example of a snapshot downloaded on 10-April-2023:
 
 
 ```r
@@ -55,7 +56,7 @@ str(wosis.wrb)
 #plot(wosis.wrb[,c("longitude","latitude")])
 ```
 
-We can write the summary distribution of soil types by using:
+We can write the [summary distribution](https://github.com/OpenGeoHub/SoilSamples/blob/main/correlation/wosis.wrb_summary.csv) of soil types by using:
 
 
 ```r
@@ -124,7 +125,7 @@ spatially clustered i.e. large gaps exists where almost no data available. This 
 for African and Asian continents. To increase spatial coverage of the training points for 
 [global soil type mapping](https://github.com/OpenGeoHub/SoilTypeMapping), we can add points generated from the global soil polygon map 
 e.g. [Harmonized World Soil Database](https://iiasa.ac.at/models-tools-data/hwsd) (HWSD) [@hwsd2023]. 
-This can be done in three steps: first, we prepare summary of all WRB soil types using the HWSDv2 table:
+This can be done in three steps: first, we prepare [summary of all WRB soil types](https://github.com/OpenGeoHub/SoilSamples/blob/main/correlation/hwsd2_summary.csv) in the HWSDv2:
 
 
 ```r
@@ -139,9 +140,10 @@ xs = summary(as.factor(layer$VALUE), maxsum = nrow(wrb.leg))
 write.csv(data.frame(WRB4=attr(xs, "names"), count=xs), "./correlation/hwsd2_summary.csv")
 ```
 
-The `./correlation/hwsd2_summary.csv` table shows which are the most frequent soil types 
-for the world based on the HWSDv2. Note, these are primarily expert based and of 
-unknown uncertainty / confidence, so should be used with caution.
+The `./correlation/hwsd2_summary.csv` table now shows which are the most frequent soil types 
+for the world based on the HWSDv2. Note, these are primarily expert-based and of 
+unknown uncertainty / confidence, so should be used with caution, unlike WoSIS and 
+other legacy soil profiles which are based on actual soil observations and fieldwork.
 
 Second, we can prepare a raster layer that we can use to randomly draw training points 
 using some probability sampling e.g. [Simple Random Sampling](https://opengeohub.github.io/spatial-sampling-ml/). 
@@ -220,11 +222,13 @@ So in summary we have prepared two point datasets from WoSIS and HSWDv2.
 WoSIS are the actual observations of soil types and should be considered ground-truth. 
 The HWSDv2 contains the WRB 2022 version soil types per mapping unit, but these are 
 potentially of variable accuracy and should be only used to fill gaps in training data. 
+We had to manually adjust harmonize some classes that we either outdated (old WRB versions) 
+or are missing prefix / suffix.
 
 There are many more point datasets with WRB classification or compatible classification 
 that could be added to the list of training points. Below we list most recent 
-datsets with soil types imported to produce the most up-to-date compilation of 
-soil training data.
+datasets with soil types that we import and add to WoSIS to produce the most up-to-date 
+compilation of soil training data.
 
 ## Additional point datasets with WRB classes
 
@@ -234,9 +238,10 @@ observations of soil types.
 For example, we can use point observations coming from the land-surface observations e.g. 
 to represent shifting sand and bare-rock areas. For example, global land cover validation data 
 sets that are produced by photo-interpretation of very high resolution satellite imagery 
-(e.g. 20 cm resolution) often contain useful observations of the shifting sand, 
+(e.g. 20 cm spatial resolution) often contain useful observations of the shifting sand, 
 permanent ice and bare-rocks [@tsendbazar2021towards]. These specific surface materials 
-are often missing or are systematically under-represented in the legacy soil profile datasets:
+are often missing or are systematically under-represented in the legacy soil profile datasets. 
+Here is an example of almost 6000 observations of bare rock and shifting sands:
 
 
 ```r
@@ -251,7 +256,7 @@ are arbitrarily either masked out or (controversially) classified to different s
 We consider that it is more consistent to map shifting sands as a separate category of land.
 
 Another dataset interesting for soil type mapping are the legacy soil observations 
-focused on tropical peatlands, published in literature then digitized manually [@hengl2016global;@gumbricht2017expert]:
+focused on tropical peatlands, published in the literature, then digitized manually [@hengl2016global;@gumbricht2017expert]:
 
 
 ```r
@@ -339,10 +344,10 @@ tr.pnts = tr.pnts[!is.na(tr.pnts$h_wrb4)&!is.na(tr.pnts$longitude),]
 
 This gives a total of about 70,000 training points with WRB soil type. Note that correlation 
 between different national systems is not trivial and hence you should always check 
-the folder `./correlation` to see if some soil types are possibly incorrectly 
+the [folder](https://github.com/OpenGeoHub/SoilSamples/tree/main/correlation) `./correlation` to see if some soil types are possibly incorrectly 
 correlated. Also, IUSS and FAO are kind to maintain the [World Reference Base (WRB)](https://www.fao.org/soils-portal/data-hub/soil-classification/world-reference-base/en/), 
 but a table correlating various versions of WRB is [often not trivial](https://docs.google.com/spreadsheets/d/1GaNpiH65yiuHusNVkUrKog2FCiVUO6kz_wNdIzHbdfg/edit#gid=1418992436) and we have to 
-somewhat improvise (or ignore) that some soil type have changed over time.
+somewhat improvise (or ignore the issue) that some soil types have changed over time.
 
 
 ```r
@@ -355,10 +360,10 @@ if(!file.exists("./img/sol_wrb.pnts_profiles.png")){
 ```
 
 <div class="figure" style="text-align: center">
-<img src="./img/sol_wrb.pnts_profiles.png" alt="Soil profiles with WRB soil type classification global compilation." width="100%" />
-<p class="caption">(\#fig:sol_wrb.pnts_profiles)Soil profiles with WRB soil type classification global compilation.</p>
+<img src="./img/sol_wrb.pnts_profiles.png" alt="A global compilation of soil profiles with WRB soil type classification." width="100%" />
+<p class="caption">(\#fig:sol_wrb.pnts_profiles)A global compilation of soil profiles with WRB soil type classification.</p>
 </div>
-Fig.  1: Soil profiles with WRB soil type classification global compilation.
+Fig.  1: A global compilation of soil profiles with WRB soil type classification.
 
 
 ```r
@@ -371,10 +376,10 @@ if(!file.exists("./img/sol_wrb.pnts_tot.profiles.png")){
 ```
 
 <div class="figure" style="text-align: center">
-<img src="./img/sol_wrb.pnts_tot.profiles.png" alt="Soil profiles with WRB soil type classification global compilation: subset to actual observations." width="100%" />
-<p class="caption">(\#fig:sol_wrb.pnts_tot.profiles)Soil profiles with WRB soil type classification global compilation: subset to actual observations.</p>
+<img src="./img/sol_wrb.pnts_tot.profiles.png" alt="A global compilation of soil profiles with WRB soil type classification: a subset with actual observations." width="100%" />
+<p class="caption">(\#fig:sol_wrb.pnts_tot.profiles)A global compilation of soil profiles with WRB soil type classification: a subset with actual observations.</p>
 </div>
-Fig.  2: Soil profiles with WRB soil type classification global compilation: subset to actual observations.
+Fig.  2: A global compilation of soil profiles with WRB soil type classification: a subset with actual observations.
 
 
 We can export the final training points to Geopackage file by using e.g.:

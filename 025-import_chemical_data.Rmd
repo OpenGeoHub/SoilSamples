@@ -4,6 +4,8 @@
 status("drafting")
 ```
 
+Last update:  `r Sys.Date()`
+
 ```{r, include=FALSE, message=FALSE, results='hide'}
 ls <- c("rgdal", "raster", "tidyverse", "openair", "rgeos", 
         "cowplot", "rworldmap", "ggplot2", "terra", "captioner", 
@@ -18,7 +20,6 @@ lapply(ls, require, character.only = TRUE)
 This section describes import steps used to produce a global compilation of soil 
 laboratory data with chemical (and physical) soil properties that can be then 
 used for predictive soil mapping / modeling at global and regional scales.
-Last update:  `r Sys.Date()`
 
 Read more about soil chemical properties, global soil profile and sample data sets and functionality:
 

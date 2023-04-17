@@ -12,6 +12,7 @@ rmd_files: [
   #"030-import_physical_data.Rmd",
   "035-import_wrb_data.Rmd",
   #"040-import_usda_data.Rmd",
+  "summary.Rmd"
 
 ]
 
