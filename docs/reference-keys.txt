@@ -72,6 +72,8 @@ costa-rica
 soil-profile-db-for-costa-rica
 estonia
 eco-hydrological-modelling-parameters-dataset-for-estonia-estsoil-eh
+france
+french-rmqs-soil-profile-and-monitoring-dataset-with-related-management-practices-data
 germany
 stocks-of-organic-carbon-in-german-agricultural-soils-bze_lw
 ghana
@@ -89,12 +91,18 @@ namibia
 a-soter-database-for-namibia-namsoter
 scotland
 national-soils-inventory-for-scotland
+slovenia
+soil-profiles-from-the-graphical-units-of-agricultural-land-gerk
 switzerland
 swiss-national-soil-spectral-model-library
+nabodat
+swiss-biodiversity-monitoring-bdm
 tanzania
 tansis-afsis-ii
 russian-federation
 the-unified-state-register-of-soil-resources-egrpr
+uk
+landis-national-soils-inventory-nsi
 usa
 national-cooperative-soil-survey-characterization-database
 usda-national-soil-survey-centers-kellogg-soil-survey-laboratory-nssc-kssl

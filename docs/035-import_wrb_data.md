@@ -367,7 +367,7 @@ Fig.  1: A global compilation of soil profiles with WRB soil type classification
 
 
 ```r
-wrb.pnts_profilesL_sf <- sf::st_as_sf(tr.pnts[!tr.pnts$source_db=="HWSDv2",], coords = c("longitude","latitude"), crs="EPSG:4326")
+wrb.pnts_profilesL_sf <- sf::st_as_sf(tr.pnts[!(tr.pnts$source_db %in% c("HWSDv2", "GlobalLCV")),], coords = c("longitude","latitude"), crs="EPSG:4326")
 if(!file.exists("./img/sol_wrb.pnts_tot.profiles.png")){
   plot_gh(wrb.pnts_profilesL_sf, out.pdf="./img/sol_wrb.pnts_tot.profiles.pdf")
   system("pdftoppm ./img/sol_wrb.pnts_tot.profiles.pdf ./img/sol_wrb.pnts_tot.profiles -png -f 1 -singlefile")
@@ -376,10 +376,10 @@ if(!file.exists("./img/sol_wrb.pnts_tot.profiles.png")){
 ```
 
 <div class="figure" style="text-align: center">
-<img src="./img/sol_wrb.pnts_tot.profiles.png" alt="A global compilation of soil profiles with WRB soil type classification: a subset with actual observations." width="100%" />
-<p class="caption">(\#fig:sol_wrb.pnts_tot.profiles)A global compilation of soil profiles with WRB soil type classification: a subset with actual observations.</p>
+<img src="./img/sol_wrb.pnts_tot.profiles.png" alt="A global compilation of soil profiles with WRB soil type classification: a subset with actual soil profiles." width="100%" />
+<p class="caption">(\#fig:sol_wrb.pnts_tot.profiles)A global compilation of soil profiles with WRB soil type classification: a subset with actual soil profiles.</p>
 </div>
-Fig.  2: A global compilation of soil profiles with WRB soil type classification: a subset with actual observations.
+Fig.  2: A global compilation of soil profiles with WRB soil type classification: a subset with actual soil profiles.
 
 
 We can export the final training points to Geopackage file by using e.g.:

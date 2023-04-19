@@ -602,6 +602,22 @@ _Description_: Soil polygon map of Estonia and various derived grids. Point data
 - 📋 Unique complete rows:   
 - 📝 Import steps:  
 
+### France
+
+#### French RMQS soil profile and monitoring dataset with related management practices data
+
+_Description_: Full soil profiles with results of the chemical and physical analyses of the 
+soil profiles and monitoring + results of management practices related to soil data. 
+Locations of the points have been degraded with minimum error of 1 km to avoid 
+legal issues with land owners / farmers.
+
+- 📕 Saby, N. P. A., Chenu, J.-P., Szergi, T., Csorba, A., Bertuzzi, P., Toutain, B., … Creamer, R. (2020). French RMQS soil profile and monitoring dataset with related management practices data. Recherche Data Gouv. <https://doi.org/10.15454/AIQ9WS> / Saby, N. P. A., Thioulouse, J., Jolivet, C. C., Ratié, C., Boulonne, L., Bispo, A., & Arrouays, D. (2009). Multivariate analysis of the spatial patterns of 8 trace elements using the French soil monitoring network data. Science of the Total Environment, 407(21), 5644-5652. <http://dx.doi.org/10.1016/j.scitotenv.2009.07.002>
+- 🔗 Project website: <https://landmarkproject.eu/>  
+- 📂 Data download URL: <https://doi.org/10.15454/AIQ9WS>  
+- 📍 Unique locations: 2171  
+- 📋 Unique complete rows: 4149  
+- 📝 Import steps:  
+
 ### Germany
 
 #### Stocks of organic carbon in German agricultural soils (BZE_LW)
@@ -720,6 +736,19 @@ _Description_: Legacy dataset. The National Soil Inventory of Scotland (NSIS 197
 - 📋 Unique complete rows:   
 - 📝 Import steps:  
 
+### Slovenia
+
+#### Soil profiles from the Graphical Units of Agricultural Land (GERK)
+
+_Description_: Legacy dataset. The National Soil Inventory of Slovenia (agricultural land only).
+
+- 📕 Vrščaj, B., Repe, B., Simončič, P., & Vrščaj, B. (2017). Soil Information. The Soils of Slovenia, 157-170. <https://doi.org/10.1007/978-94-017-8585-3_7>   
+- 🔗 Project website: <https://rkg.gov.si/vstop/>  
+- 📂 Data download URL: <https://rkg.gov.si/vstop/>  
+- 📍 Unique locations: 1879  
+- 📋 Unique complete rows:   
+- 📝 Import steps:  
+
 ### Switzerland
 
 #### Swiss National Soil Spectral Model Library
@@ -730,6 +759,29 @@ _Description_: National SS library.
 - 🔗 Project website:   
 - 📂 Data download URL:   
 - 📍 Unique locations:   
+- 📋 Unique complete rows:   
+- 📝 Import steps:  
+
+#### NABODAT
+
+_Description_: Swiss National soil information system (NABODAT). Proprietary data 
+but can be requested for research purposes. Includes also the Swiss Soil Monitoring Network (NABO).
+
+- 📕 Rehbein, K., van der Meer, M., Grob, U., Wegmann, F. and Keller, A. 2011. "Das Nationale Bodeninformationssystem NABODAT in der Schweiz". In Berichte der DBG "Böden verstehen – Böden nutzen –Böden fit machen", 3–9 September 2011, Berlin <http://eprints.dbges.de> / Keller, A. (2013). National soil information systems to support spatial planning procedures. disP-The Planning Review, 49(1), 68-71. <https://doi.org/10.1080/02513625.2013.799872> 
+- 🔗 Project website: <https://www.nabodat.ch/>  
+- 📂 Data download URL:   
+- 📍 Unique locations:   
+- 📋 Unique complete rows:   
+- 📝 Import steps:  
+
+#### Swiss Biodiversity Monitoring (BDM)
+
+_Description_: Swiss Biodiversity Monitoring (BDM) soil samples. Focused on monitoring soil bacterial communities. 
+
+- 📕 Mayerhofer, J., Wächter, D., Calanca, P., Kohli, L., Roth, T., Meuli, R. G., & Widmer, F. (2021). Environmental and anthropogenic factors shape major bacterial community types across the complex mountain landscape of switzerland. Frontiers in microbiology, 12, 581430. <https://doi.org/10.3389/fmicb.2021.581430>  
+- 🔗 Project website: <https://www.biodiversitymonitoring.ch/index.php/en/home-footer>  
+- 📂 Data download URL:   
+- 📍 Unique locations: 255  
 - 📋 Unique complete rows:   
 - 📝 Import steps:  
 
@@ -759,6 +811,20 @@ _Description_: All documentation in Russian only.
 - 📍 Unique locations: 802  
 - 📋 Unique complete rows: 4137  
 - 📝 Import steps: [chemsprops.EGRPR](https://gitlab.com/openlandmap/compiled-ess-point-data-sets/-/tree/master/themes/sol/SoilChemDB#egrpr) 
+
+### UK
+
+#### LandIS / National Soils Inventory (NSI)
+
+_Description_: National soil and land use database. Proprietary dataset maintained by Cranfield University.
+LandIS is a Registered Trademark. 
+
+- 📕 Bradley, R. I., Milne, R., Bell, J., Lilly, A., Jordan, C., & Higgins, A. (2005). A soil carbon and land use database for the United Kingdom. Soil use and Management, 21(4), 363-369. <https://doi.org/10.1079/SUM2005351> / Hallett, S.H., Sakrabani, R., Keay, C.A. and Hannam, J.A. (2017). Developments in Land Information Systems: Case studies in land resource management capabilities and options. Soil Use and Management. <http://doi.org/10.1111/sum.12380>
+- 🔗 Project website: <https://www.landis.org.uk/>  
+- 📂 Data download URL: <https://www.landis.org.uk/soilsguide/series.cfm>  
+- 📍 Unique locations: 50,000+  
+- 📋 Unique complete rows:  
+- 📝 Import steps:  
 
 ### USA 
 
