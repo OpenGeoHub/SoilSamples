@@ -54,7 +54,7 @@ library(vroom)
 #devtools::install_github('davidcarslaw/openair')
 library(openair)
 fig_nums <- captioner(prefix = "Fig.")
-#load.pigz("soilchem.RData")
+load.pigz("soilchem.RData")
 source('./R/data_functions.R')
 ```
 
@@ -105,7 +105,7 @@ Targe variables listed:
 - `ec_satp`: Electrical Conductivity, Saturation Extract in dS/m for <2 mm soil fraction, 
 - `ec_12pre`: Electrical Conductivity,  Predict, 1:2 (w/w) in dS/m for <2 mm soil fraction,
 
-## ![alt text](../../../tex/R_logo.svg.png "Data import") Data import
+## ![alt text](./tex/R_logo.svg.png "Data import") Data import
 
 #### National Cooperative Soil Survey Characterization Database
 
@@ -1802,10 +1802,12 @@ Other potential large soil profile DBs of interest:
 - Shangguan, W., Dai, Y., Liu, B., Zhu, A., Duan, Q., Wu, L., ... & Chen, D. (2013). [A China data set of soil properties for land surface modeling](https://doi.org/10.1002/jame.20026). Journal of Advances in Modeling Earth Systems, 5(2), 212-224.
 - Salković, E., Djurović, I., Knežević, M., Popović-Bugarin, V., & Topalović, A. (2018). Digitization and mapping of national legacy soil data of Montenegro. Soil and Water Research, 13(2), 83-89. https://doi.org/10.17221/81/2017-SWR
 
-## ![alt text](../../../tex/R_logo.svg.png "Bind everything") Bind everything
+## ![alt text](./tex/R_logo.svg.png "Bind everything") Bind all datasets
+
+#### Bind and clean-up
 
 ```{r}
-#ls(pattern=glob2rx("chemsprops.*"))
+ls(pattern=glob2rx("chemsprops.*"))
 tot_sprops = dplyr::bind_rows(lapply(ls(pattern=glob2rx("chemsprops.*")), function(i){ mutate_all(setNames(get(i), col.names), as.character) }))
 ## convert to numeric:
 for(j in c("longitude_decimal_degrees", "latitude_decimal_degrees", "layer_sequence", 
@@ -1883,7 +1885,7 @@ Remove points falling in the sea or similar:
 
 ```{r}
 if(!exists("ov.sprops")){
-  #mask = terra::rast("../../../layers1km/lcv_landmask_esacci.lc.l4_c_1km_s0..0cm_2000..2015_v1.0.tif")
+  #mask = terra::rast("./layers1km/lcv_landmask_esacci.lc.l4_c_1km_s0..0cm_2000..2015_v1.0.tif")
   mask = terra::rast("/mnt/diskstation/data/LandGIS/layers250m/lcv_landmask_esacci.lc.l4_c_250m_s0..0cm_2000..2015_v1.0.tif")
   ov.sprops <- terra::extract(mask, terra::vect(tot_sprops.pnts)) ## TAKES 2 mins
   summary(as.factor(ov.sprops[,2]))
@@ -2053,10 +2055,10 @@ Write all soil profiles using a wide format:
 
 ```{r, eval=FALSE}
 sel.rm.pnts  <- tot_sprops_w.pnts$source_db=="LUCAS_2009" | tot_sprops_w.pnts$source_db=="LUCAS_2015" | tot_sprops_w.pnts$site_key %in% mng.rm | tot_sprops_w.pnts$site_key %in% rem.sp
-out.gpkg = "../../../out/gpkg/sol_chem.pnts_horizons.gpkg"
+out.gpkg = "./out/gpkg/sol_chem.pnts_horizons.gpkg"
 #unlink(out.gpkg)
 if(!file.exists(out.gpkg)){
-  writeOGR(tot_sprops_w.pnts[!sel.rm.pnts,], "../../../out/gpkg/sol_chem.pnts_horizons.gpkg", "sol_chem.pnts_horizons", drive="GPKG")
+  writeOGR(tot_sprops_w.pnts[!sel.rm.pnts,], "./out/gpkg/sol_chem.pnts_horizons.gpkg", "sol_chem.pnts_horizons", drive="GPKG")
 }
 ```
 
@@ -2073,52 +2075,32 @@ tot_sprops.s = tot_sprops[!sel.rm,]
 Plot in Goode Homolozine projection and save final objects:
 
 ```{r, eval=FALSE}
-if(!file.exists("../../../img/sol_chem.pnts_sites.png")){
+if(!file.exists("./img/sol_chem.pnts_sites.png")){
   tot_sprops.pnts_sf <- st_as_sf(tot_sprops.pnts[1], crs=4326)
-  plot_gh(tot_sprops.pnts_sf, out.pdf="../../../img/sol_chem.pnts_sites.pdf")
+  plot_gh(tot_sprops.pnts_sf, out.pdf="./img/sol_chem.pnts_sites.pdf")
   ## extremely slow --- takes 15mins
-  system("pdftoppm ../../../img/sol_chem.pnts_sites.pdf ../../../img/sol_chem.pnts_sites -png -f 1 -singlefile")
-  system("convert -crop 1280x575+36+114 ../../../img/sol_chem.pnts_sites.png ../../../img/sol_chem.pnts_sites.png")
+  system("pdftoppm ./img/sol_chem.pnts_sites.pdf ./img/sol_chem.pnts_sites -png -f 1 -singlefile")
+  system("convert -crop 1280x575+36+114 ./img/sol_chem.pnts_sites.png ./img/sol_chem.pnts_sites.png")
 }
 ```
 
 ```{r sol_chem.pnts_sites, echo=FALSE, fig.cap="Soil profiles and soil samples with chemical and physical properties global compilation.", out.width="100%"}
-knitr::include_graphics("../../../img/sol_chem.pnts_sites.png")
+knitr::include_graphics("./img/sol_chem.pnts_sites.png")
 ```
 `r fig_nums("sol_chem.pnts_sites", "Soil profiles and soil samples with chemical and physical properties global compilation.")`
 
-## ![alt text](../../../tex/R_logo.svg.png "Overlay www.OpenLandMap.org layers") Overlay with www.OpenLandMap.org layers
-
-Load the tiling system (1 degree grid representing global land mask) and run spatial overlay in parallel:
+## Save final analysis-ready objects:
 
 ```{r, eval=FALSE}
-if(!exists("rm.sol")){
-  tile.pol = readOGR("../../../tiles/global_tiling_100km_grid.gpkg")
-  #length(tile.pol)
-  ov.sol <- extract.tiled(obj=tot_sprops.pnts, tile.pol=tile.pol, path="/data/tt/LandGIS/grid250m", ID="ID", cpus=64)
-  #saveRDS.gz(ov.sol, "/mnt/diskstation/data/Soil_points/ov.sol_chem.pnts_horizons.rds")
-  #ov.sol <- readRDS.gz("/mnt/diskstation/data/Soil_points/ov.sol_chem.pnts_horizons.rds")
-  ## Valid predictors:
-  pr.vars = unique(unlist(sapply(c("admin0_fao", "fapar", "landsat", "lc100", "mod09a1", "mod11a2", "alos.palsar", "sm2rain", "irradiation_solar.atlas", "usgs.ecotapestry", "floodmap.500y", "water.table.depth_deltares", "snow.prob_esacci", "water.vapor_nasa.eo", "wind.speed_terraclimate", "merit.dem_m", "merit.hydro_m", "cloud.fraction_earthenv", "water.occurance_jrc", "giems", "mangroves", "wetlands.cw_upmc", "pb2002"), function(i){names(ov.sol)[grep(i, names(ov.sol))]})))
-  str(pr.vars)
-  ## Final regression matrix:
-  rm.sol = plyr::join(tot_sprops.s, ov.sol[,c("olc_id", pr.vars)])
-}
-dim(rm.sol)
-```
-
-Save final analysis-ready objects:
-
-```{r, eval=FALSE}
-saveRDS.gz(tot_sprops.s, "../../../out/rds/sol_chem.pnts_horizons.rds")
+saveRDS.gz(tot_sprops.s, "./out/rds/sol_chem.pnts_horizons.rds")
 saveRDS.gz(tot_sprops, "/mnt/diskstation/data/Soil_points/sol_chem.pnts_horizons.rds")
 saveRDS.gz(tot_sprops.pnts, "/mnt/diskstation/data/Soil_points/sol_chem.pnts_sites.rds")
 #library(farff)
-#writeARFF(tot_sprops.s, "../../../out/arff/sol_chem.pnts_horizons.arff", overwrite = TRUE)
+#writeARFF(tot_sprops.s, "./out/arff/sol_chem.pnts_horizons.arff", overwrite = TRUE)
 ## compressed CSV
-write.csv(tot_sprops.s, file=gzfile("../../../out/csv/sol_chem.pnts_horizons.csv.gz"))
+write.csv(tot_sprops.s, file=gzfile("./out/csv/sol_chem.pnts_horizons.csv.gz"))
 ## regression matrix:
-#saveRDS.gz(rm.sol, "../../../out/rds/sol_chem.pnts_horizons_rm.rds")
+#saveRDS.gz(rm.sol, "./out/rds/sol_chem.pnts_horizons_rm.rds")
 ```
 
 Save temp object:

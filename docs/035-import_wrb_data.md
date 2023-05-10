@@ -363,7 +363,7 @@ if(!file.exists("./img/sol_wrb.pnts_profiles.png")){
 <img src="./img/sol_wrb.pnts_profiles.png" alt="A global compilation of soil profiles with WRB soil type classification." width="100%" />
 <p class="caption">(\#fig:sol_wrb.pnts_profiles)A global compilation of soil profiles with WRB soil type classification.</p>
 </div>
-Fig.  1: A global compilation of soil profiles with WRB soil type classification.
+
 
 
 ```r
@@ -379,7 +379,6 @@ if(!file.exists("./img/sol_wrb.pnts_tot.profiles.png")){
 <img src="./img/sol_wrb.pnts_tot.profiles.png" alt="A global compilation of soil profiles with WRB soil type classification: a subset with actual soil profiles." width="100%" />
 <p class="caption">(\#fig:sol_wrb.pnts_tot.profiles)A global compilation of soil profiles with WRB soil type classification: a subset with actual soil profiles.</p>
 </div>
-Fig.  2: A global compilation of soil profiles with WRB soil type classification: a subset with actual soil profiles.
 
 
 We can export the final training points to Geopackage file by using e.g.:

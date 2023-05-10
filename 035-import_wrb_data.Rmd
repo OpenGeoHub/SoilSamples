@@ -326,7 +326,7 @@ if(!file.exists("./img/sol_wrb.pnts_profiles.png")){
 ```{r sol_wrb.pnts_profiles, echo=FALSE, fig.cap="A global compilation of soil profiles with WRB soil type classification.", out.width="100%"}
 knitr::include_graphics("./img/sol_wrb.pnts_profiles.png")
 ```
-`r fig_nums("sol_wrb.pnts_profiles", "A global compilation of soil profiles with WRB soil type classification.")`
+
 
 ```{r, eval=FALSE}
 wrb.pnts_profilesL_sf <- sf::st_as_sf(tr.pnts[!(tr.pnts$source_db %in% c("HWSDv2", "GlobalLCV")),], coords = c("longitude","latitude"), crs="EPSG:4326")
@@ -340,7 +340,6 @@ if(!file.exists("./img/sol_wrb.pnts_tot.profiles.png")){
 ```{r sol_wrb.pnts_tot.profiles, echo=FALSE, fig.cap="A global compilation of soil profiles with WRB soil type classification: a subset with actual soil profiles.", out.width="100%"}
 knitr::include_graphics("./img/sol_wrb.pnts_tot.profiles.png")
 ```
-`r fig_nums("sol_wrb.pnts_tot.profiles", "A global compilation of soil profiles with WRB soil type classification: a subset with actual soil profiles.")`
 
 
 We can export the final training points to Geopackage file by using e.g.:

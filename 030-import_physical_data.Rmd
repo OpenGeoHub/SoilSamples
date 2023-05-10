@@ -1,8 +1,10 @@
-## Soil physical and hydrological properties
+# Soil physical and hydrological properties
 
 ```{r, results = "asis", echo = FALSE}
 status("drafting")
 ```
+
+Last update:  `r Sys.Date()`
 
 ```{r, include=FALSE, message=FALSE, results='hide'}
 ls <- c("rgdal", "raster", "tidyverse", "openair", "rgeos", "sf", 
@@ -13,15 +15,20 @@ if(length(new.packages)) install.packages(new.packages, repos="https://cloud.r-p
 lapply(ls, require, character.only = TRUE)
 ```
 
-Part of: [Compiled ESS point data sets](https://gitlab.com/openlandmap/compiled-ess-point-data-sets)
-Last update:  `r Sys.Date()`
+## Overview
+
+This section describes import steps used to produce a global compilation of soil 
+laboratory data with physicals and hydraulic soil properties that can be then 
+used for predictive soil mapping / modeling at global and regional scales.
 
 Read more about computing with soil hydraulic / physical properties in R:
 
 - Gupta, S., Hengl, T., Lehmann, P., Bonetti, S., and Or, D. [**SoilKsatDB: global soil saturated hydraulic conductivity measurements for geoscience applications**](https://doi.org/10.5194/essd-2020-149). Earth Syst. Sci. Data Discuss., https://doi.org/10.5194/essd-2020-149, in review, 2021.
 - de Sousa, D. F., Rodrigues, S., de Lima, H. V., & Chagas, L. T. (2020). [R software packages as a tool for evaluating soil physical and hydraulic properties](https://doi.org/10.1016/j.compag.2019.105077). Computers and Electronics in Agriculture, 168, 105077. 
 
-## ![alt text](../../../tex/R_logo.svg.png "Packages in use") Specifications
+## ![alt text](./tex/R_logo.svg.png "Packages in use") Specifications
+
+#### Data standards
 
 ```{r librs, include=FALSE}
 library(plyr)
@@ -43,7 +50,7 @@ library(captioner)
 library(uuid)
 library(olctools)
 fig_nums <- captioner(prefix = "Fig.")
-#load.pigz("themes/sol/SoilHydroDB/soilhydro.RData")
+load.pigz("soilhydro.RData")
 source('./R/data_functions.R')
 ```
 
@@ -92,7 +99,7 @@ Conversion between VWC and MWC is based on the formula [@landon1991handbook; @be
 
 - VWC (%v/v) = MWC (% by weight ) * bulk density (kg/m3)
 
-## ![alt text](../../../tex/R_logo.svg.png "Data import") Data import
+## ![alt text](./tex/R_logo.svg.png "Data import") Data import
 
 #### NCSS Characterization Database
 
@@ -100,24 +107,24 @@ Conversion between VWC and MWC is based on the formula [@landon1991handbook; @be
 
 ```{r}
 if(!exists("hydrosprops.NCSS")){
-  ncss.site <- read.csv("/mnt/DATA/Soil_points/INT/USDA_NCSS/NCSS_Site_Location.csv", stringsAsFactors = FALSE)
+  ncss.site <- read.csv("/mnt/diskstation/data/Soil_points/INT/USDA_NCSS/NCSS_Site_Location.csv", stringsAsFactors = FALSE)
   #str(ncss.site)  
   ## Location accuracy unknown but we assume 100m
   ncss.site$location_accuracy_max = NA
   ncss.site$location_accuracy_min = 100
-  ncss.layer <- read.csv("/mnt/DATA/Soil_points/INT/USDA_NCSS/NCSS_Layer.csv", stringsAsFactors = FALSE)
-  ncss.bdm <- read.csv("/mnt/DATA/Soil_points/INT/USDA_NCSS/NCSS_Bulk_Density_and_Moisture.csv", stringsAsFactors = FALSE)
+  ncss.layer <- read.csv("/mnt/diskstation/data/Soil_points/INT/USDA_NCSS/NCSS_Layer.csv", stringsAsFactors = FALSE)
+  ncss.bdm <- read.csv("/mnt/diskstation/data/Soil_points/INT/USDA_NCSS/NCSS_Bulk_Density_and_Moisture.csv", stringsAsFactors = FALSE)
   #summary(as.factor(ncss.bdm$prep_code))
   ncss.bdm.0 <- ncss.bdm[ncss.bdm$prep_code=="S",]
   #summary(ncss.bdm.0$db_od)
   ## 0 values --- error!
-  ncss.carb <- read.csv("/mnt/DATA/Soil_points/INT/USDA_NCSS/NCSS_Carbon_and_Extractions.csv", stringsAsFactors = FALSE)
-  ncss.organic <- read.csv("/mnt/DATA/Soil_points/INT/USDA_NCSS/NCSS_Organic.csv", stringsAsFactors = FALSE)
-  ncss.pH <- read.csv("/mnt/DATA/Soil_points/INT/USDA_NCSS/NCSS_pH_and_Carbonates.csv", stringsAsFactors = FALSE)
+  ncss.carb <- read.csv("/mnt/diskstation/data/Soil_points/INT/USDA_NCSS/NCSS_Carbon_and_Extractions.csv", stringsAsFactors = FALSE)
+  ncss.organic <- read.csv("/mnt/diskstation/data/Soil_points/INT/USDA_NCSS/NCSS_Organic.csv", stringsAsFactors = FALSE)
+  ncss.pH <- read.csv("/mnt/diskstation/data/Soil_points/INT/USDA_NCSS/NCSS_pH_and_Carbonates.csv", stringsAsFactors = FALSE)
   #str(ncss.pH)
   #summary(!is.na(ncss.pH$ph_h2o))
-  ncss.PSDA <- read.csv("/mnt/DATA/Soil_points/INT/USDA_NCSS/NCSS_PSDA_and_Rock_Fragments.csv", stringsAsFactors = FALSE)
-  ncss.CEC <- read.csv("/mnt/DATA/Soil_points/INT/USDA_NCSS/NCSS_CEC_and_Bases.csv")
+  ncss.PSDA <- read.csv("/mnt/diskstation/data/Soil_points/INT/USDA_NCSS/NCSS_PSDA_and_Rock_Fragments.csv", stringsAsFactors = FALSE)
+  ncss.CEC <- read.csv("/mnt/diskstation/data/Soil_points/INT/USDA_NCSS/NCSS_CEC_and_Bases.csv")
   ncss.horizons <- plyr::join_all(list(ncss.bdm.0, ncss.layer, ncss.carb, ncss.organic, ncss.pH, ncss.PSDA, ncss.CEC), type = "left", by="labsampnum")
   #head(ncss.horizons)
   nrow(ncss.horizons)
@@ -149,7 +156,7 @@ if(!exists("hydrosprops.NCSS")){
   hydrosprops.NCSS$project_url = "http://ncsslabdatamart.sc.egov.usda.gov/"
   hydrosprops.NCSS$citation_url = "https://doi.org/10.2136/sssaj2016.11.0386n"
   hydrosprops.NCSS = complete.vars(hydrosprops.NCSS)
-  saveRDS.gz(hydrosprops.NCSS, "/mnt/DATA/Soil_points/INT/USDA_NCSS/hydrosprops.NCSS.rds")
+  saveRDS.gz(hydrosprops.NCSS, "/mnt/diskstation/data/Soil_points/INT/USDA_NCSS/hydrosprops.NCSS.rds")
 }
 dim(hydrosprops.NCSS)
 ```
@@ -161,12 +168,12 @@ dim(hydrosprops.NCSS)
 ```{r}
 if(!exists("hydrosprops.AfSPDB")){
   require(foreign)
-  afspdb.profiles <- read.dbf("/mnt/DATA/Soil_points/AF/AfSIS_SPDB/AfSP012Qry_Profiles.dbf", as.is=TRUE)
+  afspdb.profiles <- read.dbf("/mnt/diskstation/data/Soil_points/AF/AfSIS_SPDB/AfSP012Qry_Profiles.dbf", as.is=TRUE)
   ## approximate location error
   afspdb.profiles$location_accuracy_min = afspdb.profiles$XYAccur * 1e5
   afspdb.profiles$location_accuracy_min = ifelse(afspdb.profiles$location_accuracy_min < 20, NA, afspdb.profiles$location_accuracy_min)
   afspdb.profiles$location_accuracy_max = NA
-  afspdb.layers <- read.dbf("/mnt/DATA/Soil_points/AF/AfSIS_SPDB/AfSP012Qry_Layers.dbf", as.is=TRUE)
+  afspdb.layers <- read.dbf("/mnt/diskstation/data/Soil_points/AF/AfSIS_SPDB/AfSP012Qry_Layers.dbf", as.is=TRUE)
   ## select columns of interest:
   afspdb.s.lst <- c("ProfileID", "usiteid", "T_Year", "X_LonDD", "Y_LatDD", "location_accuracy_min", "location_accuracy_max")
   ## Convert to weight content
@@ -187,7 +194,7 @@ if(!exists("hydrosprops.AfSPDB")){
   hydrosprops.AfSPDB$project_url = "https://www.isric.org/projects/africa-soil-profiles-database-afsp"
   hydrosprops.AfSPDB$citation_url = "https://www.isric.org/sites/default/files/isric_report_2014_01.pdf"  
   hydrosprops.AfSPDB = complete.vars(hydrosprops.AfSPDB, sel = c("VMCpF25", "VMCpF42"), coords = c("X_LonDD", "Y_LatDD"))
-  saveRDS.gz(hydrosprops.AfSPDB, "/mnt/DATA/Soil_points/AF/AfSIS_SPDB/hydrosprops.AfSPDB.rds")
+  saveRDS.gz(hydrosprops.AfSPDB, "/mnt/diskstation/data/Soil_points/AF/AfSIS_SPDB/hydrosprops.AfSPDB.rds")
 }
 dim(hydrosprops.AfSPDB)
 ```
@@ -199,9 +206,9 @@ dim(hydrosprops.AfSPDB)
 
 ```{r}
 if(!exists("hydrosprops.ISIS")){
-  isis.xy <- read.csv("/mnt/DATA/Soil_points/INT/ISRIC_ISIS/Sites.csv", stringsAsFactors = FALSE)
+  isis.xy <- read.csv("/mnt/diskstation/data/Soil_points/INT/ISRIC_ISIS/Sites.csv", stringsAsFactors = FALSE)
   #str(isis.xy)
-  isis.des <- read.csv("/mnt/DATA/Soil_points/INT/ISRIC_ISIS/SitedescriptionResults.csv", stringsAsFactors = FALSE)
+  isis.des <- read.csv("/mnt/diskstation/data/Soil_points/INT/ISRIC_ISIS/SitedescriptionResults.csv", stringsAsFactors = FALSE)
   isis.site <- data.frame(site_key=isis.xy$Id, usiteid=paste(isis.xy$CountryISO, isis.xy$SiteNumber, sep=""))
   id0.lst = c(236,235,224)
   nm0.lst = c("longitude_decimal_degrees", "latitude_decimal_degrees", "site_obsdate")
@@ -212,10 +219,10 @@ if(!exists("hydrosprops.ISIS")){
   #str(isis.site.df)
   isis.site.df$location_accuracy_min = 100
   isis.site.df$location_accuracy_max = NA
-  isis.smp <- read.csv("/mnt/DATA/Soil_points/INT/ISRIC_ISIS/AnalyticalSamples.csv", stringsAsFactors = FALSE)
-  isis.ana <- read.csv("/mnt/DATA/Soil_points/INT/ISRIC_ISIS/AnalyticalResults.csv", stringsAsFactors = FALSE)
+  isis.smp <- read.csv("/mnt/diskstation/data/Soil_points/INT/ISRIC_ISIS/AnalyticalSamples.csv", stringsAsFactors = FALSE)
+  isis.ana <- read.csv("/mnt/diskstation/data/Soil_points/INT/ISRIC_ISIS/AnalyticalResults.csv", stringsAsFactors = FALSE)
   #str(isis.ana)
-  isis.class <- read.csv("/mnt/DATA/Soil_points/INT/ISRIC_ISIS/ClassificationResults.csv", stringsAsFactors = FALSE)
+  isis.class <- read.csv("/mnt/diskstation/data/Soil_points/INT/ISRIC_ISIS/ClassificationResults.csv", stringsAsFactors = FALSE)
   isis.hor <- data.frame(labsampnum=isis.smp$Id, hzn_top=isis.smp$Top, hzn_bot=isis.smp$Bottom, site_key=isis.smp$SiteId)
   isis.hor$hzn_bot <- as.numeric(gsub(">", "", isis.hor$hzn_bot))
   #str(isis.hor)
@@ -238,7 +245,7 @@ if(!exists("hydrosprops.ISIS")){
   hydrosprops.ISIS$project_url = "https://isis.isric.org"
   hydrosprops.ISIS$citation_url = "https://www.isric.org/sites/default/files/isric_report_1995_10b.pdf"
   hydrosprops.ISIS = complete.vars(hydrosprops.ISIS)
-  saveRDS.gz(hydrosprops.ISIS, "/mnt/DATA/Soil_points/INT/ISRIC_ISIS/hydrosprops.ISIS.rds")
+  saveRDS.gz(hydrosprops.ISIS, "/mnt/diskstation/data/Soil_points/INT/ISRIC_ISIS/hydrosprops.ISIS.rds")
 }
 dim(hydrosprops.ISIS)
 ```
@@ -249,11 +256,11 @@ dim(hydrosprops.ISIS)
 
 ```{r}
 if(!exists("hydrosprops.WISE")){
-  wise.SITE <- read.csv("/mnt/DATA/Soil_points/INT/ISRIC_WISE/WISE3_SITE.csv", stringsAsFactors=FALSE)
+  wise.SITE <- read.csv("/mnt/diskstation/data/Soil_points/INT/ISRIC_WISE/WISE3_SITE.csv", stringsAsFactors=FALSE)
   #summary(as.factor(wise.SITE$LONLAT_ACC))
   wise.SITE$location_accuracy_min = ifelse(wise.SITE$LONLAT_ACC=="D", 1e5/2, ifelse(wise.SITE$LONLAT_ACC=="S", 30, ifelse(wise.SITE$LONLAT_ACC=="M", 1800/2, NA)))
   wise.SITE$location_accuracy_max = NA
-  wise.HORIZON <- read.csv("/mnt/DATA/Soil_points/INT/ISRIC_WISE/WISE3_HORIZON.csv")
+  wise.HORIZON <- read.csv("/mnt/diskstation/data/Soil_points/INT/ISRIC_WISE/WISE3_HORIZON.csv")
   wise.s.lst <- c("WISE3_id", "SOURCE_ID", "DATEYR", "LONDD", "LATDD", "location_accuracy_min", "location_accuracy_max")
   ## Volumetric values
   #summary(wise.HORIZON$BULKDENS)
@@ -273,7 +280,7 @@ if(!exists("hydrosprops.WISE")){
   hydrosprops.WISE <- complete.vars(hydrosprops.WISE, sel=c("VMC2", "VMC3"), coords = c("LONDD", "LATDD"))
   hydrosprops.WISE$confidence_degree = 5
   #summary(hydrosprops.WISE$VMC3)
-  saveRDS.gz(hydrosprops.WISE, "/mnt/DATA/Soil_points/INT/ISRIC_WISE/hydrosprops.WISE.rds")
+  saveRDS.gz(hydrosprops.WISE, "/mnt/diskstation/data/Soil_points/INT/ISRIC_WISE/hydrosprops.WISE.rds")
 }
 dim(hydrosprops.WISE)
 ```
@@ -284,8 +291,8 @@ dim(hydrosprops.WISE)
 
 ```{r}
 if(!exists("hydrosprops.FRED")){
-  fred = read.csv("/mnt/DATA/Soil_points/INT/FRED/FRED2_20180518.csv", skip = 5, header=FALSE)
-  names(fred) = names(read.csv("/mnt/DATA/Soil_points/INT/FRED/FRED2_20180518.csv", nrows=1, header=TRUE))
+  fred = read.csv("/mnt/diskstation/data/Soil_points/INT/FRED/FRED2_20180518.csv", skip = 5, header=FALSE)
+  names(fred) = names(read.csv("/mnt/diskstation/data/Soil_points/INT/FRED/FRED2_20180518.csv", nrows=1, header=TRUE))
   fred.h.lst = c("Notes_Row.ID", "Data.source_DOI", "site_obsdate", "longitude_decimal_degrees", "latitude_decimal_degrees", "location_accuracy_min", "location_accuracy_max", "labsampnum", "layer_sequence", "hzn_top", "hzn_bot", "Soil.horizon", "db_13b", "Soil.bulk.density", "COLEws", "w6clod", "w10cld", "Soil.water_Volumetric.content", "w15l2", "w15bfm", "adod", "wrd_ws13", "cec7_cly", "w15cly", "Soil.texture", "Soil.texture_Fraction.clay", "Soil.texture_Fraction.silt", "Soil.texture_Fraction.sand", "Soil.organic.C.content", "ph_kcl", "Soil.pH_Water", "Soil.cation.exchange.capacity..CEC.", "cec_nh4", "wpg2",  "ksat_lab", "ksat_field")
   #summary(fred$Soil.water_Volumetric.content)
   #summary(fred$Soil.water_Storage.capacity)
@@ -305,7 +312,7 @@ if(!exists("hydrosprops.FRED")){
   hydrosprops.FRED$project_url = "https://roots.ornl.gov/"
   hydrosprops.FRED$citation_url = "https://doi.org/10.25581/ornlsfa.012/1417481"
   hydrosprops.FRED = complete.vars(hydrosprops.FRED, sel = c("Soil.water_Volumetric.content", "Soil.texture_Fraction.clay"))
-  saveRDS.gz(hydrosprops.FRED, "/mnt/DATA/Soil_points/INT/FRED/hydrosprops.FRED.rds")
+  saveRDS.gz(hydrosprops.FRED, "/mnt/diskstation/data/Soil_points/INT/FRED/hydrosprops.FRED.rds")
 }
 dim(hydrosprops.FRED)
 ```
@@ -317,7 +324,7 @@ dim(hydrosprops.FRED)
 
 ```{r}
 if(!exists("hydrosprops.EGRPR")){
-  russ.HOR = read.csv("/mnt/DATA/Soil_points/Russia/EGRPR/Russia_EGRPR_soil_pedons.csv")
+  russ.HOR = read.csv("/mnt/diskstation/data/Soil_points/Russia/EGRPR/Russia_EGRPR_soil_pedons.csv")
   russ.HOR$SOURCEID = paste(russ.HOR$CardID, russ.HOR$SOIL_ID, sep="_")
   russ.HOR$SNDPPT <- russ.HOR$TEXTSAF + russ.HOR$TEXSCM
   russ.HOR$SLTPPT <- russ.HOR$TEXTSIC + russ.HOR$TEXTSIM + 0.8 * russ.HOR$TEXTSIF
@@ -337,7 +344,7 @@ if(!exists("hydrosprops.EGRPR")){
   hydrosprops.EGRPR$citation_url = "https://doi.org/10.19047/0136-1694-2016-86-115-123"
   hydrosprops.EGRPR <- complete.vars(hydrosprops.EGRPR, sel=c("WR33", "WR1500"), coords = c("LONG", "LAT"))
   #summary(hydrosprops.EGRPR$WR1500)
-  saveRDS.gz(hydrosprops.EGRPR, "/mnt/DATA/Soil_points/Russia/EGRPR/hydrosprops.EGRPR.rds")
+  saveRDS.gz(hydrosprops.EGRPR, "/mnt/diskstation/data/Soil_points/Russia/EGRPR/hydrosprops.EGRPR.rds")
 }
 dim(hydrosprops.EGRPR)
 ```
@@ -349,9 +356,9 @@ dim(hydrosprops.EGRPR)
 
 ```{r}
 if(!exists("hydrosprops.SPADE2")){
-  spade.PLOT <- read.csv("/mnt/DATA/Soil_points/EU/SPADE/DAT_PLOT.csv")
+  spade.PLOT <- read.csv("/mnt/diskstation/data/Soil_points/EU/SPADE/DAT_PLOT.csv")
   #str(spade.PLOT)
-  spade.HOR <- read.csv("/mnt/DATA/Soil_points/EU/SPADE/DAT_HOR.csv")
+  spade.HOR <- read.csv("/mnt/diskstation/data/Soil_points/EU/SPADE/DAT_HOR.csv")
   spade.PLOT = spade.PLOT[!spade.PLOT$LON_COOR_V>180 & spade.PLOT$LAT_COOR_V>20,]
   #plot(spade.PLOT[,c("LON_COOR_V","LAT_COOR_V")])
   spade.PLOT$location_accuracy_min = 100
@@ -379,7 +386,7 @@ if(!exists("hydrosprops.SPADE2")){
   #summary(hydrosprops.SPADE2$WC4_V)
   #summary(is.na(hydrosprops.SPADE2$WC4_V))
   #hist(hydrosprops.SPADE2$WC4_V, breaks=45, col="gray")
-  saveRDS.gz(hydrosprops.SPADE2, "/mnt/DATA/Soil_points/EU/SPADE/hydrosprops.SPADE2.rds")
+  saveRDS.gz(hydrosprops.SPADE2, "/mnt/diskstation/data/Soil_points/EU/SPADE/hydrosprops.SPADE2.rds")
 }
 dim(hydrosprops.SPADE2)
 ```
@@ -391,7 +398,7 @@ dim(hydrosprops.SPADE2)
 ```{r}
 if(!exists("hydrosprops.NPDB")){
   NPDB.nm = c("NPDB_V2_sum_source_info.csv","NPDB_V2_sum_chemical.csv", "NPDB_V2_sum_horizons_raw.csv", "NPDB_V2_sum_physical.csv")
-  NPDB.HOR = plyr::join_all(lapply(paste0("/mnt/DATA/Soil_points/Canada/NPDB/", NPDB.nm), read.csv), type = "full")
+  NPDB.HOR = plyr::join_all(lapply(paste0("/mnt/diskstation/data/Soil_points/Canada/NPDB/", NPDB.nm), read.csv), type = "full")
   #str(NPDB.HOR)
   #summary(NPDB.HOR$BULK_DEN)
   ## 0 values -> ERROR!
@@ -405,7 +412,7 @@ if(!exists("hydrosprops.NPDB")){
   hydrosprops.NPDB$project_url = "https://open.canada.ca/data/en/"
   hydrosprops.NPDB$citation_url = "https://open.canada.ca/data/en/dataset/6457fad6-b6f5-47a3-9bd1-ad14aea4b9e0"
   hydrosprops.NPDB <- complete.vars(hydrosprops.NPDB, sel=c("RETN_33KP", "RETN_1500K"), coords = c("DD_LONG", "DD_LAT"))
-  saveRDS.gz(hydrosprops.NPDB, "/mnt/DATA/Soil_points/Canada/NPDB/hydrosprops.NPDB.rds")
+  saveRDS.gz(hydrosprops.NPDB, "/mnt/diskstation/data/Soil_points/Canada/NPDB/hydrosprops.NPDB.rds")
 }
 dim(hydrosprops.NPDB)
 ```
@@ -446,7 +453,7 @@ if(!exists("hydrosprops.ETH")){
   hydrosprops.ETH = complete.vars(hydrosprops.ETH)
   #hist(hydrosprops.ETH$w15l2, breaks=45, col="gray")
   #hist(log1p(hydrosprops.ETH$ksat_lab), breaks=45, col="gray")
-  saveRDS.gz(hydrosprops.ETH, "/mnt/DATA/Soil_points/INT/hydrosprops.ETH.rds")
+  saveRDS.gz(hydrosprops.ETH, "/mnt/diskstation/data/Soil_points/INT/hydrosprops.ETH.rds")
 }
 dim(hydrosprops.ETH)
 ```
@@ -480,7 +487,7 @@ if(!exists("hydrosprops.HYBRAS")){
   hydrosprops.HYBRAS$project_url = "http://www.cprm.gov.br/en/Hydrology/Research-and-Innovation/HYBRAS-4208.html"
   hydrosprops.HYBRAS$citation_url = "https://doi.org/10.2136/vzj2017.05.0095"
   hydrosprops.HYBRAS <- complete.vars(hydrosprops.HYBRAS, sel=c("w3cld", "theta15000", "ksat", "ksat_field"), coords = c("LongitudeOR", "LatitudeOR"))
-  saveRDS.gz(hydrosprops.HYBRAS, "/mnt/DATA/Soil_points/INT/HYBRAS/hydrosprops.HYBRAS.rds")
+  saveRDS.gz(hydrosprops.HYBRAS, "/mnt/diskstation/data/Soil_points/INT/HYBRAS/hydrosprops.HYBRAS.rds")
 }
 dim(hydrosprops.HYBRAS)
 ```
@@ -491,13 +498,13 @@ dim(hydrosprops.HYBRAS)
 
 ```{r}
 if(!exists("hydrosprops.UNSODA")){
-  unsoda.LOC = read.csv("/mnt/DATA/Soil_points/INT/UNSODA/general_c.csv")
+  unsoda.LOC = read.csv("/mnt/diskstation/data/Soil_points/INT/UNSODA/general_c.csv")
   #unsoda.LOC = unsoda.LOC[!unsoda.LOC$Lat==0,]
   #plot(unsoda.LOC[,c("Long","Lat")])
-  unsoda.SOIL = read.csv("/mnt/DATA/Soil_points/INT/UNSODA/soil_properties.csv")
+  unsoda.SOIL = read.csv("/mnt/diskstation/data/Soil_points/INT/UNSODA/soil_properties.csv")
   #summary(unsoda.SOIL$k_sat)
   ## Soil water retention in lab:
-  tmp.hyd = read.csv("/mnt/DATA/Soil_points/INT/UNSODA/lab_drying_h-t.csv")
+  tmp.hyd = read.csv("/mnt/diskstation/data/Soil_points/INT/UNSODA/lab_drying_h-t.csv")
   #str(tmp.hyd)
   tmp.hyd = tmp.hyd[!is.na(tmp.hyd$preshead),]
   tmp.hyd$theta = tmp.hyd$theta*100
@@ -510,11 +517,11 @@ if(!exists("hydrosprops.UNSODA")){
   }
   #head(tmp.hyd.tbl)
   ## ksat
-  kst.lev = read.csv("/mnt/DATA/Soil_points/INT/UNSODA/comment_lab_sat_cond.csv", na.strings=c("","NA","No comment"))
-  kst.met = read.csv("/mnt/DATA/Soil_points/INT/UNSODA/methodology.csv", na.strings=c("","NA","No comment"))
+  kst.lev = read.csv("/mnt/diskstation/data/Soil_points/INT/UNSODA/comment_lab_sat_cond.csv", na.strings=c("","NA","No comment"))
+  kst.met = read.csv("/mnt/diskstation/data/Soil_points/INT/UNSODA/methodology.csv", na.strings=c("","NA","No comment"))
   kst.met$comment_lsc = paste(plyr::join(kst.met[c("comment_lsc_ID")], kst.lev)$comment_lsc)
   kst.met$comment_lsc[which(kst.met$comment_lsc=="NA")] = NA
-  kst.fld = read.csv("/mnt/DATA/Soil_points/INT/UNSODA/comment_field_sat_cond.csv", na.strings=c("","NA","No comment"))
+  kst.fld = read.csv("/mnt/diskstation/data/Soil_points/INT/UNSODA/comment_field_sat_cond.csv", na.strings=c("","NA","No comment"))
   kst.met$comment_fsc = paste(plyr::join(kst.met[c("comment_fsc_ID")], kst.fld)$comment_fsc)
   kst.met$comment_fsc[which(kst.met$comment_fsc=="NA")] = NA
   summary(as.factor(kst.met$comment_lsc))
@@ -558,7 +565,7 @@ if(!exists("hydrosprops.UNSODA")){
   hydrosprops.UNSODA$project_url = "https://data.nal.usda.gov/dataset/unsoda-20-unsaturated-soil-hydraulic-database-database-and-program-indirect-methods-estimating-unsaturated-hydraulic-properties"
   hydrosprops.UNSODA$citation_url = "https://doi.org/10.15482/USDA.ADC/1173246"
   hydrosprops.UNSODA <- complete.vars(hydrosprops.UNSODA, coords = c("Long", "Lat"))
-  saveRDS.gz(hydrosprops.UNSODA, "/mnt/DATA/Soil_points/INT/UNSODA/hydrosprops.UNSODA.rds")
+  saveRDS.gz(hydrosprops.UNSODA, "/mnt/diskstation/data/Soil_points/INT/UNSODA/hydrosprops.UNSODA.rds")
 }
 dim(hydrosprops.UNSODA)
 ```
@@ -569,7 +576,7 @@ dim(hydrosprops.UNSODA)
 
 ```{r}
 if(!exists("hydrosprops.HYDROS")){
-  hydros.tbl = read.csv("/mnt/DATA/Soil_points/INT/HydroS/int_rawret.csv", sep="\t", stringsAsFactors = FALSE, dec = ",")
+  hydros.tbl = read.csv("/mnt/diskstation/data/Soil_points/INT/HydroS/int_rawret.csv", sep="\t", stringsAsFactors = FALSE, dec = ",")
   hydros.tbl = hydros.tbl[!is.na(hydros.tbl$TENSION),]
   #summary(hydros.tbl$TENSION)
   hydros.tbl$TENSIONc = cut(hydros.tbl$TENSION, breaks=c(1,5,8,15,30,40,1000,15001))
@@ -585,7 +592,7 @@ if(!exists("hydrosprops.HYDROS")){
   }
   #head(hydros.tbl.df)
   ## properties:
-  hydros.soil = read.csv("/mnt/DATA/Soil_points/INT/HydroS/int_basicdata.csv", sep="\t", stringsAsFactors = FALSE, dec = ",")
+  hydros.soil = read.csv("/mnt/diskstation/data/Soil_points/INT/HydroS/int_basicdata.csv", sep="\t", stringsAsFactors = FALSE, dec = ",")
   #head(hydros.soil)
   #plot(hydros.soil[,c("H","R")])
   hydros.col = plyr::join(hydros.soil, hydros.tbl.df)
@@ -602,7 +609,7 @@ if(!exists("hydrosprops.HYDROS")){
   hydrosprops.HYDROS$project_url = "http://dx.doi.org/10.4228/ZALF.2003.273"
   hydrosprops.HYDROS$citation_url = "https://doi.org/10.18174/odjar.v3i1.15763"
   hydrosprops.HYDROS <- complete.vars(hydrosprops.HYDROS, coords = c("H","R"))
-  saveRDS.gz(hydrosprops.HYDROS, "/mnt/DATA/Soil_points/INT/HYDROS/hydrosprops.HYDROS.rds")
+  saveRDS.gz(hydrosprops.HYDROS, "/mnt/diskstation/data/Soil_points/INT/HYDROS/hydrosprops.HYDROS.rds")
 }
 dim(hydrosprops.HYDROS)
 ```
@@ -613,8 +620,8 @@ dim(hydrosprops.HYDROS)
 
 ```{r}
 if(!exists("hydrosprops.SWIG")){
-  meta.tbl = read.csv("/mnt/DATA/Soil_points/INT/SWIG/Metadata.csv", skip = 1, fill = TRUE, blank.lines.skip=TRUE, flush=TRUE, stringsAsFactors=FALSE)
-  swig.xy = read.table("/mnt/DATA/Soil_points/INT/SWIG/Locations.csv", sep=";", dec = ",", stringsAsFactors=FALSE, header=TRUE, na.strings = c("-",""," "), fill = TRUE)
+  meta.tbl = read.csv("/mnt/diskstation/data/Soil_points/INT/SWIG/Metadata.csv", skip = 1, fill = TRUE, blank.lines.skip=TRUE, flush=TRUE, stringsAsFactors=FALSE)
+  swig.xy = read.table("/mnt/diskstation/data/Soil_points/INT/SWIG/Locations.csv", sep=";", dec = ",", stringsAsFactors=FALSE, header=TRUE, na.strings = c("-",""," "), fill = TRUE)
   swig.xy$x = as.numeric(gsub(",", ".", swig.xy$x))
   swig.xy$y = as.numeric(gsub(",", ".", swig.xy$y))
   swig.xy = swig.xy[,1:8]
@@ -631,7 +638,7 @@ if(!exists("hydrosprops.SWIG")){
   ## bind together
   swig.col = plyr::join(swig.xyf.df[,c("Code","x","y")], meta.tbl)
   ## aditional values for ksat
-  swig2.tbl = read.csv("/mnt/DATA/Soil_points/INT/SWIG/Statistics.csv", fill = TRUE, blank.lines.skip=TRUE, sep=";", dec = ",", flush=TRUE, stringsAsFactors=FALSE)
+  swig2.tbl = read.csv("/mnt/diskstation/data/Soil_points/INT/SWIG/Statistics.csv", fill = TRUE, blank.lines.skip=TRUE, sep=";", dec = ",", flush=TRUE, stringsAsFactors=FALSE)
   #hist(log1p(as.numeric(swig2.tbl$Ks..cm.hr.)), breaks=45, col="gray")
   swig.col$Ks..cm.hr. = as.numeric(plyr::join(swig.col["Code"], swig2.tbl[c("Code","Ks..cm.hr.")])$Ks..cm.hr.)
   swig.col$Ks..cm.hr. = ifelse(swig.col$Ks..cm.hr. * 24 <= 0.01, NA, swig.col$Ks..cm.hr.)
@@ -679,7 +686,7 @@ if(!exists("hydrosprops.SWIG")){
   hydrosprops.SWIG$project_url = "https://soil-modeling.org/resources-links/data-portal/swig"
   hydrosprops.SWIG$citation_url = "https://doi.org/10.5194/essd-10-1237-2018"
   hydrosprops.SWIG <- complete.vars(hydrosprops.SWIG, sel=c("w15l2","w3cld","ksat_lab","Ksat"), coords=c("x","y"))
-  saveRDS.gz(hydrosprops.SWIG, "/mnt/DATA/Soil_points/INT/SWIG/hydrosprops.SWIG.rds")
+  saveRDS.gz(hydrosprops.SWIG, "/mnt/diskstation/data/Soil_points/INT/SWIG/hydrosprops.SWIG.rds")
 }
 dim(hydrosprops.SWIG)
 ```
@@ -691,7 +698,7 @@ dim(hydrosprops.SWIG)
 ```{r}
 if(!exists("hydrosprops.SIM")){
   ## 0 soil organic carbon + 98% sand content (deserts)
-  sprops.SIM = readRDS("/mnt/DATA/LandGIS/training_points/soil_props/sprops.SIM.rds")
+  sprops.SIM = readRDS("/mnt/diskstation/data/LandGIS/training_points/soil_props/sprops.SIM.rds")
   sprops.SIM$w10cld = 3.1
   sprops.SIM$w3cld = 1.2
   sprops.SIM$w15l2 = 0.8
@@ -700,8 +707,8 @@ if(!exists("hydrosprops.SIM")){
   sprops.SIM$longitude_decimal_degrees = sprops.SIM$x
   sprops.SIM$latitude_decimal_degrees = sprops.SIM$y
   ## Very approximate values for Ksat for shifting sand:
-  tax.r = raster::extract(raster("/mnt/DATA/LandGIS/archive/predicted250m/sol_grtgroup_usda.soiltax_c_250m_s0..0cm_1950..2017_v0.1.tif"), sprops.SIM[,c("longitude_decimal_degrees","latitude_decimal_degrees")])
-  tax.leg = read.csv("/mnt/DATA/LandGIS/archive/predicted250m/sol_grtgroup_usda.soiltax_c_250m_s0..0cm_1950..2017_v0.1.tif.csv")
+  tax.r = raster::extract(raster("/mnt/diskstation/data/LandGIS/archive/predicted250m/sol_grtgroup_usda.soiltax_c_250m_s0..0cm_1950..2017_v0.1.tif"), sprops.SIM[,c("longitude_decimal_degrees","latitude_decimal_degrees")])
+  tax.leg = read.csv("/mnt/diskstation/data/LandGIS/archive/predicted250m/sol_grtgroup_usda.soiltax_c_250m_s0..0cm_1950..2017_v0.1.tif.csv")
   tax.ksat_lab = aggregate(eth.tbl$ksat_lab, by=list(Group=eth.tbl$tax_grtgroup), FUN=mean, na.rm=TRUE)
   tax.ksat_lab.sd = aggregate(eth.tbl$ksat_lab, by=list(Group=eth.tbl$tax_grtgroup), FUN=sd, na.rm=TRUE)
   tax.ksat_field = aggregate(eth.tbl$ksat_field, by=list(Group=eth.tbl$tax_grtgroup), FUN=mean, na.rm=TRUE)
@@ -718,12 +725,12 @@ if(!exists("hydrosprops.SIM")){
   sprops.SIM$citation_url = ""
   hydrosprops.SIM = sprops.SIM[,col.names]
   hydrosprops.SIM$confidence_degree = 30
-  saveRDS.gz(hydrosprops.SIM, "/mnt/DATA/Soil_points/INT/hydrosprops.SIM.rds")
+  saveRDS.gz(hydrosprops.SIM, "/mnt/diskstation/data/Soil_points/INT/hydrosprops.SIM.rds")
 }
 dim(hydrosprops.SIM)
 ```
 
-## ![alt text](../../../tex/R_logo.svg.png "Bind points") Bind all tables
+## ![alt text](./tex/R_logo.svg.png "Bind points") Bind all datasets
 
 #### Bind and clean-up
 
@@ -769,8 +776,8 @@ Remove points falling in the sea or similar:
 
 ```{r}
 if(!exists("ov.sprops")){
-  #mask = terra::rast("../../../layers1km/lcv_landmask_esacci.lc.l4_c_1km_s0..0cm_2000..2015_v1.0.tif")
-  mask = terra::rast("/mnt/DATA/LandGIS/layers250m/lcv_landmask_esacci.lc.l4_c_250m_s0..0cm_2000..2015_v1.0.tif")
+  #mask = terra::rast("./layers1km/lcv_landmask_esacci.lc.l4_c_1km_s0..0cm_2000..2015_v1.0.tif")
+  mask = terra::rast("/mnt/diskstation/data/LandGIS/layers250m/lcv_landmask_esacci.lc.l4_c_250m_s0..0cm_2000..2015_v1.0.tif")
   ov.sprops <- terra::extract(mask, terra::vect(tot_sprops.pnts))
   summary(as.factor(ov.sprops[,2]))
   if(sum(is.na(ov.sprops[,2]))>0 | sum(ov.sprops[,2]==2)>0){
@@ -882,8 +889,8 @@ Write all soil profiles using a wide format:
 
 ```{r, eval=FALSE}
 sel.rm.pnts  <- tot_sprops_w.pnts$site_key %in% rem.sp
-unlink("../../../out/gpkg/sol_hydro.pnts_horizons.gpkg")
-writeOGR(tot_sprops_w.pnts[!sel.rm.pnts,], "../../../out/gpkg/sol_hydro.pnts_horizons.gpkg", "sol_hydro.pnts_horizons", drive="GPKG")
+unlink("./out/gpkg/sol_hydro.pnts_horizons.gpkg")
+writeOGR(tot_sprops_w.pnts[!sel.rm.pnts,], "./out/gpkg/sol_hydro.pnts_horizons.gpkg", "sol_hydro.pnts_horizons", drive="GPKG")
 ```
 
 #### Ksat dataset:
@@ -911,49 +918,49 @@ dim(tot_sprops.pnts.C)
 Plot in Goode Homolozine projection and save final objects:
 
 ```{r, eval=FALSE}
-if(!file.exists("../../../img/sol_hydro.pnts_sites.png")){
+if(!file.exists("./img/sol_hydro.pnts_sites.png")){
   tot_sprops.pnts_sf <- st_as_sf(tot_sprops.pnts[1])
-  plot_gh(tot_sprops.pnts_sf, out.pdf="../../../img/sol_hydro.pnts_sites.pdf")
-  system("pdftoppm ../../../img/sol_hydro.pnts_sites.pdf ../../../img/sol_hydro.pnts_sites -png -f 1 -singlefile")
-  system("convert -crop 1280x575+36+114 ../../../img/sol_hydro.pnts_sites.png ../../../img/sol_hydro.pnts_sites.png")
+  plot_gh(tot_sprops.pnts_sf, out.pdf="./img/sol_hydro.pnts_sites.pdf")
+  system("pdftoppm ./img/sol_hydro.pnts_sites.pdf ./img/sol_hydro.pnts_sites -png -f 1 -singlefile")
+  system("convert -crop 1280x575+36+114 ./img/sol_hydro.pnts_sites.png ./img/sol_hydro.pnts_sites.png")
 }
 ```
 
 ```{r sol_hydro.pnts_sites, echo=FALSE, fig.cap="Soil profiles and soil samples with physical and hydraulic soil properties properties global compilation.", out.width="100%"}
-knitr::include_graphics("../../../img/sol_hydro.pnts_sites.png")
+knitr::include_graphics("./img/sol_hydro.pnts_sites.png")
 ```
 `r fig_nums("sol_hydro.pnts_sites", "Soil profiles and soil samples with physical and hydraulic soil properties properties global compilation.")`
 
 ```{r, eval=FALSE}
-if(!file.exists("../../../img/sol_ksat.pnts_sites.png")){
+if(!file.exists("./img/sol_ksat.pnts_sites.png")){
   sel.ks = which(tot_sprops.pnts$location_id %in% tot_sprops.pnts.C$location_id)
   tot_spropsC.pnts_sf <- st_as_sf(tot_sprops.pnts[sel.ks, 1])
-  plot_gh(tot_spropsC.pnts_sf, out.pdf="../../../img/sol_ksat.pnts_sites.pdf")
-  system("pdftoppm ../../../img/sol_ksat.pnts_sites.pdf ../../../img/sol_ksat.pnts_sites -png -f 1 -singlefile")
-  system("convert -crop 1280x575+36+114 ../../../img/sol_ksat.pnts_sites.png ../../../img/sol_ksat.pnts_sites.png")
+  plot_gh(tot_spropsC.pnts_sf, out.pdf="./img/sol_ksat.pnts_sites.pdf")
+  system("pdftoppm ./img/sol_ksat.pnts_sites.pdf ./img/sol_ksat.pnts_sites -png -f 1 -singlefile")
+  system("convert -crop 1280x575+36+114 ./img/sol_ksat.pnts_sites.png ./img/sol_ksat.pnts_sites.png")
 }
 ```
 
 ```{r sol_ksat.pnts_sites, echo=FALSE, fig.cap="Soil profiles and soil samples with Ksat measurements global compilation", out.width="100%"}
-knitr::include_graphics("../../../img/sol_ksat.pnts_sites.png")
+knitr::include_graphics("./img/sol_ksat.pnts_sites.png")
 ```
 `r fig_nums("sol_ksat.pnts_sites", "Soil profiles and soil samples with Ksat measurements global compilation.")`
 
-## ![alt text](../../../tex/R_logo.svg.png "Overlay www.OpenLandMap.org layers") Overlay www.OpenLandMap.org layers
+## ![alt text](./tex/R_logo.svg.png "Overlay www.OpenLandMap.org layers") Overlay www.OpenLandMap.org layers
 
 Load the tiling system (1 degree grid representing global land mask) and run spatial overlay in parallel:
 
 ```{r, eval=FALSE}
 if(!exists("rm.sol")){
-  tile.pol = readOGR("../../../tiles/global_tiling_100km_grid.gpkg")
+  tile.pol = readOGR("./tiles/global_tiling_100km_grid.gpkg")
   #length(tile.pol)
   ov.sol <- extract.tiled(obj=tot_sprops.pnts, tile.pol=tile.pol, path="/data/tt/LandGIS/grid250m", ID="ID", cpus=64)
   ## Valid predictors:
   pr.vars = unique(unlist(sapply(c("fapar", "landsat", "lc100", "mod09a1", "mod11a2", "alos.palsar", "sm2rain", "irradiation_solar.atlas", "usgs.ecotapestry", "floodmap.500y", "bioclim", "water.table.depth_deltares", "snow.prob_esacci", "water.vapor_nasa.eo", "wind.speed_terraclimate", "merit.dem_m", "merit.hydro_m", "cloud.fraction_earthenv", "water.occurance_jrc", "wetlands.cw_upmc", "pb2002"), function(i){names(ov.sol)[grep(i, names(ov.sol))]})))
   str(pr.vars)
   ## 349
-  #saveRDS.gz(ov.sol, "/mnt/DATA/Soil_points/ov.sol_hydro.pnts_horizons.rds")
-  #ov.sol <- readRDS.gz("/mnt/DATA/Soil_points/ov.sol_hydro.pnts_horizons.rds")
+  #saveRDS.gz(ov.sol, "/mnt/diskstation/data/Soil_points/ov.sol_hydro.pnts_horizons.rds")
+  #ov.sol <- readRDS.gz("/mnt/diskstation/data/Soil_points/ov.sol_hydro.pnts_horizons.rds")
   ## Final regression matrix:
   rm.sol = plyr::join(tot_sprops, ov.sol[,c("olc_id", pr.vars)])
   ## check that there are no duplicates
@@ -966,26 +973,26 @@ dim(rm.sol)
 Save final analysis-ready objects:
 
 ```{r, eval=FALSE}
-saveRDS.gz(tot_sprops, "../../../out/rds/sol_hydro.pnts_horizons.rds")
-saveRDS.gz(tot_sprops.pnts, "/mnt/DATA/Soil_points/sol_hydro.pnts_sites.rds")
+saveRDS.gz(tot_sprops, "./out/rds/sol_hydro.pnts_horizons.rds")
+saveRDS.gz(tot_sprops.pnts, "/mnt/diskstation/data/Soil_points/sol_hydro.pnts_sites.rds")
 ## reorder columns
 tot_sprops.pnts.C$ID = 1:nrow(tot_sprops.pnts.C)
 tot_sprops.pnts.C = tot_sprops.pnts.C[,c(which(names(tot_sprops.pnts.C)=="ID"), which(!names(tot_sprops.pnts.C)=="ID"))]
-saveRDS.gz(tot_sprops.pnts.C, "../../../out/rds/sol_ksat.pnts_horizons.rds")
+saveRDS.gz(tot_sprops.pnts.C, "./out/rds/sol_ksat.pnts_horizons.rds")
 #library(farff)
-#writeARFF(tot_sprops, "../../../out/arff/sol_hydro.pnts_horizons.arff", overwrite = TRUE)
-#writeARFF(tot_sprops.pnts.C, "../../../out/arff/sol_ksat.pnts_horizons.arff", overwrite = TRUE)
+#writeARFF(tot_sprops, "./out/arff/sol_hydro.pnts_horizons.arff", overwrite = TRUE)
+#writeARFF(tot_sprops.pnts.C, "./out/arff/sol_ksat.pnts_horizons.arff", overwrite = TRUE)
 ## compressed CSV
-write.csv(tot_sprops, file=gzfile("../../../out/csv/sol_hydro.pnts_horizons.csv.gz"))
-write.csv(tot_sprops.pnts.C, file=gzfile("../../../out/csv/sol_ksat.pnts_horizons.csv.gz"), row.names = FALSE)
-saveRDS.gz(rm.sol, "../../../out/rds/sol_hydro.pnts_horizons_rm.rds")
-saveRDS.gz(rm.ksat, "../../../out/rds/sol_ksat.pnts_horizons_rm.rds")
+write.csv(tot_sprops, file=gzfile("./out/csv/sol_hydro.pnts_horizons.csv.gz"))
+write.csv(tot_sprops.pnts.C, file=gzfile("./out/csv/sol_ksat.pnts_horizons.csv.gz"), row.names = FALSE)
+saveRDS.gz(rm.sol, "./out/rds/sol_hydro.pnts_horizons_rm.rds")
+saveRDS.gz(rm.ksat, "./out/rds/sol_ksat.pnts_horizons_rm.rds")
 ```
+
+Save temp object:
 
 ```{r, eval=FALSE}
 #rm(rm.sol); gc()
-save.image.pigz(file="themes/sol/SoilHydroDB/soilhydro.RData")
-## rmarkdown::render("themes/sol/SoilHydroDB/README.rmd")
+save.image.pigz(file="soilhydro.RData")
+## rmarkdown::render("Index.rmd")
 ```
-
-## References

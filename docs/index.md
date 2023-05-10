@@ -34,7 +34,7 @@ sub-national **soil samples** and/or **soil profile** datasets (points with
 Observations and Measurements of soil properties and characteristics).
 Datasets listed here, assuming [compatible open data license](https://opendefinition.org/licenses/), are afterwards
 imported into the [**Global compilation of soil chemical and physical
-properties and soil classes**](https://gitlab.com/openlandmap/) and
+properties and soil classes**](https://opengeohub.org/about-openlandmap/) and
 eventually used to create a better open soil information across countries.
 The specific objectives of this initiative are:
 
@@ -97,6 +97,7 @@ support soil data collation projects and especially curation of the legacy soil 
 Some existing soil Observations and Measurements (O&M) soil data initiatives include:
 
   - [**FAO's Data Hub**](https://www.fao.org/soils-portal/data-hub/en/),\
+  - [**FAO's Global SoilInformation System (GLOSIS)**](https://data.apps.fao.org/glosis/),\
   - [**Fine Root Ecology Database (FRED)**](https://roots.ornl.gov/),\
   - [**FLUXNET global network**](https://fluxnet.fluxdata.org/),\
   - [**Global database of soil nematodes**](https://www.nature.com/articles/s41597-020-0437-3),\
@@ -111,8 +112,14 @@ Some existing soil Observations and Measurements (O&M) soil data initiatives inc
   - [**National Ecological Observatory Network (NEON)**](https://www.neonscience.org),\
   - [**Open Soil Spectral Library (OSSL)**](https://soilspectroscopy.org),\
   - [**Open Bodem Index**](https://agrocares.github.io/Open-Bodem-Index-Calculator/),\
+  - [**ORNL DAAC theme soil**](https://daac.ornl.gov/get_data/#themes),\
   - [**Soils Data Harmonization (SoDaH)**](https://lter.github.io/som-website),\
   - [**WoSIS Soil Profile Database**](https://www.isric.org/explore/wosis),
+
+UN's FAO hosts [**International Network of Soil Information Institutions**](https://www.fao.org/global-soil-partnership/pillars-action/4-information-data/insii/en/), which we 
+recommend joining and actively contributing. INSII and FAO's Global Soil Partnership aim at 
+developing and hosting [**Global SoilInformation System (GLOSIS)**](https://data.apps.fao.org/glosis/), 
+although this does not serve yet any soil observations and measurements.
 
 A more in-depth inventory of all various national and international soil datasets can be found in:
 
@@ -171,7 +178,6 @@ and metadata + legends organized in other tables:
 - Soil site information (geographical coordinates, land use / land cover, soil classification etc),
 - Soil horizon information (soil observations and measurements specific to soil layers / diagnostic horizons),
 - Proximal soil sensing information including soil scans,
-
 
 For making soil observations and measurements we recommend following the USDA [National Cooperative Soil Survey (NCSS) Soil 
 Characterization Database](https://ncsslabdatamart.sc.egov.usda.gov/) codes and specification as much as possible. These are explained in detail in the [**Kellogg Soil Survey Laboratory Methods Manual**](https://www.nrcs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb1253872.pdf) 
