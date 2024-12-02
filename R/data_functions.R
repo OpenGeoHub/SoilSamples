@@ -1,6 +1,21 @@
 ## Generic functions
 ## tom.hengl@opengeohub.org
 
+## most probablye translation
+sumcor <- function(x, a, b, lev, max=4, stats=FALSE){
+  o1 = summary(as.factor(x[x[,a]==lev,b]))
+  o2 = data.frame(count=o1, levels = attr(o1, "names"))
+  o2 = o2[order(o2$count, decreasing=TRUE),][1:max,]
+  o2$input = lev
+  if(stats==FALSE){
+    o2 = data.frame(input=lev, Class_1=o2$levels[1], Class_2=o2$levels[2], Class_3=o2$levels[3])
+  }
+  o2
+}
+
+## remove LOD sign
+rem.LOD = function(x){ as.numeric(ifelse(x=="< LOD", 0, as.numeric(x)))}
+
 ## Overlay and extract values using a tiling system:
 extract.tiled <- function(obj, tile.pol, path="/data/tt/LandGIS/grid250m", ID="ID", cpus=parallel::detectCores(), snowfall=TRUE){
   obj$row.index <- 1:nrow(obj)
@@ -12,7 +27,7 @@ extract.tiled <- function(obj, tile.pol, path="/data/tt/LandGIS/grid250m", ID="I
   names(ov.c)[1] = ID
   tiles.lst <- basename(dirname(list.files(path=path, pattern=glob2rx("*.rds$"), recursive=TRUE)))
   ov.c <- ov.c[paste(ov.c[,ID]) %in% sapply(tiles.lst, function(i){strsplit(i, "T")[[1]][2]}),]
-  tiles <- levels(as.factor(paste(ov.c[,ID]))) 
+  tiles <- levels(as.factor(paste(ov.c[,ID])))
   cov.c <- as.list(tiles)
   names(cov.c) <- tiles
   ## extract using snowfall
@@ -22,7 +37,7 @@ extract.tiled <- function(obj, tile.pol, path="/data/tt/LandGIS/grid250m", ID="I
     sfExport(list=c("obj", "path", "ov.c", "ID", "cov.c", ".extract.tile", "tile.pol"))
     sfLibrary(raster)
     sfLibrary(rgdal)
-    ov.lst <- sfClusterApplyLB(1:length(cov.c), function(i){try(.extract.tile(i, x=obj, ID=ID, path=path, ov.c=ov.c, cov.c=cov.c, tile.pol=tile.pol), silent = TRUE)}) 
+    ov.lst <- sfClusterApplyLB(1:length(cov.c), function(i){try(.extract.tile(i, x=obj, ID=ID, path=path, ov.c=ov.c, cov.c=cov.c, tile.pol=tile.pol), silent = TRUE)})
     snowfall::sfStop()
   } else {
     ov.lst <- pbmcapply::pbmclapply(1:length(cov.c), function(i){ try(.extract.tile(i, x=obj, ID=ID, path=path, ov.c=ov.c, cov.c=cov.c, tile.pol=tile.pol), silent = TRUE) }, mc.cores = cpus)
@@ -56,7 +71,7 @@ extract.tiled <- function(obj, tile.pol, path="/data/tt/LandGIS/grid250m", ID="I
 
 
 ## complete cases
-complete.vars <- function(x, sel=c("w15l2", "w3cld","ksat_lab", "ksat_field"), check.coords=TRUE, coords=c("longitude_decimal_degrees", "latitude_decimal_degrees"), remove.duplicates = TRUE){
+complete.vars <- function(x, sel=c("w15l2", "w3cld","ksat_lab", "ksat_field"), check.coords=TRUE, coords=c("longitude_decimal_degrees", "latitude_decimal_degrees"), remove.duplicates = FALSE){
   sel.rows <- lapply(sel, function(i){!is.na(x[,i])})
   sel.rows <- do.call(cbind, sel.rows)
   sel.rows <- rowSums(sel.rows) > 0
@@ -100,7 +115,7 @@ plot_gh <- function(pnts, out.pdf, world, lats, longs, crs_goode = "+proj=igh"){
       180 # close
      )
   }
-  goode_outline <- 
+  goode_outline <-
     list(cbind(longs, lats)) %>%
     st_polygon() %>%
     st_sfc(
@@ -112,10 +127,10 @@ plot_gh <- function(pnts, out.pdf, world, lats, longs, crs_goode = "+proj=igh"){
   xlim <- st_bbox(goode_outline)[c("xmin", "xmax")]*1.1
   ylim <- st_bbox(goode_outline)[c("ymin", "ymax")]*1.1
   # turn into enclosing rectangle
-  goode_encl_rect <- 
+  goode_encl_rect <-
     list(
       cbind(
-        c(xlim[1], xlim[2], xlim[2], xlim[1], xlim[1]), 
+        c(xlim[1], xlim[2], xlim[2], xlim[1], xlim[1]),
         c(ylim[1], ylim[1], ylim[2], ylim[2], ylim[1])
       )
     ) %>%
@@ -124,12 +139,12 @@ plot_gh <- function(pnts, out.pdf, world, lats, longs, crs_goode = "+proj=igh"){
   # calculate the area outside the earth outline as the difference
   # between the enclosing rectangle and the earth outline
   goode_without <- st_difference(goode_encl_rect, goode_outline)
-  m <- ggplot(world) + geom_sf(fill = "gray80", color = "black", size = 0.5/.pt) + 
-    geom_sf(data = goode_without, fill = "white", color = "NA") + 
-    geom_sf(data = goode_outline, fill = NA, color = "gray30", size = 0.5/.pt) + 
-    cowplot::theme_minimal_grid() + theme(panel.background = element_rect(fill = "#56B4E950", color = "white", size = 1),  panel.grid.major = element_line(color = "gray30", size = 0.25)) + 
-    geom_sf(data = pnts, size = 0.8, shape = 21, fill = "yellow", color="black") + 
-    #geom_sf(data = pnts, size = 1, pch="+", color="black") + 
+  m <- ggplot(world) + geom_sf(fill = "gray80", color = "black", size = 0.5/.pt) +
+    geom_sf(data = goode_without, fill = "white", color = "NA") +
+    geom_sf(data = goode_outline, fill = NA, color = "gray30", size = 0.5/.pt) +
+    cowplot::theme_minimal_grid() + theme(panel.background = element_rect(fill = "#56B4E950", color = "white", size = 1),  panel.grid.major = element_line(color = "gray30", size = 0.25)) +
+    geom_sf(data = pnts, size = 0.8, shape = 21, fill = "yellow", color="black") +
+    #geom_sf(data = pnts, size = 1, pch="+", color="black") +
     coord_sf(crs = crs_goode, xlim = 0.95*xlim, ylim = 0.95*ylim, expand = FALSE)
   ggsave(out.pdf, m, dpi=150, height = 5.35, width = 9)
 }

@@ -1,0 +1,105 @@
+bze_main_type,bze_subtype,wrb22_name_1,wrb22_name_2,wrb22_quality,USDA_1,USDA_2
+BB,BBn,Eutric Cambisols,Dystric Cambisols,3,Typic Eutropept,Eutrochrept
+SS,SSn,Luvic Stagnosols,,3,#N/A,#N/A
+BB,SS-BB,Stagnic Cambisols,,3,#N/A,#N/A
+RZ,RZn,Eutric Regosols,,3,Lithic Ustorthent,Typic Ustorthent
+YK,YKn,Luvic Phaeozems,,3,Typic Argiudoll,Pachic Argiustolls
+SS,BB-SS,Dystric Stagnosols,Stagnic Cambisols,3,#N/A,#N/A
+LL,LLn,Chromic Luvisols,Haplic Luvisols,3,Typic Hapludalfs,Typic Haplustalf
+LL,SS-LL,Stagnic Luvisols,,3,Aquic Hapludalf,Aeric Epiaqualf
+GG,GGn,Dystric Gleysols,Eutric Gleysols,3,Humaquept,
+AB,ABn,Fluvic Cambisols,,3,#N/A,#N/A
+PP,vGG-PP,Gleyic Podzols ,,3,#N/A,#N/A
+GG,GGa,Dystric Gleysols,Eutric Gleysols,3,Humaquept,
+AB,GG-AB,Gleyic Cambisols,Fluvic Cambisols,3,Typic Tropaquepts,Aquic Dystropept
+BB,sBBn,Stagnic Cambisols,,3,#N/A,#N/A
+RZ,BB-RZ,Eutric Regosols,Eutric Cambisols,3,Lithic Ustorthent,Typic Ustorthent
+SS,LL-SS,Luvic Stagnosols,,3,#N/A,#N/A
+BB,LL-BB,Dystric Cambisols,,3,Typic Dystrochrept,Typic Dystropept
+YK,SS-YK,Stagnic Phaeozems,,3,Aquic Argiudoll,Aquic Haplustolls
+BB,kBBn,Solimovic Cambisols,,3,#N/A,#N/A
+LL,vLLn,Chromic Luvisols ,Haplic Luvisols (Aric),3,#N/A,#N/A
+TT,TTn,Haplic Chernozems,,3,Typic Hapludoll,Udic Haploboroll
+YK,cYKn,Luvic Phaeozems,,3,Typic Argiudoll,Pachic Argiustolls
+RQ,BB-RQ,Eutric Regosols,Eutric Cambisols,3,Lithic Ustorthent,Typic Ustorthent
+RQ,RQn,Eutric Regosols,,3,Lithic Ustorthent,Typic Ustorthent
+GG,AB-GG,Dystric Gleysols,Eutric Gleysols,3,Humaquept,
+YK,YK/BB,Luvic Phaeozems,,3,Typic Argiudoll,Pachic Argiustolls
+BB,GG-BB,Gleyic Cambisols,,3,Typic Tropaquepts,Aquic Dystropept
+LL,sLLn,Stagnic Luvisols,,3,Aquic Hapludalf,Aeric Epiaqualf
+BB,vBBn,Eutric Cambisols ,Dystric Cambisols,3,#N/A,#N/A
+LL,BB-LL,Chromic Luvisols,Haplic Luvisols,3,Typic Hapludalfs,Typic Haplustalf
+LL,eLLn,Chromic Luvisols,Haplic Luvisols,3,Typic Hapludalfs,Typic Haplustalf
+SS,vSSn,Luvic Stagnosols ,,3,#N/A,#N/A
+BB,sLL-BB,Stagnic Cambisols,Dystric Cambisols,3,#N/A,#N/A
+DD,RZ-DD,Haplic Vertisols,,3,#N/A,#N/A
+LL,vSS-LL,Stagnic Luvisols ,,3,#N/A,#N/A
+PP,vSS-PP,Stagnic Podzols ,,3,#N/A,#N/A
+AB,SS-AB,Stagnic Cambisols,,3,#N/A,#N/A
+GG,vPP-GG,Dystric Gleysols,,3,Humaquept,
+MN,MNb,Dystric Gleysols,Eutric Gleysols,3,Humaquept,
+SS,vYK-SS,Luvic Stagnosols ,Stagnic Phaeozems (Aric),3,#N/A,#N/A
+YY,YYn,Anthrosols,,3,#N/A,#N/A
+LL,vBB-LL,Chromic Luvisols ,Haplic Luvisols (Aric),3,#N/A,#N/A
+RQ,bRQn,Eutric Regosols,Eutric Cambisols,3,Lithic Ustorthent,Typic Ustorthent
+AB,cABn,Fluvic Cambisols,,3,#N/A,#N/A
+BB,eLL-BB,Dystric Cambisols,,3,Typic Dystrochrept,Typic Dystropept
+LL,eSS-LL,Stagnic Luvisols,,3,Aquic Hapludalf,Aeric Epiaqualf
+PP,GG-PP,Gleyic Podzols ,,3,#N/A,#N/A
+SS,SSg,Luvic Stagnosols,,3,#N/A,#N/A
+SS,kSSn,Luvic Stagnosols,,3,#N/A,#N/A
+TT,BB-TT,Haplic Chernozems,,3,Typic Hapludoll,Udic Haploboroll
+YU,GG-PP-YU,Anthrosols,,3,#N/A,#N/A
+BB,BBh,Eutric Cambisols,Cambisols (Humic),3,Typic Eutropept,Eutrochrept
+BB,eBBn,Dystric Cambisols,,3,Typic Dystrochrept,Typic Dystropept
+BB,s2BBn,Stagnic Cambisols,,3,#N/A,#N/A
+GG,SS-GG,Stagnic Gleysols,,3,#N/A,#N/A
+MC,MCn,Calcaric Gleysols,,3,#N/A,#N/A
+MN,MNf,Dystric Gleysols,Eutric Gleysols,3,Humaquept,
+PP,vPPn,Albic Podzols,,3,#N/A,#N/A
+RR,BB-RR,Eutric Regosols,Eutric Cambisols,3,Lithic Ustorthent,Typic Ustorthent
+TC,TCn,Calcic Chernozems,,3,Aridic Calciboroll,Aridic Calciustoll
+YK,YK/SS,Stagnic Phaeozems,,3,Aquic Argiudoll,Aquic Haplustolls
+ZZ,>YKn,Anthrosols,,3,#N/A,#N/A
+BB,LF-BB,Eutric Cambisols,,3,Typic Eutropept,Eutrochrept
+BB,vLL-BB,Dystric Cambisols ,,3,#N/A,#N/A
+DD,DDn,Haplic Vertisols,,3,#N/A,#N/A
+GG,cGGa,Dystric Gleysols,Eutric Gleysols,3,Humaquept,
+LL,s.vLLn,Stagnic Luvisols ,,3,#N/A,#N/A
+RR,RRn,Eutric Regosols,Eutric Cambisols,3,Lithic Ustorthent,Typic Ustorthent
+SS,vLL-SS,Luvic Stagnosols ,,3,#N/A,#N/A
+AZ,AZn,Calcaric Fluvisols,,3,Typic Torrifluvent,Typic Ustifluvent
+BB,g2BBn,Gleyic Cambisols,,3,,Aquic Dystropept
+BB,g4BBn,Gleyic Cambisols,,3,,Aquic Dystropept
+GG,cAB-GG,Dystric Gleysols,Eutric Gleysols,3,Humaquept,
+GG,rGGn,Dystric Gleysols,Eutric Gleysols,3,Humaquept,
+LF,BB-LF,Chromic Luvisols,Haplic Luvisols,3,Typic Hapludalfs,Typic Haplustalf
+MD,MDn,Gleyic Stagnosols,,3,#N/A,#N/A
+MK,MKn,Gleyic Stagnosols,,3,#N/A,#N/A
+MN,MNn,Dystric Gleysols,Eutric Gleysols,3,Aeric Tropaquept,Tropaquent
+SS,DD-SS,Vertic Stagnosols,,3,#N/A,#N/A
+SS,YK-SS,Luvic Stagnosols,,3,#N/A,#N/A
+SS,g4SSn,Gleyic Stagnosols,,3,#N/A,#N/A
+SS,vPP-SS,Albic Stagnosols ,Stagnic Podzols (Aric),3,#N/A,#N/A
+YK,GG-YK,Gleyic Phaeozems,,3,Typic Argiaquoll,Aquic Hapludoll
+YK,vSS-YK,Stagnic Phaeozems ,,3,#N/A,#N/A
+ZZ,>GGn,Anthrosols,,3,#N/A,#N/A
+AB,vGG-AB,Gleyic Cambisols,,3,Typic Tropaquepts,Aquic Dystropept
+BB,BBc,Calcaric Cambisols,Eutric Cambisols,3,Fluventic Camborthid,Typic Camborthid
+BB,LL-SS-BB,Stagnic Cambisols,Dystric Cambisols,3,#N/A,#N/A
+BB,e.sLL-BB,Stagnic Cambisols,Dystric Cambisols,3,#N/A,#N/A
+BB,lBBn,Eutric Cambisols,Dystric Cambisols,3,Typic Eutropept,Eutrochrept
+DD,BB-DD,Haplic Vertisols,,3,#N/A,#N/A
+DD,SS-DD,Haplic Vertisols,,3,#N/A,#N/A
+GG,GGe,Dystric Gleysols,Eutric Gleysols,3,,
+GG,GGh,Mollic Gleysols,,3,Mollic Haplaquept,Typic Haplaquoll
+LF,LFn,Chromic Luvisols,Haplic Luvisols,3,Typic Hapludalfs,Typic Haplustalf
+LF,SS-LF,Stagnic Luvisols,,3,Aquic Hapludalf,Aeric Epiaqualf
+LL,BB-SS-LL,Stagnic Luvisols,,3,Aquic Hapludalf,Aeric Epiaqualf
+LL,eBB-LL,Chromic Luvisols,Haplic Luvisols,3,Typic Hapludalfs,Typic Haplustalf
+RZ,RZ,Eutric Regosols,Eutric Cambisols,3,Lithic Ustorthent,Typic Ustorthent
+YE,GG-YE,Anthrosols,,3,#N/A,#N/A
+YK,YK/LL,Luvic Phaeozems,,3,Typic Argiudoll,Pachic Argiustolls
+YK,YK/LL-SS,Luvic Phaeozems,Stagnic Phaeozems,3,Typic Argiudoll,Pachic Argiustolls
+YK,sYKn,Luvic Phaeozems,Stagnic Phaeozems,3,Typic Argiudoll,Pachic Argiustolls
+YU,PP-YU,Anthrosols,,3,#N/A,#N/A

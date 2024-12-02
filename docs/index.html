@@ -1,349 +1,458 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>About | An Open Compendium of Soil Sample and Soil Profile Datasets</title>
-<meta name="author" content="Tom Hengl, Surya Gupta, Robert Minarik">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.14/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="libs/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-1BH6J2NKGP"></script><script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+<meta name="generator" content="quarto-1.4.549">
 
-      gtag('config', 'G-1BH6J2NKGP');
-    </script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>An Open Compendium of Soil Sample and Soil Profile Data sets</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<meta property="og:title" content="An Open Compendium of Soil Sample and Soil Profile Data sets">
+<meta property="og:description" content="This is a public compendium of global, regional, national and sub-national soil samples and/or soil profile datasets (points with Observations and Measurements of soil properties and characteristics). Data sets listed here, assuming compatible open license, are afterwards imported into a common library. Contributions are welcome. To discuss issues or report a bug please use the repository homepage. If you have an addition or correction, make changes to the Rmd’s and make pull-request.">
+<meta property="og:image" content="cover.jpg">
+<meta property="og:site_name" content="An Open Compendium of Soil Sample and Soil Profile Data sets">
+<meta name="twitter:title" content="An Open Compendium of Soil Sample and Soil Profile Data sets">
+<meta name="twitter:description" content="">
+<meta name="twitter:image" content="img/sol_chem.pnts_sites.png">
+<meta name="twitter:card" content="summary_large_image">
 </head>
-<body data-spy="scroll" data-target="#toc">
 
-<div class="container-fluid">
-<div class="row">
-  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+<body class="nav-sidebar docked nav-fixed">
 
-    <div class="d-flex align-items-start justify-content-between">
-      <h1>
-        <a href="index.html" title="">An Open Compendium of Soil Sample and Soil Profile Datasets</a>
-      </h1>
-      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
-    </div>
-
-    <div id="main-nav" class="collapse-lg">
-      <form role="search">
-        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
-</form>
-
-      <nav aria-label="Table of contents"><h2>Table of contents</h2>
-        <ul class="book-toc list-unstyled">
-<li><a class="active" href="index.html">About</a></li>
-<li><a class="" href="new-to-markdown.html"><span class="header-section-number">1</span> New to markdown</a></li>
-<li><a class="" href="soil-data-communities-and-mailing-lists.html"><span class="header-section-number">2</span> Soil data communities and mailing lists</a></li>
-<li><a class="" href="datasets.html"><span class="header-section-number">3</span> Datasets</a></li>
-<li><a class="" href="soil-variables.html"><span class="header-section-number">4</span> Soil variables</a></li>
-<li><a class="" href="soil-chemical-and-physical-properties.html"><span class="header-section-number">5</span> Soil chemical and physical properties</a></li>
-<li><a class="" href="soil-physical-and-hydrological-properties.html"><span class="header-section-number">6</span> Soil physical and hydrological properties</a></li>
-<li><a class="" href="wrb-soil-types.html"><span class="header-section-number">7</span> WRB soil types</a></li>
-<li><a class="" href="references.html"><span class="header-section-number">8</span> References</a></li>
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="././img/openlandmap_v2_logo.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">An Open Compendium of Soil Sample and Soil Profile Data sets</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="./index.html" aria-current="page"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://OpenLandMap.org"> 
+<span class="menu-text">OpenLandMap.org</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://EarthMonitor.org"> 
+<span class="menu-text">Open-Earth-Monitor</span></a>
+  </li>  
 </ul>
-
-        <div class="book-extra">
-          <p><a id="book-repo" href="https://github.com/OpenGeoHub/SoilSamples/">View book source <i class="fab fa-github"></i></a></p>
-        </div>
-      </nav>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools tools-wide">
+    <a href="https://fosstodon.org/@opengeohub" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-mastodon"></i></a>
+    <a href="https://opengeohub.medium.com/" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-medium"></i></a>
+    <a href="https://twitter.com/opengeohub" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-twitter"></i></a>
+    <div class="dropdown">
+      <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label=""><i class="bi bi-github"></i></a>
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://github.com/OpenGeoHub/SoilSamples">
+            Source Code
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://github.com/OpenGeoHub/SoilSamples/issues">
+            Report a Bug
+            </a>
+          </li>
+      </ul>
+    </div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><!--bookdown:title:end--><!--bookdown:title:start--><div id="about" class="section level1 unnumbered">
-<h1>About<a class="anchor" aria-label="anchor" href="#about"><i class="fas fa-link"></i></a>
-</h1>
-<p><a href="https://doi.org/10.5281/zenodo.4748499"><img src="https://zenodo.org/badge/doi/10.5281/zenodo.4748499.svg" alt="DOI"></a></p>
-<div id="rationale" class="section level2 unnumbered">
-<h2>Rationale<a class="anchor" aria-label="anchor" href="#rationale"><i class="fas fa-link"></i></a>
-</h2>
-<p><a href="https://opengeohub.github.io/SpatialSamples/"><img src="cover.jpg" class="cover" width="250" alt="Access source code"></a>
-This is a public compendium of global, regional, national and
-sub-national <strong>soil samples</strong> and/or <strong>soil profile</strong> datasets (points with
-Observations and Measurements of soil properties and characteristics).
-Datasets listed here, assuming <a href="https://opendefinition.org/licenses/">compatible open data license</a>, are afterwards
-imported into the <a href="https://opengeohub.org/about-openlandmap/"><strong>Global compilation of soil chemical and physical
-properties and soil classes</strong></a> and
-eventually used to create a better open soil information across countries.
-The specific objectives of this initiative are:</p>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Data import</a></li><li class="breadcrumb-item"><a href="./index.html">About</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Data import</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">About</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./010-start_here.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">New to markdown</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./015-dataset_communities.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Soil data communities and mailing lists</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./020-dataset_list.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Datasets</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./025-import_chemical_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Soil chemical and physical properties</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Tutorials</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./035-import_wrb_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">WRB soil types</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#about" id="toc-about" class="nav-link active" data-scroll-target="#about">About</a>
+  <ul class="collapse">
+  <li><a href="#download-compiled-data" id="toc-download-compiled-data" class="nav-link" data-scroll-target="#download-compiled-data">Download compiled data</a></li>
+  <li><a href="#add-your-own-data" id="toc-add-your-own-data" class="nav-link" data-scroll-target="#add-your-own-data">Add your own data</a></li>
+  <li><a href="#existing-soil-data-projects-and-initiatives" id="toc-existing-soil-data-projects-and-initiatives" class="nav-link" data-scroll-target="#existing-soil-data-projects-and-initiatives">Existing soil data projects and initiatives</a></li>
+  <li><a href="#target-soil-variables" id="toc-target-soil-variables" class="nav-link" data-scroll-target="#target-soil-variables">Target soil variables</a></li>
+  <li><a href="#recommended-om-standards" id="toc-recommended-om-standards" class="nav-link" data-scroll-target="#recommended-om-standards">Recommended O&amp;M standards</a></li>
+  <li><a href="#contributing" id="toc-contributing" class="nav-link" data-scroll-target="#contributing">Contributing</a></li>
+  <li><a href="#contributors" id="toc-contributors" class="nav-link" data-scroll-target="#contributors">Contributors</a></li>
+  <li><a href="#disclaimer" id="toc-disclaimer" class="nav-link" data-scroll-target="#disclaimer">Disclaimer</a></li>
+  <li><a href="#licence" id="toc-licence" class="nav-link" data-scroll-target="#licence">Licence</a></li>
+  <li><a href="#how-to-cite" id="toc-how-to-cite" class="nav-link" data-scroll-target="#how-to-cite">How to cite</a></li>
+  <li><a href="#literature" id="toc-literature" class="nav-link" data-scroll-target="#literature">Literature</a></li>
+  <li><a href="#about-opengeohub" id="toc-about-opengeohub" class="nav-link" data-scroll-target="#about-opengeohub">About OpenGeoHub</a></li>
+  <li><a href="#acknowledgments" id="toc-acknowledgments" class="nav-link" data-scroll-target="#acknowledgments">Acknowledgments</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/OpenGeoHub/SoilSamples/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/OpenGeoHub/SoilSamples/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+
+
+<section id="about" class="level1 unnumbered">
+<h1 class="unnumbered">About</h1>
+<p>This is a public compendium of global, regional, national and sub-national <strong>soil samples</strong> and/or <strong>soil profile</strong> datasets (points with Observations and Measurements of soil properties and characteristics). Datasets listed here, assuming <a href="https://opendefinition.org/licenses/">compatible open data license</a>, are afterwards imported into the <a href="https://opengeohub.org/about-openlandmap/"><strong>Global compilation of soil chemical and physical properties and soil classes</strong></a> and eventually used to create a better open soil information across countries. The specific objectives of this initiative are:</p>
 <ul>
 <li>To enable data digitization, import and binding + harmonization,<br>
 </li>
 <li>To accelerate research collaboration and networking,<br>
 </li>
-<li>To enable development of more accurate / more usable global and
-regional soil property and class maps (typically published via
-<a href="https://OpenLandMap.org" class="uri">https://OpenLandMap.org</a>),</li>
+<li>To enable development of more accurate / more usable global and regional soil property and class maps (typically published via <a href="https://OpenLandMap.org" class="uri">https://OpenLandMap.org</a>),</li>
 </ul>
-</div>
-<div id="download-compiled-data" class="section level2 unnumbered">
-<h2>Download compiled data<a class="anchor" aria-label="anchor" href="#download-compiled-data"><i class="fas fa-link"></i></a>
-</h2>
-<p>Compiled data (imported, standardized, quality-controlled) is available
-through a diversity of standard formats:</p>
+<p><a href="https://opengeohub.github.io/SpatialSamples/"><img src="cover.jpg" alt="OpenLandMap banner" width="300"></a></p>
+<section id="download-compiled-data" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="download-compiled-data">Download compiled data</h2>
+<p>Compiled data (imported, standardized, quality-controlled) is available through a diversity of standard formats:</p>
 <ul>
 <li>RDS file (native R data format);</li>
 <li>GPKG file (<a href="https://www.geopackage.org/">Geopackage file</a> ready to be opened in QGIS);</li>
 </ul>
 <p>All files can be downloaded from the <code>/out</code> <a href="https://github.com/OpenGeoHub/SoilSamples/-/tree/master/out">directory</a>.</p>
-</div>
-<div id="add-your-own-data" class="section level2 unnumbered">
-<h2>Add your own data<a class="anchor" aria-label="anchor" href="#add-your-own-data"><i class="fas fa-link"></i></a>
-</h2>
-<p>The minimum requirements to submit a dataset for inclusion to <a href="https://gitlab.com/openlandmap/">the
-OpenLandMap repository</a> are:</p>
+</section>
+<section id="add-your-own-data" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="add-your-own-data">Add your own data</h2>
+<p>The minimum requirements to submit a dataset for inclusion to <a href="https://github.com/OpenGeoHub/SoilSamples/">the OpenLandMap repository</a> are:</p>
 <ul>
 <li>License and terms of use clearly specified AND,<br>
 </li>
-<li>Complete and consistent metadata that can ensure correct
-standardization and harmonization steps AND,<br>
+<li>Complete and consistent metadata that can ensure correct standardization and harmonization steps AND,<br>
 </li>
-<li>
-<strong>At least 50 unique spatial locations</strong> AND,<br>
+<li><strong>At least 50 unique spatial locations</strong> AND,<br>
 </li>
 <li>No broken or invalid URLs,</li>
 </ul>
-<p>Datasets that do NOT satisfy the above listed minimum requirements might be
-removed. If you discover an issue with license, data description or
-version number of a dataset, please open a <a href="https://github.com/OpenGeoHub/SoilSamples/issues">Github
-issue</a>.</p>
-<div class="figure" style="text-align: center">
-<span id="fig:soil-pnts"></span>
-<img src="img/sol_chem.pnts_sites.png" alt="Soil profiles and soil samples with chemical and physical properties global compilation. For more info see: https://gitlab.com/openlandmap/compiled-ess-point-data-sets." width="100%"><p class="caption">
-Figure 0.1: Soil profiles and soil samples with chemical and physical properties global compilation. For more info see: <a href="https://gitlab.com/openlandmap/compiled-ess-point-data-sets" class="uri">https://gitlab.com/openlandmap/compiled-ess-point-data-sets</a>.
-</p>
+<p>Data sets that do NOT satisfy the above listed minimum requirements might be removed. If you discover an issue with license, data description or version number of a dataset, please open a <a href="https://github.com/OpenGeoHub/SoilSamples/issues">Github issue</a>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/sol_chem.pnts_sites.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>Soil profiles and soil samples with chemical and physical properties global compilation preview.</figcaption>
+</figure>
+</div>
+</div>
 </div>
 <p>Recommended settings for all datasets are:</p>
 <ul>
-<li>Peer-reviewed versions of the datasets (i.e. a dataset accompanied
-with a peer-reviewed publication) should have the priority,<br>
+<li>Peer-reviewed versions of the datasets (i.e.&nbsp;a dataset accompanied with a peer-reviewed publication) should have the priority,<br>
 </li>
-<li>Register your dataset (use e.g. <a href="https://zenodo.org" class="uri">https://zenodo.org</a>) and assign a DOI
-to each version,<br>
+<li>Register your dataset (use e.g.&nbsp;<a href="https://zenodo.org" class="uri">https://zenodo.org</a>) and assign a DOI to each version,<br>
 </li>
-<li>Provide enough metadata so that it can be imported and bind with
-other data without errors,<br>
+<li>Provide enough metadata so that it can be imported and bind with other data without errors,<br>
 </li>
-<li>If your dataset is a compilation of previously published datasets, please
-indicate in the description,</li>
+<li>If your dataset is a compilation of previously published datasets, please indicate in the description,</li>
 </ul>
-<p>Information outdated or missing? Please open an issue or best do a
-correction and then a <a href="https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request">pull
-request</a>.</p>
-</div>
-<div id="existing-soil-data-projects-and-initiatives" class="section level2 unnumbered">
-<h2>Existing soil data projects and initiatives<a class="anchor" aria-label="anchor" href="#existing-soil-data-projects-and-initiatives"><i class="fas fa-link"></i></a>
-</h2>
-<p>Multiple international organizations from <a href="http://www.fao.org/global-soil-partnership/en/">FAO’s Global Soil Partnership</a> to <a href="https://www.unccd.int/actions/ldn-target-setting-programme">UNCCD’s Land Degredation Neutrality</a>, <a href="https://esdac.jrc.ec.europa.eu/">European Commission</a> and similar,
-support soil data collation projects and especially curation of the legacy soil data.
-Some existing soil Observations and Measurements (O&amp;M) soil data initiatives include:</p>
+<p>Information outdated or missing? Please open an issue or best do a correction and then a <a href="https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request">pull request</a>.</p>
+</section>
+<section id="existing-soil-data-projects-and-initiatives" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="existing-soil-data-projects-and-initiatives">Existing soil data projects and initiatives</h2>
+<p>Multiple international organizations from <a href="http://www.fao.org/global-soil-partnership/en/">FAO’s Global Soil Partnership</a> to <a href="https://www.unccd.int/actions/ldn-target-setting-programme">UNCCD’s Land Degredation Neutrality</a>, <a href="https://esdac.jrc.ec.europa.eu/">European Commission</a> and similar, support soil data collation projects and especially curation of the legacy soil data. Some existing soil Observations and Measurements (O&amp;M) soil data initiatives include:</p>
 <ul>
-<li>
-<a href="https://www.fao.org/soils-portal/data-hub/en/"><strong>FAO’s Data Hub</strong></a>,<br>
+<li><a href="https://www.fao.org/soils-portal/data-hub/en/"><strong>FAO’s Data Hub</strong></a>,<br>
 </li>
-<li>
-<a href="https://data.apps.fao.org/glosis/"><strong>FAO’s Global SoilInformation System (GLOSIS)</strong></a>,<br>
+<li><a href="https://data.apps.fao.org/glosis/"><strong>FAO’s Global SoilInformation System (GLOSIS)</strong></a>,<br>
 </li>
-<li>
-<a href="https://roots.ornl.gov/"><strong>Fine Root Ecology Database (FRED)</strong></a>,<br>
+<li><a href="https://roots.ornl.gov/"><strong>Fine Root Ecology Database (FRED)</strong></a>,<br>
 </li>
-<li>
-<a href="https://fluxnet.fluxdata.org/"><strong>FLUXNET global network</strong></a>,<br>
+<li><a href="https://fluxnet.fluxdata.org/"><strong>FLUXNET global network</strong></a>,<br>
 </li>
-<li>
-<a href="https://www.nature.com/articles/s41597-020-0437-3"><strong>Global database of soil nematodes</strong></a>,<br>
+<li><a href="https://www.nature.com/articles/s41597-020-0437-3"><strong>Global database of soil nematodes</strong></a>,<br>
 </li>
-<li>
-<a href="http://macrofauna.earthworms.info/"><strong>Global soil macrofauna database</strong></a>,<br>
+<li><a href="http://macrofauna.earthworms.info/"><strong>Global soil macrofauna database</strong></a>,<br>
 </li>
-<li>
-<a href="https://github.com/bpbond/srdb"><strong>Global soil respiration database (SRDB)</strong></a>,<br>
+<li><a href="https://github.com/bpbond/srdb"><strong>Global soil respiration database (SRDB)</strong></a>,<br>
 </li>
-<li>
-<a href="https://soil-modeling.org"><strong>International Soil Modeling Consortium (ISMC)</strong></a>,<br>
+<li><a href="https://soil-modeling.org"><strong>International Soil Modeling Consortium (ISMC)</strong></a>,<br>
 </li>
-<li>
-<a href="https://ismn.geo.tuwien.ac.at/en/"><strong>International Soil Moisture Network</strong></a>,<br>
+<li><a href="https://ismn.geo.tuwien.ac.at/en/"><strong>International Soil Moisture Network</strong></a>,<br>
 </li>
-<li>
-<a href="https://soilradiocarbon.org"><strong>International Soil Radiocarbon Database (ISRaD)</strong></a>,<br>
+<li><a href="https://soilradiocarbon.org"><strong>International Soil Radiocarbon Database (ISRaD)</strong></a>,<br>
 </li>
-<li>
-<a href="http://iscn.fluxdata.org/"><strong>International Soil Carbon Network (ISCN)</strong></a>,<br>
+<li><a href="http://iscn.fluxdata.org/"><strong>International Soil Carbon Network (ISCN)</strong></a>,<br>
 </li>
-<li>
-<a href="http://portal.landpotential.org/#/landpksmap"><strong>LandPKS project</strong></a>,<br>
+<li><a href="http://portal.landpotential.org/#/landpksmap"><strong>LandPKS project</strong></a>,<br>
 </li>
-<li>
-<a href="https://lternet.edu/site/"><strong>Long Term Ecological Research (LTER) Network sites</strong></a>,<br>
+<li><a href="https://lternet.edu/site/"><strong>Long Term Ecological Research (LTER) Network sites</strong></a>,<br>
 </li>
-<li>
-<a href="https://www.neonscience.org"><strong>National Ecological Observatory Network (NEON)</strong></a>,<br>
+<li><a href="https://www.neonscience.org"><strong>National Ecological Observatory Network (NEON)</strong></a>,<br>
 </li>
-<li>
-<a href="https://soilspectroscopy.org"><strong>Open Soil Spectral Library (OSSL)</strong></a>,<br>
+<li><a href="https://soilspectroscopy.org"><strong>Open Soil Spectral Library (OSSL)</strong></a>,<br>
 </li>
-<li>
-<a href="https://agrocares.github.io/Open-Bodem-Index-Calculator/"><strong>Open Bodem Index</strong></a>,<br>
+<li><a href="https://agrocares.github.io/Open-Bodem-Index-Calculator/"><strong>Open Bodem Index</strong></a>,<br>
 </li>
-<li>
-<a href="https://daac.ornl.gov/get_data/#themes"><strong>ORNL DAAC theme soil</strong></a>,<br>
+<li><a href="https://daac.ornl.gov/get_data/#themes"><strong>ORNL DAAC theme soil</strong></a>,<br>
 </li>
-<li>
-<a href="https://lter.github.io/som-website"><strong>Soils Data Harmonization (SoDaH)</strong></a>,<br>
+<li><a href="https://lter.github.io/som-website"><strong>Soils Data Harmonization (SoDaH)</strong></a>,<br>
 </li>
-<li>
-<a href="https://www.isric.org/explore/wosis"><strong>WoSIS Soil Profile Database</strong></a>,</li>
+<li><a href="https://www.isric.org/explore/wosis"><strong>WoSIS Soil Profile Database</strong></a>,</li>
 </ul>
-<p>UN’s FAO hosts <a href="https://www.fao.org/global-soil-partnership/pillars-action/4-information-data/insii/en/"><strong>International Network of Soil Information Institutions</strong></a>, which we
-recommend joining and actively contributing. INSII and FAO’s Global Soil Partnership aim at
-developing and hosting <a href="https://data.apps.fao.org/glosis/"><strong>Global SoilInformation System (GLOSIS)</strong></a>,
-although this does not serve yet any soil observations and measurements.</p>
+<p>UN’s FAO hosts <a href="https://www.fao.org/global-soil-partnership/pillars-action/4-information-data/insii/en/"><strong>International Network of Soil Information Institutions</strong></a>, which we recommend joining and actively contributing. INSII and FAO’s Global Soil Partnership aim at developing and hosting <a href="https://data.apps.fao.org/glosis/"><strong>Global SoilInformation System (GLOSIS)</strong></a>, although this does not serve yet any soil observations and measurements.</p>
 <p>A more in-depth inventory of all various national and international soil datasets can be found in:</p>
 <ul>
 <li>Rossiter, D.G.,: <a href="https://www.isric.org/explore/soil-geographic-databases"><strong>Compendium of Soil Geographical Databases</strong></a><br>
 </li>
 </ul>
-</div>
-<div id="target-soil-variables" class="section level2 unnumbered">
-<h2>Target soil variables<a class="anchor" aria-label="anchor" href="#target-soil-variables"><i class="fas fa-link"></i></a>
-</h2>
+</section>
+<section id="target-soil-variables" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="target-soil-variables">Target soil variables</h2>
 <p>Soil variables of interest include:</p>
-<ol style="list-style-type: decimal">
-<li>
-<strong>Chemical soil properties</strong>:</li>
+<ol type="1">
+<li><strong>Chemical soil properties</strong>:</li>
 </ol>
 <ul>
 <li>Soil organic carbon, total carbon, total nitrogen,</li>
 <li>Soil pH, effective Cation Exchange Capacity (eCEC),</li>
 <li>Soil sodicity (presence of a high proportion of sodium ions relative to other cations),</li>
-<li>Macro-nutrients: extractable — potassium (K), calcium (Ca), sodium
-(Na), magnesium (Mg) and similar,</li>
-<li>Micro-nutrients: phosphorus (P), sulfur (S), iron (Fe), zinc (Zn)
-and similar,</li>
+<li>Macro-nutrients: extractable — potassium (K), calcium (Ca), sodium (Na), magnesium (Mg) and similar,</li>
+<li>Micro-nutrients: phosphorus (P), sulfur (S), iron (Fe), zinc (Zn) and similar,</li>
 <li>Soil pollutants, heavy metals and similar,</li>
 <li>Electrical conductivity,</li>
 </ul>
-<ol start="2" style="list-style-type: decimal">
-<li>
-<strong>Physical soil properties</strong>:</li>
+<ol start="2" type="1">
+<li><strong>Physical soil properties</strong>:</li>
 </ol>
 <ul>
 <li>Soil texture and texture fractions: silt, clay and sand, stone content,</li>
 <li>Bulk density, depth to bedrock and similar,</li>
-<li>Hydraulic conductivity, water content — Field Capacity (FC; the amount of water
-held in the soil after it has been fully wetted and free drainage has stopped),
-Permanent Wilting Point (PWP; the soil moisture condition at which the plant could
-not obtain water and would wilt and die), Plant Available Water Capacity (PAWC;
-the amount of water between field capacity and permanent wilting point water holding capacity) and
-similar,</li>
+<li>Hydraulic conductivity, water content — Field Capacity (FC; the amount of water held in the soil after it has been fully wetted and free drainage has stopped), Permanent Wilting Point (PWP; the soil moisture condition at which the plant could not obtain water and would wilt and die), Plant Available Water Capacity (PAWC; the amount of water between field capacity and permanent wilting point water holding capacity) and similar,</li>
 <li>Soil temperature,</li>
 </ul>
-<ol start="3" style="list-style-type: decimal">
-<li>
-<strong>Soil biological / biodiversity variables</strong>:</li>
+<ol start="3" type="1">
+<li><strong>Soil biological / biodiversity variables</strong>:</li>
 </ol>
 <ul>
 <li>Soil biomass,</li>
 <li>Soil micro-, meso-, macro- and mega-fauna abundance,</li>
 <li>Soil biodiversity indices,</li>
 </ul>
-<ol start="4" style="list-style-type: decimal">
-<li>
-<strong>Soil classification / taxonomy variables</strong>:</li>
+<ol start="4" type="1">
+<li><strong>Soil classification / taxonomy variables</strong>:</li>
 </ol>
 <ul>
 <li>Soil type,</li>
 <li>Soi suitability classes, soil fertility classes,</li>
 <li>Soil texture classes and families,</li>
 </ul>
-<ol start="5" style="list-style-type: decimal">
-<li>
-<strong>Soil absorbances / soil spectroscopy variables</strong>:</li>
+<ol start="5" type="1">
+<li><strong>Soil absorbances / soil spectroscopy variables</strong>:</li>
 </ol>
 <ul>
 <li>Soil absorbance in VIS-NIR and MIR part of spectra,</li>
 </ul>
-</div>
-<div id="recommended-om-standards" class="section level2 unnumbered">
-<h2>Recommended O&amp;M standards<a class="anchor" aria-label="anchor" href="#recommended-om-standards"><i class="fas fa-link"></i></a>
-</h2>
-<p>As a general rule of thumb we recommend all contributors to use the following
-<a href="https://soilspectroscopy.github.io/ossl-manual/">general scheme</a> to organize Soil Observations &amp; Measurements with 3–4 main tables
-and metadata + legends organized in other tables:</p>
+</section>
+<section id="recommended-om-standards" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="recommended-om-standards">Recommended O&amp;M standards</h2>
+<p>As a general rule of thumb we recommend all contributors to use the following <a href="https://soilspectroscopy.github.io/ossl-manual/">general scheme</a> to organize Soil Observations &amp; Measurements with 3–4 main tables and metadata + legends organized in other tables:</p>
 <ul>
 <li>Soil site information (geographical coordinates, land use / land cover, soil classification etc),</li>
 <li>Soil horizon information (soil observations and measurements specific to soil layers / diagnostic horizons),</li>
 <li>Proximal soil sensing information including soil scans,</li>
 </ul>
-<p>For making soil observations and measurements we recommend following the USDA <a href="https://ncsslabdatamart.sc.egov.usda.gov/">National Cooperative Soil Survey (NCSS) Soil
-Characterization Database</a> codes and specification as much as possible. These are explained in detail in the <a href="https://www.nrcs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb1253872.pdf"><strong>Kellogg Soil Survey Laboratory Methods Manual</strong></a>
-and <a href="https://www.nrcs.usda.gov/wps/portal/nrcs/detail/soils/research/guide/"><strong>The Field Book for Describing and Sampling Soils</strong></a>.
-Likewise, <a href="http://www.fao.org/3/a0541e/a0541e.pdf"><strong>FAO Guidelines for soil description</strong></a>,
-and the FAO’s <a href="http://www.fao.org/documents/card/en/c/cb0509en/">GSOC measurement, monitoring, reporting and verification (MRV) protocol</a> also explain in
-detail how to collect soil samples and setup a system for monitoring soil organic carbon.</p>
-<p>It is recommended that one should, as much as possible, use the international standards
-and references. Some highly recommended protocols and standards include:</p>
+<p>For making soil observations and measurements we recommend following the USDA <a href="https://ncsslabdatamart.sc.egov.usda.gov/">National Cooperative Soil Survey (NCSS) Soil Characterization Database</a> codes and specification as much as possible. These are explained in detail in the <a href="https://www.nrcs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb1253872.pdf"><strong>Kellogg Soil Survey Laboratory Methods Manual</strong></a> and <a href="https://www.nrcs.usda.gov/wps/portal/nrcs/detail/soils/research/guide/"><strong>The Field Book for Describing and Sampling Soils</strong></a>. Likewise, <a href="http://www.fao.org/3/a0541e/a0541e.pdf"><strong>FAO Guidelines for soil description</strong></a>, and the FAO’s <a href="http://www.fao.org/documents/card/en/c/cb0509en/">GSOC measurement, monitoring, reporting and verification (MRV) protocol</a> also explain in detail how to collect soil samples and setup a system for monitoring soil organic carbon.</p>
+<p>It is recommended that one should, as much as possible, use the international standards and references. Some highly recommended protocols and standards include:</p>
 <ul>
-<li>
-<a href="https://cran.r-project.org/package=uuid">UUID generator tool</a> to generate unique ID’s for unique soil sites, horizons, samples etc (to convert an existing local ID to UUID, best use <code>openssl::md5(local_id)</code>),</li>
-<li>
-<a href="https://opensource.google/projects/open-location-code">Open Location Codes</a> to generate geographic location codes,</li>
-<li>
-<a href="https://www.ogc.org/standards/om">OGC standards</a> to prepare metadata and exchange data across field / computer systems;</li>
-<li>
-<a href="https://en.wikipedia.org/wiki/ISO_8601">ISO8601</a> to save time and date information,</li>
-<li>
-<a href="https://en.wikipedia.org/wiki/ISO_3166-1">ISO3166</a> for country / administrative codes,</li>
-<li>
-<a href="https://www.gps.gov/">GPS</a> and WGS84 longitude and latitude in decimal degrees to save the location information,</li>
-<li>
-<a href="https://en.wikipedia.org/wiki/Digital_object_identifier">International DOI foundation</a> to refer to specific dataset and/or publication,</li>
-<li>
-<a href="https://www.nrcs.usda.gov/wps/portal/nrcs/main/soils/survey/class/">USDA soil classification system</a> and <a href="http://www.fao.org/soils-portal/data-hub/soil-classification/world-reference-base/en/">World Reference Base</a> to classify soils,</li>
-<li>
-<a href="https://www.nrcs.usda.gov/wps/portal/nrcs/detail/soils/survey/?cid=nrcs142p2_054167">USDA soil texture calculator</a> to determine and share soil texture classes including texture-by-hand,</li>
-<li>
-<a href="https://www.nrcs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb1253872.pdf">Kellogg Soil Survey Laboratory Methods Manual</a> for reference physical and chemical soil property determination in laboratory,</li>
-<li>
-<a href="https://kstatelibraries.pressbooks.pub/soilslabmanual/">Soils Laboratory Manual, K-State Edition</a>,</li>
-<li>
-<a href="http://www.fao.org/global-soil-partnership/glosolan/soil-analysis/standard-operating-procedures/en/#c763834">GLOSOLAN Standard Operating Procedures (SOPs)</a>,<br>
+<li><a href="https://cran.r-project.org/package=uuid">UUID generator tool</a> to generate unique ID’s for unique soil sites, horizons, samples etc (to convert an existing local ID to UUID, best use <code>openssl::md5(local_id)</code>),</li>
+<li><a href="https://opensource.google/projects/open-location-code">Open Location Codes</a> to generate geographic location codes,</li>
+<li><a href="https://www.ogc.org/standards/om">OGC standards</a> to prepare metadata and exchange data across field / computer systems;</li>
+<li><a href="https://en.wikipedia.org/wiki/ISO_8601">ISO8601</a> to save time and date information,</li>
+<li><a href="https://en.wikipedia.org/wiki/ISO_3166-1">ISO3166</a> for country / administrative codes,</li>
+<li><a href="https://www.gps.gov/">GPS</a> and WGS84 longitude and latitude in decimal degrees to save the location information,</li>
+<li><a href="https://en.wikipedia.org/wiki/Digital_object_identifier">International DOI foundation</a> to refer to specific dataset and/or publication,</li>
+<li><a href="https://www.nrcs.usda.gov/wps/portal/nrcs/main/soils/survey/class/">USDA soil classification system</a> and <a href="http://www.fao.org/soils-portal/data-hub/soil-classification/world-reference-base/en/">World Reference Base</a> to classify soils,</li>
+<li><a href="https://www.nrcs.usda.gov/wps/portal/nrcs/detail/soils/survey/?cid=nrcs142p2_054167">USDA soil texture calculator</a> to determine and share soil texture classes including texture-by-hand,</li>
+<li><a href="https://www.nrcs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb1253872.pdf">Kellogg Soil Survey Laboratory Methods Manual</a> for reference physical and chemical soil property determination in laboratory,</li>
+<li><a href="https://kstatelibraries.pressbooks.pub/soilslabmanual/">Soils Laboratory Manual, K-State Edition</a>,</li>
+<li><a href="http://www.fao.org/global-soil-partnership/glosolan/soil-analysis/standard-operating-procedures/en/#c763834">GLOSOLAN Standard Operating Procedures (SOPs)</a>,<br>
 </li>
-<li>
-<a href="">Open Bodem Index specification</a>,</li>
+<li><a href="">Open Bodem Index specification</a>,</li>
 </ul>
-</div>
-<div id="contributing" class="section level2 unnumbered">
-<h2>Contributing<a class="anchor" aria-label="anchor" href="#contributing"><i class="fas fa-link"></i></a>
-</h2>
-<p>Please feel free to contribute entries. See <a href="https://github.com/OpenGeoHub/SoilSamples">GitHub
-repository</a> for more detailed
-instructions.</p>
-</div>
-<div id="contributors" class="section level2 unnumbered">
-<h2>Contributors<a class="anchor" aria-label="anchor" href="#contributors"><i class="fas fa-link"></i></a>
-</h2>
-<p>If you contribute, add also your name and Twitter, ORCID or blog link
-below:</p>
-<p><a href="https://twitter.com/tom_hengl">Tomislav Hengl</a>, <a href="https://twitter.com/sandersoil">Jonathan Sanderman</a>, <a href="https://orcid.org/0000-0002-9788-9947">Mario Antonio Guevara
-Santamaria</a>,</p>
-<p>This document is based on the <a href="https://www.bigbookofr.com/" class="uri">https://www.bigbookofr.com/</a> repository
-by Oscar Baruffa.</p>
-</div>
-<div id="disclaimer" class="section level2 unnumbered">
-<h2>Disclaimer<a class="anchor" aria-label="anchor" href="#disclaimer"><i class="fas fa-link"></i></a>
-</h2>
+</section>
+<section id="contributing" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="contributing">Contributing</h2>
+<p>Please feel free to contribute entries. See <a href="https://github.com/OpenGeoHub/SoilSamples">GitHub repository</a> for more detailed instructions.</p>
+</section>
+<section id="contributors" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="contributors">Contributors</h2>
+<p>If you contribute, add also your name and Twitter, ORCID or blog link below:</p>
+<p><a href="https://twitter.com/tom_hengl">Tomislav Hengl</a>, <a href="https://twitter.com/sandersoil">Jonathan Sanderman</a>, <a href="https://orcid.org/0000-0002-9788-9947">Mario Antonio Guevara Santamaria</a>,</p>
+<p>This document is based on the <a href="https://www.bigbookofr.com/" class="uri">https://www.bigbookofr.com/</a> repository by Oscar Baruffa.</p>
+</section>
+<section id="disclaimer" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="disclaimer">Disclaimer</h2>
 <p>The data is provided “as is”. <a href="https://opengeohub.org/about">OpenGeoHub foundation</a> and its suppliers and licensors hereby disclaim all warranties of any kind, express or implied, including, without limitation, the warranties of merchantability, fitness for a particular purpose and non-infringement. Neither OpenGeoHub foundation nor its suppliers and licensors, makes any warranty that the Website will be error free or that access thereto will be continuous or uninterrupted. You understand that you download from, or otherwise obtain content or services through, the Website at your own discretion and risk.</p>
-</div>
-<div id="licence" class="section level2 unnumbered">
-<h2>Licence<a class="anchor" aria-label="anchor" href="#licence"><i class="fas fa-link"></i></a>
-</h2>
+</section>
+<section id="licence" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="licence">Licence</h2>
 <p><a href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png"></a></p>
 <p>This website/book is free to use, and is licensed under the <a href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
+</section>
+<section id="how-to-cite" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="how-to-cite">How to cite</h2>
+<p><img src="img/openlandmap_v2_logo.png" alt="OpenLandMap logo" width="350"></p>
+<p><a rel="license" href="https://zenodo.org/doi/10.5281/zenodo.4748499"><img alt="DOI" style="border-width:0" src="https://zenodo.org/badge/DOI/10.5281/zenodo.4748499.svg"></a><br></p>
 <p>To cite this dataset please use:</p>
 <pre><code>@dataset{hengl_t_2023_4748499,
   author       = {Hengl, T. and Gupta, S. and Minarik, R.},
@@ -355,134 +464,625 @@ by Oscar Baruffa.</p>
   doi          = {10.5281/zenodo.4748499},
   url          = {https://doi.org/10.5281/zenodo.4748499}
 }</code></pre>
-</div>
-<div id="literature" class="section level2 unnumbered">
-<h2>Literature<a class="anchor" aria-label="anchor" href="#literature"><i class="fas fa-link"></i></a>
-</h2>
-<p>Some other connected publications and initiatives describing collation
-and import of legacy soil observations and measurements that might interest
-you:</p>
+</section>
+<section id="literature" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="literature">Literature</h2>
+<p>Some other connected publications and initiatives describing collation and import of legacy soil observations and measurements that might interest you:</p>
 <ul>
-<li>Arrouays, D., Leenaars, J. G., Richer-de-Forges, A. C., Adhikari,
-K., Ballabio, C., Greve, M., … &amp; Heuvelink, G. (2017). <a href="https://doi.org/10.1016/j.grj.2017.06.001"><strong>Soil
-legacy data rescue via GlobalSoilMap and other international and
-national initiatives</strong></a>.
-GeoResJ, 14, 1-19.<br>
+<li>Arrouays, D., Leenaars, J. G., Richer-de-Forges, A. C., Adhikari, K., Ballabio, C., Greve, M., … &amp; Heuvelink, G. (2017). <a href="https://doi.org/10.1016/j.grj.2017.06.001"><strong>Soil legacy data rescue via GlobalSoilMap and other international and national initiatives</strong></a>. GeoResJ, 14, 1-19.<br>
 </li>
-<li>Beillouin, D., Cardinael, R., Berre, D., Boyer, A., Corbeels, M.,
-Fallot, A., … &amp; Demenois, J. (2021). A global overview of studies
-about land management, land‐use change, and climate change effects
-on soil organic carbon. Global Change Biology. <a href="https://doi.org/10.1111/gcb.15998" class="uri">https://doi.org/10.1111/gcb.15998</a> </li>
-<li>Batjes, N. H., Ribeiro, E., van Oostrum, A., Leenaars, J., Hengl,
-T., &amp; de Jesus, J. M. (2017). <a href="http://www.earth-syst-sci-data.net/9/1/2017/"><strong>WoSIS: providing standardised soil
-profile data for the world</strong></a>. Earth System Science Data, 9(1), 1. <a href="https://doi.org/10.5194/essd-9-1-2017" class="uri">https://doi.org/10.5194/essd-9-1-2017</a> </li>
-<li>Billings, S. A., Lajtha, K., Malhotra, A., Berhe, A. A., de Graaff, M. A.,
-Earl, S., … &amp; Wieder, W. (2021). <a href="https://doi.org/10.1002/eap.2290"><strong>Soil organic carbon is not just for soil
-scientists: measurement recommendations for diverse practitioners</strong></a>. Ecological Applications, 31(3), e02290. <a href="https://doi.org/10.1002/eap.2290" class="uri">https://doi.org/10.1002/eap.2290</a><br>
+<li>Beillouin, D., Cardinael, R., Berre, D., Boyer, A., Corbeels, M., Fallot, A., … &amp; Demenois, J. (2021). A global overview of studies about land management, land‐use change, and climate change effects on soil organic carbon. Global Change Biology. <a href="https://doi.org/10.1111/gcb.15998" class="uri">https://doi.org/10.1111/gcb.15998</a>&nbsp;</li>
+<li>Batjes, N. H., Ribeiro, E., van Oostrum, A., Leenaars, J., Hengl, T., &amp; de Jesus, J. M. (2017). <a href="http://www.earth-syst-sci-data.net/9/1/2017/"><strong>WoSIS: providing standardised soil profile data for the world</strong></a>. Earth System Science Data, 9(1), 1. <a href="https://doi.org/10.5194/essd-9-1-2017" class="uri">https://doi.org/10.5194/essd-9-1-2017</a>&nbsp;</li>
+<li>Billings, S. A., Lajtha, K., Malhotra, A., Berhe, A. A., de Graaff, M. A., Earl, S., … &amp; Wieder, W. (2021). <a href="https://doi.org/10.1002/eap.2290"><strong>Soil organic carbon is not just for soil scientists: measurement recommendations for diverse practitioners</strong></a>. Ecological Applications, 31(3), e02290. <a href="https://doi.org/10.1002/eap.2290" class="uri">https://doi.org/10.1002/eap.2290</a><br>
 </li>
 <li>Brown, G., Demeterio, W. and Samuel-Rosa, A. (2021). <a href="https://blog.scielo.org/en/2021/01/08/towards-a-more-open-soil-science/"><strong>Towards a more open Soil Science</strong></a>. SciELO in Perspective, 2021 [viewed 17 June 2021].</li>
-<li>Gupta, S., Hengl, T., Lehmann, P., Bonetti, S., &amp; Or, D. (2021). <a href="https://doi.org/10.5194/essd-13-1593-2021"><strong>SoilKsatDB:
-global database of soil saturated hydraulic conductivity measurements for
-geoscience applications</strong></a>. Earth System Science Data, 13(4), 1593-1612.
-<a href="https://doi.org/10.5194/essd-13-1593-2021" class="uri">https://doi.org/10.5194/essd-13-1593-2021</a><br>
+<li>Gupta, S., Hengl, T., Lehmann, P., Bonetti, S., &amp; Or, D. (2021). <a href="https://doi.org/10.5194/essd-13-1593-2021"><strong>SoilKsatDB: global database of soil saturated hydraulic conductivity measurements for geoscience applications</strong></a>. Earth System Science Data, 13(4), 1593-1612. <a href="https://doi.org/10.5194/essd-13-1593-2021" class="uri">https://doi.org/10.5194/essd-13-1593-2021</a><br>
 </li>
-<li>Hengl, T., MacMillan, R.A., (2019). <a href="https://soilmapper.org/"><strong>Predictive Soil Mapping with
-R</strong></a>. OpenGeoHub foundation, Wageningen, the
-Netherlands, 370 pages, <a href="https://soilmapper.org" class="uri">https://soilmapper.org</a>, ISBN:
-978-0-359-30635-0.<br>
+<li>Hengl, T., MacMillan, R.A., (2019). <a href="https://soilmapper.org/"><strong>Predictive Soil Mapping with R</strong></a>. OpenGeoHub foundation, Wageningen, the Netherlands, 370 pages, <a href="https://soilmapper.org" class="uri">https://soilmapper.org</a>, ISBN: 978-0-359-30635-0.<br>
 </li>
 <li>Moorberg, C. J., &amp; Crouse, D. A. (2017). <a href="https://doi.org/10.4195/nse2017.06.0013"><strong>An open‐source laboratory manual for introductory, undergraduate soil science courses</strong></a>. Natural Sciences Education, 46(1), 1-8.<br>
 </li>
-<li>Ramcharan, A., Hengl, T., Beaudette, D., &amp; Wills, S. (2017). <a href="https://doi.org/10.2136/sssaj2016.12.0421"><strong>A soil
-bulk density pedotransfer function based on machine learning: A case
-study with the NCSS soil characterization
-database</strong></a>. Soil Science
-Society of America Journal, 81(6), 1279-1287.
-<a href="https://doi.org/10.2136/sssaj2016.12.0421" class="uri">https://doi.org/10.2136/sssaj2016.12.0421</a>
-</li>
-<li>Ros, G. H., Verweij, S. E., Janssen, S. J., De Haan, J., &amp; Fujita, Y. (2022). <a href="https://doi.org/10.1021/acs.est.2c04516"><strong>An Open Soil
-Health Assessment Framework Facilitating Sustainable Soil Management</strong></a>. Environmental Science &amp; Technology, 56(23), 17375-17384.</li>
-<li>Rossiter, D.G.,: <a href="https://www.isric.org/explore/soil-geographic-databases"><strong>Compendium of Soil Geographical
-Databases</strong></a>.</li>
+<li>Ramcharan, A., Hengl, T., Beaudette, D., &amp; Wills, S. (2017). <a href="https://doi.org/10.2136/sssaj2016.12.0421"><strong>A soil bulk density pedotransfer function based on machine learning: A case study with the NCSS soil characterization database</strong></a>. Soil Science Society of America Journal, 81(6), 1279-1287. <a href="https://doi.org/10.2136/sssaj2016.12.0421" class="uri">https://doi.org/10.2136/sssaj2016.12.0421</a></li>
+<li>Ros, G. H., Verweij, S. E., Janssen, S. J., De Haan, J., &amp; Fujita, Y. (2022). <a href="https://doi.org/10.1021/acs.est.2c04516"><strong>An Open Soil Health Assessment Framework Facilitating Sustainable Soil Management</strong></a>. Environmental Science &amp; Technology, 56(23), 17375-17384.</li>
+<li>Rossiter, D.G.,: <a href="https://www.isric.org/explore/soil-geographic-databases"><strong>Compendium of Soil Geographical Databases</strong></a>.</li>
 </ul>
-</div>
-<div id="about-opengeohub" class="section level2 unnumbered">
-<h2>About OpenGeoHub<a class="anchor" aria-label="anchor" href="#about-opengeohub"><i class="fas fa-link"></i></a>
-</h2>
-<p><a href="https://opengeohub.org"><img src="tex/opengeohub_logo_ml.png" alt="OpenGeoHub logo" width="350"></a></p>
-<p><strong>OpenGeoHub foundation</strong> is a not-for-profit research foundation
-located in Wageningen, the Netherlands. We specifically promote
-publishing and sharing of Open Geographical and Geoscientific Data,
-using and developing Open Source Software and encouraging and empowering
-under-represented researchers e.g. those from ODA recipient countries
-and female researchers. We believe that the key measure of quality of
-research in all sciences (and especially in geographical information
-sciences) is in transparency and reproducibility of the computer code
-used to generate results (read more in: <a href="https://opengeohub.medium.com/">“Everyone has a right to know
-what is happening with the planet”</a>).</p>
-</div>
-<div id="acknowledgments" class="section level2 unnumbered">
-<h2>Acknowledgments<a class="anchor" aria-label="anchor" href="#acknowledgments"><i class="fas fa-link"></i></a>
-</h2>
-<p><a href="https://soilspectroscopy.org/"><strong>SoilSpec4GG</strong></a> is a USDA-funded <a href="https://nifa.usda.gov/press-release/nifa-invests-over-7-million-big-data-artificial-intelligence-and-other">Food and Agriculture Cyberinformatics
-Tools Coordinated Innovation Network NIFA Award #2020-67021-32467</a> project. It brings together soil
-scientists, spectroscopists, informaticians, data scientists and
-software engineers to overcome some of the current bottlenecks
-preventing wider and more efficient use of soil spectroscopy. For more info refer
-to: <a href="https://soilspectroscopy.org/" class="uri">https://soilspectroscopy.org/</a></p>
+</section>
+<section id="about-opengeohub" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="about-opengeohub">About OpenGeoHub</h2>
+<p><a href="https://opengeohub.org"><img src="./tex/opengeohub_logo_ml.png" alt="OpenGeoHub logo" width="350"></a></p>
+<p><strong>OpenGeoHub foundation</strong> is a not-for-profit research foundation located in Wageningen, the Netherlands. We specifically promote publishing and sharing of Open Geographical and Geoscientific Data, using and developing Open Source Software and encouraging and empowering under-represented researchers e.g.&nbsp;those from ODA recipient countries and female researchers. We believe that the key measure of quality of research in all sciences (and especially in geographical information sciences) is in transparency and reproducibility of the computer code used to generate results (read more in: <a href="https://opengeohub.medium.com/">“Everyone has a right to know what is happening with the planet”</a>).</p>
+</section>
+<section id="acknowledgments" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="acknowledgments">Acknowledgments</h2>
+<p><a href="https://soilspectroscopy.org/"><strong>SoilSpec4GG</strong></a> is a USDA-funded <a href="https://nifa.usda.gov/press-release/nifa-invests-over-7-million-big-data-artificial-intelligence-and-other">Food and Agriculture Cyberinformatics Tools Coordinated Innovation Network NIFA Award #2020-67021-32467</a> project. It brings together soil scientists, soil spectroscopists, soil informaticians, data scientists and software engineers to overcome some of the current bottlenecks preventing wider and more efficient use of soil spectroscopy. For more info refer to: <a href="https://soilspectroscopy.org/" class="uri">https://soilspectroscopy.org/</a></p>
 <p><strong><a href="https://EcoDataCube.eu/">EcoDataCube.eu</a></strong> project is co-financed by the European Union (<strong><a href="https://ec.europa.eu/inea/en/connecting-europe-facility/cef-telecom/2018-eu-ia-0095">CEF Telecom project 2018-EU-IA-0095</a></strong>).</p>
-<p><strong><a href="https://EarthMonitor.org/">EarthMonitor.org</a></strong> project has received funding from the European Union’s Horizon Europe research an innovation programme under grant agreement <strong><a href="https://cordis.europa.eu/project/id/101059548">No. 101059548</a></strong>.</p>
-<p><strong><a href="https://AI4SoilHealth.eu/">AI4SoilHealth.eu</a></strong> project has received funding from
-the European Union’s Horizon Europe research an innovation programme under grant
-agreement <strong><a href="https://cordis.europa.eu/project/id/101086179">No. 101086179</a></strong>.</p>
+<p><strong><a href="https://EarthMonitor.org/">EarthMonitor.org</a></strong> project has received funding from the European Union’s Horizon Europe research an innovation programme under grant agreement <strong><a href="https://cordis.europa.eu/project/id/101059548">No.&nbsp;101059548</a></strong>.</p>
+<p><strong><a href="https://AI4SoilHealth.eu/">AI4SoilHealth.eu</a></strong> project has received funding from the European Union’s Horizon Europe research an innovation programme under grant agreement <strong><a href="https://cordis.europa.eu/project/id/101086179">No.&nbsp;101086179</a></strong>.</p>
+<p><a href="https://landcarbonlab.org/data"><img src="./img/global_pasture_watch_banner.jpg" alt="Global Pasture Watch banner" width="650"></a></p>
 
-</div>
-</div>
-  <div class="chapter-nav">
-<div class="empty"></div>
-<div class="next"><a href="new-to-markdown.html"><span class="header-section-number">1</span> New to markdown</a></div>
-</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
-    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#about">About</a></li>
-<li><a class="nav-link" href="#rationale">Rationale</a></li>
-<li><a class="nav-link" href="#download-compiled-data">Download compiled data</a></li>
-<li><a class="nav-link" href="#add-your-own-data">Add your own data</a></li>
-<li><a class="nav-link" href="#existing-soil-data-projects-and-initiatives">Existing soil data projects and initiatives</a></li>
-<li><a class="nav-link" href="#target-soil-variables">Target soil variables</a></li>
-<li><a class="nav-link" href="#recommended-om-standards">Recommended O&amp;M standards</a></li>
-<li><a class="nav-link" href="#contributing">Contributing</a></li>
-<li><a class="nav-link" href="#contributors">Contributors</a></li>
-<li><a class="nav-link" href="#disclaimer">Disclaimer</a></li>
-<li><a class="nav-link" href="#licence">Licence</a></li>
-<li><a class="nav-link" href="#literature">Literature</a></li>
-<li><a class="nav-link" href="#about-opengeohub">About OpenGeoHub</a></li>
-<li><a class="nav-link" href="#acknowledgments">Acknowledgments</a></li>
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2024, OpenGeoHub foundation</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/OpenGeoHub/SoilSamples/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/OpenGeoHub/SoilSamples/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/OpenGeoHub/SoilSamples">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://fosstodon.org/@opengeohub">
+      <i class="bi bi-mastodon" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/opengeohub">
+      <i class="bi bi-twitter" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/company/opengeohub-foundation/">
+      <i class="bi bi-linkedin" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.youtube.com/c/OpenGeoHubFoundation">
+      <i class="bi bi-youtube" role="img">
+</i> 
+    </a>
+  </li>  
 </ul>
-
-      <div class="book-extra">
-        <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/OpenGeoHub/SoilSamples//blob/master/index.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/OpenGeoHub/SoilSamples//edit/master/index.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
-        </ul>
-</div>
-    </nav>
-</div>
-
-</div>
-</div> <!-- .container -->
-
-<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
-
-  <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>An Open Compendium of Soil Sample and Soil Profile Datasets</strong>" was written by Tom Hengl, Surya Gupta, Robert Minarik. </p>
+    </div>
   </div>
-
-  <div class="col-12 col-md-6 mt-3">
-    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
-  </div>
-
-</div></div>
 </footer>
-</body>
-</html>
+
+
+
+
+</body></html>

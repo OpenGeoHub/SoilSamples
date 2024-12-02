@@ -1,0 +1,84 @@
+project:
+  type: website
+  output-dir: docs
+  render:
+    - index.qmd
+    - 010-start_here.qmd
+    - 015-dataset_communities.qmd
+    - 020-dataset_list.qmd
+    - 025-import_chemical_data.qmd
+#    - 030-import_physical_data.qmd
+    - 035-import_wrb_data.qmd
+
+website:
+  navbar:
+    tools:
+    - icon: mastodon
+      href: https://fosstodon.org/@opengeohub
+    - icon: medium
+      href: https://opengeohub.medium.com/
+    - icon: twitter
+      href: https://twitter.com/opengeohub
+    - icon: github
+      menu:
+      - text: Source Code
+        url:  https://github.com/OpenGeoHub/SoilSamples
+      - text: Report a Bug
+        url:  https://github.com/OpenGeoHub/SoilSamples/issues
+    background: light
+    search: true
+    logo: ./img/openlandmap_v2_logo.png
+    left:
+      - text: "Home"
+        file: index.qmd
+      - text: "OpenLandMap.org"
+        file: https://OpenLandMap.org
+      - text: "Open-Earth-Monitor"
+        file: https://EarthMonitor.org
+  reader-mode: true
+  repo-url: https://github.com/OpenGeoHub/SoilSamples
+  repo-actions: [edit, issue]
+  sidebar:
+    style: "docked"
+    contents:
+      - section: "Data import"
+        contents:
+          - index.qmd
+          - 010-start_here.qmd
+          - 015-dataset_communities.qmd
+          - 020-dataset_list.qmd
+          - 025-import_chemical_data.qmd
+#          - 030-import_physical_data.qmd
+      - section: "Tutorials"
+        contents:
+          - 035-import_wrb_data.qmd
+  page-footer:
+    background: light
+    left: "© 2024, OpenGeoHub foundation"
+    right:
+      - icon: github
+        href: https://github.com/OpenGeoHub/SoilSamples
+      - icon: mastodon
+        href: https://fosstodon.org/@opengeohub
+      - icon: twitter
+        href: https://twitter.com/opengeohub
+      - icon: linkedin
+        href: https://www.linkedin.com/company/opengeohub-foundation/
+      - icon: youtube
+        href: https://www.youtube.com/c/OpenGeoHubFoundation
+  title: "An Open Compendium of Soil Sample and Soil Profile Data sets"
+  twitter-card:
+    image: "img/sol_chem.pnts_sites.png"
+  open-graph:
+    description: "This is a public compendium of global, regional, national and sub-national soil samples and/or soil profile datasets (points with Observations and Measurements of soil properties and characteristics). Data sets listed here, assuming compatible open license, are afterwards imported into a common library. Contributions are welcome. To discuss issues or report a bug please use the repository homepage. If you have an addition or correction, make changes to the Rmd's and make pull-request."
+
+bibliography: ./tex/refs.bib
+
+format:
+  html:
+    toc: true
+    theme:
+      light: flatly
+      dark: solar
+    mermaid:
+      theme: dark
