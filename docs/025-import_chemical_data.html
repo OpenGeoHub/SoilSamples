@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>An Open Compendium of Soil Sample and Soil Profile Data sets</title>
+<title>An open compendium of global soil samples and observations</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -104,10 +104,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<meta property="og:title" content="An Open Compendium of Soil Sample and Soil Profile Data sets">
+<meta property="og:title" content="An open compendium of global soil samples and observations">
 <meta property="og:description" content="This is a public compendium of global, regional, national and sub-national soil samples and/or soil profile datasets (points with Observations and Measurements of soil properties and characteristics). Data sets listed here, assuming compatible open license, are afterwards imported into a common library. Contributions are welcome. To discuss issues or report a bug please use the repository homepage. If you have an addition or correction, make changes to the Rmd’s and make pull-request.">
-<meta property="og:site_name" content="An Open Compendium of Soil Sample and Soil Profile Data sets">
-<meta name="twitter:title" content="An Open Compendium of Soil Sample and Soil Profile Data sets">
+<meta property="og:site_name" content="An open compendium of global soil samples and observations">
+<meta name="twitter:title" content="An open compendium of global soil samples and observations">
 <meta name="twitter:description" content="">
 <meta name="twitter:image" content="img/sol_chem.pnts_sites.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -124,7 +124,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <img src="././img/openlandmap_v2_logo.png" alt="" class="navbar-logo">
     </a>
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">An Open Compendium of Soil Sample and Soil Profile Data sets</span>
+    <span class="navbar-title">An open compendium of global soil samples and observations</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -144,6 +144,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li class="nav-item">
     <a class="nav-link" href="https://EarthMonitor.org"> 
 <span class="menu-text">Open-Earth-Monitor</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://landcarbonlab.org"> 
+<span class="menu-text">Land Carbon Lab</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -279,7 +283,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="soil-chemical-and-physical-properties" class="level1">
 <h1>Soil chemical and physical properties</h1>
-<p>Last update: 2024-12-02</p>
+<p>The code and data set is continuously being updated. If you notice a bug or typo, please <a href="https://github.com/OpenGeoHub/SoilSamples/issues">open an issue</a> and report.</p>
+<p>Last update: 2024-12-03</p>
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
 <p>This section describes import steps used to produce a global compilation of soil laboratory data with chemical (and physical) soil properties that can be then used for predictive soil mapping / modeling at global and regional scales.</p>
@@ -389,17 +394,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>  chemsprops.NCSS <span class="ot">=</span> dplyr<span class="sc">::</span><span class="fu">full_join</span>(ncss.site[,site.names], ncss.horizons[,hor.names])</span>
 <span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>  chemsprops.NCSS<span class="sc">$</span>site_obsdate <span class="ot">=</span> <span class="fu">format</span>(<span class="fu">as.Date</span>(chemsprops.NCSS<span class="sc">$</span>site_obsdate, <span class="at">format=</span><span class="st">"%Y/%m/%d"</span>), <span class="st">"%Y-%m-%d"</span>)</span>
 <span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>  <span class="co">#summary(as.Date(chemsprops.NCSS$site_obsdate))</span></span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>  chemsprops.NCSS<span class="sc">$</span>source_db <span class="ot">=</span> <span class="st">"USDA_NCSS"</span></span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>  <span class="co">#dim(chemsprops.NCSS)</span></span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>  <span class="do">## 477516      36</span></span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>  chemsprops.NCSS<span class="sc">$</span>confidence_degree <span class="ot">=</span> <span class="dv">1</span></span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>  chemsprops.NCSS<span class="sc">$</span>project_url <span class="ot">=</span> <span class="st">"http://ncsslabdatamart.sc.egov.usda.gov/"</span></span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>  chemsprops.NCSS<span class="sc">$</span>citation_url <span class="ot">=</span> <span class="st">"http://ncsslabdatamart.sc.egov.usda.gov/"</span></span>
-<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>  chemsprops.NCSS <span class="ot">=</span> <span class="fu">complete.vars</span>(chemsprops.NCSS, <span class="at">sel=</span><span class="fu">c</span>(<span class="st">"hzn_top"</span>, <span class="st">"hzn_bot"</span>, <span class="st">"organic_carbon"</span>, <span class="st">"clay_total"</span>, <span class="st">"ecec_base_plus_aluminum"</span>, <span class="st">"ph_h2o"</span>, <span class="st">"ec_predict_one_to_two"</span>, <span class="st">"k_ext"</span>), <span class="at">remove.duplicates =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>  <span class="co">#summary(chemsprops.NCSS$oc_d)</span></span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>  <span class="co">#summary(chemsprops.NCSS$organic_carbon)</span></span>
-<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">saveRDS.gz</span>(chemsprops.NCSS, <span class="st">"/mnt/diskstation/data/Soil_points/INT/USDA_NCSS/chemsprops.NCSS.rds"</span>)</span>
-<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>  <span class="co">#summary(substr(chemsprops.NCSS$site_obsdate, 1, 4)&gt;1999 &amp; !is.na(chemsprops.NCSS$oc_d))</span></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>  <span class="do">## ONLY 200 records &gt;1999 with SOC and BD!</span></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>  chemsprops.NCSS<span class="sc">$</span>source_db <span class="ot">=</span> <span class="st">"USDA_NCSS"</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>  <span class="co">#dim(chemsprops.NCSS)</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>  <span class="do">## 477516      36</span></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>  chemsprops.NCSS<span class="sc">$</span>confidence_degree <span class="ot">=</span> <span class="dv">1</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>  chemsprops.NCSS<span class="sc">$</span>project_url <span class="ot">=</span> <span class="st">"http://ncsslabdatamart.sc.egov.usda.gov/"</span></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>  chemsprops.NCSS<span class="sc">$</span>citation_url <span class="ot">=</span> <span class="st">"http://ncsslabdatamart.sc.egov.usda.gov/"</span></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>  chemsprops.NCSS <span class="ot">=</span> <span class="fu">complete.vars</span>(chemsprops.NCSS, <span class="at">sel=</span><span class="fu">c</span>(<span class="st">"hzn_top"</span>, <span class="st">"hzn_bot"</span>, <span class="st">"organic_carbon"</span>, <span class="st">"clay_total"</span>, <span class="st">"ecec_base_plus_aluminum"</span>, <span class="st">"ph_h2o"</span>, <span class="st">"ec_predict_one_to_two"</span>, <span class="st">"k_ext"</span>), <span class="at">remove.duplicates =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>  <span class="co">#summary(chemsprops.NCSS$oc_d)</span></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>  <span class="co">#summary(chemsprops.NCSS$organic_carbon)</span></span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">saveRDS.gz</span>(chemsprops.NCSS, <span class="st">"/mnt/diskstation/data/Soil_points/INT/USDA_NCSS/chemsprops.NCSS.rds"</span>)</span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>New names:
 • `` -&gt; `...1`</code></pre>
@@ -516,23 +523,24 @@ Joining with `by = join_by(site_key)`</code></pre>
 <span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>  t.ngs <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"lab_id"</span>, <span class="st">"site_id"</span>, <span class="st">"horizon"</span>, <span class="st">"hzn_top"</span>, <span class="st">"hzn_bot"</span>, <span class="st">"tot_clay_pct"</span>, <span class="st">"total_carbon_ncs"</span>, <span class="st">"organic_carbon"</span>)</span>
 <span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>  ngs.m <span class="ot">=</span> plyr<span class="sc">::</span><span class="fu">join</span>(ngs.points, ngs.layers[<span class="sc">!</span><span class="fu">is.na</span>(ngs.layers<span class="sc">$</span>c_org_pct),t.ngs])</span>
 <span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>  ngs.m<span class="sc">$</span>site_obsdate <span class="ot">=</span> <span class="fu">as.Date</span>(ngs.m<span class="sc">$</span>colldate, <span class="at">format=</span><span class="st">"%Y-%m-%d"</span>) </span>
-<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>  ngs.h.lst <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"site_id"</span>, <span class="st">"quad"</span>, <span class="st">"site_obsdate"</span>, <span class="st">"longitude"</span>, <span class="st">"latitude"</span>, <span class="st">"SSL_classification_name"</span>, <span class="st">"lab_id"</span>, <span class="st">"layer_key"</span>, <span class="st">"layer_sequence"</span>, <span class="st">"hzn_top"</span>, <span class="st">"hzn_bot"</span>, <span class="st">"horizon"</span>, <span class="st">"tex_psda"</span>, <span class="st">"texture_lab"</span>, <span class="st">"tot_clay_pct"</span>, <span class="st">"silt_total"</span>, </span>
-<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>              <span class="st">"sand_total"</span>, <span class="st">"organic_carbon"</span>, <span class="st">"oc_d"</span>, <span class="st">"total_carbon_ncs"</span>, <span class="st">"total_nitrogen_ncs"</span>, </span>
-<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>              <span class="st">"ph_kcl"</span>, <span class="st">"ph_h2o"</span>, <span class="st">"ph_cacl2"</span>, </span>
-<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>              <span class="st">"sum_of_cations_cec_pH_8_2"</span>, <span class="st">"cec_nh4_ph_7"</span>, <span class="st">"ecec_base_plus_aluminum"</span>, </span>
-<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>              <span class="st">"total_frag_wt_pct_gt_2_mm_ws"</span>, <span class="st">"bulk_density_oven_dry"</span>, <span class="st">"ca_ext"</span>, <span class="st">"mg_ext"</span>, </span>
-<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>              <span class="st">"na_ext"</span>, <span class="st">"k_ext"</span>, <span class="st">"ec_water_extractable"</span>, <span class="st">"ec_predict_one_to_two"</span>)</span>
-<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>  x.na <span class="ot">=</span> ngs.h.lst[<span class="fu">which</span>(<span class="sc">!</span>ngs.h.lst <span class="sc">%in%</span> <span class="fu">names</span>(ngs.m))]</span>
-<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">length</span>(x.na)<span class="sc">&gt;</span><span class="dv">0</span>){ <span class="cf">for</span>(i <span class="cf">in</span> x.na){ ngs.m[,i] <span class="ot">=</span> <span class="cn">NA</span> } }</span>
-<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>  chemsprops.USGS.NGS <span class="ot">=</span> ngs.m[,ngs.h.lst]</span>
-<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>  chemsprops.USGS.NGS<span class="sc">$</span>source_db <span class="ot">=</span> <span class="st">"USGS.NGS"</span></span>
-<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a>  chemsprops.USGS.NGS<span class="sc">$</span>confidence_degree <span class="ot">=</span> <span class="dv">1</span></span>
-<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a>  chemsprops.USGS.NGS<span class="sc">$</span>project_url <span class="ot">=</span> <span class="st">"https://mrdata.usgs.gov/ds-801/"</span></span>
-<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a>  chemsprops.USGS.NGS<span class="sc">$</span>citation_url <span class="ot">=</span> <span class="st">"https://pubs.usgs.gov/ds/801/"</span></span>
-<span id="cb16-35"><a href="#cb16-35" aria-hidden="true" tabindex="-1"></a>  chemsprops.USGS.NGS <span class="ot">=</span> <span class="fu">complete.vars</span>(chemsprops.USGS.NGS, <span class="at">sel =</span> <span class="fu">c</span>(<span class="st">"tot_clay_pct"</span>, <span class="st">"organic_carbon"</span>), <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"longitude"</span>, <span class="st">"latitude"</span>))</span>
-<span id="cb16-36"><a href="#cb16-36" aria-hidden="true" tabindex="-1"></a>  <span class="co">#summary(chemsprops.USGS.NGS$organic_carbon)</span></span>
-<span id="cb16-37"><a href="#cb16-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">saveRDS.gz</span>(chemsprops.USGS.NGS, <span class="st">"/mnt/diskstation/data/Soil_points/USA/geochemical/ds-801-csv/chemsprops.USGS.NGS.rds"</span>)</span>
-<span id="cb16-38"><a href="#cb16-38" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>  <span class="co">#summary(substr(ngs.m$site_obsdate, 1, 4)&gt;1999)</span></span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>  ngs.h.lst <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"site_id"</span>, <span class="st">"quad"</span>, <span class="st">"site_obsdate"</span>, <span class="st">"longitude"</span>, <span class="st">"latitude"</span>, <span class="st">"SSL_classification_name"</span>, <span class="st">"lab_id"</span>, <span class="st">"layer_key"</span>, <span class="st">"layer_sequence"</span>, <span class="st">"hzn_top"</span>, <span class="st">"hzn_bot"</span>, <span class="st">"horizon"</span>, <span class="st">"tex_psda"</span>, <span class="st">"texture_lab"</span>, <span class="st">"tot_clay_pct"</span>, <span class="st">"silt_total"</span>, </span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>              <span class="st">"sand_total"</span>, <span class="st">"organic_carbon"</span>, <span class="st">"oc_d"</span>, <span class="st">"total_carbon_ncs"</span>, <span class="st">"total_nitrogen_ncs"</span>, </span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>              <span class="st">"ph_kcl"</span>, <span class="st">"ph_h2o"</span>, <span class="st">"ph_cacl2"</span>, </span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>              <span class="st">"sum_of_cations_cec_pH_8_2"</span>, <span class="st">"cec_nh4_ph_7"</span>, <span class="st">"ecec_base_plus_aluminum"</span>, </span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>              <span class="st">"total_frag_wt_pct_gt_2_mm_ws"</span>, <span class="st">"bulk_density_oven_dry"</span>, <span class="st">"ca_ext"</span>, <span class="st">"mg_ext"</span>, </span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>              <span class="st">"na_ext"</span>, <span class="st">"k_ext"</span>, <span class="st">"ec_water_extractable"</span>, <span class="st">"ec_predict_one_to_two"</span>)</span>
+<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a>  x.na <span class="ot">=</span> ngs.h.lst[<span class="fu">which</span>(<span class="sc">!</span>ngs.h.lst <span class="sc">%in%</span> <span class="fu">names</span>(ngs.m))]</span>
+<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">length</span>(x.na)<span class="sc">&gt;</span><span class="dv">0</span>){ <span class="cf">for</span>(i <span class="cf">in</span> x.na){ ngs.m[,i] <span class="ot">=</span> <span class="cn">NA</span> } }</span>
+<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>  chemsprops.USGS.NGS <span class="ot">=</span> ngs.m[,ngs.h.lst]</span>
+<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a>  chemsprops.USGS.NGS<span class="sc">$</span>source_db <span class="ot">=</span> <span class="st">"USGS.NGS"</span></span>
+<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a>  chemsprops.USGS.NGS<span class="sc">$</span>confidence_degree <span class="ot">=</span> <span class="dv">1</span></span>
+<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a>  chemsprops.USGS.NGS<span class="sc">$</span>project_url <span class="ot">=</span> <span class="st">"https://mrdata.usgs.gov/ds-801/"</span></span>
+<span id="cb16-35"><a href="#cb16-35" aria-hidden="true" tabindex="-1"></a>  chemsprops.USGS.NGS<span class="sc">$</span>citation_url <span class="ot">=</span> <span class="st">"https://pubs.usgs.gov/ds/801/"</span></span>
+<span id="cb16-36"><a href="#cb16-36" aria-hidden="true" tabindex="-1"></a>  chemsprops.USGS.NGS <span class="ot">=</span> <span class="fu">complete.vars</span>(chemsprops.USGS.NGS, <span class="at">sel =</span> <span class="fu">c</span>(<span class="st">"tot_clay_pct"</span>, <span class="st">"organic_carbon"</span>), <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"longitude"</span>, <span class="st">"latitude"</span>))</span>
+<span id="cb16-37"><a href="#cb16-37" aria-hidden="true" tabindex="-1"></a>  <span class="co">#summary(chemsprops.USGS.NGS$organic_carbon)</span></span>
+<span id="cb16-38"><a href="#cb16-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">saveRDS.gz</span>(chemsprops.USGS.NGS, <span class="st">"/mnt/diskstation/data/Soil_points/USA/geochemical/ds-801-csv/chemsprops.USGS.NGS.rds"</span>)</span>
+<span id="cb16-39"><a href="#cb16-39" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Joining by: site_id</code></pre>
 </div>
@@ -1047,7 +1055,7 @@ as.numeric(chemsprops.LUCAS$OC)): NAs introduced by coercion</code></pre>
 <span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>  rem.LOD <span class="ot">=</span> <span class="cf">function</span>(x){ <span class="fu">as.numeric</span>(<span class="fu">ifelse</span>(x<span class="sc">==</span><span class="st">"&lt; LOD"</span>, <span class="dv">0</span>, <span class="fu">as.numeric</span>(x)))}</span>
 <span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a>  lucas2018.bd <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">"/mnt/diskstation/data/Soil_points/EU/LUCAS/BulkDensity_2018_final-2.csv"</span>)</span>
 <span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a>  lucas2018.xy<span class="sc">$</span>BD <span class="ot">=</span> dplyr<span class="sc">::</span><span class="fu">left_join</span>(lucas2018.xy, lucas2018.bd, <span class="fu">join_by</span>(POINTID <span class="sc">==</span> POINT_ID))<span class="sc">$</span>BD.<span class="fl">0.20</span></span>
-<span id="cb65-6"><a href="#cb65-6" aria-hidden="true" tabindex="-1"></a>  lucas2018.xy<span class="sc">$</span>BD <span class="ot">=</span> <span class="fu">ifelse</span>(lucas2018.xy<span class="sc">$</span>BD <span class="sc">&lt;</span> <span class="fl">0.05</span>, <span class="dv">0</span>, lucas2018.xy<span class="sc">$</span>BD)</span>
+<span id="cb65-6"><a href="#cb65-6" aria-hidden="true" tabindex="-1"></a>  lucas2018.xy<span class="sc">$</span>BD <span class="ot">=</span> <span class="fu">ifelse</span>(lucas2018.xy<span class="sc">$</span>BD <span class="sc">&lt;</span> <span class="fl">0.04</span> <span class="sc">|</span> lucas2018.xy<span class="sc">$</span>BD <span class="sc">&gt;</span> <span class="fl">2.4</span>, <span class="cn">NA</span>, lucas2018.xy<span class="sc">$</span>BD)</span>
 <span id="cb65-7"><a href="#cb65-7" aria-hidden="true" tabindex="-1"></a>  <span class="do">## 1 mS/m = 100 mS/cm | 1 dS/m = 1 mS/cm = 1 mS/m / 100</span></span>
 <span id="cb65-8"><a href="#cb65-8" aria-hidden="true" tabindex="-1"></a>  <span class="co">#summary(!is.na(lucas2018.xy$`OC (20-30 cm)`))</span></span>
 <span id="cb65-9"><a href="#cb65-9" aria-hidden="true" tabindex="-1"></a>  lucas2018.xy<span class="sc">$</span>pH_H2O <span class="ot">=</span> <span class="fu">as.numeric</span>(lucas2018.xy<span class="sc">$</span>pH_H2O)</span>
@@ -1058,7 +1066,7 @@ as.numeric(chemsprops.LUCAS$OC)): NAs introduced by coercion</code></pre>
 <span id="cb65-14"><a href="#cb65-14" aria-hidden="true" tabindex="-1"></a>  <span class="co">#summary(lucas2018.xy$oc_d)</span></span>
 <span id="cb65-15"><a href="#cb65-15" aria-hidden="true" tabindex="-1"></a>  lucas2018.xy<span class="sc">$</span>site_obsdate <span class="ot">=</span> <span class="fu">as.Date</span>(lucas2018.xy<span class="sc">$</span>SURVEY_DATE, <span class="at">format =</span> <span class="st">"%d/%m/%y"</span>)</span>
 <span id="cb65-16"><a href="#cb65-16" aria-hidden="true" tabindex="-1"></a>  lucas2018.xy<span class="sc">$</span>ec_satp <span class="ot">=</span> <span class="fu">as.numeric</span>(lucas2018.xy<span class="sc">$</span>EC) <span class="sc">/</span> <span class="dv">100</span></span>
-<span id="cb65-17"><a href="#cb65-17" aria-hidden="true" tabindex="-1"></a>  lucas2018.h.lst <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Point_ID"</span>, <span class="st">"LC0_Desc"</span>, <span class="st">"site_obsdate"</span>, <span class="st">"TH_LONG"</span>, <span class="st">"TH_LAT"</span>, <span class="st">"SSL_classification_name"</span>, <span class="st">"sample_ID"</span>, <span class="st">"layer_key"</span>, <span class="st">"layer_sequence"</span>, <span class="st">"hzn_top"</span>, <span class="st">"hzn_bot"</span>, <span class="st">"hzn_desgn"</span>, <span class="st">"tex_psda"</span>, <span class="st">"texture_lab"</span>, <span class="st">"Clay"</span>, <span class="st">"Silt"</span>, <span class="st">"Sand"</span>, <span class="st">"OC"</span>, <span class="st">"oc_d"</span>, <span class="st">"c_tot"</span>, <span class="st">"N"</span>, <span class="st">"ph_kcl"</span>, <span class="st">"pH_H20"</span>, <span class="st">"pH_CaCl2"</span>, <span class="st">"CEC"</span>, <span class="st">"cec_nh4"</span>, <span class="st">"ecec"</span>, <span class="st">"coarse"</span>, <span class="st">"DB"</span>, <span class="st">"ca_ext"</span>, <span class="st">"mg_ext"</span>, <span class="st">"na_ext"</span>, <span class="st">"K"</span>, <span class="st">"ec_satp"</span>, <span class="st">"ec_12pre"</span>)</span>
+<span id="cb65-17"><a href="#cb65-17" aria-hidden="true" tabindex="-1"></a>  lucas2018.h.lst <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Point_ID"</span>, <span class="st">"LC0_Desc"</span>, <span class="st">"site_obsdate"</span>, <span class="st">"TH_LONG"</span>, <span class="st">"TH_LAT"</span>, <span class="st">"SSL_classification_name"</span>, <span class="st">"sample_ID"</span>, <span class="st">"layer_key"</span>, <span class="st">"layer_sequence"</span>, <span class="st">"hzn_top"</span>, <span class="st">"hzn_bot"</span>, <span class="st">"hzn_desgn"</span>, <span class="st">"tex_psda"</span>, <span class="st">"texture_lab"</span>, <span class="st">"Clay"</span>, <span class="st">"Silt"</span>, <span class="st">"Sand"</span>, <span class="st">"OC"</span>, <span class="st">"oc_d"</span>, <span class="st">"c_tot"</span>, <span class="st">"N"</span>, <span class="st">"ph_kcl"</span>, <span class="st">"pH_H20"</span>, <span class="st">"pH_CaCl2"</span>, <span class="st">"CEC"</span>, <span class="st">"cec_nh4"</span>, <span class="st">"ecec"</span>, <span class="st">"coarse"</span>, <span class="st">"BD"</span>, <span class="st">"ca_ext"</span>, <span class="st">"mg_ext"</span>, <span class="st">"na_ext"</span>, <span class="st">"K"</span>, <span class="st">"ec_satp"</span>, <span class="st">"ec_12pre"</span>)</span>
 <span id="cb65-18"><a href="#cb65-18" aria-hidden="true" tabindex="-1"></a>  x.na <span class="ot">=</span> lucas2018.h.lst[<span class="fu">which</span>(<span class="sc">!</span>lucas2018.h.lst <span class="sc">%in%</span> <span class="fu">names</span>(lucas2018.xy))]</span>
 <span id="cb65-19"><a href="#cb65-19" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">length</span>(x.na)<span class="sc">&gt;</span><span class="dv">0</span>){ <span class="cf">for</span>(i <span class="cf">in</span> x.na){ lucas2018.xy[,i] <span class="ot">=</span> <span class="cn">NA</span> } }</span>
 <span id="cb65-20"><a href="#cb65-20" aria-hidden="true" tabindex="-1"></a>  chemsprops.LUCAS3 <span class="ot">&lt;-</span> lucas2018.xy[,lucas2018.h.lst]</span>
@@ -1068,7 +1076,7 @@ as.numeric(chemsprops.LUCAS$OC)): NAs introduced by coercion</code></pre>
 <span id="cb65-24"><a href="#cb65-24" aria-hidden="true" tabindex="-1"></a>  chemsprops.LUCAS3<span class="sc">$</span>confidence_degree <span class="ot">=</span> <span class="dv">2</span></span>
 <span id="cb65-25"><a href="#cb65-25" aria-hidden="true" tabindex="-1"></a>  chemsprops.LUCAS3<span class="sc">$</span>project_url <span class="ot">=</span> <span class="st">"https://esdac.jrc.ec.europa.eu/"</span></span>
 <span id="cb65-26"><a href="#cb65-26" aria-hidden="true" tabindex="-1"></a>  chemsprops.LUCAS3<span class="sc">$</span>citation_url <span class="ot">=</span> <span class="st">"https://doi.org/10.1111/ejss.12499"</span></span>
-<span id="cb65-27"><a href="#cb65-27" aria-hidden="true" tabindex="-1"></a>  chemsprops.LUCAS3 <span class="ot">=</span> <span class="fu">complete.vars</span>(chemsprops.LUCAS3, <span class="at">sel =</span> <span class="fu">c</span>(<span class="st">"OC"</span>,<span class="st">"pH_H20"</span>), <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"TH_LONG"</span>, <span class="st">"TH_LAT"</span>))</span>
+<span id="cb65-27"><a href="#cb65-27" aria-hidden="true" tabindex="-1"></a>  chemsprops.LUCAS3 <span class="ot">=</span> <span class="fu">complete.vars</span>(chemsprops.LUCAS3, <span class="at">sel =</span> <span class="fu">c</span>(<span class="st">"OC"</span>,<span class="st">"pH_H20"</span>,<span class="st">"BD"</span>), <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"TH_LONG"</span>, <span class="st">"TH_LAT"</span>))</span>
 <span id="cb65-28"><a href="#cb65-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">saveRDS.gz</span>(chemsprops.LUCAS3, <span class="st">"/mnt/diskstation/data/Soil_points/EU/LUCAS/chemsprops.LUCAS3.rds"</span>)</span>
 <span id="cb65-29"><a href="#cb65-29" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -1083,9 +1091,9 @@ Warning in ifelse(x == "&lt; LOD", 0, as.numeric(x)): NAs introduced by coercion
 </div>
 <div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(chemsprops.LUCAS3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 18981    39</code></pre>
+<pre><code>[1] 18982    39</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 18981    39</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 18982    39</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="mangrove-forest-soil-db" class="level4">
@@ -3492,7 +3500,7 @@ Warning: NAs introduced by coercion</code></pre>
 <span id="cb294-2"><a href="#cb294-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(tex.rm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
--2997.0   100.0   100.0   100.2   100.0  2997.0  505077 </code></pre>
+-2997.0   100.0   100.0   100.2   100.0  2997.0  505078 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb296"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb296-1"><a href="#cb296-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(j <span class="cf">in</span> <span class="fu">c</span>(<span class="st">"clay_total"</span>, <span class="st">"silt_total"</span>, <span class="st">"sand_total"</span>, <span class="st">"total_frag_wt_pct_gt_2_mm_ws"</span>)){</span>
 <span id="cb296-2"><a href="#cb296-2" aria-hidden="true" tabindex="-1"></a>  tot_sprops[,j] <span class="ot">=</span> <span class="fu">ifelse</span>(tot_sprops[,j]<span class="sc">&gt;</span><span class="dv">100</span><span class="sc">|</span>tot_sprops[,j]<span class="sc">&lt;</span><span class="dv">0</span>, <span class="cn">NA</span>, tot_sprops[,j])</span>
@@ -3517,7 +3525,7 @@ Warning: NAs introduced by coercion</code></pre>
 <span id="cb297-3"><a href="#cb297-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">is.na</span>(tot_sprops<span class="sc">$</span>hzn_depth))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Mode   FALSE    TRUE 
-logical 1492759   32464 </code></pre>
+logical 1492760   32464 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb299"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb299-1"><a href="#cb299-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Note: large number of horizons without a depth</span></span>
 <span id="cb299-2"><a href="#cb299-2" aria-hidden="true" tabindex="-1"></a>tot_sprops <span class="ot">=</span> tot_sprops[<span class="sc">!</span><span class="fu">is.na</span>(tot_sprops<span class="sc">$</span>hzn_depth),]</span>
@@ -3542,7 +3550,7 @@ logical 1492759   32464 </code></pre>
           Iran_SPDB               ISCND                ISDA          ISRIC_WISE 
                4859                4114               49225               37443 
             LandPKS          LUCAS_2009          LUCAS_2015          LUCAS_2018 
-             165044               21272               21859               18981 
+             165044               21272               21859               18982 
         MangrovesDB         MexicoINEGI            NAMSOTER               NCSCD 
                7986               16820                2943                7348 
     Netherlands.BIS   Portugal.INFOSOLO   Potash_et_al_2023          PRONASOLOS 
@@ -3582,9 +3590,8 @@ logical 1492759   32464 </code></pre>
 <span id="cb307-3"><a href="#cb307-3" aria-hidden="true" tabindex="-1"></a>g1.c <span class="ot">=</span> <span class="fu">summary</span>(<span class="fu">as.factor</span>(ov.g1<span class="sc">$</span>ID), <span class="at">maxsum =</span> <span class="fu">length</span>(<span class="fu">levels</span>(<span class="fu">as.factor</span>(ov.g1<span class="sc">$</span>ID))))</span>
 <span id="cb307-4"><a href="#cb307-4" aria-hidden="true" tabindex="-1"></a>g1.df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">count=</span>g1.c, <span class="at">ID=</span><span class="fu">attr</span>(g1.c, <span class="st">"names"</span>))</span>
 <span id="cb307-5"><a href="#cb307-5" aria-hidden="true" tabindex="-1"></a>g1<span class="sc">$</span>count <span class="ot">=</span> dplyr<span class="sc">::</span><span class="fu">left_join</span>(<span class="fu">data.frame</span>(<span class="at">ID=</span>g1<span class="sc">$</span>ID), g1.df)<span class="sc">$</span>count </span>
-<span id="cb307-6"><a href="#cb307-6" aria-hidden="true" tabindex="-1"></a>g1<span class="sc">$</span>count <span class="ot">=</span> <span class="fu">ifelse</span>(g1<span class="sc">$</span>count<span class="sc">&lt;</span><span class="dv">0</span>, <span class="cn">NA</span>, g1<span class="sc">$</span>count)</span>
-<span id="cb307-7"><a href="#cb307-7" aria-hidden="true" tabindex="-1"></a><span class="co">#plot(g1["count"])</span></span>
-<span id="cb307-8"><a href="#cb307-8" aria-hidden="true" tabindex="-1"></a><span class="fu">writeVector</span>(g1[<span class="st">"count"</span>], <span class="st">"/mnt/diskstation/data/Soil_points/tiles_GH_100km_pnt.dens.gpkg"</span>, <span class="at">overwrite=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb307-6"><a href="#cb307-6" aria-hidden="true" tabindex="-1"></a><span class="co">#plot(g1["count"])</span></span>
+<span id="cb307-7"><a href="#cb307-7" aria-hidden="true" tabindex="-1"></a><span class="fu">writeVector</span>(g1[<span class="st">"count"</span>], <span class="st">"/mnt/diskstation/data/Soil_points/tiles_GH_100km_pnt.dens.gpkg"</span>, <span class="at">overwrite=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -3599,29 +3606,31 @@ logical 1492759   32464 </code></pre>
 <p>Remove points falling in the sea or similar:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb308"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb308-1"><a href="#cb308-1" aria-hidden="true" tabindex="-1"></a><span class="co">#mask = terra::rast("./layers1km/lcv_landmask_esacci.lc.l4_c_1km_s0..0cm_2000..2015_v1.0.tif")</span></span>
-<span id="cb308-2"><a href="#cb308-2" aria-hidden="true" tabindex="-1"></a>mask <span class="ot">=</span> terra<span class="sc">::</span><span class="fu">rast</span>(<span class="st">"/mnt/diskstation/data/LandGIS/layers250m/lcv_landmask_esacci.lc.l4_c_250m_s0..0cm_2000..2015_v1.0.tif"</span>)</span>
-<span id="cb308-3"><a href="#cb308-3" aria-hidden="true" tabindex="-1"></a>ov.sprops <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">extract</span>(mask, terra<span class="sc">::</span><span class="fu">vect</span>(tot_sprops.pnts)) <span class="do">## TAKES 2 mins</span></span>
-<span id="cb308-4"><a href="#cb308-4" aria-hidden="true" tabindex="-1"></a><span class="co">#summary(as.factor(ov.sprops[,2]))</span></span>
-<span id="cb308-5"><a href="#cb308-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">sum</span>(<span class="fu">is.na</span>(ov.sprops[,<span class="dv">2</span>]))<span class="sc">&gt;</span><span class="dv">0</span> <span class="sc">|</span> <span class="fu">sum</span>(ov.sprops[,<span class="dv">2</span>]<span class="sc">==</span><span class="dv">2</span>)<span class="sc">&gt;</span><span class="dv">0</span>){</span>
-<span id="cb308-6"><a href="#cb308-6" aria-hidden="true" tabindex="-1"></a>  rem.lst <span class="ot">=</span> <span class="fu">which</span>(<span class="fu">is.na</span>(ov.sprops[,<span class="dv">2</span>]) <span class="sc">|</span> ov.sprops[,<span class="dv">2</span>]<span class="sc">==</span><span class="dv">2</span> <span class="sc">|</span> ov.sprops[,<span class="dv">2</span>]<span class="sc">==</span><span class="dv">4</span>)</span>
-<span id="cb308-7"><a href="#cb308-7" aria-hidden="true" tabindex="-1"></a>  rem.sp <span class="ot">=</span> tot_sprops.pnts<span class="sc">$</span>site_key[rem.lst]</span>
-<span id="cb308-8"><a href="#cb308-8" aria-hidden="true" tabindex="-1"></a>  tot_sprops.pnts <span class="ot">=</span> tot_sprops.pnts[<span class="sc">-</span>rem.lst,]</span>
-<span id="cb308-9"><a href="#cb308-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb308-10"><a href="#cb308-10" aria-hidden="true" tabindex="-1"></a><span class="do">## final number of unique spatial locations:</span></span>
-<span id="cb308-11"><a href="#cb308-11" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(tot_sprops.pnts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb308-2"><a href="#cb308-2" aria-hidden="true" tabindex="-1"></a><span class="co">#mask = terra::rast("/mnt/diskstation/data/LandGIS/layers250m/lcv_landmask_esacci.lc.l4_c_250m_s0..0cm_2000..2015_v1.0.tif")</span></span>
+<span id="cb308-3"><a href="#cb308-3" aria-hidden="true" tabindex="-1"></a>mask <span class="ot">=</span> terra<span class="sc">::</span><span class="fu">rast</span>(<span class="st">"/mnt/diskstation/data/Soil_points/land.cover_copernicus_c_100m_s_20150101_20151231_go_epsg.4326_v3.0.1.tif"</span>)</span>
+<span id="cb308-4"><a href="#cb308-4" aria-hidden="true" tabindex="-1"></a>ov.sprops <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">extract</span>(mask, terra<span class="sc">::</span><span class="fu">vect</span>(tot_sprops.pnts)) <span class="do">## TAKES 1 mins</span></span>
+<span id="cb308-5"><a href="#cb308-5" aria-hidden="true" tabindex="-1"></a><span class="co">#summary(as.factor(ov.sprops[,2]))</span></span>
+<span id="cb308-6"><a href="#cb308-6" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">sum</span>(<span class="fu">is.na</span>(ov.sprops[,<span class="dv">2</span>]) <span class="sc">|</span> ov.sprops[,<span class="dv">2</span>]<span class="sc">==</span><span class="dv">200</span>)<span class="sc">&gt;</span><span class="dv">0</span>){</span>
+<span id="cb308-7"><a href="#cb308-7" aria-hidden="true" tabindex="-1"></a>  rem.lst <span class="ot">=</span> <span class="fu">which</span>(<span class="fu">is.na</span>(ov.sprops[,<span class="dv">2</span>]) <span class="sc">|</span> ov.sprops[,<span class="dv">2</span>]<span class="sc">==</span><span class="dv">200</span>)</span>
+<span id="cb308-8"><a href="#cb308-8" aria-hidden="true" tabindex="-1"></a>  rem.sp <span class="ot">=</span> tot_sprops.pnts<span class="sc">$</span>site_key[rem.lst]</span>
+<span id="cb308-9"><a href="#cb308-9" aria-hidden="true" tabindex="-1"></a>  tot_sprops.pnts <span class="ot">=</span> tot_sprops.pnts[<span class="sc">-</span>rem.lst,]</span>
+<span id="cb308-10"><a href="#cb308-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb308-11"><a href="#cb308-11" aria-hidden="true" tabindex="-1"></a><span class="do">## final number of unique spatial locations:</span></span>
+<span id="cb308-12"><a href="#cb308-12" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(tot_sprops.pnts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 334560</code></pre>
+<pre><code>[1] 336442</code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb310"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb310-1"><a href="#cb310-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 363511</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="histogram-plots" class="level4">
 <h4 class="anchored" data-anchor-id="histogram-plots">Histogram plots</h4>
 <p>Have in mind that some datasets only represent top-soil (e.g.&nbsp;LUCAS) while other cover the whole soil depth, hence higher mean values for some regions (Europe) should be considered within the context of diverse soil depths.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb310"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb310-1"><a href="#cb310-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb310-2"><a href="#cb310-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tot_sprops, <span class="fu">aes</span>(<span class="at">x=</span>source_db, <span class="at">y=</span><span class="fu">log1p</span>(organic_carbon))) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb311"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb311-1"><a href="#cb311-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb311-2"><a href="#cb311-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tot_sprops, <span class="fu">aes</span>(<span class="at">x=</span>source_db, <span class="at">y=</span><span class="fu">log1p</span>(organic_carbon))) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 483107 rows containing non-finite outside the scale range
+<pre><code>Warning: Removed 483108 rows containing non-finite outside the scale range
 (`stat_boxplot()`).</code></pre>
 </div>
 <div class="cell-output-display">
@@ -3633,9 +3642,9 @@ logical 1492759   32464 </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb312"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb312-1"><a href="#cb312-1" aria-hidden="true" tabindex="-1"></a>sel.db <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"ISRIC_WISE"</span>, <span class="st">"Canada_CUFS"</span>, <span class="st">"USDA_NCSS"</span>, <span class="st">"AfSPDB"</span>, <span class="st">"Canada_NPDB"</span>, <span class="st">"PRONASOLOS"</span>, <span class="st">"CSIRO_NatSoil"</span>)</span>
-<span id="cb312-2"><a href="#cb312-2" aria-hidden="true" tabindex="-1"></a>openair<span class="sc">::</span><span class="fu">scatterPlot</span>(tot_sprops[tot_sprops<span class="sc">$</span>source_db <span class="sc">%in%</span> sel.db,], <span class="at">x =</span> <span class="st">"hzn_depth"</span>, <span class="at">y =</span> <span class="st">"organic_carbon"</span>, <span class="at">method =</span> <span class="st">"hexbin"</span>, </span>
-<span id="cb312-3"><a href="#cb312-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">col =</span> <span class="st">"increment"</span>, <span class="at">type =</span> <span class="st">"source_db"</span>, <span class="at">log.x =</span> <span class="cn">TRUE</span>, <span class="at">log.y=</span><span class="cn">TRUE</span>, <span class="at">ylab=</span><span class="st">"SOC [g/kg]"</span>, <span class="at">xlab=</span><span class="st">"depth in cm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb313"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb313-1"><a href="#cb313-1" aria-hidden="true" tabindex="-1"></a>sel.db <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"ISRIC_WISE"</span>, <span class="st">"Canada_CUFS"</span>, <span class="st">"USDA_NCSS"</span>, <span class="st">"AfSPDB"</span>, <span class="st">"Canada_NPDB"</span>, <span class="st">"PRONASOLOS"</span>, <span class="st">"CSIRO_NatSoil"</span>)</span>
+<span id="cb313-2"><a href="#cb313-2" aria-hidden="true" tabindex="-1"></a>openair<span class="sc">::</span><span class="fu">scatterPlot</span>(tot_sprops[tot_sprops<span class="sc">$</span>source_db <span class="sc">%in%</span> sel.db,], <span class="at">x =</span> <span class="st">"hzn_depth"</span>, <span class="at">y =</span> <span class="st">"organic_carbon"</span>, <span class="at">method =</span> <span class="st">"hexbin"</span>, </span>
+<span id="cb313-3"><a href="#cb313-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">col =</span> <span class="st">"increment"</span>, <span class="at">type =</span> <span class="st">"source_db"</span>, <span class="at">log.x =</span> <span class="cn">TRUE</span>, <span class="at">log.y=</span><span class="cn">TRUE</span>, <span class="at">ylab=</span><span class="st">"SOC [g/kg]"</span>, <span class="at">xlab=</span><span class="st">"depth in cm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -3644,11 +3653,11 @@ logical 1492759   32464 </code></pre>
 </div>
 </div>
 </div>
-<p>Note: FIADB includes litter and the soil samples are taken at fixed depths. Canada dataset also shows SOC content for peatlands.</p>
+<p>Note: Canada dataset also shows SOC content for peatlands.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb313"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb313-1"><a href="#cb313-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tot_sprops, <span class="fu">aes</span>(<span class="at">x=</span>source_db, <span class="at">y=</span>bulk_density_oven_dry)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb314"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb314-1"><a href="#cb314-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tot_sprops, <span class="fu">aes</span>(<span class="at">x=</span>source_db, <span class="at">y=</span>bulk_density_oven_dry)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 1217724 rows containing non-finite outside the scale range
+<pre><code>Warning: Removed 1212118 rows containing non-finite outside the scale range
 (`stat_boxplot()`).</code></pre>
 </div>
 <div class="cell-output-display">
@@ -3660,8 +3669,8 @@ logical 1492759   32464 </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb315"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb315-1"><a href="#cb315-1" aria-hidden="true" tabindex="-1"></a>openair<span class="sc">::</span><span class="fu">scatterPlot</span>(tot_sprops[tot_sprops<span class="sc">$</span>source_db <span class="sc">%in%</span> sel.db,], <span class="at">x =</span> <span class="st">"organic_carbon"</span>, <span class="at">y =</span> <span class="st">"bulk_density_oven_dry"</span>, <span class="at">method =</span> <span class="st">"hexbin"</span>, </span>
-<span id="cb315-2"><a href="#cb315-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">col =</span> <span class="st">"increment"</span>, <span class="at">type =</span> <span class="st">"source_db"</span>, <span class="at">log.x=</span><span class="cn">TRUE</span>, <span class="at">ylab=</span><span class="st">"Bulk density"</span>, <span class="at">xlab=</span><span class="st">"SOC [g/kg]"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb316"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb316-1"><a href="#cb316-1" aria-hidden="true" tabindex="-1"></a>openair<span class="sc">::</span><span class="fu">scatterPlot</span>(tot_sprops[tot_sprops<span class="sc">$</span>source_db <span class="sc">%in%</span> sel.db,], <span class="at">x =</span> <span class="st">"organic_carbon"</span>, <span class="at">y =</span> <span class="st">"bulk_density_oven_dry"</span>, <span class="at">method =</span> <span class="st">"hexbin"</span>, </span>
+<span id="cb316-2"><a href="#cb316-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">col =</span> <span class="st">"increment"</span>, <span class="at">type =</span> <span class="st">"source_db"</span>, <span class="at">log.x=</span><span class="cn">TRUE</span>, <span class="at">ylab=</span><span class="st">"Bulk density"</span>, <span class="at">xlab=</span><span class="st">"SOC [g/kg]"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -3671,9 +3680,9 @@ logical 1492759   32464 </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb316"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb316-1"><a href="#cb316-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tot_sprops, <span class="fu">aes</span>(<span class="at">x=</span>source_db, <span class="at">y=</span><span class="fu">log1p</span>(oc_d))) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb317"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb317-1"><a href="#cb317-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tot_sprops, <span class="fu">aes</span>(<span class="at">x=</span>source_db, <span class="at">y=</span><span class="fu">log1p</span>(oc_d))) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 1231389 rows containing non-finite outside the scale range
+<pre><code>Warning: Removed 1231449 rows containing non-finite outside the scale range
 (`stat_boxplot()`).</code></pre>
 </div>
 <div class="cell-output-display">
@@ -3685,9 +3694,9 @@ logical 1492759   32464 </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb318"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb318-1"><a href="#cb318-1" aria-hidden="true" tabindex="-1"></a>sel.db0 <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"ISRIC_WISE"</span>, <span class="st">"Canada_CUFS"</span>, <span class="st">"USDA_NCSS"</span>, <span class="st">"AfSPDB"</span>, <span class="st">"PRONASOLOS"</span>, <span class="st">"CSIRO_NatSoil"</span>)</span>
-<span id="cb318-2"><a href="#cb318-2" aria-hidden="true" tabindex="-1"></a>openair<span class="sc">::</span><span class="fu">scatterPlot</span>(tot_sprops[tot_sprops<span class="sc">$</span>source_db <span class="sc">%in%</span> sel.db0,], <span class="at">x =</span> <span class="st">"organic_carbon"</span>, <span class="at">y =</span> <span class="st">"oc_d"</span>, <span class="at">method =</span> <span class="st">"hexbin"</span>, </span>
-<span id="cb318-3"><a href="#cb318-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">col =</span> <span class="st">"increment"</span>, <span class="at">type =</span> <span class="st">"source_db"</span>, <span class="at">log.x=</span><span class="cn">TRUE</span>, <span class="at">log.y=</span><span class="cn">TRUE</span>, <span class="at">xlab=</span><span class="st">"SOC [g/kg]"</span>, <span class="at">ylab=</span><span class="st">"SOC [kg/m3]"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb319"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb319-1"><a href="#cb319-1" aria-hidden="true" tabindex="-1"></a>sel.db0 <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"ISRIC_WISE"</span>, <span class="st">"Canada_CUFS"</span>, <span class="st">"USDA_NCSS"</span>, <span class="st">"AfSPDB"</span>, <span class="st">"PRONASOLOS"</span>, <span class="st">"CSIRO_NatSoil"</span>)</span>
+<span id="cb319-2"><a href="#cb319-2" aria-hidden="true" tabindex="-1"></a>openair<span class="sc">::</span><span class="fu">scatterPlot</span>(tot_sprops[tot_sprops<span class="sc">$</span>source_db <span class="sc">%in%</span> sel.db0,], <span class="at">x =</span> <span class="st">"organic_carbon"</span>, <span class="at">y =</span> <span class="st">"oc_d"</span>, <span class="at">method =</span> <span class="st">"hexbin"</span>, </span>
+<span id="cb319-3"><a href="#cb319-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">col =</span> <span class="st">"increment"</span>, <span class="at">type =</span> <span class="st">"source_db"</span>, <span class="at">log.x=</span><span class="cn">TRUE</span>, <span class="at">log.y=</span><span class="cn">TRUE</span>, <span class="at">xlab=</span><span class="st">"SOC [g/kg]"</span>, <span class="at">ylab=</span><span class="st">"SOC [kg/m3]"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -3698,10 +3707,10 @@ logical 1492759   32464 </code></pre>
 </div>
 <p>Note: SOC (%) and SOC density (kg/m3) are almost linear relationship (curving toward fixed value), except for organic soils (especially litter) where relationship is slightly shifted.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb319"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb319-1"><a href="#cb319-1" aria-hidden="true" tabindex="-1"></a>openair<span class="sc">::</span><span class="fu">scatterPlot</span>(tot_sprops[tot_sprops<span class="sc">$</span>source_db <span class="sc">%in%</span> sel.db0,], <span class="at">x =</span> <span class="st">"organic_carbon"</span>, </span>
-<span id="cb319-2"><a href="#cb319-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">y =</span> <span class="st">"total_nitrogen_ncs"</span>, <span class="at">method =</span> <span class="st">"hexbin"</span>, </span>
-<span id="cb319-3"><a href="#cb319-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">col =</span> <span class="st">"increment"</span>, <span class="at">type =</span> <span class="st">"source_db"</span>, <span class="at">log.x=</span><span class="cn">TRUE</span>, <span class="at">log.y=</span><span class="cn">TRUE</span>, </span>
-<span id="cb319-4"><a href="#cb319-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">xlab=</span><span class="st">"SOC [g/kg]"</span>, <span class="at">ylab=</span><span class="st">"N total [g/kg]"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb320"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb320-1"><a href="#cb320-1" aria-hidden="true" tabindex="-1"></a>openair<span class="sc">::</span><span class="fu">scatterPlot</span>(tot_sprops[tot_sprops<span class="sc">$</span>source_db <span class="sc">%in%</span> sel.db0,], <span class="at">x =</span> <span class="st">"organic_carbon"</span>, </span>
+<span id="cb320-2"><a href="#cb320-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">y =</span> <span class="st">"total_nitrogen_ncs"</span>, <span class="at">method =</span> <span class="st">"hexbin"</span>, </span>
+<span id="cb320-3"><a href="#cb320-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">col =</span> <span class="st">"increment"</span>, <span class="at">type =</span> <span class="st">"source_db"</span>, <span class="at">log.x=</span><span class="cn">TRUE</span>, <span class="at">log.y=</span><span class="cn">TRUE</span>, </span>
+<span id="cb320-4"><a href="#cb320-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">xlab=</span><span class="st">"SOC [g/kg]"</span>, <span class="at">ylab=</span><span class="st">"N total [g/kg]"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -3711,9 +3720,9 @@ logical 1492759   32464 </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb320"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb320-1"><a href="#cb320-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tot_sprops, <span class="fu">aes</span>(<span class="at">x=</span>source_db, <span class="at">y=</span>ph_h2o)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb321"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb321-1"><a href="#cb321-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tot_sprops, <span class="fu">aes</span>(<span class="at">x=</span>source_db, <span class="at">y=</span>ph_h2o)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 678237 rows containing non-finite outside the scale range
+<pre><code>Warning: Removed 678238 rows containing non-finite outside the scale range
 (`stat_boxplot()`).</code></pre>
 </div>
 <div class="cell-output-display">
@@ -3725,8 +3734,8 @@ logical 1492759   32464 </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb322"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb322-1"><a href="#cb322-1" aria-hidden="true" tabindex="-1"></a>openair<span class="sc">::</span><span class="fu">scatterPlot</span>(tot_sprops[tot_sprops<span class="sc">$</span>source_db <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"ISRIC_WISE"</span>, <span class="st">"USDA_NCSS"</span>, <span class="st">"AfSPDB"</span>, <span class="st">"CSIRO_NatSoil"</span>, <span class="st">"PRONASOLOS"</span>),], <span class="at">x =</span> <span class="st">"ph_kcl"</span>, <span class="at">y =</span> <span class="st">"ph_h2o"</span>, <span class="at">method =</span> <span class="st">"hexbin"</span>, </span>
-<span id="cb322-2"><a href="#cb322-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">col =</span> <span class="st">"increment"</span>, <span class="at">type =</span> <span class="st">"source_db"</span>, <span class="at">xlab=</span><span class="st">"soil pH KCl"</span>, <span class="at">ylab=</span><span class="st">"soil pH H2O"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb323"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb323-1"><a href="#cb323-1" aria-hidden="true" tabindex="-1"></a>openair<span class="sc">::</span><span class="fu">scatterPlot</span>(tot_sprops[tot_sprops<span class="sc">$</span>source_db <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"ISRIC_WISE"</span>, <span class="st">"USDA_NCSS"</span>, <span class="st">"AfSPDB"</span>, <span class="st">"CSIRO_NatSoil"</span>, <span class="st">"PRONASOLOS"</span>),], <span class="at">x =</span> <span class="st">"ph_kcl"</span>, <span class="at">y =</span> <span class="st">"ph_h2o"</span>, <span class="at">method =</span> <span class="st">"hexbin"</span>, </span>
+<span id="cb323-2"><a href="#cb323-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">col =</span> <span class="st">"increment"</span>, <span class="at">type =</span> <span class="st">"source_db"</span>, <span class="at">xlab=</span><span class="st">"soil pH KCl"</span>, <span class="at">ylab=</span><span class="st">"soil pH H2O"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -3736,8 +3745,8 @@ logical 1492759   32464 </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb323"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb323-1"><a href="#cb323-1" aria-hidden="true" tabindex="-1"></a>openair<span class="sc">::</span><span class="fu">scatterPlot</span>(tot_sprops[tot_sprops<span class="sc">$</span>source_db <span class="sc">%in%</span> sel.db0,], <span class="at">x =</span> <span class="st">"hzn_depth"</span>, <span class="at">y =</span> <span class="st">"ph_h2o"</span>, <span class="at">method =</span> <span class="st">"hexbin"</span>, </span>
-<span id="cb323-2"><a href="#cb323-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">col =</span> <span class="st">"increment"</span>, <span class="at">type =</span> <span class="st">"source_db"</span>, <span class="at">log.x =</span> <span class="cn">TRUE</span>, <span class="at">log.y=</span><span class="cn">TRUE</span>, <span class="at">ylab=</span><span class="st">"soil pH H2O"</span>, <span class="at">xlab=</span><span class="st">"depth in cm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb324"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb324-1"><a href="#cb324-1" aria-hidden="true" tabindex="-1"></a>openair<span class="sc">::</span><span class="fu">scatterPlot</span>(tot_sprops[tot_sprops<span class="sc">$</span>source_db <span class="sc">%in%</span> sel.db0,], <span class="at">x =</span> <span class="st">"hzn_depth"</span>, <span class="at">y =</span> <span class="st">"ph_h2o"</span>, <span class="at">method =</span> <span class="st">"hexbin"</span>, </span>
+<span id="cb324-2"><a href="#cb324-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">col =</span> <span class="st">"increment"</span>, <span class="at">type =</span> <span class="st">"source_db"</span>, <span class="at">log.x =</span> <span class="cn">TRUE</span>, <span class="at">log.y=</span><span class="cn">TRUE</span>, <span class="at">ylab=</span><span class="st">"soil pH H2O"</span>, <span class="at">xlab=</span><span class="st">"depth in cm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -3748,8 +3757,8 @@ logical 1492759   32464 </code></pre>
 </div>
 <p>Note: there seems to be no apparent correlation between soil pH and soil depth.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb324"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb324-1"><a href="#cb324-1" aria-hidden="true" tabindex="-1"></a>openair<span class="sc">::</span><span class="fu">scatterPlot</span>(tot_sprops[tot_sprops<span class="sc">$</span>source_db <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"ISRIC_WISE"</span>, <span class="st">"USDA_NCSS"</span>, <span class="st">"AfSPDB"</span>, <span class="st">"PRONASOLOS"</span>),], <span class="at">x =</span> <span class="st">"ph_h2o"</span>, <span class="at">y =</span> <span class="st">"sum_of_cations_cec_pH_8_2"</span>, <span class="at">method =</span> <span class="st">"hexbin"</span>, </span>
-<span id="cb324-2"><a href="#cb324-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">col =</span> <span class="st">"increment"</span>, <span class="at">type =</span> <span class="st">"source_db"</span>, <span class="at">log.y=</span><span class="cn">TRUE</span>, <span class="at">ylab=</span><span class="st">"CEC"</span>, <span class="at">xlab=</span><span class="st">"soil pH H2O"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb325"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb325-1"><a href="#cb325-1" aria-hidden="true" tabindex="-1"></a>openair<span class="sc">::</span><span class="fu">scatterPlot</span>(tot_sprops[tot_sprops<span class="sc">$</span>source_db <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"ISRIC_WISE"</span>, <span class="st">"USDA_NCSS"</span>, <span class="st">"AfSPDB"</span>, <span class="st">"PRONASOLOS"</span>),], <span class="at">x =</span> <span class="st">"ph_h2o"</span>, <span class="at">y =</span> <span class="st">"sum_of_cations_cec_pH_8_2"</span>, <span class="at">method =</span> <span class="st">"hexbin"</span>, </span>
+<span id="cb325-2"><a href="#cb325-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">col =</span> <span class="st">"increment"</span>, <span class="at">type =</span> <span class="st">"source_db"</span>, <span class="at">log.y=</span><span class="cn">TRUE</span>, <span class="at">ylab=</span><span class="st">"CEC"</span>, <span class="at">xlab=</span><span class="st">"soil pH H2O"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -3759,8 +3768,8 @@ logical 1492759   32464 </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb325"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb325-1"><a href="#cb325-1" aria-hidden="true" tabindex="-1"></a>openair<span class="sc">::</span><span class="fu">scatterPlot</span>(tot_sprops[tot_sprops<span class="sc">$</span>source_db <span class="sc">%in%</span> sel.db0,], <span class="at">x =</span> <span class="st">"ph_h2o"</span>, <span class="at">y =</span> <span class="st">"organic_carbon"</span>, <span class="at">method =</span> <span class="st">"hexbin"</span>,  </span>
-<span id="cb325-2"><a href="#cb325-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">col =</span> <span class="st">"increment"</span>, <span class="at">type =</span> <span class="st">"source_db"</span>, <span class="at">log.y=</span><span class="cn">TRUE</span>, <span class="at">ylab=</span><span class="st">"SOC [g/kg]"</span>, <span class="at">xlab=</span><span class="st">"soil pH H2O"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb326"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb326-1"><a href="#cb326-1" aria-hidden="true" tabindex="-1"></a>openair<span class="sc">::</span><span class="fu">scatterPlot</span>(tot_sprops[tot_sprops<span class="sc">$</span>source_db <span class="sc">%in%</span> sel.db0,], <span class="at">x =</span> <span class="st">"ph_h2o"</span>, <span class="at">y =</span> <span class="st">"organic_carbon"</span>, <span class="at">method =</span> <span class="st">"hexbin"</span>,  </span>
+<span id="cb326-2"><a href="#cb326-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">col =</span> <span class="st">"increment"</span>, <span class="at">type =</span> <span class="st">"source_db"</span>, <span class="at">log.y=</span><span class="cn">TRUE</span>, <span class="at">ylab=</span><span class="st">"SOC [g/kg]"</span>, <span class="at">xlab=</span><span class="st">"soil pH H2O"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -3770,9 +3779,9 @@ logical 1492759   32464 </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb326"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb326-1"><a href="#cb326-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tot_sprops, <span class="fu">aes</span>(<span class="at">x=</span>source_db, <span class="at">y=</span>clay_total)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb327"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb327-1"><a href="#cb327-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tot_sprops, <span class="fu">aes</span>(<span class="at">x=</span>source_db, <span class="at">y=</span>clay_total)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 522289 rows containing non-finite outside the scale range
+<pre><code>Warning: Removed 522290 rows containing non-finite outside the scale range
 (`stat_boxplot()`).</code></pre>
 </div>
 <div class="cell-output-display">
@@ -3784,8 +3793,8 @@ logical 1492759   32464 </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb328"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb328-1"><a href="#cb328-1" aria-hidden="true" tabindex="-1"></a>openair<span class="sc">::</span><span class="fu">scatterPlot</span>(tot_sprops[tot_sprops<span class="sc">$</span>source_db <span class="sc">%in%</span> sel.db0,], <span class="at">y =</span> <span class="st">"clay_total"</span>, <span class="at">x =</span> <span class="st">"sand_total"</span>, <span class="at">method =</span> <span class="st">"hexbin"</span>,  </span>
-<span id="cb328-2"><a href="#cb328-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">col =</span> <span class="st">"increment"</span>, <span class="at">type =</span> <span class="st">"source_db"</span>, <span class="at">ylab=</span><span class="st">"clay %"</span>, <span class="at">xlab=</span><span class="st">"sand %"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb329"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb329-1"><a href="#cb329-1" aria-hidden="true" tabindex="-1"></a>openair<span class="sc">::</span><span class="fu">scatterPlot</span>(tot_sprops[tot_sprops<span class="sc">$</span>source_db <span class="sc">%in%</span> sel.db0,], <span class="at">y =</span> <span class="st">"clay_total"</span>, <span class="at">x =</span> <span class="st">"sand_total"</span>, <span class="at">method =</span> <span class="st">"hexbin"</span>,  </span>
+<span id="cb329-2"><a href="#cb329-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">col =</span> <span class="st">"increment"</span>, <span class="at">type =</span> <span class="st">"source_db"</span>, <span class="at">ylab=</span><span class="st">"clay %"</span>, <span class="at">xlab=</span><span class="st">"sand %"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -3795,12 +3804,12 @@ logical 1492759   32464 </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb329"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb329-1"><a href="#cb329-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tot_sprops, <span class="fu">aes</span>(<span class="at">x=</span>source_db, <span class="at">y=</span><span class="fu">log1p</span>(sum_of_cations_cec_pH_8_2))) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb330"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb330-1"><a href="#cb330-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tot_sprops, <span class="fu">aes</span>(<span class="at">x=</span>source_db, <span class="at">y=</span><span class="fu">log1p</span>(sum_of_cations_cec_pH_8_2))) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in log1p(sum_of_cations_cec_pH_8_2): NaNs produced</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 1051861 rows containing non-finite outside the scale range
+<pre><code>Warning: Removed 1051862 rows containing non-finite outside the scale range
 (`stat_boxplot()`).</code></pre>
 </div>
 <div class="cell-output-display">
@@ -3812,12 +3821,12 @@ logical 1492759   32464 </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb332"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb332-1"><a href="#cb332-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tot_sprops, <span class="fu">aes</span>(<span class="at">x=</span>source_db, <span class="at">y=</span><span class="fu">log1p</span>(total_nitrogen_ncs))) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb333"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb333-1"><a href="#cb333-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tot_sprops, <span class="fu">aes</span>(<span class="at">x=</span>source_db, <span class="at">y=</span><span class="fu">log1p</span>(total_nitrogen_ncs))) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in log1p(total_nitrogen_ncs): NaNs produced</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 988469 rows containing non-finite outside the scale range
+<pre><code>Warning: Removed 988470 rows containing non-finite outside the scale range
 (`stat_boxplot()`).</code></pre>
 </div>
 <div class="cell-output-display">
@@ -3829,12 +3838,12 @@ logical 1492759   32464 </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb335"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb335-1"><a href="#cb335-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tot_sprops, <span class="fu">aes</span>(<span class="at">x=</span>source_db, <span class="at">y=</span><span class="fu">log1p</span>(k_ext))) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb336"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb336-1"><a href="#cb336-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tot_sprops, <span class="fu">aes</span>(<span class="at">x=</span>source_db, <span class="at">y=</span><span class="fu">log1p</span>(k_ext))) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in log1p(k_ext): NaNs produced</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 832904 rows containing non-finite outside the scale range
+<pre><code>Warning: Removed 832905 rows containing non-finite outside the scale range
 (`stat_boxplot()`).</code></pre>
 </div>
 <div class="cell-output-display">
@@ -3846,9 +3855,9 @@ logical 1492759   32464 </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb338"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb338-1"><a href="#cb338-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tot_sprops, <span class="fu">aes</span>(<span class="at">x=</span>source_db, <span class="at">y=</span><span class="fu">log1p</span>(ec_water_extractable))) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb339"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb339-1"><a href="#cb339-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tot_sprops, <span class="fu">aes</span>(<span class="at">x=</span>source_db, <span class="at">y=</span><span class="fu">log1p</span>(ec_water_extractable))) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 1343642 rows containing non-finite outside the scale range
+<pre><code>Warning: Removed 1343643 rows containing non-finite outside the scale range
 (`stat_boxplot()`).</code></pre>
 </div>
 <div class="cell-output-display">
@@ -3860,15 +3869,15 @@ logical 1492759   32464 </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb340"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb340-1"><a href="#cb340-1" aria-hidden="true" tabindex="-1"></a>sprops_yrs <span class="ot">=</span> tot_sprops[<span class="sc">!</span><span class="fu">is.na</span>(tot_sprops<span class="sc">$</span>site_obsdate),<span class="fu">c</span>(<span class="st">"site_obsdate"</span>, <span class="st">"source_db"</span>, <span class="st">"organic_carbon"</span>)]</span>
-<span id="cb340-2"><a href="#cb340-2" aria-hidden="true" tabindex="-1"></a>sprops_yrs<span class="sc">$</span>year <span class="ot">=</span> <span class="fu">as.numeric</span>(<span class="fu">substr</span>(<span class="at">x=</span>sprops_yrs<span class="sc">$</span>site_obsdate, <span class="dv">1</span>, <span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb341"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb341-1"><a href="#cb341-1" aria-hidden="true" tabindex="-1"></a>sprops_yrs <span class="ot">=</span> tot_sprops[<span class="sc">!</span><span class="fu">is.na</span>(tot_sprops<span class="sc">$</span>site_obsdate),<span class="fu">c</span>(<span class="st">"site_obsdate"</span>, <span class="st">"source_db"</span>, <span class="st">"organic_carbon"</span>)]</span>
+<span id="cb341-2"><a href="#cb341-2" aria-hidden="true" tabindex="-1"></a>sprops_yrs<span class="sc">$</span>year <span class="ot">=</span> <span class="fu">as.numeric</span>(<span class="fu">substr</span>(<span class="at">x=</span>sprops_yrs<span class="sc">$</span>site_obsdate, <span class="dv">1</span>, <span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: NAs introduced by coercion</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb342"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb342-1"><a href="#cb342-1" aria-hidden="true" tabindex="-1"></a>sprops_yrs<span class="sc">$</span>year <span class="ot">=</span> <span class="fu">ifelse</span>(sprops_yrs<span class="sc">$</span>year <span class="sc">&lt;</span><span class="dv">1960</span>, <span class="cn">NA</span>, <span class="fu">ifelse</span>(sprops_yrs<span class="sc">$</span>year<span class="sc">&gt;</span><span class="dv">2024</span>, <span class="cn">NA</span>, sprops_yrs<span class="sc">$</span>year))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb343"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb343-1"><a href="#cb343-1" aria-hidden="true" tabindex="-1"></a>sprops_yrs<span class="sc">$</span>year <span class="ot">=</span> <span class="fu">ifelse</span>(sprops_yrs<span class="sc">$</span>year <span class="sc">&lt;</span><span class="dv">1960</span>, <span class="cn">NA</span>, <span class="fu">ifelse</span>(sprops_yrs<span class="sc">$</span>year<span class="sc">&gt;</span><span class="dv">2024</span>, <span class="cn">NA</span>, sprops_yrs<span class="sc">$</span>year))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb343"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb343-1"><a href="#cb343-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sprops_yrs, <span class="fu">aes</span>(<span class="at">x=</span>source_db, <span class="at">y=</span>year)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb344"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb344-1"><a href="#cb344-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sprops_yrs, <span class="fu">aes</span>(<span class="at">x=</span>source_db, <span class="at">y=</span>year)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: Removed 157859 rows containing non-finite outside the scale range
 (`stat_boxplot()`).</code></pre>
@@ -3882,8 +3891,8 @@ logical 1492759   32464 </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb345"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb345-1"><a href="#cb345-1" aria-hidden="true" tabindex="-1"></a>openair<span class="sc">::</span><span class="fu">scatterPlot</span>(sprops_yrs[sprops_yrs<span class="sc">$</span>source_db <span class="sc">%in%</span> sel.db0,], <span class="at">y =</span> <span class="st">"organic_carbon"</span>, <span class="at">x =</span> <span class="st">"year"</span>, <span class="at">method =</span> <span class="st">"hexbin"</span>,  </span>
-<span id="cb345-2"><a href="#cb345-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">col =</span> <span class="st">"increment"</span>, <span class="at">type =</span> <span class="st">"source_db"</span>, <span class="at">log.y=</span><span class="cn">TRUE</span>, <span class="at">ylab=</span><span class="st">"SOC [g/kg]"</span>, <span class="at">xlab=</span><span class="st">"Sampling year"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb346"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb346-1"><a href="#cb346-1" aria-hidden="true" tabindex="-1"></a>openair<span class="sc">::</span><span class="fu">scatterPlot</span>(sprops_yrs[sprops_yrs<span class="sc">$</span>source_db <span class="sc">%in%</span> sel.db0,], <span class="at">y =</span> <span class="st">"organic_carbon"</span>, <span class="at">x =</span> <span class="st">"year"</span>, <span class="at">method =</span> <span class="st">"hexbin"</span>,  </span>
+<span id="cb346-2"><a href="#cb346-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">col =</span> <span class="st">"increment"</span>, <span class="at">type =</span> <span class="st">"source_db"</span>, <span class="at">log.y=</span><span class="cn">TRUE</span>, <span class="at">ylab=</span><span class="st">"SOC [g/kg]"</span>, <span class="at">xlab=</span><span class="st">"Sampling year"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -3897,31 +3906,31 @@ logical 1492759   32464 </code></pre>
 <h4 class="anchored" data-anchor-id="convert-to-wide-format">Convert to wide format</h4>
 <p>Add <code>layer_sequence</code> where missing since this is needed to be able to convert to wide format:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb346"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb346-1"><a href="#cb346-1" aria-hidden="true" tabindex="-1"></a><span class="co">#summary(tot_sprops$layer_sequence)</span></span>
-<span id="cb346-2"><a href="#cb346-2" aria-hidden="true" tabindex="-1"></a>tot_sprops<span class="sc">$</span>dsiteid <span class="ot">=</span> <span class="fu">paste</span>(tot_sprops<span class="sc">$</span>source_db, tot_sprops<span class="sc">$</span>site_key, tot_sprops<span class="sc">$</span>site_obsdate, <span class="at">sep=</span><span class="st">"_"</span>)</span>
-<span id="cb346-3"><a href="#cb346-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">exists</span>(<span class="st">"l.s1"</span>)){</span>
-<span id="cb346-4"><a href="#cb346-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(dplyr)</span>
-<span id="cb346-5"><a href="#cb346-5" aria-hidden="true" tabindex="-1"></a>  <span class="do">## Note: takes &gt;2 mins</span></span>
-<span id="cb346-6"><a href="#cb346-6" aria-hidden="true" tabindex="-1"></a>  l.s1 <span class="ot">&lt;-</span> tot_sprops[,<span class="fu">c</span>(<span class="st">"dsiteid"</span>,<span class="st">"hzn_depth"</span>)] <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(dsiteid) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">layer_sequence.f =</span> data.table<span class="sc">::</span><span class="fu">frank</span>(hzn_depth, <span class="at">ties.method =</span> <span class="st">"first"</span>))</span>
-<span id="cb346-7"><a href="#cb346-7" aria-hidden="true" tabindex="-1"></a>  tot_sprops<span class="sc">$</span>layer_sequence.f <span class="ot">=</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(tot_sprops<span class="sc">$</span>layer_sequence), l.s1<span class="sc">$</span>layer_sequence.f, tot_sprops<span class="sc">$</span>layer_sequence)</span>
-<span id="cb346-8"><a href="#cb346-8" aria-hidden="true" tabindex="-1"></a>  tot_sprops<span class="sc">$</span>layer_sequence.f <span class="ot">=</span> <span class="fu">ifelse</span>(tot_sprops<span class="sc">$</span>layer_sequence.f<span class="sc">&gt;</span><span class="dv">6</span>, <span class="dv">6</span>, tot_sprops<span class="sc">$</span>layer_sequence.f)</span>
-<span id="cb346-9"><a href="#cb346-9" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb347"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb347-1"><a href="#cb347-1" aria-hidden="true" tabindex="-1"></a><span class="co">#summary(tot_sprops$layer_sequence)</span></span>
+<span id="cb347-2"><a href="#cb347-2" aria-hidden="true" tabindex="-1"></a>tot_sprops<span class="sc">$</span>dsiteid <span class="ot">=</span> <span class="fu">paste</span>(tot_sprops<span class="sc">$</span>source_db, tot_sprops<span class="sc">$</span>site_key, tot_sprops<span class="sc">$</span>site_obsdate, <span class="at">sep=</span><span class="st">"_"</span>)</span>
+<span id="cb347-3"><a href="#cb347-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">exists</span>(<span class="st">"l.s1"</span>)){</span>
+<span id="cb347-4"><a href="#cb347-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(dplyr)</span>
+<span id="cb347-5"><a href="#cb347-5" aria-hidden="true" tabindex="-1"></a>  <span class="do">## Note: takes &gt;1 mins</span></span>
+<span id="cb347-6"><a href="#cb347-6" aria-hidden="true" tabindex="-1"></a>  l.s1 <span class="ot">&lt;-</span> tot_sprops[,<span class="fu">c</span>(<span class="st">"dsiteid"</span>,<span class="st">"hzn_depth"</span>)] <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(dsiteid) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">layer_sequence.f =</span> data.table<span class="sc">::</span><span class="fu">frank</span>(hzn_depth, <span class="at">ties.method =</span> <span class="st">"first"</span>))</span>
+<span id="cb347-7"><a href="#cb347-7" aria-hidden="true" tabindex="-1"></a>  tot_sprops<span class="sc">$</span>layer_sequence.f <span class="ot">=</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(tot_sprops<span class="sc">$</span>layer_sequence), l.s1<span class="sc">$</span>layer_sequence.f, tot_sprops<span class="sc">$</span>layer_sequence)</span>
+<span id="cb347-8"><a href="#cb347-8" aria-hidden="true" tabindex="-1"></a>  tot_sprops<span class="sc">$</span>layer_sequence.f <span class="ot">=</span> <span class="fu">ifelse</span>(tot_sprops<span class="sc">$</span>layer_sequence.f<span class="sc">&gt;</span><span class="dv">6</span>, <span class="dv">6</span>, tot_sprops<span class="sc">$</span>layer_sequence.f)</span>
+<span id="cb347-9"><a href="#cb347-9" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Convert long table to <a href="https://ncss-tech.github.io/AQP/aqp/aqp-intro.html">wide table format</a> so that each depth gets unique column (note: the most computational / time-consuming step usually):</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb347"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb347-1"><a href="#cb347-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">exists</span>(<span class="st">"tot_sprops.w"</span>)){</span>
-<span id="cb347-2"><a href="#cb347-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(data.table)</span>
-<span id="cb347-3"><a href="#cb347-3" aria-hidden="true" tabindex="-1"></a>  tot_sprops.w <span class="ot">=</span> data.table<span class="sc">::</span><span class="fu">dcast</span>( <span class="fu">as.data.table</span>(tot_sprops), </span>
-<span id="cb347-4"><a href="#cb347-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">formula =</span> olc_id <span class="sc">~</span> layer_sequence.f, </span>
-<span id="cb347-5"><a href="#cb347-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">value.var =</span> <span class="fu">c</span>(<span class="st">"uuid"</span>, hor.names[<span class="sc">-</span><span class="fu">which</span>(hor.names <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"site_key"</span>, <span class="st">"layer_sequence"</span>))]), </span>
-<span id="cb347-6"><a href="#cb347-6" aria-hidden="true" tabindex="-1"></a>                <span class="do">## "labsampnum", "hzn_desgn", "tex_psda" </span></span>
-<span id="cb347-7"><a href="#cb347-7" aria-hidden="true" tabindex="-1"></a>                <span class="co">#fun=function(x){ mean(x, na.rm=TRUE) }, </span></span>
-<span id="cb347-8"><a href="#cb347-8" aria-hidden="true" tabindex="-1"></a>                <span class="do">## Note: does not work for characters</span></span>
-<span id="cb347-9"><a href="#cb347-9" aria-hidden="true" tabindex="-1"></a>                <span class="at">fun=</span><span class="cf">function</span>(x){ x[<span class="dv">1</span>] },</span>
-<span id="cb347-10"><a href="#cb347-10" aria-hidden="true" tabindex="-1"></a>                <span class="at">verbose =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb347-11"><a href="#cb347-11" aria-hidden="true" tabindex="-1"></a>  <span class="do">## remove "0" layers added automatically but containing no values</span></span>
-<span id="cb347-12"><a href="#cb347-12" aria-hidden="true" tabindex="-1"></a>  tot_sprops.w <span class="ot">=</span> tot_sprops.w[,<span class="fu">grep</span>(<span class="st">"*_0$"</span>, <span class="fu">colnames</span>(tot_sprops.w))<span class="sc">:</span><span class="er">=</span><span class="cn">NULL</span>]</span>
-<span id="cb347-13"><a href="#cb347-13" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb348"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb348-1"><a href="#cb348-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">exists</span>(<span class="st">"tot_sprops.w"</span>)){</span>
+<span id="cb348-2"><a href="#cb348-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(data.table)</span>
+<span id="cb348-3"><a href="#cb348-3" aria-hidden="true" tabindex="-1"></a>  tot_sprops.w <span class="ot">=</span> data.table<span class="sc">::</span><span class="fu">dcast</span>( <span class="fu">as.data.table</span>(tot_sprops), </span>
+<span id="cb348-4"><a href="#cb348-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">formula =</span> olc_id <span class="sc">~</span> layer_sequence.f, </span>
+<span id="cb348-5"><a href="#cb348-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">value.var =</span> <span class="fu">c</span>(<span class="st">"uuid"</span>, hor.names[<span class="sc">-</span><span class="fu">which</span>(hor.names <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"site_key"</span>, <span class="st">"layer_sequence"</span>))]), </span>
+<span id="cb348-6"><a href="#cb348-6" aria-hidden="true" tabindex="-1"></a>                <span class="do">## "labsampnum", "hzn_desgn", "tex_psda" </span></span>
+<span id="cb348-7"><a href="#cb348-7" aria-hidden="true" tabindex="-1"></a>                <span class="co">#fun=function(x){ mean(x, na.rm=TRUE) }, </span></span>
+<span id="cb348-8"><a href="#cb348-8" aria-hidden="true" tabindex="-1"></a>                <span class="do">## Note: does not work for characters</span></span>
+<span id="cb348-9"><a href="#cb348-9" aria-hidden="true" tabindex="-1"></a>                <span class="at">fun=</span><span class="cf">function</span>(x){ x[<span class="dv">1</span>] },</span>
+<span id="cb348-10"><a href="#cb348-10" aria-hidden="true" tabindex="-1"></a>                <span class="at">verbose =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb348-11"><a href="#cb348-11" aria-hidden="true" tabindex="-1"></a>  <span class="do">## remove "0" layers added automatically but containing no values</span></span>
+<span id="cb348-12"><a href="#cb348-12" aria-hidden="true" tabindex="-1"></a>  tot_sprops.w <span class="ot">=</span> tot_sprops.w[,<span class="fu">grep</span>(<span class="st">"*_0$"</span>, <span class="fu">colnames</span>(tot_sprops.w))<span class="sc">:</span><span class="er">=</span><span class="cn">NULL</span>]</span>
+<span id="cb348-13"><a href="#cb348-13" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>
 Attaching package: 'data.table'</code></pre>
@@ -3947,39 +3956,39 @@ Attaching package: 'data.table'</code></pre>
 
     transpose</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb353"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb353-1"><a href="#cb353-1" aria-hidden="true" tabindex="-1"></a>tot_sprops_w.pnts <span class="ot">=</span> tot_sprops.pnts</span>
-<span id="cb353-2"><a href="#cb353-2" aria-hidden="true" tabindex="-1"></a>tot_sprops_w.pnts<span class="sc">@</span>data <span class="ot">=</span> plyr<span class="sc">::</span><span class="fu">join</span>(tot_sprops.pnts<span class="sc">@</span>data, tot_sprops.w)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb354"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb354-1"><a href="#cb354-1" aria-hidden="true" tabindex="-1"></a>tot_sprops_w.pnts <span class="ot">=</span> tot_sprops.pnts</span>
+<span id="cb354-2"><a href="#cb354-2" aria-hidden="true" tabindex="-1"></a>tot_sprops_w.pnts<span class="sc">@</span>data <span class="ot">=</span> plyr<span class="sc">::</span><span class="fu">join</span>(tot_sprops.pnts<span class="sc">@</span>data, tot_sprops.w)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Joining by: olc_id</code></pre>
 </div>
 </div>
 <p>Write all soil profiles using a wide format:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb355"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb355-1"><a href="#cb355-1" aria-hidden="true" tabindex="-1"></a>sel.rm.pnts  <span class="ot">&lt;-</span> tot_sprops_w.pnts<span class="sc">$</span>source_db<span class="sc">==</span><span class="st">"LUCAS_2009"</span> <span class="sc">|</span> tot_sprops_w.pnts<span class="sc">$</span>source_db<span class="sc">==</span><span class="st">"LUCAS_2015"</span> <span class="sc">|</span> tot_sprops_w.pnts<span class="sc">$</span>site_key <span class="sc">%in%</span> mng.rm <span class="sc">|</span> tot_sprops_w.pnts<span class="sc">$</span>site_key <span class="sc">%in%</span> rem.sp</span>
-<span id="cb355-2"><a href="#cb355-2" aria-hidden="true" tabindex="-1"></a>out.gpkg <span class="ot">=</span> <span class="st">"./out/gpkg/sol_chem.pnts_horizons.gpkg"</span></span>
-<span id="cb355-3"><a href="#cb355-3" aria-hidden="true" tabindex="-1"></a><span class="co">#unlink(out.gpkg)</span></span>
-<span id="cb355-4"><a href="#cb355-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">file.exists</span>(out.gpkg)){</span>
-<span id="cb355-5"><a href="#cb355-5" aria-hidden="true" tabindex="-1"></a>  sf<span class="sc">::</span><span class="fu">st_write</span>(<span class="fu">st_as_sf</span>(tot_sprops_w.pnts), <span class="st">"/mnt/diskstation/data/Soil_points/sol_chem.pnts_horizons.gpkg"</span>, <span class="st">"sol_chem.pnts_horizons"</span>, <span class="at">driver=</span><span class="st">"GPKG"</span>)</span>
-<span id="cb355-6"><a href="#cb355-6" aria-hidden="true" tabindex="-1"></a>  sf<span class="sc">::</span><span class="fu">st_write</span>(<span class="fu">st_as_sf</span>(tot_sprops_w.pnts[<span class="sc">!</span>sel.rm.pnts,]), out.gpkg, <span class="st">"sol_chem.pnts_horizons"</span>, <span class="at">driver=</span><span class="st">"GPKG"</span>)</span>
-<span id="cb355-7"><a href="#cb355-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb356"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb356-1"><a href="#cb356-1" aria-hidden="true" tabindex="-1"></a>sel.rm.pnts  <span class="ot">&lt;-</span> tot_sprops_w.pnts<span class="sc">$</span>source_db<span class="sc">==</span><span class="st">"LUCAS_2009"</span> <span class="sc">|</span> tot_sprops_w.pnts<span class="sc">$</span>source_db<span class="sc">==</span><span class="st">"LUCAS_2015"</span> <span class="sc">|</span> tot_sprops_w.pnts<span class="sc">$</span>site_key <span class="sc">%in%</span> mng.rm <span class="sc">|</span> tot_sprops_w.pnts<span class="sc">$</span>site_key <span class="sc">%in%</span> rem.sp</span>
+<span id="cb356-2"><a href="#cb356-2" aria-hidden="true" tabindex="-1"></a>out.gpkg <span class="ot">=</span> <span class="st">"./out/gpkg/sol_chem.pnts_horizons.gpkg"</span></span>
+<span id="cb356-3"><a href="#cb356-3" aria-hidden="true" tabindex="-1"></a><span class="co">#unlink(out.gpkg)</span></span>
+<span id="cb356-4"><a href="#cb356-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">file.exists</span>(out.gpkg)){</span>
+<span id="cb356-5"><a href="#cb356-5" aria-hidden="true" tabindex="-1"></a>  sf<span class="sc">::</span><span class="fu">st_write</span>(<span class="fu">st_as_sf</span>(tot_sprops_w.pnts), <span class="st">"/mnt/diskstation/data/Soil_points/sol_chem.pnts_horizons.gpkg"</span>, <span class="st">"sol_chem.pnts_horizons"</span>, <span class="at">driver=</span><span class="st">"GPKG"</span>)</span>
+<span id="cb356-6"><a href="#cb356-6" aria-hidden="true" tabindex="-1"></a>  sf<span class="sc">::</span><span class="fu">st_write</span>(<span class="fu">st_as_sf</span>(tot_sprops_w.pnts[<span class="sc">!</span>sel.rm.pnts,]), out.gpkg, <span class="st">"sol_chem.pnts_horizons"</span>, <span class="at">driver=</span><span class="st">"GPKG"</span>)</span>
+<span id="cb356-7"><a href="#cb356-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="save-rds-files" class="level4">
 <h4 class="anchored" data-anchor-id="save-rds-files">Save RDS files</h4>
 <p>Remove points that are not allowed to be distributed publicly:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb356"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb356-1"><a href="#cb356-1" aria-hidden="true" tabindex="-1"></a>sel.rm  <span class="ot">&lt;-</span> tot_sprops<span class="sc">$</span>source_db<span class="sc">==</span><span class="st">"LUCAS_2009"</span> <span class="sc">|</span> tot_sprops<span class="sc">$</span>source_db<span class="sc">==</span><span class="st">"LUCAS_2015"</span> <span class="sc">|</span> tot_sprops<span class="sc">$</span>source_db<span class="sc">==</span><span class="st">"LUCAS_2018"</span> <span class="sc">|</span> tot_sprops<span class="sc">$</span>site_key <span class="sc">%in%</span> mng.rm <span class="sc">|</span> tot_sprops<span class="sc">$</span>site_key <span class="sc">%in%</span> rem.sp</span>
-<span id="cb356-2"><a href="#cb356-2" aria-hidden="true" tabindex="-1"></a>tot_sprops.s <span class="ot">=</span> tot_sprops[<span class="sc">!</span>sel.rm,] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb357"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb357-1"><a href="#cb357-1" aria-hidden="true" tabindex="-1"></a>sel.rm  <span class="ot">&lt;-</span> tot_sprops<span class="sc">$</span>source_db<span class="sc">==</span><span class="st">"LUCAS_2009"</span> <span class="sc">|</span> tot_sprops<span class="sc">$</span>source_db<span class="sc">==</span><span class="st">"LUCAS_2015"</span> <span class="sc">|</span> tot_sprops<span class="sc">$</span>source_db<span class="sc">==</span><span class="st">"LUCAS_2018"</span> <span class="sc">|</span> tot_sprops<span class="sc">$</span>site_key <span class="sc">%in%</span> mng.rm <span class="sc">|</span> tot_sprops<span class="sc">$</span>site_key <span class="sc">%in%</span> rem.sp</span>
+<span id="cb357-2"><a href="#cb357-2" aria-hidden="true" tabindex="-1"></a>tot_sprops.s <span class="ot">=</span> tot_sprops[<span class="sc">!</span>sel.rm,] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Plot in Goode Homolozine projection and save final objects:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb357"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb357-1"><a href="#cb357-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">file.exists</span>(<span class="st">"./img/sol_chem.pnts_sites.png"</span>)){</span>
-<span id="cb357-2"><a href="#cb357-2" aria-hidden="true" tabindex="-1"></a>  tot_sprops.pnts_sf <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(tot_sprops.pnts[<span class="dv">1</span>], <span class="at">crs=</span><span class="dv">4326</span>)</span>
-<span id="cb357-3"><a href="#cb357-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_gh</span>(tot_sprops.pnts_sf, <span class="at">out.pdf=</span><span class="st">"./img/sol_chem.pnts_sites.pdf"</span>)</span>
-<span id="cb357-4"><a href="#cb357-4" aria-hidden="true" tabindex="-1"></a>  <span class="do">## extremely slow --- takes 15mins</span></span>
-<span id="cb357-5"><a href="#cb357-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">system</span>(<span class="st">"pdftoppm ./img/sol_chem.pnts_sites.pdf ./img/sol_chem.pnts_sites -png -f 1 -singlefile"</span>)</span>
-<span id="cb357-6"><a href="#cb357-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">system</span>(<span class="st">"convert -crop 1280x575+36+114 ./img/sol_chem.pnts_sites.png ./img/sol_chem.pnts_sites.png"</span>)</span>
-<span id="cb357-7"><a href="#cb357-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb358"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb358-1"><a href="#cb358-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">file.exists</span>(<span class="st">"./img/sol_chem.pnts_sites.png"</span>)){</span>
+<span id="cb358-2"><a href="#cb358-2" aria-hidden="true" tabindex="-1"></a>  tot_sprops.pnts_sf <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(tot_sprops.pnts[<span class="dv">1</span>], <span class="at">crs=</span><span class="dv">4326</span>)</span>
+<span id="cb358-3"><a href="#cb358-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_gh</span>(tot_sprops.pnts_sf, <span class="at">out.pdf=</span><span class="st">"./img/sol_chem.pnts_sites.pdf"</span>)</span>
+<span id="cb358-4"><a href="#cb358-4" aria-hidden="true" tabindex="-1"></a>  <span class="do">## extremely slow --- takes 15mins</span></span>
+<span id="cb358-5"><a href="#cb358-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">system</span>(<span class="st">"pdftoppm ./img/sol_chem.pnts_sites.pdf ./img/sol_chem.pnts_sites -png -f 1 -singlefile"</span>)</span>
+<span id="cb358-6"><a href="#cb358-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">system</span>(<span class="st">"convert -crop 1280x575+36+114 ./img/sol_chem.pnts_sites.png ./img/sol_chem.pnts_sites.png"</span>)</span>
+<span id="cb358-7"><a href="#cb358-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -3996,19 +4005,19 @@ Attaching package: 'data.table'</code></pre>
 <section id="save-final-analysis-ready-objects" class="level2">
 <h2 class="anchored" data-anchor-id="save-final-analysis-ready-objects">Save final analysis-ready objects:</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb358"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb358-1"><a href="#cb358-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS.gz</span>(tot_sprops.s, <span class="st">"./out/rds/sol_chem.pnts_horizons.rds"</span>)</span>
-<span id="cb358-2"><a href="#cb358-2" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS.gz</span>(tot_sprops, <span class="st">"/mnt/diskstation/data/Soil_points/sol_chem.pnts_horizons.rds"</span>)</span>
-<span id="cb358-3"><a href="#cb358-3" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS.gz</span>(tot_sprops.pnts, <span class="st">"/mnt/diskstation/data/Soil_points/sol_chem.pnts_sites.rds"</span>)</span>
-<span id="cb358-4"><a href="#cb358-4" aria-hidden="true" tabindex="-1"></a><span class="co">#library(farff)</span></span>
-<span id="cb358-5"><a href="#cb358-5" aria-hidden="true" tabindex="-1"></a><span class="co">#writeARFF(tot_sprops.s, "./out/arff/sol_chem.pnts_horizons.arff", overwrite = TRUE)</span></span>
-<span id="cb358-6"><a href="#cb358-6" aria-hidden="true" tabindex="-1"></a><span class="do">## compressed CSV</span></span>
-<span id="cb358-7"><a href="#cb358-7" aria-hidden="true" tabindex="-1"></a><span class="co">#write.csv(tot_sprops.s, file=gzfile("./out/csv/sol_chem.pnts_horizons.csv.gz"))</span></span>
-<span id="cb358-8"><a href="#cb358-8" aria-hidden="true" tabindex="-1"></a><span class="do">## regression matrix:</span></span>
-<span id="cb358-9"><a href="#cb358-9" aria-hidden="true" tabindex="-1"></a><span class="co">#saveRDS.gz(rm.sol, "./out/rds/sol_chem.pnts_horizons_rm.rds")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb359"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb359-1"><a href="#cb359-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS.gz</span>(tot_sprops.s, <span class="st">"./out/rds/sol_chem.pnts_horizons.rds"</span>)</span>
+<span id="cb359-2"><a href="#cb359-2" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS.gz</span>(tot_sprops, <span class="st">"/mnt/diskstation/data/Soil_points/sol_chem.pnts_horizons.rds"</span>)</span>
+<span id="cb359-3"><a href="#cb359-3" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS.gz</span>(tot_sprops.pnts, <span class="st">"/mnt/diskstation/data/Soil_points/sol_chem.pnts_sites.rds"</span>)</span>
+<span id="cb359-4"><a href="#cb359-4" aria-hidden="true" tabindex="-1"></a><span class="co">#library(farff)</span></span>
+<span id="cb359-5"><a href="#cb359-5" aria-hidden="true" tabindex="-1"></a><span class="co">#writeARFF(tot_sprops.s, "./out/arff/sol_chem.pnts_horizons.arff", overwrite = TRUE)</span></span>
+<span id="cb359-6"><a href="#cb359-6" aria-hidden="true" tabindex="-1"></a><span class="do">## compressed CSV</span></span>
+<span id="cb359-7"><a href="#cb359-7" aria-hidden="true" tabindex="-1"></a><span class="co">#write.csv(tot_sprops.s, file=gzfile("./out/csv/sol_chem.pnts_horizons.csv.gz"))</span></span>
+<span id="cb359-8"><a href="#cb359-8" aria-hidden="true" tabindex="-1"></a><span class="do">## regression matrix:</span></span>
+<span id="cb359-9"><a href="#cb359-9" aria-hidden="true" tabindex="-1"></a><span class="co">#saveRDS.gz(rm.sol, "./out/rds/sol_chem.pnts_horizons_rm.rds")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Save temp object:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb359"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb359-1"><a href="#cb359-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save.image.pigz</span>(<span class="at">file=</span><span class="st">"soilchem.RData"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb360"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb360-1"><a href="#cb360-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save.image.pigz</span>(<span class="at">file=</span><span class="st">"soilchem.RData"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 

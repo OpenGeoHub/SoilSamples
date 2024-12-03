@@ -5,6 +5,9 @@ aliases:
 
 # Soil chemical and physical properties
 
+The code and data set is continuously being updated. If you notice a bug or typo, 
+please [open an issue](https://github.com/OpenGeoHub/SoilSamples/issues) and report.
+
 Last update:  `r Sys.Date()`
 
 ```{r, include=FALSE, message=FALSE, results='hide'}
@@ -148,6 +151,8 @@ if(!exists("chemsprops.NCSS")){
   chemsprops.NCSS = dplyr::full_join(ncss.site[,site.names], ncss.horizons[,hor.names])
   chemsprops.NCSS$site_obsdate = format(as.Date(chemsprops.NCSS$site_obsdate, format="%Y/%m/%d"), "%Y-%m-%d")
   #summary(as.Date(chemsprops.NCSS$site_obsdate))
+  #summary(substr(chemsprops.NCSS$site_obsdate, 1, 4)>1999 & !is.na(chemsprops.NCSS$oc_d))
+  ## ONLY 200 records >1999 with SOC and BD!
   chemsprops.NCSS$source_db = "USDA_NCSS"
   #dim(chemsprops.NCSS)
   ## 477516      36
@@ -192,6 +197,7 @@ if(!exists("chemsprops.USGS.NGS")){
   t.ngs = c("lab_id", "site_id", "horizon", "hzn_top", "hzn_bot", "tot_clay_pct", "total_carbon_ncs", "organic_carbon")
   ngs.m = plyr::join(ngs.points, ngs.layers[!is.na(ngs.layers$c_org_pct),t.ngs])
   ngs.m$site_obsdate = as.Date(ngs.m$colldate, format="%Y-%m-%d") 
+  #summary(substr(ngs.m$site_obsdate, 1, 4)>1999)
   ngs.h.lst <- c("site_id", "quad", "site_obsdate", "longitude", "latitude", "SSL_classification_name", "lab_id", "layer_key", "layer_sequence", "hzn_top", "hzn_bot", "horizon", "tex_psda", "texture_lab", "tot_clay_pct", "silt_total", 
               "sand_total", "organic_carbon", "oc_d", "total_carbon_ncs", "total_nitrogen_ncs", 
               "ph_kcl", "ph_h2o", "ph_cacl2", 
@@ -632,7 +638,7 @@ if(!exists("chemsprops.LUCAS3")){
   rem.LOD = function(x){ as.numeric(ifelse(x=="< LOD", 0, as.numeric(x)))}
   lucas2018.bd = read.csv("/mnt/diskstation/data/Soil_points/EU/LUCAS/BulkDensity_2018_final-2.csv")
   lucas2018.xy$BD = dplyr::left_join(lucas2018.xy, lucas2018.bd, join_by(POINTID == POINT_ID))$BD.0.20
-  lucas2018.xy$BD = ifelse(lucas2018.xy$BD < 0.05, 0, lucas2018.xy$BD)
+  lucas2018.xy$BD = ifelse(lucas2018.xy$BD < 0.04 | lucas2018.xy$BD > 2.4, NA, lucas2018.xy$BD)
   ## 1 mS/m = 100 mS/cm | 1 dS/m = 1 mS/cm = 1 mS/m / 100
   #summary(!is.na(lucas2018.xy$`OC (20-30 cm)`))
   lucas2018.xy$pH_H2O = as.numeric(lucas2018.xy$pH_H2O)
@@ -643,7 +649,7 @@ if(!exists("chemsprops.LUCAS3")){
   #summary(lucas2018.xy$oc_d)
   lucas2018.xy$site_obsdate = as.Date(lucas2018.xy$SURVEY_DATE, format = "%d/%m/%y")
   lucas2018.xy$ec_satp = as.numeric(lucas2018.xy$EC) / 100
-  lucas2018.h.lst <- c("Point_ID", "LC0_Desc", "site_obsdate", "TH_LONG", "TH_LAT", "SSL_classification_name", "sample_ID", "layer_key", "layer_sequence", "hzn_top", "hzn_bot", "hzn_desgn", "tex_psda", "texture_lab", "Clay", "Silt", "Sand", "OC", "oc_d", "c_tot", "N", "ph_kcl", "pH_H20", "pH_CaCl2", "CEC", "cec_nh4", "ecec", "coarse", "DB", "ca_ext", "mg_ext", "na_ext", "K", "ec_satp", "ec_12pre")
+  lucas2018.h.lst <- c("Point_ID", "LC0_Desc", "site_obsdate", "TH_LONG", "TH_LAT", "SSL_classification_name", "sample_ID", "layer_key", "layer_sequence", "hzn_top", "hzn_bot", "hzn_desgn", "tex_psda", "texture_lab", "Clay", "Silt", "Sand", "OC", "oc_d", "c_tot", "N", "ph_kcl", "pH_H20", "pH_CaCl2", "CEC", "cec_nh4", "ecec", "coarse", "BD", "ca_ext", "mg_ext", "na_ext", "K", "ec_satp", "ec_12pre")
   x.na = lucas2018.h.lst[which(!lucas2018.h.lst %in% names(lucas2018.xy))]
   if(length(x.na)>0){ for(i in x.na){ lucas2018.xy[,i] = NA } }
   chemsprops.LUCAS3 <- lucas2018.xy[,lucas2018.h.lst]
@@ -653,11 +659,11 @@ if(!exists("chemsprops.LUCAS3")){
   chemsprops.LUCAS3$confidence_degree = 2
   chemsprops.LUCAS3$project_url = "https://esdac.jrc.ec.europa.eu/"
   chemsprops.LUCAS3$citation_url = "https://doi.org/10.1111/ejss.12499"
-  chemsprops.LUCAS3 = complete.vars(chemsprops.LUCAS3, sel = c("OC","pH_H20"), coords = c("TH_LONG", "TH_LAT"))
+  chemsprops.LUCAS3 = complete.vars(chemsprops.LUCAS3, sel = c("OC","pH_H20","BD"), coords = c("TH_LONG", "TH_LAT"))
   saveRDS.gz(chemsprops.LUCAS3, "/mnt/diskstation/data/Soil_points/EU/LUCAS/chemsprops.LUCAS3.rds")
 }
 dim(chemsprops.LUCAS3)
-## [1] 18981    39
+## [1] 18982    39
 ```
 
 #### Mangrove forest soil DB
@@ -2434,7 +2440,6 @@ ov.g1 = terra::extract(g1["ID"], terra::project(terra::vect(tot_sprops.pnts), cr
 g1.c = summary(as.factor(ov.g1$ID), maxsum = length(levels(as.factor(ov.g1$ID))))
 g1.df = data.frame(count=g1.c, ID=attr(g1.c, "names"))
 g1$count = dplyr::left_join(data.frame(ID=g1$ID), g1.df)$count 
-g1$count = ifelse(g1$count<0, NA, g1$count)
 #plot(g1["count"])
 writeVector(g1["count"], "/mnt/diskstation/data/Soil_points/tiles_GH_100km_pnt.dens.gpkg", overwrite=TRUE)
 ```
@@ -2447,16 +2452,18 @@ Remove points falling in the sea or similar:
 
 ```{r}
 #mask = terra::rast("./layers1km/lcv_landmask_esacci.lc.l4_c_1km_s0..0cm_2000..2015_v1.0.tif")
-mask = terra::rast("/mnt/diskstation/data/LandGIS/layers250m/lcv_landmask_esacci.lc.l4_c_250m_s0..0cm_2000..2015_v1.0.tif")
-ov.sprops <- terra::extract(mask, terra::vect(tot_sprops.pnts)) ## TAKES 2 mins
+#mask = terra::rast("/mnt/diskstation/data/LandGIS/layers250m/lcv_landmask_esacci.lc.l4_c_250m_s0..0cm_2000..2015_v1.0.tif")
+mask = terra::rast("/mnt/diskstation/data/Soil_points/land.cover_copernicus_c_100m_s_20150101_20151231_go_epsg.4326_v3.0.1.tif")
+ov.sprops <- terra::extract(mask, terra::vect(tot_sprops.pnts)) ## TAKES 1 mins
 #summary(as.factor(ov.sprops[,2]))
-if(sum(is.na(ov.sprops[,2]))>0 | sum(ov.sprops[,2]==2)>0){
-  rem.lst = which(is.na(ov.sprops[,2]) | ov.sprops[,2]==2 | ov.sprops[,2]==4)
+if(sum(is.na(ov.sprops[,2]) | ov.sprops[,2]==200)>0){
+  rem.lst = which(is.na(ov.sprops[,2]) | ov.sprops[,2]==200)
   rem.sp = tot_sprops.pnts$site_key[rem.lst]
   tot_sprops.pnts = tot_sprops.pnts[-rem.lst,]
 }
 ## final number of unique spatial locations:
 nrow(tot_sprops.pnts)
+## 363511
 ```
 
 #### Histogram plots
@@ -2476,8 +2483,7 @@ openair::scatterPlot(tot_sprops[tot_sprops$source_db %in% sel.db,], x = "hzn_dep
                      col = "increment", type = "source_db", log.x = TRUE, log.y=TRUE, ylab="SOC [g/kg]", xlab="depth in cm")
 ```
 
-Note: FIADB includes litter and the soil samples are taken at fixed depths. Canada 
-dataset also shows SOC content for peatlands.
+Note: Canada dataset also shows SOC content for peatlands.
 
 ```{r}
 ggplot(tot_sprops, aes(x=source_db, y=bulk_density_oven_dry)) + geom_boxplot() + theme(axis.text.x = element_text(angle = 90, hjust = 1))
@@ -2584,7 +2590,7 @@ format:
 tot_sprops$dsiteid = paste(tot_sprops$source_db, tot_sprops$site_key, tot_sprops$site_obsdate, sep="_")
 if(!exists("l.s1")){
   library(dplyr)
-  ## Note: takes >2 mins
+  ## Note: takes >1 mins
   l.s1 <- tot_sprops[,c("dsiteid","hzn_depth")] %>% group_by(dsiteid) %>% mutate(layer_sequence.f = data.table::frank(hzn_depth, ties.method = "first"))
   tot_sprops$layer_sequence.f = ifelse(is.na(tot_sprops$layer_sequence), l.s1$layer_sequence.f, tot_sprops$layer_sequence)
   tot_sprops$layer_sequence.f = ifelse(tot_sprops$layer_sequence.f>6, 6, tot_sprops$layer_sequence.f)

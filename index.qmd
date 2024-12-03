@@ -215,6 +215,10 @@ The data is provided "as is". [OpenGeoHub foundation](https://opengeohub.org/abo
 
 This website/book is free to use, and is licensed under the [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/).
 
+Please note that each input data set might have a **different license** than indicated above. 
+We have done our best to track down all licenses and terms of use, however, if you 
+think that your data set has been imported incorrectly or should not be used to 
+produce derivative works, please contact us and we will correct asap.
 
 ## How to cite {.unnumbered}
 
