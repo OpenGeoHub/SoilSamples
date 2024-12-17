@@ -4,3 +4,5 @@
 tmp_*
 
 /.quarto/
+
+tiles_GH_100km_pnt.dens.gpkg
