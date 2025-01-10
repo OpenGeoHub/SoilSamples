@@ -108,7 +108,7 @@ Target variables listed:
 
 The November 2024 version contains 67,367 sites. This is the world largest open soil laboratory database to date.
 
-- National Cooperative Soil Survey, (2020). National Cooperative Soil Survey Characterization Database. Data download URL: <http://ncsslabdatamart.sc.egov.usda.gov/>
+- National Cooperative Soil Survey, (2024). National Cooperative Soil Survey Characterization Database. Data download URL: <http://ncsslabdatamart.sc.egov.usda.gov/>
 - Nauman, T.W., Kienast‐Brown, S., Roecker, S.M., Brungard, C., White, D., Philippe, J., & Thompson, J.A. (2024). Soil landscapes of the United States (SOLUS): Developing predictive soil property maps of the conterminous United States using hybrid training sets. Soil Sci. Soc. Am. J. <https://doi.org/10.1002/saj2.20769>  
 
 This data set is continuously updated.
@@ -135,24 +135,20 @@ if(!exists("chemsprops.NCSS")){
   # 'bd_od_pred'  = a final oven dry bulk density estimate
   # 'total_frags_pct_nopf' = volumetric rock content from NASIS
   oc.nm = c("labsampnum.x", "layer_key", "longitude_decimal_degrees", "latitude_decimal_degrees", "site_obsdate") ## "hzn_top", "hzn_bot", "hzn_desgn"
-  oc_db_layers = rbind(vroom::vroom("/mnt/diskstation/data/Soil_points/INT/USDA_NCSS/tmp/oc_db_layers_v2.txt.gz")[,c("labsampnum.x", "layer_key", "oc_wbc_final", "bd_od_pred")], 
-                vroom::vroom("/mnt/diskstation/data/Soil_points/INT/USDA_NCSS/tmp/oc_db_layers.txt.gz")[,c("labsampnum.x", "layer_key", "oc_wbc_final", "bd_od_pred")])
+  oc_db_layers = read.table("/mnt/diskstation/data/Soil_points/INT/USDA_NCSS/tmp/oc_db_layers.txt.gz", sep = "\t", fill = TRUE, header = TRUE)[,c("labsampnum.x", "layer_key", "oc_wbc_final", "bd_od_pred")]
   #summary(!is.na(oc_db_layers$oc_wbc_final))
-  oc_db_rk_layers = rbind(vroom::vroom("/mnt/diskstation/data/Soil_points/INT/USDA_NCSS/tmp/oc_db_rk_layers_v2.txt.gz")[,c("labsampnum.x", "layer_key", "oc_wbc_final", "bd_od_pred", "total_frags_pct_nopf")], 
-                  vroom::vroom("/mnt/diskstation/data/Soil_points/INT/USDA_NCSS/tmp/oc_db_rk_layers.txt.gz")[,c("labsampnum.x", "layer_key", "oc_wbc_final", "bd_od_pred", "total_frags_pct_nopf")])
-  oc_layers = rbind(vroom::vroom("/mnt/diskstation/data/Soil_points/INT/USDA_NCSS/tmp/oc_layers_v2.txt.gz")[,c(oc.nm, "oc_wbc_final")], 
-  vroom::vroom("/mnt/diskstation/data/Soil_points/INT/USDA_NCSS/tmp/oc_layers.txt.gz")[,c(oc.nm, "oc_wbc_final")])
+  oc_db_rk_layers = read.table("/mnt/diskstation/data/Soil_points/INT/USDA_NCSS/tmp/oc_db_rk_layers.txt.gz", sep = "\t", fill = TRUE, header = TRUE)[,c("labsampnum.x", "layer_key", "oc_wbc_final", "bd_od_pred", "total_frags_pct_nopf")]
+  oc_layers = read.table("/mnt/diskstation/data/Soil_points/INT/USDA_NCSS/tmp/oc_layers.txt.gz", sep = "\t", fill = TRUE, header = TRUE)[,c(oc.nm, "oc_wbc_final")]
   #summary(duplicated(oc_layers$labsampnum.x))
-  oc_layers = oc_layers[-which(duplicated(oc_layers$labsampnum.x)),]
-  ## summary(!is.na(oc_layers$longitude_decimal_degrees))
-  ## 26865 without coordinates
+  #summary(!is.na(oc_layers$longitude_decimal_degrees))
+  ## 41240 without coordinates
   #str(which(!oc_db_rk_layers$labsampnum.x %in% oc_layers$labsampnum.x))
   #summary(as.factor(substr(oc_layers$site_obsdate, 1, 4)))
   oc_db = dplyr::full_join(dplyr::full_join(oc_layers, oc_db_layers[,c("labsampnum.x", "bd_od_pred")], 
                          by = c("labsampnum.x"), multiple = "first"), 
                   oc_db_rk_layers[,c("labsampnum.x", "total_frags_pct_nopf")], by = c("labsampnum.x"), multiple = "first")
   #dim(oc_db)
-  ## [1] 211987      8
+  ## [1] 303286      8
   oc_db = plyr::rename(oc_db, replace = c("labsampnum.x" = "labsampnum"))
   #View(oc_db)
   ncss.horizons = dplyr::full_join(dplyr::full_join(oc_db, ncss.chem, 
@@ -160,13 +156,24 @@ if(!exists("chemsprops.NCSS")){
     dplyr::full_join(ncss.layer, ncss.phys, by = c("labsampnum","layer_key")), 
                               by = c("labsampnum","layer_key"))
   #summary(!is.na(ncss.horizons$oc_wbc_final))
-  ## 211,647 
+  ## 303,286 
   ## translate to SOC DC
   ## https://doi.org/10.1016/j.geoderma.2021.115547
   ## SOC = 1.3 * WBC
   ncss.horizons$organic_carbon = ifelse(ncss.horizons$oc_wbc_final < 0, 0, (ncss.horizons$oc_wbc_final * 1.3) * 10)  ## g/kg
   #ggplot(ncss.horizons, aes(organic_carbon+1)) + geom_histogram() + scale_x_log10()
+  ncss.horizons$year = as.numeric(substr(ncss.horizons$site_obsdate, 1, 4))
+  ncss.horizons$year = ifelse(ncss.horizons$year>2024|ncss.horizons$year<1925, NA, ncss.horizons$year)
+  viri <- c("#440154FF", "#39568CFF", "#1F968BFF", "#73D055FF", "#FDE725FF")
+  scaleFUN <- function(x){round(x,0)}
+  soc_year.plt <- ggplot(data=ncss.horizons, aes(year, organic_carbon)) +
+     stat_binhex(bins = 30)  + scale_y_continuous(trans = "log1p") + #xlim(-5,105) + ylim(-5,105) + 
+     theme(axis.text=element_text(size=8), legend.text=element_text(size=10), axis.title=element_text(size=10), plot.title = element_text(size=10, hjust=0.5)) + xlab("Year") + ylab("SOC [g/kg]") + 
+    scale_fill_gradientn(name = "Count", trans = "log", colours = rev(viri), labels=scaleFUN) + ggtitle("")
+  #soc_year.plt
   #summary(ncss.horizons$organic_carbon)
+  ncss.horizons$organic_carbon = ifelse(ncss.horizons$organic_carbon > 900 | ncss.horizons$organic_carbon < 0, NA, ncss.horizons$organic_carbon)
+  ## some values go >100% SOC (artifacts!)
   ncss.horizons$bulk_density_oven_dry = ifelse(ncss.horizons$bulk_density_oven_dry < 0.05 | ncss.horizons$bulk_density_oven_dry > 2.4, NA, ifelse(is.na(ncss.horizons$bulk_density_oven_dry), ncss.horizons$bd_od_pred, ncss.horizons$bulk_density_oven_dry))
   #hist(ncss.horizons$bulk_density_oven_dry, col="grey", breaks=40)
   #summary(!is.na(ncss.horizons$bulk_density_oven_dry))
@@ -181,29 +188,34 @@ if(!exists("chemsprops.NCSS")){
   ncss.horizons$total_nitrogen_ncs = ncss.horizons$total_nitrogen_ncs * 10
   ## bind into single table
   #str(which(!ncss.horizons$site_key %in% ncss.site$site_key))
-  chemsprops.NCSS = dplyr::full_join(ncss.site[,site.names], ncss.horizons[,hor.names])
+  chemsprops.NCSS = dplyr::left_join(ncss.horizons[,hor.names], ncss.site[,site.names], multiple = "first")
   ## Joining with `by = join_by(site_key)`Warning: Detected an unexpected many-to-many relationship between `x` and `y`.
   chemsprops.NCSS$site_obsdate = format(as.Date(chemsprops.NCSS$site_obsdate, format="%Y/%m/%d"), "%Y-%m-%d")
   #summary(as.Date(chemsprops.NCSS$site_obsdate))
-  ## Min.      1st Qu.       Median         Mean      3rd Qu.         Max.         NA's 
-  ## "1925-11-01" "1979-06-01" "1992-05-12" "1990-07-30" "2005-04-12" "9863-06-01"      "21386"
+  #      Min.      1st Qu.       Median         Mean      3rd Qu.         Max.         NA's 
+  #"1925-11-01" "1981-02-01" "1992-10-27" "1991-08-27" "2006-04-09" "9863-06-01"      "14175" 
   #summary(as.numeric(substr(chemsprops.NCSS$site_obsdate, 1, 4))>1999 & !is.na(chemsprops.NCSS$oc_d))
-  ## 15879 records with 'oc_d'
+  ## 21,672 records with 'oc_d' after year 1999
   chemsprops.NCSS$source_db = "USDA_NCSS"
   #dim(chemsprops.NCSS)
-  ## 429740      36
+  ## 417656      36
   chemsprops.NCSS$confidence_degree = 1
   chemsprops.NCSS$project_url = "http://ncsslabdatamart.sc.egov.usda.gov/"
   chemsprops.NCSS$citation_url = "http://ncsslabdatamart.sc.egov.usda.gov/"
   chemsprops.NCSS = complete.vars(chemsprops.NCSS, sel=c("hzn_top", "hzn_bot", "organic_carbon", "clay_total", "ecec_base_plus_aluminum", "ph_h2o", "ec_predict_one_to_two", "k_ext"), remove.duplicates = FALSE)
   #summary(chemsprops.NCSS$oc_d)
-  ## mean = 18.4; median = 8.5
+  ## mean = 16.3; median = 8.0
   #summary(chemsprops.NCSS$organic_carbon)
-  ## mean = 20.6; median = 5.8
+  ## mean = 21.7; median = 5.5
+  chemsprops.NCSS = chemsprops.NCSS[,col.names]
   saveRDS.gz(chemsprops.NCSS, "/mnt/diskstation/data/Soil_points/INT/USDA_NCSS/chemsprops.NCSS.rds")
 }
 dim(chemsprops.NCSS)
-## [1] 352969     39
+## [1] 346203     39
+```
+
+```{r ncss-time, echo=FALSE, fig.cap="SOC measurements based on the National Cooperative Soil Survey Characterization Database over time.", out.width="100%"}
+knitr::include_graphics("img/fig_NCSS_soc_over_time.png")
 ```
 
 #### National Geochemical Database Soil
@@ -348,6 +360,7 @@ dim(chemsprops.AfSIS1)
 #### Innovative Solutions for Decision Agriculture Ltd (ISDA)
 
 - ISDA's repository contains open soil analysis data for the African continent: <https://doi.org/10.17605/OSF.IO/A69R5>
+
 Note: Year of sampling is not specified, hence of limited use for spatiotemporal modeling.
 
 ```{r}
@@ -512,14 +525,16 @@ dim(chemsprops.SRDB)
 
 ```{r}
 if(!exists("chemsprops.SoDaH")){
-  sodah.hor = vroom::vroom("/mnt/diskstation/data/Soil_points/INT/SoDaH/521_soils_data_harmonization_6e8416fa0c9a2c2872f21ba208e6a919.csv")
+  sodah.hor = vroom::vroom("/mnt/diskstation/data/Soil_points/INT/SoDaH/521_soils_data_harmonization_6e8416fa0c9a2c2872f21ba208e6a919.csv.gz")
   #head(sodah.hor)
   #summary(sodah.hor$coarse_frac)
   #summary(sodah.hor$lyr_soc)
-  #summary(sodah.hor$lyr_som_WalkleyBlack/1.724)
+  ## A critical review of the conventional SOC to SOM conversion factor
+  ## https://doi.org/10.1016/j.geoderma.2010.02.003
+  #summary(sodah.hor$lyr_som_WalkleyBlack/2)
   #summary(as.factor(sodah.hor$observation_date))
   sodah.hor$site_obsdate = as.integer(substr(sodah.hor$observation_date, 1, 4))
-  sodah.hor$oc = ifelse(is.na(sodah.hor$lyr_soc), sodah.hor$lyr_som_WalkleyBlack/1.724* 1.3, sodah.hor$lyr_soc) * 10 
+  sodah.hor$oc = ifelse(is.na(sodah.hor$lyr_soc), sodah.hor$lyr_som_WalkleyBlack/2 * 1.3, sodah.hor$lyr_soc) * 10 
   sodah.hor$n_tot = sodah.hor$lyr_n_tot * 10
   sodah.hor$oc_d = signif(sodah.hor$oc / 1000 * sodah.hor$bd_samp * 1000 * (100 - ifelse(is.na(sodah.hor$coarse_frac), 0, sodah.hor$coarse_frac))/100, 3)
   sodah.hor$site_key = paste(sodah.hor$network, sodah.hor$location_name, sep="_")
@@ -862,6 +877,7 @@ dim(chemsprops.LandPKS)
 #### EGRPR
 
 - [Russian Federation: The Unified State Register of Soil Resources (EGRPR)](http://egrpr.esoil.ru/). Data download URL: <http://egrpr.esoil.ru/content/1DB.html>
+
 Note: these are only historic data and it is not clear if the locations are synthetic or actual soil profiles.
 
 ```{r}
@@ -876,7 +892,8 @@ if(!exists("chemsprops.EGRPR")){
   sumTex <- rowSums(russ.HOR[,c("SLTPPT","CLYPPT","SNDPPT")])
   russ.HOR$SNDPPT <- russ.HOR$SNDPPT / ((sumTex - russ.HOR$CLYPPT) /(100 - russ.HOR$CLYPPT))
   russ.HOR$SLTPPT <- russ.HOR$SLTPPT / ((sumTex - russ.HOR$CLYPPT) /(100 - russ.HOR$CLYPPT))
-  russ.HOR$oc <- rowMeans(data.frame(x1=russ.HOR$CORG * 10, x2=russ.HOR$ORGMAT/1.724 * 10), na.rm=TRUE)
+  ## Tyurin method usually
+  russ.HOR$oc <- rowMeans(data.frame(x1=russ.HOR$CORG * 1.15 * 10, x2=russ.HOR$ORGMAT/2 * 1.3 * 10), na.rm=TRUE)
   russ.HOR$oc_d = signif(russ.HOR$oc / 1000 * russ.HOR$DVOL * 1000 * (100 - ifelse(is.na(russ.HOR$wpg2), 0, russ.HOR$wpg2))/100, 3)
   russ.HOR$n_tot <- russ.HOR$NTOT * 10
   russ.HOR$ca_ext = russ.HOR$EXCA * 200
@@ -903,22 +920,30 @@ dim(chemsprops.EGRPR)
 
 #### Canada National Pedon DB
 
-- [Agriculture and Agri-Food Canada National Pedon Database](https://open.canada.ca/data/en/dataset/6457fad6-b6f5-47a3-9bd1-ad14aea4b9e0). Data download URL: <https://open.canada.ca/data/en/>
+- [Agriculture and Agri-Food Canada National Pedon Database](https://open.canada.ca/data/en/dataset/6457fad6-b6f5-47a3-9bd1-ad14aea4b9e0). Data download URL: <https://open.canada.ca/data/en/> 
+
+- 9301 soil profiles in V3;
 
 ```{r}
 if(!exists("chemsprops.NPDB")){
-  NPDB.nm = c("NPDB_V2_sum_source_info.csv","NPDB_V2_sum_chemical.csv", "NPDB_V2_sum_horizons_raw.csv", "NPDB_V2_sum_physical.csv")
-  NPDB.HOR = plyr::join_all(lapply(paste0("/mnt/diskstation/data/Soil_points/Canada/NPDB/", NPDB.nm), read.csv), type = "full")
+  NPDB.nm = c("Horizons.csv", "Chemical.csv", "Physical.csv")
+  NPDB.HOR = dplyr::left_join(plyr::join_all(lapply(paste0("/mnt/diskstation/data/Soil_points/Canada/NPDB/", NPDB.nm), read.csv), by = c("PEDON_ID", "LAYER_ID"), type = "full"), 
+          read.csv("/mnt/diskstation/data/Soil_points/Canada/NPDB/Info.csv"), by="PEDON_ID")
+  NPDB.HOR$tax = str_trim(tolower(paste(NPDB.HOR$CSSC_SBGRP, NPDB.HOR$CSSC_GTGRP, NPDB.HOR$CSSC_ORDER, sep=" ")))
+  NPDB.tax = summary(as.factor(NPDB.HOR$tax), maxsum = length(levels(as.factor(NPDB.HOR$tax))))
+  #write.csv(as.data.frame(NPDB.tax), "npdb_tax_summary.csv")
+  can.cor = read.csv('./correlation/soil_type_correlation_Canada_NPDB.csv')
+  NPDB.HOR$SSL_classification_name = dplyr::left_join(NPDB.HOR["tax"], can.cor[,c("tax","SSL_classification_name")], by="tax", multiple = "first")$SSL_classification_name
+  #summary(as.factor(NPDB.HOR$SSL_classification_name))
   NPDB.HOR$HISMMN = paste0(NPDB.HOR$HZN_MAS, NPDB.HOR$HZN_SUF, NPDB.HOR$HZN_MOD)
-  NPDB.HOR$CARB_ORG[NPDB.HOR$CARB_ORG==9] <- NA
-  NPDB.HOR$N_TOTAL[NPDB.HOR$N_TOTAL==9] <- NA
   NPDB.HOR$oc = NPDB.HOR$CARB_ORG * 10
+  #summary(NPDB.HOR$BULK_DEN)
   NPDB.HOR$oc_d = signif(NPDB.HOR$oc / 1000 * NPDB.HOR$BULK_DEN * 1000 * (100 - ifelse(is.na(NPDB.HOR$VC_SAND), 0, NPDB.HOR$VC_SAND))/100, 3)
   NPDB.HOR$ca_ext = NPDB.HOR$EXCH_CA * 200
   NPDB.HOR$mg_ext = NPDB.HOR$EXCH_MG * 121
   NPDB.HOR$na_ext = NPDB.HOR$EXCH_NA * 230
   NPDB.HOR$k_ext = NPDB.HOR$EXCH_K * 391
-  npdb.sel.h = c("PEDON_ID", "usiteid", "CAL_YEAR", "DD_LONG", "DD_LAT", "SSL_classification_name", "labsampnum", "layer_key", "layer_sequence", "U_DEPTH", "L_DEPTH", "HISMMN", "tex_psda", "texture_lab", "T_CLAY", "T_SILT", "T_SAND", "oc", "oc_d", "c_tot", "N_TOTAL", "ph_kcl", "PH_H2O", "PH_CACL2", "CEC", "cec_nh4", "ecec", "VC_SAND", "BULK_DEN", "ca_ext", "mg_ext", "na_ext", "k_ext", "ec_satp", "ec_12pre")
+  npdb.sel.h = c("PEDON_ID", "usiteid", "CAL_YEAR", "DD_LONG_N", "DD_LAT_N", "SSL_classification_name", "labsampnum", "layer_key", "layer_sequence", "U_DEPTH", "L_DEPTH", "HISMMN", "tex_psda", "texture_lab", "T_CLAY", "T_SILT", "T_SAND", "oc", "oc_d", "c_tot", "N_TOTAL", "ph_kcl", "PH_H2O", "PH_CACL2", "CEC", "cec_nh4", "ecec", "VC_SAND", "BULK_DEN", "ca_ext", "mg_ext", "na_ext", "k_ext", "ec_satp", "ec_12pre")
   x.na = npdb.sel.h[which(!npdb.sel.h %in% names(NPDB.HOR))]
   if(length(x.na)>0){ for(i in x.na){ NPDB.HOR[,i] = NA } }
   chemsprops.NPDB = NPDB.HOR[,npdb.sel.h]
@@ -926,11 +951,12 @@ if(!exists("chemsprops.NPDB")){
   chemsprops.NPDB$confidence_degree = 2
   chemsprops.NPDB$project_url = "https://open.canada.ca/data/en/"
   chemsprops.NPDB$citation_url = "https://open.canada.ca/data/en/dataset/6457fad6-b6f5-47a3-9bd1-ad14aea4b9e0"
-  chemsprops.NPDB <- complete.vars(chemsprops.NPDB, sel=c("oc", "PH_H2O", "T_CLAY"), coords = c("DD_LONG", "DD_LAT"))
+  chemsprops.NPDB <- complete.vars(chemsprops.NPDB, sel=c("oc", "PH_H2O", "T_CLAY"), coords = c("DD_LONG_N", "DD_LAT_N"))
+  #summary(as.factor(chemsprops.NPDB$CAL_YEAR))
   saveRDS.gz(chemsprops.NPDB, "/mnt/diskstation/data/Soil_points/Canada/NPDB/chemsprops.NPDB.rds")
 }
 dim(chemsprops.NPDB)
-## [1] 16405    39
+## [1] 55809    39
 ```
 
 
@@ -1185,7 +1211,7 @@ if(!exists("chemsprops.PRONASOLOS")){
   #summary(as.numeric(pronas.hor$cascalho))
   #summary(as.numeric(pronas.hor$ph_h2o))
   #summary(as.numeric(pronas.hor$complexo_2))
-  ## A lot of errors / typos e.g. very high values and 0 values!!
+  ## A lot of potential errors / typos e.g. very high values and 0 values for soil pH
   #pronas.hor$data_colet[1:50]
   pronas.in.name = c("sigla", "codigo_pon", "data_colet", "gcs_latitu", "gcs_longit", "simbolo_ho", "profundida", 
                      "profundi_1", "cascalho", "areia_tota", "silte", "argila", "densidade_", "ph_h2o", "ph_kcl", 
@@ -1215,11 +1241,13 @@ if(!exists("chemsprops.PRONASOLOS")){
   #write.csv(data.frame(pronas.in.name, pronas.out.name, unlist(pronas.fun.lst)), "pronas_soilab_transvalues.csv")
   pronas.soil = transvalues(pronas.x, pronas.out.name, pronas.in.name, pronas.fun.lst)
   ## a lot of NA's
+  ## oxidation with 0.067 M K2Cr2O7, Tiurim method -> Walkley-Black method
+  pronas.soil$organic_carbon = 1.3 * pronas.soil$organic_carbon
   #summary(pronas.soil$organic_carbon)
   pronas.soil$bulk_density_oven_dry <- ifelse(pronas.soil$bulk_density_oven_dry < 0.05, NA, pronas.soil$bulk_density_oven_dry)
   pronas.soil$total_frag_wt_pct_gt_2_mm_ws <- ifelse(pronas.soil$total_frag_wt_pct_gt_2_mm_ws < 0 | pronas.soil$total_frag_wt_pct_gt_2_mm_ws > 100, NA, pronas.soil$total_frag_wt_pct_gt_2_mm_ws)
   #summary(pronas.soil$bulk_density_oven_dry)
-  pronas.soil$oc_d = signif(pronas.soil$organic_carbon / 1000 * pronas.soil$bulk_density_oven_dry * 1000 * (100 - ifelse(is.na(pronas.soil$total_frag_wt_pct_gt_2_mm_ws), 0, pronas.soil$total_frag_wt_pct_gt_2_mm_ws))/100, 3)
+  pronas.soil$oc_d = signif(pronas.soil$organic_carbon * pronas.soil$bulk_density_oven_dry * (100 - ifelse(is.na(pronas.soil$total_frag_wt_pct_gt_2_mm_ws), 0, pronas.soil$total_frag_wt_pct_gt_2_mm_ws))/100, 3)
   #summary(pronas.soil$oc_d)
   x.na = col.names[which(!col.names %in% names(pronas.soil))]
   if(length(x.na)>0){ for(i in x.na){ pronas.soil[,i] = NA } }
@@ -1410,8 +1438,8 @@ dim(chemsprops.CostaRica)
 #### Iran soil profile DB
 
 - Dewan, M. L., & Famouri, J. (1964). The soils of Iran. Food and Agriculture Organization of the United Nations.  
-- Hengl, T., Toomanian, N., Reuter, H. I., & Malakouti, M. J. (2007). [Methods to interpolate soil categorical variables from profile observations: Lessons from Iran](https://doi.org/10.1016/j.geoderma.2007.04.022). Geoderma, 140(4), 417-427.
-- Mohammad, H. B. (2000). Soil resources and use potentiality map of Iran. Soil and Water Research Institute, Teheran, Iran.
+- Hengl, T., Toomanian, N., Reuter, H. I., & Malakouti, M. J. (2007). [Methods to interpolate soil categorical variables from profile observations: Lessons from Iran](https://doi.org/10.1016/j.geoderma.2007.04.022). Geoderma, 140(4), 417-427.  
+- Mohammad, H. B. (2000). Soil resources and use potentiality map of Iran. Soil and Water Research Institute, Teheran, Iran.  
 
 ```{r}
 if(!exists("chemsprops.IRANSPDB")){
@@ -1471,7 +1499,10 @@ if(!exists("chemsprops.NCSCD")){
   ncscd.hors$site_obsdate = format(as.Date(ncscd.hors$Sample.date, format="%d-%m-%Y"), "%Y-%m-%d")
   #summary(ncscd.hors$db_od)
   ncscd.hors$Great.Group = ifelse(is.na(ncscd.hors$Great.Group), ncscd.hors$Suborder, ncscd.hors$Great.Group)
-  ncscd.col = c("Profile.ID", "citation", "site_obsdate", "Long", "Lat", "Great.Group", "labsampnum", "layer_key", "layer_sequence", "Basal.Depth.cm", "hzn_bot", "Horizon.type", "tex_psda", "texture_lab", "clay_tot_psa", "silt_tot_psa", "sand_tot_psa", "oc", "oc_d", "c_tot", "n_tot", "ph_kcl", "ph_h2o", "ph_cacl2", "cec_sum", "cec_nh4", "ecec", "wpg2", "db_od", "ca_ext", "mg_ext", "na_ext", "k_ext", "ec_satp", "ec_12pre")
+  #summary(as.factor(ncscd.hors$Great.Group))
+  cor_ncsd = read.csv("./correlation/soil_type_correlation_ncscd.csv")
+  ncscd.hors$SSL_classification_name = dplyr::left_join(ncscd.hors["Great.Group"], cor_ncsd[,c("Great.Group","SSL_classification_name")], by="Great.Group", multiple = "first")$SSL_classification_name
+  ncscd.col = c("Profile.ID", "citation", "site_obsdate", "Long", "Lat", "SSL_classification_name", "labsampnum", "layer_key", "layer_sequence", "Basal.Depth.cm", "hzn_bot", "Horizon.type", "tex_psda", "texture_lab", "clay_tot_psa", "silt_tot_psa", "sand_tot_psa", "oc", "oc_d", "c_tot", "n_tot", "ph_kcl", "ph_h2o", "ph_cacl2", "cec_sum", "cec_nh4", "ecec", "wpg2", "db_od", "ca_ext", "mg_ext", "na_ext", "k_ext", "ec_satp", "ec_12pre")
   x.na = ncscd.col[which(!ncscd.col %in% names(ncscd.hors))]
   if(length(x.na)>0){ for(i in x.na){ ncscd.hors[,i] = NA } }
   chemsprops.NCSCD = ncscd.hors[,ncscd.col]
@@ -1752,7 +1783,9 @@ if(!exists("chemsprops.bpht")){
   ## Convert to the USDA standard
   bpht.hors$sand_tot_psa <- bpht.hors$MSP * 0.8 + bpht.hors$MKP
   bpht.hors$silt_tot_psa <- bpht.hors$MP + bpht.hors$MSP * 0.2
-  bpht.hors$oc <- signif(bpht.hors$HUM/1.724 * 10, 3)
+  ## A critical review of the conventional SOC to SOM conversion factor
+  ## https://doi.org/10.1016/j.geoderma.2010.02.003
+  bpht.hors$oc <- signif(bpht.hors$HUM/2 * 1.3 * 10, 3)
   ## summary(bpht.hors$sand_tot_psa)
   bpht.s.lst <- c("site_key", "UZORAK", "Cro16.30_X", "Cro16.30_Y", "FITOC", "STIJENA", "HID_DREN", "DUBINA")
   bpht.hor = plyr::join(bpht.site[,bpht.s.lst], bpht.hors)
@@ -1984,7 +2017,7 @@ if(!exists("chemsprops.Vlaanderen2010")){
   hor.vl <- read.csv("/mnt/diskstation/data/Soil_points/Belgium/Vlaanderen/Aardewerk-Vlaanderen-2010_Horizont.csv")
   ## 42,529 rows
   horALL.vl = plyr::join(hor.vl, site.vl, by="Profiel_ID")
-  horALL.vl$oc = horALL.vl$Humus*10 /1.724
+  horALL.vl$oc = horALL.vl$Humus*10 / 2 * 1.3
   #summary(horALL.vl$oc) ## mean = 7.8
   #summary(horALL.vl$pH_H2O)
   horALL.vl$hzn_top <- rowSums(horALL.vl[,c("Diepte_grens_boven1", "Diepte_grens_boven2")], na.rm=TRUE)/2
@@ -2059,7 +2092,7 @@ if(!exists("chemsprops.NLBIS")){
   if(length(x.na)>0){ for(i in x.na){ nlbis.hor[,i] = NA } }
   chemsprops.NLBIS = nlbis.hor[,nlbis.name]
   chemsprops.NLBIS$source_db = "Netherlands.BIS"
-  chemsprops.NLBIS$confidence_degree = 2
+  chemsprops.NLBIS$confidence_degree = 4
   chemsprops.NLBIS$project_url = "https://git.wageningenur.nl/helfe001/bis-4d"
   chemsprops.NLBIS$citation_url = "https://doi.org/10.5194/essd-16-2941-2024"
   chemsprops.NLBIS = complete.vars(chemsprops.NLBIS, sel = c("organic_carbon", "pH_KCl"))
@@ -2202,7 +2235,7 @@ if(!exists("chemsprops.Slovenia")){
   ## year of sampling
   #summary(as.factor(sloALL$LETO))
   ## Walkely-Black: K2Cr2O7/H2SO4
-  sloALL$organic_carbon = ifelse(sloALL$OGLJ==0 & (sloALL$PHH==0), NA, sloALL$OGLJ) * 1.3 * 10
+  sloALL$organic_carbon = ifelse(sloALL$OGLJ==0 & (sloALL$PHH==0), NA, sloALL$OGLJ) / 2 * 1.3 * 10
   sloALL$total_nitrogen_ncs = ifelse(sloALL$DUSIK==0 & (sloALL$PHH==0), NA, sloALL$DUSIK) * 10
   sloALL$ph_kcl = ifelse(sloALL$PHK < 2 | sloALL$PHK > 9.5, NA, sloALL$PHK)
   sloALL$ph_h2o = ifelse(sloALL$PHH < 2 | sloALL$PHH > 9.5, NA, sloALL$PHH)
@@ -2384,7 +2417,7 @@ Other potential large soil profile DBs of interest:
 
 - Shangguan, W., Dai, Y., Liu, B., Zhu, A., Duan, Q., Wu, L., ... & Chen, D. (2013). [A China data set of soil properties for land surface modeling](https://doi.org/10.1002/jame.20026). Journal of Advances in Modeling Earth Systems, 5(2), 212-224. <https://doi.org/10.1002/jame.20026>  
 - Salković, E., Djurović, I., Knežević, M., Popović-Bugarin, V., & Topalović, A. (2018). Digitization and mapping of national legacy soil data of Montenegro. Soil and Water Research, 13(2), 83-89. <https://doi.org/10.17221/81/2017-SWR>
-- 
+- Canadian Soil Organic Carbon Database (CSOCD) as described in: Bhatti, J. S., Apps, M. J., & Tarnocai, C. (2002). Estimates of soil organic carbon stocks in central Canada using three different approaches. Canadian Journal of Forest Research, 32(5), 805–812. doi:10.1139/x01-122
 
 ## Bind all datasets
 
@@ -2440,6 +2473,7 @@ Fill-in the missing depths:
 ## soil layer depth (middle)
 tot_sprops$hzn_depth = tot_sprops$hzn_top + (tot_sprops$hzn_bot-tot_sprops$hzn_top)/2
 summary(is.na(tot_sprops$hzn_depth))
+## 33199
 ## Note: large number of horizons without a depth
 tot_sprops = tot_sprops[!is.na(tot_sprops$hzn_depth),]
 #quantile(tot_sprops$hzn_depth, c(0.01,0.99), na.rm=TRUE)
@@ -2464,7 +2498,7 @@ Add unique location based on the [Open Location Code](https://cran.r-project.org
 ```{r}
 tot_sprops$olc_id = olctools::encode_olc(tot_sprops$latitude_decimal_degrees, tot_sprops$longitude_decimal_degrees, 11)
 length(levels(as.factor(tot_sprops$olc_id)))
-## 364,939
+## 342,368
 ```
 
 ```{r}
@@ -2503,7 +2537,7 @@ mask = terra::rast("/data/CCI_LandCover/land.cover_copernicus_c_100m_s_20150101_
 #}
 ## final number of unique spatial locations:
 nrow(tot_sprops.pnts)
-## 337870
+## 342368
 ```
 
 #### Histogram plots
@@ -2571,7 +2605,7 @@ openair::scatterPlot(tot_sprops[tot_sprops$source_db %in% sel.db0,], x = "hzn_de
 Note: there seems to be no apparent correlation between soil pH and soil depth.
 
 ```{r}
-openair::scatterPlot(tot_sprops[tot_sprops$source_db %in% c("ISRIC_WISE", "USDA_NCSS", "AfSPDB", "PRONASOLOS"),], x = "ph_h2o", y = "sum_of_cations_cec_pH_8_2", method = "hexbin", 
+openair::scatterPlot(tot_sprops[tot_sprops$source_db %in% c("ISRIC_WISE", "USDA_NCSS", "AfSPDB", "PRONASOLOS", "Canada_NPDB"),], x = "ph_h2o", y = "sum_of_cations_cec_pH_8_2", method = "hexbin", 
                      col = "increment", type = "source_db", log.y=TRUE, ylab="CEC", xlab="soil pH H2O")
 ```
 
@@ -2616,7 +2650,7 @@ ggplot(sprops_yrs, aes(x=source_db, y=year)) + geom_boxplot() + theme(axis.text.
 ```
 
 ```{r}
-openair::scatterPlot(sprops_yrs[sprops_yrs$source_db %in% sel.db0,], y = "organic_carbon", x = "year", method = "hexbin",  
+openair::scatterPlot(sprops_yrs[sprops_yrs$source_db %in% c(sel.db0, "Canada_NPDB", "SoDaH"),], y = "organic_carbon", x = "year", method = "hexbin",  
                      col = "increment", type = "source_db", log.y=TRUE, ylab="SOC [g/kg]", xlab="Sampling year")
 ```
 
@@ -2662,10 +2696,10 @@ Write all soil profiles using a wide format:
 
 ```{r, eval=FALSE}
 sel.rm.pnts  <- tot_sprops_w.pnts$source_db=="LUCAS_2009" | tot_sprops_w.pnts$source_db=="LUCAS_2015" | tot_sprops_w.pnts$source_db=="LUCAS_2018" | tot_sprops_w.pnts$site_key %in% mng.rm ## | tot_sprops_w.pnts$site_key %in% rem.sp
-out.gpkg = "./out/gpkg/sol_chem.pnts_horizons.gpkg"
+out.gpkg = "/mnt/diskstation/data/Soil_points/sol_chem.pnts_horizons.gpkg"
 #unlink(out.gpkg)
 if(!file.exists(out.gpkg)){
-  sf::st_write(st_as_sf(tot_sprops_w.pnts), "/mnt/diskstation/data/Soil_points/sol_chem.pnts_horizons.gpkg", "sol_chem.pnts_horizons", driver="GPKG", append=FALSE)
+  sf::st_write(st_as_sf(tot_sprops_w.pnts), out.gpkg, "sol_chem.pnts_horizons", driver="GPKG", append=FALSE)
   sf::st_write(st_as_sf(tot_sprops_w.pnts[!sel.rm.pnts,]), out.gpkg, "sol_chem.pnts_horizons", driver="GPKG")
 }
 ```
@@ -2699,7 +2733,7 @@ knitr::include_graphics("./img/sol_chem.pnts_sites.png")
 ## Save final analysis-ready objects:
 
 ```{r, eval=FALSE}
-saveRDS.gz(tot_sprops.s, "./out/rds/sol_chem.pnts_horizons.rds")
+#saveRDS.gz(tot_sprops.s, "./out/rds/sol_chem.pnts_horizons.rds")
 saveRDS.gz(tot_sprops, "/mnt/diskstation/data/Soil_points/sol_chem.pnts_horizons.rds")
 saveRDS.gz(tot_sprops.pnts, "/mnt/diskstation/data/Soil_points/sol_chem.pnts_sites.rds")
 #library(farff)
