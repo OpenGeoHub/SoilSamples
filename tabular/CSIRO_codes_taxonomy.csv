@@ -1,300 +1,300 @@
-Table,Code,SSL_classification_name
-C_O_SOIL_TAXONOMY,A,Alfisol
-C_O_SOIL_TAXONOMY,AAQ,Aqualf
-C_O_SOIL_TAXONOMY,AAQAL,Albaqualf
-C_O_SOIL_TAXONOMY,AAQDU,Duraqualf
-C_O_SOIL_TAXONOMY,AAQFR,Fragiaqualf
-C_O_SOIL_TAXONOMY,AAQGL,Glossaqualf
-C_O_SOIL_TAXONOMY,AAQKA,Kandiaqualf
-C_O_SOIL_TAXONOMY,AAQNA,Natraqualf
-C_O_SOIL_TAXONOMY,AAQOC,Ochraqualf
-C_O_SOIL_TAXONOMY,AAQPN,Plinthaqualf
-C_O_SOIL_TAXONOMY,AAQUM,Umbraqualf
-C_O_SOIL_TAXONOMY,ABO,Boralf
-C_O_SOIL_TAXONOMY,ABOCR,Cryoboralf
-C_O_SOIL_TAXONOMY,ABOEU,Eutroboralf
-C_O_SOIL_TAXONOMY,ABOFR,Fragiboralf
-C_O_SOIL_TAXONOMY,ABOGL,Glossoboralf
-C_O_SOIL_TAXONOMY,ABONA,Natriboralf
-C_O_SOIL_TAXONOMY,ABOPA,Paleboralf
-C_O_SOIL_TAXONOMY,AUD,Udalf
-C_O_SOIL_TAXONOMY,AUDAG,Agrudalf
-C_O_SOIL_TAXONOMY,AUDFE,Ferrudalf
-C_O_SOIL_TAXONOMY,AUDFR,Fragiudalf
-C_O_SOIL_TAXONOMY,AUDFS,Fraglossudalf
-C_O_SOIL_TAXONOMY,AUDGL,Glossudalf
-C_O_SOIL_TAXONOMY,AUDHA,Halpludalf
-C_O_SOIL_TAXONOMY,AUDKA,Kandiudalf
-C_O_SOIL_TAXONOMY,AUDKH,Kanhapludalf
-C_O_SOIL_TAXONOMY,AUDNA,Natrudalf
-C_O_SOIL_TAXONOMY,AUDPA,Paleudalf
-C_O_SOIL_TAXONOMY,AUDTR,Tropudalf
-C_O_SOIL_TAXONOMY,AUS,Ustalf
-C_O_SOIL_TAXONOMY,AUSDA,Durustalf
-C_O_SOIL_TAXONOMY,AUSHA,Haplustalf
-C_O_SOIL_TAXONOMY,AUSKA,Kandiustalf
-C_O_SOIL_TAXONOMY,AUSKH,Kanhaplustalf
-C_O_SOIL_TAXONOMY,AUSNA,Natrustalf
-C_O_SOIL_TAXONOMY,AUSPA,Paleustalf
-C_O_SOIL_TAXONOMY,AUSPN,Plinthustalf
-C_O_SOIL_TAXONOMY,AUSRH,Rhodustalf
-C_O_SOIL_TAXONOMY,AXE,Xeralf
-C_O_SOIL_TAXONOMY,AXEDU,Durixeralf
-C_O_SOIL_TAXONOMY,AXEFR,Fragixeralf
-C_O_SOIL_TAXONOMY,AXEHA,Haploxeralf
-C_O_SOIL_TAXONOMY,AXENA,Natrixeralf
-C_O_SOIL_TAXONOMY,AXEPA,Palexeralf
-C_O_SOIL_TAXONOMY,AXEPN,Plinthoxeralf
-C_O_SOIL_TAXONOMY,AXERH,Rhodoxeralf
-C_O_SOIL_TAXONOMY,D,Aridisol
-C_O_SOIL_TAXONOMY,DAR,Argid
-C_O_SOIL_TAXONOMY,DARDU,Durargid
-C_O_SOIL_TAXONOMY,DARHA,Haplargid
-C_O_SOIL_TAXONOMY,DARND,Nadurargid
-C_O_SOIL_TAXONOMY,DARNT,Natrargid
-C_O_SOIL_TAXONOMY,DARPA,Paleargid
-C_O_SOIL_TAXONOMY,DOR,Orthid
-C_O_SOIL_TAXONOMY,DORCL,Calciorthid
-C_O_SOIL_TAXONOMY,DORCM,Camborthid
-C_O_SOIL_TAXONOMY,DORDU,Durorthid
-C_O_SOIL_TAXONOMY,DORGY,Gypsiorthid
-C_O_SOIL_TAXONOMY,DORPA,Paleorthid
-C_O_SOIL_TAXONOMY,DORSA,Salorthid
-C_O_SOIL_TAXONOMY,E,Entisol
-C_O_SOIL_TAXONOMY,EAQ,Aquent
-C_O_SOIL_TAXONOMY,EAQCR,Cryaquent
-C_O_SOIL_TAXONOMY,EAQFL,Fluvaquent
-C_O_SOIL_TAXONOMY,EAQHA,Haplaquent
-C_O_SOIL_TAXONOMY,EAQHY,Hydraquent
-C_O_SOIL_TAXONOMY,EAQPS,Psammaquent
-C_O_SOIL_TAXONOMY,EAQSU,Sulfaquent
-C_O_SOIL_TAXONOMY,EAQTR,Tropaquent
-C_O_SOIL_TAXONOMY,EAR,Arent
-C_O_SOIL_TAXONOMY,EARAR,Arent
-C_O_SOIL_TAXONOMY,EFL,Fluvent
-C_O_SOIL_TAXONOMY,EFLCR,Cryofluvent
-C_O_SOIL_TAXONOMY,EFLTO,Torrifluvent
-C_O_SOIL_TAXONOMY,EFLTR,Tropofluvent
-C_O_SOIL_TAXONOMY,EFLUD,Udifluvent
-C_O_SOIL_TAXONOMY,EFLUS,Ustifluvent
-C_O_SOIL_TAXONOMY,EFLXE,Xerofluvent
-C_O_SOIL_TAXONOMY,EOR,Orthent
-C_O_SOIL_TAXONOMY,EORCR,Cryorthent
-C_O_SOIL_TAXONOMY,EORTO,Torriorthent
-C_O_SOIL_TAXONOMY,EORTR,Troporthent
-C_O_SOIL_TAXONOMY,EORUD,Udorthent
-C_O_SOIL_TAXONOMY,EORUS,Ustorthent
-C_O_SOIL_TAXONOMY,EORXE,Xerorthent
-C_O_SOIL_TAXONOMY,EPS,Psamment
-C_O_SOIL_TAXONOMY,EPSCR,Cryopsamment
-C_O_SOIL_TAXONOMY,EPSQU,Quartzipsamment
-C_O_SOIL_TAXONOMY,EPSTO,Torripsamment
-C_O_SOIL_TAXONOMY,EPSTR,Tropopsamment
-C_O_SOIL_TAXONOMY,EPSUD,Udipsamment
-C_O_SOIL_TAXONOMY,EPSUS,Ustipsamment
-C_O_SOIL_TAXONOMY,EPSXE,Xeropsamment
-C_O_SOIL_TAXONOMY,H,Histosol
-C_O_SOIL_TAXONOMY,HFI,Fibrist
-C_O_SOIL_TAXONOMY,HFIBO,Borofibrist
-C_O_SOIL_TAXONOMY,HFICR,Cryofibrist
-C_O_SOIL_TAXONOMY,HFILU,Luvifibrist
-C_O_SOIL_TAXONOMY,HFIME,Medifibrist
-C_O_SOIL_TAXONOMY,HFISP,Sphagnofibrist
-C_O_SOIL_TAXONOMY,HFITR,Tropofibrist
-C_O_SOIL_TAXONOMY,HFO,Folist
-C_O_SOIL_TAXONOMY,HFOBO,Borofolist
-C_O_SOIL_TAXONOMY,HFOCR,Cryofolist
-C_O_SOIL_TAXONOMY,HFOTR,Tropofolist
-C_O_SOIL_TAXONOMY,HHE,Hemist
-C_O_SOIL_TAXONOMY,HHEBO,Borohemist
-C_O_SOIL_TAXONOMY,HHECR,Cryohemist
-C_O_SOIL_TAXONOMY,HHELU,Luvihemist
-C_O_SOIL_TAXONOMY,HHEME,Medihemist
-C_O_SOIL_TAXONOMY,HHESI,Sulfihemist
-C_O_SOIL_TAXONOMY,HHESO,Sulfohemist
-C_O_SOIL_TAXONOMY,HHETR,Tropohemist
-C_O_SOIL_TAXONOMY,HSA,Saprist
-C_O_SOIL_TAXONOMY,HSABO,Borosaprist
-C_O_SOIL_TAXONOMY,HSACR,Cryosaprist
-C_O_SOIL_TAXONOMY,HSAME,Medisaprist
-C_O_SOIL_TAXONOMY,HSATR,Troposaprist
-C_O_SOIL_TAXONOMY,I,Inceptisol
-C_O_SOIL_TAXONOMY,IAN,Andept
-C_O_SOIL_TAXONOMY,IANCR,Cryandept
-C_O_SOIL_TAXONOMY,IANDU,Durandept
-C_O_SOIL_TAXONOMY,IANDY,Dystrandept
-C_O_SOIL_TAXONOMY,IANEU,Eutrandept
-C_O_SOIL_TAXONOMY,IANHY,Hydrandept
-C_O_SOIL_TAXONOMY,IANPK,Placandept
-C_O_SOIL_TAXONOMY,IANVI,Vitrandept
-C_O_SOIL_TAXONOMY,IAQ,Aqueot
-C_O_SOIL_TAXONOMY,IAQAN,Andaquept
-C_O_SOIL_TAXONOMY,IAQCR,Cryaquept
-C_O_SOIL_TAXONOMY,IAQFR,Fragiaquept
-C_O_SOIL_TAXONOMY,IAQHL,Halaquept
-C_O_SOIL_TAXONOMY,IAQHP,Haplaquept
-C_O_SOIL_TAXONOMY,IAQHU,Humaquept
-C_O_SOIL_TAXONOMY,IAQPK,Placaquept
-C_O_SOIL_TAXONOMY,IAQPN,Plinthaquept
-C_O_SOIL_TAXONOMY,IAQSU,Sulfaquept
-C_O_SOIL_TAXONOMY,IAQTR,Tropaquept
-C_O_SOIL_TAXONOMY,IOC,Ochrept
-C_O_SOIL_TAXONOMY,IOCCR,Cryochrept
-C_O_SOIL_TAXONOMY,IOCDU,Durochrept
-C_O_SOIL_TAXONOMY,IOCDY,Dystrochrept
-C_O_SOIL_TAXONOMY,IOCEU,Eutrochrept
-C_O_SOIL_TAXONOMY,IOCFR,Fragiochrept
-C_O_SOIL_TAXONOMY,IOCUS,Ustochrept
-C_O_SOIL_TAXONOMY,IOCXF,Xerochrept
-C_O_SOIL_TAXONOMY,IPL,Plaggept
-C_O_SOIL_TAXONOMY,IPLPL,Plaggept
-C_O_SOIL_TAXONOMY,ITR,Tropept
-C_O_SOIL_TAXONOMY,ITRDY,Dystropept
-C_O_SOIL_TAXONOMY,ITREU,Eutropept
-C_O_SOIL_TAXONOMY,ITRHU,Humitropept
-C_O_SOIL_TAXONOMY,ITRSO,Sombritropept
-C_O_SOIL_TAXONOMY,ITRUS,Ustroept
-C_O_SOIL_TAXONOMY,IUM,Umbrept
-C_O_SOIL_TAXONOMY,IUMCR,Cryumbrept
-C_O_SOIL_TAXONOMY,IUMFR,Fragiumbrept
-C_O_SOIL_TAXONOMY,IUMHA,Haplumbrept
-C_O_SOIL_TAXONOMY,IUMXF,Xerumbrept
-C_O_SOIL_TAXONOMY,M,Mollisol
-C_O_SOIL_TAXONOMY,MAL,Alboll
-C_O_SOIL_TAXONOMY,MALAR,Argialboll
-C_O_SOIL_TAXONOMY,MALNA,Natralboll
-C_O_SOIL_TAXONOMY,MAQ,Aquoll
-C_O_SOIL_TAXONOMY,MAQAR,Argiaquoll
-C_O_SOIL_TAXONOMY,MAQCA,Calciaquoll
-C_O_SOIL_TAXONOMY,MAQCR,Cryaquoll
-C_O_SOIL_TAXONOMY,MAQDU,Duraquoll
-C_O_SOIL_TAXONOMY,MAQHA,Haplaquoll
-C_O_SOIL_TAXONOMY,MAQNA,Natraquoll
-C_O_SOIL_TAXONOMY,MBO,Boroll
-C_O_SOIL_TAXONOMY,MBOAR,Argiboroll
-C_O_SOIL_TAXONOMY,MBOCA,Calciboroll
-C_O_SOIL_TAXONOMY,MBOCR,Cryoboroll
-C_O_SOIL_TAXONOMY,MBOHA,Haploboroll
-C_O_SOIL_TAXONOMY,MBONA,Natriboroll
-C_O_SOIL_TAXONOMY,MBOPA,Paleboroll
-C_O_SOIL_TAXONOMY,MBOVE,Vermiboroll
-C_O_SOIL_TAXONOMY,MRE,Rendoll
-C_O_SOIL_TAXONOMY,MRERE,Rendoll
-C_O_SOIL_TAXONOMY,MUD,Udoll
-C_O_SOIL_TAXONOMY,MUDAR,Argiudoll
-C_O_SOIL_TAXONOMY,MUDHA,Hapludoll
-C_O_SOIL_TAXONOMY,MUDPA,Paleudoll
-C_O_SOIL_TAXONOMY,MUDVE,Vermudoll
-C_O_SOIL_TAXONOMY,MUS,Ustoll
-C_O_SOIL_TAXONOMY,MUSAR,Argiustoll
-C_O_SOIL_TAXONOMY,MUSCA,Calciustoll
-C_O_SOIL_TAXONOMY,MUSDU,Durustoll
-C_O_SOIL_TAXONOMY,MUSHA,Haplustoll
-C_O_SOIL_TAXONOMY,MUSNA,Natrustoll
-C_O_SOIL_TAXONOMY,MUSPA,Paleustoll
-C_O_SOIL_TAXONOMY,MUSVE,Vermustoll
-C_O_SOIL_TAXONOMY,MXE,Xeroll
-C_O_SOIL_TAXONOMY,MXEAR,Argixeroll
-C_O_SOIL_TAXONOMY,MXECA,Calcixeroll
-C_O_SOIL_TAXONOMY,MXEDU,Durixeroll
-C_O_SOIL_TAXONOMY,MXEHA,Haploxeroll
-C_O_SOIL_TAXONOMY,MXENA,Natrixeroll
-C_O_SOIL_TAXONOMY,MXEPA,Palexeroll
-C_O_SOIL_TAXONOMY,O,Oxisol
-C_O_SOIL_TAXONOMY,OAQ,Aquox
-C_O_SOIL_TAXONOMY,OAQAC,Aeraquox
-C_O_SOIL_TAXONOMY,OAQPN,Plinthaquox
-C_O_SOIL_TAXONOMY,OAQUE,Eutraquox
-C_O_SOIL_TAXONOMY,OAQUM,Umbraquox
-C_O_SOIL_TAXONOMY,OPE,Perox
-C_O_SOIL_TAXONOMY,OPEAC,Acroperox
-C_O_SOIL_TAXONOMY,OPEEU,Eutroperox
-C_O_SOIL_TAXONOMY,OPEHA,Haploperox
-C_O_SOIL_TAXONOMY,OPEKA,Kandiperox
-C_O_SOIL_TAXONOMY,OPESO,Sombriperox
-C_O_SOIL_TAXONOMY,OTO,Torrox
-C_O_SOIL_TAXONOMY,OTOAC,Aerotorox
-C_O_SOIL_TAXONOMY,OTOEU,Eutrotorox
-C_O_SOIL_TAXONOMY,OTOHA,Haplotorox
-C_O_SOIL_TAXONOMY,OUD,Udox
-C_O_SOIL_TAXONOMY,OUDAC,Aerudox
-C_O_SOIL_TAXONOMY,OUDEU,Eutrudox
-C_O_SOIL_TAXONOMY,OUDHA,Hapludox
-C_O_SOIL_TAXONOMY,OUDKA,Kandiudox
-C_O_SOIL_TAXONOMY,OUDSO,Sombriudox
-C_O_SOIL_TAXONOMY,OUS,Ustox
-C_O_SOIL_TAXONOMY,OUSAC,Acrustox
-C_O_SOIL_TAXONOMY,OUSEU,Eutrustox
-C_O_SOIL_TAXONOMY,OUSHA,Haplustox
-C_O_SOIL_TAXONOMY,OUSKA,Kandiustox
-C_O_SOIL_TAXONOMY,OUSSO,Sombriustox
-C_O_SOIL_TAXONOMY,S,Spodosol
-C_O_SOIL_TAXONOMY,SAQ,Aquod
-C_O_SOIL_TAXONOMY,SAQCR,Cryaquod
-C_O_SOIL_TAXONOMY,SAQDU,Duraquod
-C_O_SOIL_TAXONOMY,SAQFR,Fragiaquod
-C_O_SOIL_TAXONOMY,SAQHA,Haplaquod
-C_O_SOIL_TAXONOMY,SAQPK,Placaquod
-C_O_SOIL_TAXONOMY,SAQSI,Sideraquod
-C_O_SOIL_TAXONOMY,SAQTR,Tropaquod
-C_O_SOIL_TAXONOMY,SFE,Ferrod
-C_O_SOIL_TAXONOMY,SFEFE,Ferrod
-C_O_SOIL_TAXONOMY,SHU,Humod
-C_O_SOIL_TAXONOMY,SHUCR,Cryohumod
-C_O_SOIL_TAXONOMY,SHUFR,Fragihumod
-C_O_SOIL_TAXONOMY,SHUHA,Haplohumod
-C_O_SOIL_TAXONOMY,SHUPK,Placohumod
-C_O_SOIL_TAXONOMY,SHUTR,Tropohumod
-C_O_SOIL_TAXONOMY,SOR,Orthod
-C_O_SOIL_TAXONOMY,SORCR,Cryorthod
-C_O_SOIL_TAXONOMY,SORFR,Fragiorthod
-C_O_SOIL_TAXONOMY,SORHA,Haplorthod
-C_O_SOIL_TAXONOMY,SORPK,Placorthod
-C_O_SOIL_TAXONOMY,SORTR,Troporthod
-C_O_SOIL_TAXONOMY,U,Ultisol
-C_O_SOIL_TAXONOMY,UAQ,Aquult
-C_O_SOIL_TAXONOMY,UAQAL,Albaquult
-C_O_SOIL_TAXONOMY,UAQFR,Fragiaquult
-C_O_SOIL_TAXONOMY,UAQKA,Kandiaquult
-C_O_SOIL_TAXONOMY,UAQKH,Kanhaplaquult
-C_O_SOIL_TAXONOMY,UAQOC,Ochraquult
-C_O_SOIL_TAXONOMY,UAQPA,Paleaquult
-C_O_SOIL_TAXONOMY,UAQPN,Plinthaquult
-C_O_SOIL_TAXONOMY,UAQTR,Tropaquult
-C_O_SOIL_TAXONOMY,UAQUM,Umbraquult
-C_O_SOIL_TAXONOMY,UHU,Humult
-C_O_SOIL_TAXONOMY,UHUHA,Haplohumult
-C_O_SOIL_TAXONOMY,UHUKA,Kandihumult
-C_O_SOIL_TAXONOMY,UHUKH,Kanhaplohumult
-C_O_SOIL_TAXONOMY,UHUPN,Plinthohumult
-C_O_SOIL_TAXONOMY,UHUSO,Sombrihumult
-C_O_SOIL_TAXONOMY,UUD,Udult
-C_O_SOIL_TAXONOMY,UUDFR,Fragiudult
-C_O_SOIL_TAXONOMY,UUDHA,Hapludult
-C_O_SOIL_TAXONOMY,UUDKA,Kandiudult
-C_O_SOIL_TAXONOMY,UUDKH,Kanhapludult
-C_O_SOIL_TAXONOMY,UUDPA,Paleudult
-C_O_SOIL_TAXONOMY,UUDPN,Plinthudult
-C_O_SOIL_TAXONOMY,UUDRH,Rhodudult
-C_O_SOIL_TAXONOMY,UUS,Ustult
-C_O_SOIL_TAXONOMY,UUSHA,Haplustult
-C_O_SOIL_TAXONOMY,UUSKA,Kandiustult
-C_O_SOIL_TAXONOMY,UUSKH,Kanhaplustukt
-C_O_SOIL_TAXONOMY,UUSPA,Paleustult
-C_O_SOIL_TAXONOMY,UUSPN,Plinthustult
-C_O_SOIL_TAXONOMY,UUSRH,Rhodustult
-C_O_SOIL_TAXONOMY,UXE,Xerult
-C_O_SOIL_TAXONOMY,UXEHA,Haploxerult
-C_O_SOIL_TAXONOMY,UXEPA,Palexerult
-C_O_SOIL_TAXONOMY,V,Vertisol
-C_O_SOIL_TAXONOMY,VTD,Torrert
-C_O_SOIL_TAXONOMY,VTOTO,Torrert
-C_O_SOIL_TAXONOMY,VUD,Udert
-C_O_SOIL_TAXONOMY,VUDCH,Chromudert
-C_O_SOIL_TAXONOMY,VUDPE,Pelludert
-C_O_SOIL_TAXONOMY,VUS,Ustert
-C_O_SOIL_TAXONOMY,VUSCH,Chromustert
-C_O_SOIL_TAXONOMY,VUSPE,Pellustert
-C_O_SOIL_TAXONOMY,VXE,Xerert
-C_O_SOIL_TAXONOMY,VXECH,Chromoxerert
-C_O_SOIL_TAXONOMY,VXEPE,Pelloxerert
+Table,Code,USDA_tax,SSL_classification_name
+C_O_SOIL_TAXONOMY,A,Alfisol,
+C_O_SOIL_TAXONOMY,AAQ,Aqualf,
+C_O_SOIL_TAXONOMY,AAQAL,Albaqualf,typic albaqualfs / mollic albaqualfs
+C_O_SOIL_TAXONOMY,AAQDU,Duraqualf,typic duraqualfs
+C_O_SOIL_TAXONOMY,AAQFR,Fragiaqualf,typic fragiaqualfs
+C_O_SOIL_TAXONOMY,AAQGL,Glossaqualf,typic glossaqualfs
+C_O_SOIL_TAXONOMY,AAQKA,Kandiaqualf,typic kandiaqualfs
+C_O_SOIL_TAXONOMY,AAQNA,Natraqualf,typic natraqualfs
+C_O_SOIL_TAXONOMY,AAQOC,Ochraqualf,typic ochraqualfs
+C_O_SOIL_TAXONOMY,AAQPN,Plinthaqualf,typic plinthaqualfs
+C_O_SOIL_TAXONOMY,AAQUM,Umbraqualf,typic umbraqualfs
+C_O_SOIL_TAXONOMY,ABO,Boralf,
+C_O_SOIL_TAXONOMY,ABOCR,Cryoboralf,typic cryoboralfs
+C_O_SOIL_TAXONOMY,ABOEU,Eutroboralf,typic eutroboralfs
+C_O_SOIL_TAXONOMY,ABOFR,Fragiboralf,typic fragiboralfs
+C_O_SOIL_TAXONOMY,ABOGL,Glossoboralf,typic glossoboralfs
+C_O_SOIL_TAXONOMY,ABONA,Natriboralf,typic natriboralfs
+C_O_SOIL_TAXONOMY,ABOPA,Paleboralf,typic paleboralfs
+C_O_SOIL_TAXONOMY,AUD,Udalf,
+C_O_SOIL_TAXONOMY,AUDAG,Agrudalf,typic agrudalfs
+C_O_SOIL_TAXONOMY,AUDFE,Ferrudalf,typic ferrudalfs
+C_O_SOIL_TAXONOMY,AUDFR,Fragiudalf,typic fragiudalfs
+C_O_SOIL_TAXONOMY,AUDFS,Fraglossudalf,typic fraglossudalfs
+C_O_SOIL_TAXONOMY,AUDGL,Glossudalf,typic glossudalfs
+C_O_SOIL_TAXONOMY,AUDHA,Halpludalf,typic halpludalfs
+C_O_SOIL_TAXONOMY,AUDKA,Kandiudalf,typic kandiudalfs
+C_O_SOIL_TAXONOMY,AUDKH,Kanhapludalf,typic kanhapludalfs
+C_O_SOIL_TAXONOMY,AUDNA,Natrudalf,typic natrudalfs
+C_O_SOIL_TAXONOMY,AUDPA,Paleudalf,typic paleudalfs
+C_O_SOIL_TAXONOMY,AUDTR,Tropudalf,typic tropudalfs
+C_O_SOIL_TAXONOMY,AUS,Ustalf,
+C_O_SOIL_TAXONOMY,AUSDA,Durustalf,typic durustalfs
+C_O_SOIL_TAXONOMY,AUSHA,Haplustalf,typic haplustalfs / aridic haplustalfs
+C_O_SOIL_TAXONOMY,AUSKA,Kandiustalf,typic kandiustalfs
+C_O_SOIL_TAXONOMY,AUSKH,Kanhaplustalf,typic kanhaplustalfs
+C_O_SOIL_TAXONOMY,AUSNA,Natrustalf,typic natrustalfs
+C_O_SOIL_TAXONOMY,AUSPA,Paleustalf,typic paleustalfs / aridic paleustalfs
+C_O_SOIL_TAXONOMY,AUSPN,Plinthustalf,typic plinthustalfs
+C_O_SOIL_TAXONOMY,AUSRH,Rhodustalf,typic rhodustalfs
+C_O_SOIL_TAXONOMY,AXE,Xeralf,
+C_O_SOIL_TAXONOMY,AXEDU,Durixeralf,typic durixeralfs
+C_O_SOIL_TAXONOMY,AXEFR,Fragixeralf,typic fragixeralfs
+C_O_SOIL_TAXONOMY,AXEHA,Haploxeralf,ultic haploxeralfs / typic haploxeralfs
+C_O_SOIL_TAXONOMY,AXENA,Natrixeralf,typic natrixeralfs
+C_O_SOIL_TAXONOMY,AXEPA,Palexeralf,ultic palexeralfs / typic palexeralfs
+C_O_SOIL_TAXONOMY,AXEPN,Plinthoxeralf,typic plinthoxeralfs
+C_O_SOIL_TAXONOMY,AXERH,Rhodoxeralf,typic rhodoxeralfs
+C_O_SOIL_TAXONOMY,D,Aridisol,
+C_O_SOIL_TAXONOMY,DAR,Argid,
+C_O_SOIL_TAXONOMY,DARDU,Durargid,typic durargids
+C_O_SOIL_TAXONOMY,DARHA,Haplargid,typic haplargids
+C_O_SOIL_TAXONOMY,DARND,Nadurargid,typic nadurargids
+C_O_SOIL_TAXONOMY,DARNT,Natrargid,typic natrargids
+C_O_SOIL_TAXONOMY,DARPA,Paleargid,typic paleargids
+C_O_SOIL_TAXONOMY,DOR,Orthid,
+C_O_SOIL_TAXONOMY,DORCL,Calciorthid,typic calciorthids
+C_O_SOIL_TAXONOMY,DORCM,Camborthid,typic camborthids
+C_O_SOIL_TAXONOMY,DORDU,Durorthid,typic durorthids
+C_O_SOIL_TAXONOMY,DORGY,Gypsiorthid,typic gypsiorthids
+C_O_SOIL_TAXONOMY,DORPA,Paleorthid,typic paleorthids
+C_O_SOIL_TAXONOMY,DORSA,Salorthid,typic salorthids
+C_O_SOIL_TAXONOMY,E,Entisol,
+C_O_SOIL_TAXONOMY,EAQ,Aquent,
+C_O_SOIL_TAXONOMY,EAQCR,Cryaquent,typic cryaquents
+C_O_SOIL_TAXONOMY,EAQFL,Fluvaquent,typic fluvaquents
+C_O_SOIL_TAXONOMY,EAQHA,Haplaquent,typic haplaquents
+C_O_SOIL_TAXONOMY,EAQHY,Hydraquent,typic hydraquents
+C_O_SOIL_TAXONOMY,EAQPS,Psammaquent,typic psammaquents
+C_O_SOIL_TAXONOMY,EAQSU,Sulfaquent,typic sulfaquents
+C_O_SOIL_TAXONOMY,EAQTR,Tropaquent,typic tropaquents
+C_O_SOIL_TAXONOMY,EAR,Arent,
+C_O_SOIL_TAXONOMY,EARAR,Arent,
+C_O_SOIL_TAXONOMY,EFL,Fluvent,
+C_O_SOIL_TAXONOMY,EFLCR,Cryofluvent,typic cryofluvents
+C_O_SOIL_TAXONOMY,EFLTO,Torrifluvent,typic torrifluvents
+C_O_SOIL_TAXONOMY,EFLTR,Tropofluvent,typic tropofluvents
+C_O_SOIL_TAXONOMY,EFLUD,Udifluvent,typic udifluvents
+C_O_SOIL_TAXONOMY,EFLUS,Ustifluvent,typic ustifluvents
+C_O_SOIL_TAXONOMY,EFLXE,Xerofluvent,typic xerofluvents
+C_O_SOIL_TAXONOMY,EOR,Orthent,
+C_O_SOIL_TAXONOMY,EORCR,Cryorthent,typic cryorthents
+C_O_SOIL_TAXONOMY,EORTO,Torriorthent,typic torriorthents
+C_O_SOIL_TAXONOMY,EORTR,Troporthent,typic troporthents
+C_O_SOIL_TAXONOMY,EORUD,Udorthent,typic udorthents
+C_O_SOIL_TAXONOMY,EORUS,Ustorthent,typic ustorthents
+C_O_SOIL_TAXONOMY,EORXE,Xerorthent,typic xerorthents
+C_O_SOIL_TAXONOMY,EPS,Psamment,typic psamments
+C_O_SOIL_TAXONOMY,EPSCR,Cryopsamment,typic cryopsamments
+C_O_SOIL_TAXONOMY,EPSQU,Quartzipsamment,typic quartzipsamments / ustic quartzipsamments
+C_O_SOIL_TAXONOMY,EPSTO,Torripsamment,typic torripsamments
+C_O_SOIL_TAXONOMY,EPSTR,Tropopsamment,typic tropopsamments
+C_O_SOIL_TAXONOMY,EPSUD,Udipsamment,typic udipsamments
+C_O_SOIL_TAXONOMY,EPSUS,Ustipsamment,typic ustipsamments
+C_O_SOIL_TAXONOMY,EPSXE,Xeropsamment,typic xeropsamments
+C_O_SOIL_TAXONOMY,H,Histosol,
+C_O_SOIL_TAXONOMY,HFI,Fibrist,
+C_O_SOIL_TAXONOMY,HFIBO,Borofibrist,typic borofibrists
+C_O_SOIL_TAXONOMY,HFICR,Cryofibrist,typic cryofibrists
+C_O_SOIL_TAXONOMY,HFILU,Luvifibrist,typic luvifibrists
+C_O_SOIL_TAXONOMY,HFIME,Medifibrist,typic medifibrists
+C_O_SOIL_TAXONOMY,HFISP,Sphagnofibrist,typic sphagnofibrists
+C_O_SOIL_TAXONOMY,HFITR,Tropofibrist,typic tropofibrists
+C_O_SOIL_TAXONOMY,HFO,Folist,
+C_O_SOIL_TAXONOMY,HFOBO,Borofolist,typic borofolists
+C_O_SOIL_TAXONOMY,HFOCR,Cryofolist,typic cryofolists
+C_O_SOIL_TAXONOMY,HFOTR,Tropofolist,typic tropofolists
+C_O_SOIL_TAXONOMY,HHE,Hemist,
+C_O_SOIL_TAXONOMY,HHEBO,Borohemist,typic borohemists
+C_O_SOIL_TAXONOMY,HHECR,Cryohemist,typic cryohemists
+C_O_SOIL_TAXONOMY,HHELU,Luvihemist,typic luvihemists
+C_O_SOIL_TAXONOMY,HHEME,Medihemist,typic medihemists
+C_O_SOIL_TAXONOMY,HHESI,Sulfihemist,typic sulfihemists
+C_O_SOIL_TAXONOMY,HHESO,Sulfohemist,typic sulfohemists
+C_O_SOIL_TAXONOMY,HHETR,Tropohemist,typic tropohemists
+C_O_SOIL_TAXONOMY,HSA,Saprist,
+C_O_SOIL_TAXONOMY,HSABO,Borosaprist,typic borosaprists
+C_O_SOIL_TAXONOMY,HSACR,Cryosaprist,typic cryosaprists
+C_O_SOIL_TAXONOMY,HSAME,Medisaprist,typic medisaprists
+C_O_SOIL_TAXONOMY,HSATR,Troposaprist,typic troposaprists
+C_O_SOIL_TAXONOMY,I,Inceptisol,
+C_O_SOIL_TAXONOMY,IAN,Andept,
+C_O_SOIL_TAXONOMY,IANCR,Cryandept,typic cryandepts
+C_O_SOIL_TAXONOMY,IANDU,Durandept,typic durandepts
+C_O_SOIL_TAXONOMY,IANDY,Dystrandept,typic dystrandepts
+C_O_SOIL_TAXONOMY,IANEU,Eutrandept,typic eutrandepts
+C_O_SOIL_TAXONOMY,IANHY,Hydrandept,typic hydrandepts
+C_O_SOIL_TAXONOMY,IANPK,Placandept,typic placandepts
+C_O_SOIL_TAXONOMY,IANVI,Vitrandept,typic vitrandepts
+C_O_SOIL_TAXONOMY,IAQ,Aqueot,
+C_O_SOIL_TAXONOMY,IAQAN,Andaquept,typic andaquepts
+C_O_SOIL_TAXONOMY,IAQCR,Cryaquept,typic cryaquepts
+C_O_SOIL_TAXONOMY,IAQFR,Fragiaquept,typic fragiaquepts
+C_O_SOIL_TAXONOMY,IAQHL,Halaquept,typic halaquepts
+C_O_SOIL_TAXONOMY,IAQHP,Haplaquept,typic haplaquepts
+C_O_SOIL_TAXONOMY,IAQHU,Humaquept,typic humaquepts
+C_O_SOIL_TAXONOMY,IAQPK,Placaquept,typic placaquepts
+C_O_SOIL_TAXONOMY,IAQPN,Plinthaquept,typic plinthaquepts
+C_O_SOIL_TAXONOMY,IAQSU,Sulfaquept,typic sulfaquepts
+C_O_SOIL_TAXONOMY,IAQTR,Tropaquept,typic tropaquepts
+C_O_SOIL_TAXONOMY,IOC,Ochrept,
+C_O_SOIL_TAXONOMY,IOCCR,Cryochrept,typic cryochrepts
+C_O_SOIL_TAXONOMY,IOCDU,Durochrept,typic durochrepts
+C_O_SOIL_TAXONOMY,IOCDY,Dystrochrept,typic dystrochrepts
+C_O_SOIL_TAXONOMY,IOCEU,Eutrochrept,typic eutrochrepts
+C_O_SOIL_TAXONOMY,IOCFR,Fragiochrept,typic fragiochrepts
+C_O_SOIL_TAXONOMY,IOCUS,Ustochrept,typic ustochrepts
+C_O_SOIL_TAXONOMY,IOCXF,Xerochrept,typic xerochrepts
+C_O_SOIL_TAXONOMY,IPL,Plaggept,
+C_O_SOIL_TAXONOMY,IPLPL,Plaggept,typic plaggepts
+C_O_SOIL_TAXONOMY,ITR,Tropept,
+C_O_SOIL_TAXONOMY,ITRDY,Dystropept,typic dystropepts
+C_O_SOIL_TAXONOMY,ITREU,Eutropept,typic eutropepts
+C_O_SOIL_TAXONOMY,ITRHU,Humitropept,typic humitropepts
+C_O_SOIL_TAXONOMY,ITRSO,Sombritropept,typic sombritropepts
+C_O_SOIL_TAXONOMY,ITRUS,Ustroept,typic ustroepts
+C_O_SOIL_TAXONOMY,IUM,Umbrept,typic umbrepts
+C_O_SOIL_TAXONOMY,IUMCR,Cryumbrept,typic cryumbrepts
+C_O_SOIL_TAXONOMY,IUMFR,Fragiumbrept,typic fragiumbrepts
+C_O_SOIL_TAXONOMY,IUMHA,Haplumbrept,typic haplumbrepts
+C_O_SOIL_TAXONOMY,IUMXF,Xerumbrept,typic xerumbrepts
+C_O_SOIL_TAXONOMY,M,Mollisol,
+C_O_SOIL_TAXONOMY,MAL,Alboll,
+C_O_SOIL_TAXONOMY,MALAR,Argialboll,typic argialbolls
+C_O_SOIL_TAXONOMY,MALNA,Natralboll,typic natralbolls
+C_O_SOIL_TAXONOMY,MAQ,Aquoll,typic aquolls
+C_O_SOIL_TAXONOMY,MAQAR,Argiaquoll,typic argiaquolls
+C_O_SOIL_TAXONOMY,MAQCA,Calciaquoll,typic calciaquolls
+C_O_SOIL_TAXONOMY,MAQCR,Cryaquoll,typic cryaquolls
+C_O_SOIL_TAXONOMY,MAQDU,Duraquoll,typic duraquolls
+C_O_SOIL_TAXONOMY,MAQHA,Haplaquoll,typic haplaquolls
+C_O_SOIL_TAXONOMY,MAQNA,Natraquoll,typic natraquolls
+C_O_SOIL_TAXONOMY,MBO,Boroll,
+C_O_SOIL_TAXONOMY,MBOAR,Argiboroll,typic argiborolls
+C_O_SOIL_TAXONOMY,MBOCA,Calciboroll,typic calciborolls
+C_O_SOIL_TAXONOMY,MBOCR,Cryoboroll,typic cryoborolls
+C_O_SOIL_TAXONOMY,MBOHA,Haploboroll,typic haploborolls
+C_O_SOIL_TAXONOMY,MBONA,Natriboroll,typic natriborolls
+C_O_SOIL_TAXONOMY,MBOPA,Paleboroll,typic paleborolls
+C_O_SOIL_TAXONOMY,MBOVE,Vermiboroll,typic vermiborolls
+C_O_SOIL_TAXONOMY,MRE,Rendoll,typic rendolls
+C_O_SOIL_TAXONOMY,MRERE,Rendoll,typic rendolls
+C_O_SOIL_TAXONOMY,MUD,Udoll,
+C_O_SOIL_TAXONOMY,MUDAR,Argiudoll,typic argiudolls
+C_O_SOIL_TAXONOMY,MUDHA,Hapludoll,typic hapludolls
+C_O_SOIL_TAXONOMY,MUDPA,Paleudoll,typic paleudolls
+C_O_SOIL_TAXONOMY,MUDVE,Vermudoll,typic vermudolls
+C_O_SOIL_TAXONOMY,MUS,Ustoll,
+C_O_SOIL_TAXONOMY,MUSAR,Argiustoll,typic argiustolls
+C_O_SOIL_TAXONOMY,MUSCA,Calciustoll,typic calciustolls
+C_O_SOIL_TAXONOMY,MUSDU,Durustoll,typic durustolls
+C_O_SOIL_TAXONOMY,MUSHA,Haplustoll,typic haplustolls
+C_O_SOIL_TAXONOMY,MUSNA,Natrustoll,typic natrustolls
+C_O_SOIL_TAXONOMY,MUSPA,Paleustoll,typic paleustolls
+C_O_SOIL_TAXONOMY,MUSVE,Vermustoll,typic vermustolls
+C_O_SOIL_TAXONOMY,MXE,Xeroll,
+C_O_SOIL_TAXONOMY,MXEAR,Argixeroll,typic argixerolls
+C_O_SOIL_TAXONOMY,MXECA,Calcixeroll,typic calcixerolls
+C_O_SOIL_TAXONOMY,MXEDU,Durixeroll,typic durixerolls
+C_O_SOIL_TAXONOMY,MXEHA,Haploxeroll,typic haploxerolls
+C_O_SOIL_TAXONOMY,MXENA,Natrixeroll,typic natrixerolls
+C_O_SOIL_TAXONOMY,MXEPA,Palexeroll,typic palexerolls
+C_O_SOIL_TAXONOMY,O,Oxisol,
+C_O_SOIL_TAXONOMY,OAQ,Aquox,typic aquoxs
+C_O_SOIL_TAXONOMY,OAQAC,Aeraquox,typic aeraquoxs
+C_O_SOIL_TAXONOMY,OAQPN,Plinthaquox,typic plinthaquoxs
+C_O_SOIL_TAXONOMY,OAQUE,Eutraquox,typic eutraquoxs
+C_O_SOIL_TAXONOMY,OAQUM,Umbraquox,typic umbraquoxs
+C_O_SOIL_TAXONOMY,OPE,Perox,
+C_O_SOIL_TAXONOMY,OPEAC,Acroperox,typic acroperoxs
+C_O_SOIL_TAXONOMY,OPEEU,Eutroperox,typic eutroperoxs
+C_O_SOIL_TAXONOMY,OPEHA,Haploperox,typic haploperoxs
+C_O_SOIL_TAXONOMY,OPEKA,Kandiperox,typic kandiperoxs
+C_O_SOIL_TAXONOMY,OPESO,Sombriperox,typic sombriperoxs
+C_O_SOIL_TAXONOMY,OTO,Torrox,
+C_O_SOIL_TAXONOMY,OTOAC,Aerotorox,typic aerotoroxs
+C_O_SOIL_TAXONOMY,OTOEU,Eutrotorox,typic eutrotoroxs
+C_O_SOIL_TAXONOMY,OTOHA,Haplotorox,typic haplotoroxs
+C_O_SOIL_TAXONOMY,OUD,Udox,
+C_O_SOIL_TAXONOMY,OUDAC,Aerudox,typic aerudoxs
+C_O_SOIL_TAXONOMY,OUDEU,Eutrudox,typic eutrudoxs
+C_O_SOIL_TAXONOMY,OUDHA,Hapludox,typic hapludoxs
+C_O_SOIL_TAXONOMY,OUDKA,Kandiudox,typic kandiudoxs
+C_O_SOIL_TAXONOMY,OUDSO,Sombriudox,typic sombriudoxs
+C_O_SOIL_TAXONOMY,OUS,Ustox,
+C_O_SOIL_TAXONOMY,OUSAC,Acrustox,typic acrustoxs
+C_O_SOIL_TAXONOMY,OUSEU,Eutrustox,typic eutrustoxs
+C_O_SOIL_TAXONOMY,OUSHA,Haplustox,typic haplustoxs
+C_O_SOIL_TAXONOMY,OUSKA,Kandiustox,typic kandiustoxs
+C_O_SOIL_TAXONOMY,OUSSO,Sombriustox,typic sombriustoxs
+C_O_SOIL_TAXONOMY,S,Spodosol,
+C_O_SOIL_TAXONOMY,SAQ,Aquod,
+C_O_SOIL_TAXONOMY,SAQCR,Cryaquod,typic cryaquods
+C_O_SOIL_TAXONOMY,SAQDU,Duraquod,typic duraquods
+C_O_SOIL_TAXONOMY,SAQFR,Fragiaquod,typic fragiaquods
+C_O_SOIL_TAXONOMY,SAQHA,Haplaquod,typic haplaquods
+C_O_SOIL_TAXONOMY,SAQPK,Placaquod,typic placaquods
+C_O_SOIL_TAXONOMY,SAQSI,Sideraquod,typic sideraquods
+C_O_SOIL_TAXONOMY,SAQTR,Tropaquod,typic tropaquods
+C_O_SOIL_TAXONOMY,SFE,Ferrod,
+C_O_SOIL_TAXONOMY,SFEFE,Ferrod,typic ferrods
+C_O_SOIL_TAXONOMY,SHU,Humod,
+C_O_SOIL_TAXONOMY,SHUCR,Cryohumod,typic cryohumods
+C_O_SOIL_TAXONOMY,SHUFR,Fragihumod,typic fragihumods
+C_O_SOIL_TAXONOMY,SHUHA,Haplohumod,typic haplohumods
+C_O_SOIL_TAXONOMY,SHUPK,Placohumod,typic placohumods
+C_O_SOIL_TAXONOMY,SHUTR,Tropohumod,typic tropohumods
+C_O_SOIL_TAXONOMY,SOR,Orthod,
+C_O_SOIL_TAXONOMY,SORCR,Cryorthod,typic cryorthods
+C_O_SOIL_TAXONOMY,SORFR,Fragiorthod,typic fragiorthods
+C_O_SOIL_TAXONOMY,SORHA,Haplorthod,typic haplorthods
+C_O_SOIL_TAXONOMY,SORPK,Placorthod,typic placorthods
+C_O_SOIL_TAXONOMY,SORTR,Troporthod,typic troporthods
+C_O_SOIL_TAXONOMY,U,Ultisol,
+C_O_SOIL_TAXONOMY,UAQ,Aquult,
+C_O_SOIL_TAXONOMY,UAQAL,Albaquult,typic albaquults
+C_O_SOIL_TAXONOMY,UAQFR,Fragiaquult,typic fragiaquults
+C_O_SOIL_TAXONOMY,UAQKA,Kandiaquult,typic kandiaquults
+C_O_SOIL_TAXONOMY,UAQKH,Kanhaplaquult,typic kanhaplaquults
+C_O_SOIL_TAXONOMY,UAQOC,Ochraquult,typic ochraquults
+C_O_SOIL_TAXONOMY,UAQPA,Paleaquult,typic paleaquults
+C_O_SOIL_TAXONOMY,UAQPN,Plinthaquult,typic plinthaquults
+C_O_SOIL_TAXONOMY,UAQTR,Tropaquult,typic tropaquults
+C_O_SOIL_TAXONOMY,UAQUM,Umbraquult,typic umbraquults
+C_O_SOIL_TAXONOMY,UHU,Humult,
+C_O_SOIL_TAXONOMY,UHUHA,Haplohumult,typic haplohumults
+C_O_SOIL_TAXONOMY,UHUKA,Kandihumult,typic kandihumults
+C_O_SOIL_TAXONOMY,UHUKH,Kanhaplohumult,typic kanhaplohumults
+C_O_SOIL_TAXONOMY,UHUPN,Plinthohumult,typic plinthohumults
+C_O_SOIL_TAXONOMY,UHUSO,Sombrihumult,typic sombrihumults
+C_O_SOIL_TAXONOMY,UUD,Udult,
+C_O_SOIL_TAXONOMY,UUDFR,Fragiudult,typic fragiudults
+C_O_SOIL_TAXONOMY,UUDHA,Hapludult,typic hapludults
+C_O_SOIL_TAXONOMY,UUDKA,Kandiudult,typic kandiudults
+C_O_SOIL_TAXONOMY,UUDKH,Kanhapludult,typic kanhapludults
+C_O_SOIL_TAXONOMY,UUDPA,Paleudult,typic paleudults
+C_O_SOIL_TAXONOMY,UUDPN,Plinthudult,typic plinthudults
+C_O_SOIL_TAXONOMY,UUDRH,Rhodudult,typic rhodudults
+C_O_SOIL_TAXONOMY,UUS,Ustult,
+C_O_SOIL_TAXONOMY,UUSHA,Haplustult,typic haplustults
+C_O_SOIL_TAXONOMY,UUSKA,Kandiustult,typic kandiustults
+C_O_SOIL_TAXONOMY,UUSKH,Kanhaplustukt,typic kanhaplustukts
+C_O_SOIL_TAXONOMY,UUSPA,Paleustult,typic paleustults
+C_O_SOIL_TAXONOMY,UUSPN,Plinthustult,typic plinthustults
+C_O_SOIL_TAXONOMY,UUSRH,Rhodustult,typic rhodustults
+C_O_SOIL_TAXONOMY,UXE,Xerult,
+C_O_SOIL_TAXONOMY,UXEHA,Haploxerult,typic haploxerults
+C_O_SOIL_TAXONOMY,UXEPA,Palexerult,typic palexerults
+C_O_SOIL_TAXONOMY,V,Vertisol,
+C_O_SOIL_TAXONOMY,VTD,Torrert,
+C_O_SOIL_TAXONOMY,VTOTO,Torrert,typic torrerts
+C_O_SOIL_TAXONOMY,VUD,Udert,
+C_O_SOIL_TAXONOMY,VUDCH,Chromudert,typic chromuderts
+C_O_SOIL_TAXONOMY,VUDPE,Pelludert,typic pelluderts
+C_O_SOIL_TAXONOMY,VUS,Ustert,
+C_O_SOIL_TAXONOMY,VUSCH,Chromustert,typic chromusterts / udic chromusterts
+C_O_SOIL_TAXONOMY,VUSPE,Pellustert,typic pellusterts
+C_O_SOIL_TAXONOMY,VXE,Xerert,
+C_O_SOIL_TAXONOMY,VXECH,Chromoxerert,typic chromoxererts
+C_O_SOIL_TAXONOMY,VXEPE,Pelloxerert,typic pelloxererts

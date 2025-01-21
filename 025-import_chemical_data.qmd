@@ -214,7 +214,7 @@ dim(chemsprops.NCSS)
 ## [1] 346203     39
 ```
 
-```{r ncss-time, echo=FALSE, fig.cap="SOC measurements based on the National Cooperative Soil Survey Characterization Database over time.", out.width="100%"}
+```{r ncss-time, echo=FALSE, fig.cap="SOC measurements based on the National Cooperative Soil Survey Characterization Database over time.", out.width="80%"}
 knitr::include_graphics("img/fig_NCSS_soc_over_time.png")
 ```
 
@@ -2052,9 +2052,10 @@ Note: Data download <https://doi.org/10.4121/c90215b3-bdc6-4633-b721-4c4a0259d6d
 if(!exists("chemsprops.NLBIS")){
   ## Tabular datasets of each georeferenced soil property point data are provided as separate CSV files for each soil property.
   nlbis.lst = list.files("/mnt/diskstation/data/Soil_points/Netherlands/BIS", pattern=glob2rx("*.csv.gz"), full.names = TRUE)
-  nlbis.hor = plyr::join_all(lapply(nlbis.lst, function(i){vroom::vroom(gzfile(i))}), type="full")
+  nlbis.horA = vroom::vroom("/mnt/diskstation/data/Soil_points/Netherlands/BIS/tbl_cal_SOM_per.csv.gz")
+  nlbis.hor = dplyr::left_join(nlbis.horA, plyr::join_all(lapply(nlbis.lst[-grep("_SOM", nlbis.lst)], function(i){vroom::vroom(gzfile(i))}), type="full", by=c("sample_id", "site_id", "hor_nr")), multiple = "first")
   #str(nlbis.hor)
-  ## 1,145,381 obs. of  21 variables
+  ##855,950 × 21
   ## this is relatively large lab data set - it would create imbalance in the bind, so better to trim-down
   ## limit to measurements > 1999 only
   #summary(as.factor(nlbis.hor$year))
@@ -2062,7 +2063,8 @@ if(!exists("chemsprops.NLBIS")){
   #plot(nlbis.hor[,c("X","Y")], pch="+", asp=1)
   ## LOI method - harmonization: https://doi.org/10.1111/ejss.12558
   #nlbis.hor$organic_carbon = nlbis.hor$SOM_per / 1.72 * 10
-  nlbis.hor$organic_carbon = (0.513*nlbis.hor$SOM_per-0.047*nlbis.hor$clay_per+0.00025*nlbis.hor$clay_per^2 )*10
+  #hist(log1p(nlbis.hor$SOM_per))
+  nlbis.hor$organic_carbon = (0.513*nlbis.hor$SOM_per -0.047*nlbis.hor$clay_per + 0.00025*nlbis.hor$clay_per^2 )*10
   nlbis.hor$organic_carbon = ifelse(nlbis.hor$organic_carbon < 0, 0, nlbis.hor$organic_carbon)
   #summary(nlbis.hor$organic_carbon)
   nlbis.xy = terra::vect(nlbis.hor[,c("X","Y")], geom=c("X","Y"), crs="EPSG:28992")
@@ -2075,10 +2077,11 @@ if(!exists("chemsprops.NLBIS")){
   #summary(nlbis.hor$d_upper)
   ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
   ##   0.000   2.907  17.442  83.267  58.140 575.581   22417 
+  #summary(nlbis.hor$BD_gcm3)
   nlbis.hor$oc_d = signif(nlbis.hor$organic_carbon * nlbis.hor$BD_gcm3, 3)
   #summary(nlbis.hor$oc_d)
   #  Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
-  #  2.79   13.10   24.40   29.87   43.18   83.70  238090  
+  #  0.00   10.25   15.20   21.95   30.90   63.80  215900  
   nlbis.name = c("site_id", "upedonid", "year", "longitude_decimal_degrees", 
                "latitude_decimal_degrees", "SSL_classification_name",  
                "sample_id", "layer_key", "hor_nr", "d_upper", "d_lower", 
@@ -2097,9 +2100,10 @@ if(!exists("chemsprops.NLBIS")){
   chemsprops.NLBIS$citation_url = "https://doi.org/10.5194/essd-16-2941-2024"
   chemsprops.NLBIS = complete.vars(chemsprops.NLBIS, sel = c("organic_carbon", "pH_KCl"))
   saveRDS.gz(chemsprops.NLBIS, "/mnt/diskstation/data/Soil_points/Netherlands/chemsprops.NLBIS.rds")
+##  writeVector(terra::vect(chemsprops.NLBIS, geom=c("longitude_decimal_degrees", "latitude_decimal_degrees"), crs="EPSG:4326"), "/data/wri_soil/chemsprops.NLBIS.gpkg")
 }
 dim(chemsprops.NLBIS)
-## [1] 116533     39
+## [1] 116290     39
 ```
 
 
@@ -2370,33 +2374,73 @@ Note: Pseudo-observations based on GLANCE points; use only class "6" which is sa
 ```{r}
 if(!exists("chemsprops.GLANCE")){
   ## 0 soil organic carbon + 99% sand content (deserts)
-  bare = read_sf("/mnt/landmark/GLANCE/bu_glance_training_dataV1.gpkg")
+  bare = read_sf("/data/wri_soil/bu_glance_training_dataV1.gpkg")
   ## Level 2 land cover value (integer): 1 (Water), 2 (Ice/snow), 3 (Developed), 4 (Soil), 
   ## 5 (Rock), 6 (Beach/sand), 7 (Deciduous), 8 (Evergreen), 9 (Mixed), 10 (Shrub), 
   ## 11 (Grassland), 12 (Agriculture), and 13 (Moss/lichen). NaN values present.
-  #bare = bare[(bare$Glance_Class_ID_level2==5|bare$Glance_Class_ID_level2==6),]
-  bare = bare[bare$Glance_Class_ID_level2==6,]
+  bare = bare[(bare$Glance_Class_ID_level2==5|bare$Glance_Class_ID_level2==6),]
+  #dim(bare)
+  #[1] 13057    21
+  #summary(as.factor(bare$Glance_Class_ID_level2))
+  #    5    6 
+  # 9972 3085  
+  #bare = bare[bare$Glance_Class_ID_level2==6,]
+  ## Not all "Rock" classes are surface rock - needs visual check
+  g100km = terra::vect("/data/CCI_LandCover/tiles_GH_100km_land.gpkg")
+  ov.g100km = extract(g100km, terra::project(terra::vect(bare), crs(g100km)))
+  ov.g100km$Glance_ID = bare$Glance_ID
+  #summary(as.factor(ov.g100km$ID))
+  ## randomly subset up to max 30 points per 100x100km tile
+  ov.g100km.s <- ov.g100km[,c("Glance_ID", "ID")] %>% group_by(ID) %>% slice(sample(n(), min(30, n()))) %>% ungroup()
+  ## 6878 points in total
+  #summary(as.factor(ov.g100km.s$ID))
   #plot(bare["Dataset_Code"])
-  #write_sf(bare, "bu_glance_sand_barerock_V1.gpkg")
-  #plot(bare["Glance_Class_ID_level2"])
-  #str(bare)
-  ## 3085 points
-  bare.df = data.table::data.table(cbind(as.data.frame(bare), st_coordinates(bare)))
+  #write_sf(bare, "/data/wri_soil/bu_glance_sand_barerock_V1.gpkg")
+  bare.s = bare[bare$Glance_ID %in% ov.g100km.s$Glance_ID,]
+  #plot(bare.s["Glance_Class_ID_level2"])
+  #str(bare.s)
+  ## 6,878 points
+  ## Add world peaks (http://www.peaklist.org/ultras.html)
+  pks = read_sf("/data/CCI_LandCover/ultrasgoogle052007.KMZ")
+  pks.df = data.table::data.table(cbind(as.data.frame(pks), st_coordinates(pks)))
+  ## 1524 world peaks
+  pks.df$Start_Year = 2000
+  pks.df$End_Year = 2022
+  pks.df$Glance_ID = paste0("ultras_", 1:nrow(pks.df))
+  pks.df$Lon = pks.df$X
+  pks.df$Lat = pks.df$Y
+  pks.df$Glance_Class_ID_level2 = 5
+  ## bind GLANCE and Ultras
+  sel.glnc = c("Glance_ID", "Lon", "Lat", "Start_Year", "End_Year", "Glance_Class_ID_level2")
+  bare.df = cbind(as.data.frame(bare.s)[,sel.glnc], st_coordinates(bare.s))
+  bare.df = data.table::data.table(dplyr::bind_rows(bare.df, as.data.frame(pks.df)[,names(bare.df)]))
+  #View(bare.df)
   ## Extend to start end periods:
-  bare.ex = as.data.frame(data.table::setDT(bare.df)[ , list(site_key=Glance_ID, X=X, Y=Y, longitude_decimal_degrees=Lon, latitude_decimal_degrees=Lat, site_obsdate = seq(Start_Year, End_Year)), by = 1:nrow(bare.df)])
-  ## 50220
+  bare.ex = as.data.frame(data.table::setDT(bare.df)[ , list(site_key=Glance_ID, Glance_Class_ID_level2=Glance_Class_ID_level2, X=X, Y=Y, longitude_decimal_degrees=Lon, latitude_decimal_degrees=Lat, site_obsdate = seq(Start_Year, End_Year)), by = 1:nrow(bare.df)])
+  #dim(bare.ex)
+  ## 151320 spacetime points!
+  #write.csv(bare.ex, gzfile("/data/wri_soil/bare_soil_pnts.csv.gz"))
+  ## Remove all points that are NOT bare areas on the most detailed GLC (30m resolution)
+  ov.bare.ex = terra::extract(
+    terra::rast("/data/CCI_LandCover/lc_glc.fcs30d_c_30m_s_20220101_20221231_go_epsg.4326_v20231026.tif"), 
+          terra::vect(bare.ex, geom=c("longitude_decimal_degrees", "latitude_decimal_degrees"), crs="EPSG:4326"))
+  bare.ex = bare.ex[ov.bare.ex[,2] %in% c(190,200,201,202,220),]
+  #str(bare.ex)
+  ## 80652 spacetime pnts 
+  #str(levels(as.factor(bare.ex$site_key)))
+  ## 4680 unique locations
   ## insert zeros for all nutrients except for the once we are not sure:
   ## http://www.decodedscience.org/chemistry-sahara-sand-elements-dunes/45828
   bare.ex$oc_d = 0
   bare.ex$organic_carbon = 0
   bare.ex$total_carbon_ncs = 0
   bare.ex$total_nitrogen_ncs = 0
-  bare.ex$k_ext = 0
-  bare.ex$mg_ext = 0
-  bare.ex$clay_total = 0
-  bare.ex$sand_total = 99
-  bare.ex$silt_total = 1
-  bare.ex$bulk_density_oven_dry = 1.6
+  bare.ex$k_ext = ifelse(bare.ex$Glance_Class_ID_level2==6, 0, NA)
+  bare.ex$mg_ext = ifelse(bare.ex$Glance_Class_ID_level2==6, 0, NA)
+  bare.ex$clay_total = ifelse(bare.ex$Glance_Class_ID_level2==6, 0, NA)
+  bare.ex$sand_total = ifelse(bare.ex$Glance_Class_ID_level2==6, 100, NA)
+  bare.ex$silt_total = ifelse(bare.ex$Glance_Class_ID_level2==6, 0, NA)
+  bare.ex$bulk_density_oven_dry = ifelse(bare.ex$Glance_Class_ID_level2==6, 1.6, NA)
   bare.ex$source_db = "GLANCE"
   bare.ex$hzn_top = 0
   bare.ex$hzn_bot = 30
@@ -2410,7 +2454,7 @@ if(!exists("chemsprops.GLANCE")){
   saveRDS.gz(chemsprops.SIM, "/mnt/diskstation/data/Soil_points/INT/chemsprops.SIM.rds")
 }
 dim(chemsprops.SIM)
-## [1] 50220    39
+## [1] 80652    39
 ```
 
 Other potential large soil profile DBs of interest:
@@ -2498,7 +2542,7 @@ Add unique location based on the [Open Location Code](https://cran.r-project.org
 ```{r}
 tot_sprops$olc_id = olctools::encode_olc(tot_sprops$latitude_decimal_degrees, tot_sprops$longitude_decimal_degrees, 11)
 length(levels(as.factor(tot_sprops$olc_id)))
-## 342,368
+## 343814
 ```
 
 ```{r}
@@ -2537,7 +2581,7 @@ mask = terra::rast("/data/CCI_LandCover/land.cover_copernicus_c_100m_s_20150101_
 #}
 ## final number of unique spatial locations:
 nrow(tot_sprops.pnts)
-## 342368
+## 343814
 ```
 
 #### Histogram plots

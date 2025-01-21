@@ -284,7 +284,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="soil-chemical-and-physical-properties" class="level1">
 <h1>Soil chemical and physical properties</h1>
 <p>The code and data set is continuously being updated. If you notice a bug or typo, please <a href="https://github.com/OpenGeoHub/SoilSamples/issues">open an issue</a> and report.</p>
-<p>Last update: 2025-01-08</p>
+<p>Last update: 2025-01-21</p>
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
 <p>This section describes import steps used to produce a global compilation of soil laboratory data with chemical (and physical) soil properties that can be then used for predictive soil mapping / modeling at global and regional scales.</p>
@@ -1449,7 +1449,7 @@ Joining by: tex_field</code></pre>
 <span id="cb92-30"><a href="#cb92-30" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb92-31"><a href="#cb92-31" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(chemsprops.NPDB)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 55828    39</code></pre>
+<pre><code>[1] 52021    39</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 55809    39</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -2996,54 +2996,67 @@ deprecated. It might return a CRS with a non-EPSG compliant axis order.</code></
 <div class="sourceCode cell-code" id="cb252"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb252-1"><a href="#cb252-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">exists</span>(<span class="st">"chemsprops.NLBIS"</span>)){</span>
 <span id="cb252-2"><a href="#cb252-2" aria-hidden="true" tabindex="-1"></a>  <span class="do">## Tabular datasets of each georeferenced soil property point data are provided as separate CSV files for each soil property.</span></span>
 <span id="cb252-3"><a href="#cb252-3" aria-hidden="true" tabindex="-1"></a>  nlbis.lst <span class="ot">=</span> <span class="fu">list.files</span>(<span class="st">"/mnt/diskstation/data/Soil_points/Netherlands/BIS"</span>, <span class="at">pattern=</span><span class="fu">glob2rx</span>(<span class="st">"*.csv.gz"</span>), <span class="at">full.names =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb252-4"><a href="#cb252-4" aria-hidden="true" tabindex="-1"></a>  nlbis.hor <span class="ot">=</span> plyr<span class="sc">::</span><span class="fu">join_all</span>(<span class="fu">lapply</span>(nlbis.lst, <span class="cf">function</span>(i){vroom<span class="sc">::</span><span class="fu">vroom</span>(<span class="fu">gzfile</span>(i))}), <span class="at">type=</span><span class="st">"full"</span>)</span>
-<span id="cb252-5"><a href="#cb252-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">#str(nlbis.hor)</span></span>
-<span id="cb252-6"><a href="#cb252-6" aria-hidden="true" tabindex="-1"></a>  <span class="do">## 1,145,381 obs. of  21 variables</span></span>
-<span id="cb252-7"><a href="#cb252-7" aria-hidden="true" tabindex="-1"></a>  <span class="do">## this is relatively large lab data set - it would create imbalance in the bind, so better to trim-down</span></span>
-<span id="cb252-8"><a href="#cb252-8" aria-hidden="true" tabindex="-1"></a>  <span class="do">## limit to measurements &gt; 1999 only</span></span>
-<span id="cb252-9"><a href="#cb252-9" aria-hidden="true" tabindex="-1"></a>  <span class="co">#summary(as.factor(nlbis.hor$year))</span></span>
-<span id="cb252-10"><a href="#cb252-10" aria-hidden="true" tabindex="-1"></a>  nlbis.hor <span class="ot">=</span> nlbis.hor[nlbis.hor<span class="sc">$</span>year<span class="sc">&gt;</span><span class="dv">1999</span>,]</span>
-<span id="cb252-11"><a href="#cb252-11" aria-hidden="true" tabindex="-1"></a>  <span class="co">#plot(nlbis.hor[,c("X","Y")], pch="+", asp=1)</span></span>
-<span id="cb252-12"><a href="#cb252-12" aria-hidden="true" tabindex="-1"></a>  <span class="do">## LOI method - harmonization: https://doi.org/10.1111/ejss.12558</span></span>
-<span id="cb252-13"><a href="#cb252-13" aria-hidden="true" tabindex="-1"></a>  <span class="co">#nlbis.hor$organic_carbon = nlbis.hor$SOM_per / 1.72 * 10</span></span>
-<span id="cb252-14"><a href="#cb252-14" aria-hidden="true" tabindex="-1"></a>  nlbis.hor<span class="sc">$</span>organic_carbon <span class="ot">=</span> (<span class="fl">0.513</span><span class="sc">*</span>nlbis.hor<span class="sc">$</span>SOM_per<span class="fl">-0.047</span><span class="sc">*</span>nlbis.hor<span class="sc">$</span>clay_per<span class="fl">+0.00025</span><span class="sc">*</span>nlbis.hor<span class="sc">$</span>clay_per<span class="sc">^</span><span class="dv">2</span> )<span class="sc">*</span><span class="dv">10</span></span>
-<span id="cb252-15"><a href="#cb252-15" aria-hidden="true" tabindex="-1"></a>  nlbis.hor<span class="sc">$</span>organic_carbon <span class="ot">=</span> <span class="fu">ifelse</span>(nlbis.hor<span class="sc">$</span>organic_carbon <span class="sc">&lt;</span> <span class="dv">0</span>, <span class="dv">0</span>, nlbis.hor<span class="sc">$</span>organic_carbon)</span>
-<span id="cb252-16"><a href="#cb252-16" aria-hidden="true" tabindex="-1"></a>  <span class="co">#summary(nlbis.hor$organic_carbon)</span></span>
-<span id="cb252-17"><a href="#cb252-17" aria-hidden="true" tabindex="-1"></a>  nlbis.xy <span class="ot">=</span> terra<span class="sc">::</span><span class="fu">vect</span>(nlbis.hor[,<span class="fu">c</span>(<span class="st">"X"</span>,<span class="st">"Y"</span>)], <span class="at">geom=</span><span class="fu">c</span>(<span class="st">"X"</span>,<span class="st">"Y"</span>), <span class="at">crs=</span><span class="st">"EPSG:28992"</span>)</span>
-<span id="cb252-18"><a href="#cb252-18" aria-hidden="true" tabindex="-1"></a>  nlbis.ll <span class="ot">=</span> terra<span class="sc">::</span><span class="fu">project</span>(nlbis.xy, <span class="st">"EPSG:4326"</span>)</span>
-<span id="cb252-19"><a href="#cb252-19" aria-hidden="true" tabindex="-1"></a>  nlbis.hor<span class="sc">$</span>longitude_decimal_degrees <span class="ot">=</span> <span class="fu">geom</span>(nlbis.ll)[,<span class="st">"x"</span>]</span>
-<span id="cb252-20"><a href="#cb252-20" aria-hidden="true" tabindex="-1"></a>  nlbis.hor<span class="sc">$</span>latitude_decimal_degrees <span class="ot">=</span> <span class="fu">geom</span>(nlbis.ll)[,<span class="st">"y"</span>]</span>
-<span id="cb252-21"><a href="#cb252-21" aria-hidden="true" tabindex="-1"></a>  nlbis.hor<span class="sc">$</span>cec_nh4_ph_7 <span class="ot">=</span> nlbis.hor<span class="sc">$</span>CEC <span class="sc">/</span> <span class="dv">10</span></span>
-<span id="cb252-22"><a href="#cb252-22" aria-hidden="true" tabindex="-1"></a>  <span class="co">#summary(nlbis.hor$N_tot_mgkg)</span></span>
-<span id="cb252-23"><a href="#cb252-23" aria-hidden="true" tabindex="-1"></a>  nlbis.hor<span class="sc">$</span>total_nitrogen_ncs <span class="ot">=</span> nlbis.hor<span class="sc">$</span>N_tot_mgkg<span class="sc">/</span><span class="dv">1000</span></span>
-<span id="cb252-24"><a href="#cb252-24" aria-hidden="true" tabindex="-1"></a>  <span class="co">#summary(nlbis.hor$d_upper)</span></span>
-<span id="cb252-25"><a href="#cb252-25" aria-hidden="true" tabindex="-1"></a>  <span class="do">##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's </span></span>
-<span id="cb252-26"><a href="#cb252-26" aria-hidden="true" tabindex="-1"></a>  <span class="do">##   0.000   2.907  17.442  83.267  58.140 575.581   22417 </span></span>
-<span id="cb252-27"><a href="#cb252-27" aria-hidden="true" tabindex="-1"></a>  nlbis.hor<span class="sc">$</span>oc_d <span class="ot">=</span> <span class="fu">signif</span>(nlbis.hor<span class="sc">$</span>organic_carbon <span class="sc">*</span> nlbis.hor<span class="sc">$</span>BD_gcm3, <span class="dv">3</span>)</span>
-<span id="cb252-28"><a href="#cb252-28" aria-hidden="true" tabindex="-1"></a>  <span class="co">#summary(nlbis.hor$oc_d)</span></span>
-<span id="cb252-29"><a href="#cb252-29" aria-hidden="true" tabindex="-1"></a>  <span class="co">#  Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's </span></span>
-<span id="cb252-30"><a href="#cb252-30" aria-hidden="true" tabindex="-1"></a>  <span class="co">#  2.79   13.10   24.40   29.87   43.18   83.70  238090  </span></span>
-<span id="cb252-31"><a href="#cb252-31" aria-hidden="true" tabindex="-1"></a>  nlbis.name <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"site_id"</span>, <span class="st">"upedonid"</span>, <span class="st">"year"</span>, <span class="st">"longitude_decimal_degrees"</span>, </span>
-<span id="cb252-32"><a href="#cb252-32" aria-hidden="true" tabindex="-1"></a>               <span class="st">"latitude_decimal_degrees"</span>, <span class="st">"SSL_classification_name"</span>,  </span>
-<span id="cb252-33"><a href="#cb252-33" aria-hidden="true" tabindex="-1"></a>               <span class="st">"sample_id"</span>, <span class="st">"layer_key"</span>, <span class="st">"hor_nr"</span>, <span class="st">"d_upper"</span>, <span class="st">"d_lower"</span>, </span>
-<span id="cb252-34"><a href="#cb252-34" aria-hidden="true" tabindex="-1"></a>              <span class="st">"hor"</span>, <span class="st">"texture_description"</span>, <span class="st">"texture_lab"</span>, <span class="st">"clay_per"</span>, <span class="st">"silt_per"</span>, </span>
-<span id="cb252-35"><a href="#cb252-35" aria-hidden="true" tabindex="-1"></a>              <span class="st">"sand_per"</span>, <span class="st">"organic_carbon"</span>, <span class="st">"oc_d"</span>, <span class="st">"total_carbon_ncs"</span>, <span class="st">"total_nitrogen_ncs"</span>, </span>
-<span id="cb252-36"><a href="#cb252-36" aria-hidden="true" tabindex="-1"></a>              <span class="st">"pH_KCl"</span>, <span class="st">"ph_h2o"</span>, <span class="st">"ph_cacl2"</span>, </span>
-<span id="cb252-37"><a href="#cb252-37" aria-hidden="true" tabindex="-1"></a>              <span class="st">"sum_of_cations_cec_pH_8_2"</span>, <span class="st">"cec_nh4_ph_7"</span>, <span class="st">"ecec_base_plus_aluminum"</span>, </span>
-<span id="cb252-38"><a href="#cb252-38" aria-hidden="true" tabindex="-1"></a>              <span class="st">"total_frag_wt_pct_gt_2_mm_ws"</span>, <span class="st">"BD_gcm3"</span>, <span class="st">"ca_ext"</span>, <span class="st">"mg_ext"</span>, </span>
-<span id="cb252-39"><a href="#cb252-39" aria-hidden="true" tabindex="-1"></a>              <span class="st">"na_ext"</span>, <span class="st">"k_ext"</span>, <span class="st">"ec_water_extractable"</span>, <span class="st">"ec_predict_one_to_two"</span>)</span>
-<span id="cb252-40"><a href="#cb252-40" aria-hidden="true" tabindex="-1"></a>  x.na <span class="ot">=</span> nlbis.name[<span class="fu">which</span>(<span class="sc">!</span>nlbis.name <span class="sc">%in%</span> <span class="fu">names</span>(nlbis.hor))]</span>
-<span id="cb252-41"><a href="#cb252-41" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">length</span>(x.na)<span class="sc">&gt;</span><span class="dv">0</span>){ <span class="cf">for</span>(i <span class="cf">in</span> x.na){ nlbis.hor[,i] <span class="ot">=</span> <span class="cn">NA</span> } }</span>
-<span id="cb252-42"><a href="#cb252-42" aria-hidden="true" tabindex="-1"></a>  chemsprops.NLBIS <span class="ot">=</span> nlbis.hor[,nlbis.name]</span>
-<span id="cb252-43"><a href="#cb252-43" aria-hidden="true" tabindex="-1"></a>  chemsprops.NLBIS<span class="sc">$</span>source_db <span class="ot">=</span> <span class="st">"Netherlands.BIS"</span></span>
-<span id="cb252-44"><a href="#cb252-44" aria-hidden="true" tabindex="-1"></a>  chemsprops.NLBIS<span class="sc">$</span>confidence_degree <span class="ot">=</span> <span class="dv">4</span></span>
-<span id="cb252-45"><a href="#cb252-45" aria-hidden="true" tabindex="-1"></a>  chemsprops.NLBIS<span class="sc">$</span>project_url <span class="ot">=</span> <span class="st">"https://git.wageningenur.nl/helfe001/bis-4d"</span></span>
-<span id="cb252-46"><a href="#cb252-46" aria-hidden="true" tabindex="-1"></a>  chemsprops.NLBIS<span class="sc">$</span>citation_url <span class="ot">=</span> <span class="st">"https://doi.org/10.5194/essd-16-2941-2024"</span></span>
-<span id="cb252-47"><a href="#cb252-47" aria-hidden="true" tabindex="-1"></a>  chemsprops.NLBIS <span class="ot">=</span> <span class="fu">complete.vars</span>(chemsprops.NLBIS, <span class="at">sel =</span> <span class="fu">c</span>(<span class="st">"organic_carbon"</span>, <span class="st">"pH_KCl"</span>))</span>
-<span id="cb252-48"><a href="#cb252-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">saveRDS.gz</span>(chemsprops.NLBIS, <span class="st">"/mnt/diskstation/data/Soil_points/Netherlands/chemsprops.NLBIS.rds"</span>)</span>
-<span id="cb252-49"><a href="#cb252-49" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb252-4"><a href="#cb252-4" aria-hidden="true" tabindex="-1"></a>  nlbis.horA <span class="ot">=</span> vroom<span class="sc">::</span><span class="fu">vroom</span>(<span class="st">"/mnt/diskstation/data/Soil_points/Netherlands/BIS/tbl_cal_SOM_per.csv.gz"</span>)</span>
+<span id="cb252-5"><a href="#cb252-5" aria-hidden="true" tabindex="-1"></a>  nlbis.hor <span class="ot">=</span> dplyr<span class="sc">::</span><span class="fu">left_join</span>(nlbis.horA, plyr<span class="sc">::</span><span class="fu">join_all</span>(<span class="fu">lapply</span>(nlbis.lst[<span class="sc">-</span><span class="fu">grep</span>(<span class="st">"_SOM"</span>, nlbis.lst)], <span class="cf">function</span>(i){vroom<span class="sc">::</span><span class="fu">vroom</span>(<span class="fu">gzfile</span>(i))}), <span class="at">type=</span><span class="st">"full"</span>, <span class="at">by=</span><span class="fu">c</span>(<span class="st">"sample_id"</span>, <span class="st">"site_id"</span>, <span class="st">"hor_nr"</span>)), <span class="at">multiple =</span> <span class="st">"first"</span>)</span>
+<span id="cb252-6"><a href="#cb252-6" aria-hidden="true" tabindex="-1"></a>  <span class="co">#str(nlbis.hor)</span></span>
+<span id="cb252-7"><a href="#cb252-7" aria-hidden="true" tabindex="-1"></a>  <span class="do">##855,950 × 21</span></span>
+<span id="cb252-8"><a href="#cb252-8" aria-hidden="true" tabindex="-1"></a>  <span class="do">## this is relatively large lab data set - it would create imbalance in the bind, so better to trim-down</span></span>
+<span id="cb252-9"><a href="#cb252-9" aria-hidden="true" tabindex="-1"></a>  <span class="do">## limit to measurements &gt; 1999 only</span></span>
+<span id="cb252-10"><a href="#cb252-10" aria-hidden="true" tabindex="-1"></a>  <span class="co">#summary(as.factor(nlbis.hor$year))</span></span>
+<span id="cb252-11"><a href="#cb252-11" aria-hidden="true" tabindex="-1"></a>  nlbis.hor <span class="ot">=</span> nlbis.hor[nlbis.hor<span class="sc">$</span>year<span class="sc">&gt;</span><span class="dv">1999</span>,]</span>
+<span id="cb252-12"><a href="#cb252-12" aria-hidden="true" tabindex="-1"></a>  <span class="co">#plot(nlbis.hor[,c("X","Y")], pch="+", asp=1)</span></span>
+<span id="cb252-13"><a href="#cb252-13" aria-hidden="true" tabindex="-1"></a>  <span class="do">## LOI method - harmonization: https://doi.org/10.1111/ejss.12558</span></span>
+<span id="cb252-14"><a href="#cb252-14" aria-hidden="true" tabindex="-1"></a>  <span class="co">#nlbis.hor$organic_carbon = nlbis.hor$SOM_per / 1.72 * 10</span></span>
+<span id="cb252-15"><a href="#cb252-15" aria-hidden="true" tabindex="-1"></a>  <span class="co">#hist(log1p(nlbis.hor$SOM_per))</span></span>
+<span id="cb252-16"><a href="#cb252-16" aria-hidden="true" tabindex="-1"></a>  nlbis.hor<span class="sc">$</span>organic_carbon <span class="ot">=</span> (<span class="fl">0.513</span><span class="sc">*</span>nlbis.hor<span class="sc">$</span>SOM_per <span class="sc">-</span><span class="fl">0.047</span><span class="sc">*</span>nlbis.hor<span class="sc">$</span>clay_per <span class="sc">+</span> <span class="fl">0.00025</span><span class="sc">*</span>nlbis.hor<span class="sc">$</span>clay_per<span class="sc">^</span><span class="dv">2</span> )<span class="sc">*</span><span class="dv">10</span></span>
+<span id="cb252-17"><a href="#cb252-17" aria-hidden="true" tabindex="-1"></a>  nlbis.hor<span class="sc">$</span>organic_carbon <span class="ot">=</span> <span class="fu">ifelse</span>(nlbis.hor<span class="sc">$</span>organic_carbon <span class="sc">&lt;</span> <span class="dv">0</span>, <span class="dv">0</span>, nlbis.hor<span class="sc">$</span>organic_carbon)</span>
+<span id="cb252-18"><a href="#cb252-18" aria-hidden="true" tabindex="-1"></a>  <span class="co">#summary(nlbis.hor$organic_carbon)</span></span>
+<span id="cb252-19"><a href="#cb252-19" aria-hidden="true" tabindex="-1"></a>  nlbis.xy <span class="ot">=</span> terra<span class="sc">::</span><span class="fu">vect</span>(nlbis.hor[,<span class="fu">c</span>(<span class="st">"X"</span>,<span class="st">"Y"</span>)], <span class="at">geom=</span><span class="fu">c</span>(<span class="st">"X"</span>,<span class="st">"Y"</span>), <span class="at">crs=</span><span class="st">"EPSG:28992"</span>)</span>
+<span id="cb252-20"><a href="#cb252-20" aria-hidden="true" tabindex="-1"></a>  nlbis.ll <span class="ot">=</span> terra<span class="sc">::</span><span class="fu">project</span>(nlbis.xy, <span class="st">"EPSG:4326"</span>)</span>
+<span id="cb252-21"><a href="#cb252-21" aria-hidden="true" tabindex="-1"></a>  nlbis.hor<span class="sc">$</span>longitude_decimal_degrees <span class="ot">=</span> <span class="fu">geom</span>(nlbis.ll)[,<span class="st">"x"</span>]</span>
+<span id="cb252-22"><a href="#cb252-22" aria-hidden="true" tabindex="-1"></a>  nlbis.hor<span class="sc">$</span>latitude_decimal_degrees <span class="ot">=</span> <span class="fu">geom</span>(nlbis.ll)[,<span class="st">"y"</span>]</span>
+<span id="cb252-23"><a href="#cb252-23" aria-hidden="true" tabindex="-1"></a>  nlbis.hor<span class="sc">$</span>cec_nh4_ph_7 <span class="ot">=</span> nlbis.hor<span class="sc">$</span>CEC <span class="sc">/</span> <span class="dv">10</span></span>
+<span id="cb252-24"><a href="#cb252-24" aria-hidden="true" tabindex="-1"></a>  <span class="co">#summary(nlbis.hor$N_tot_mgkg)</span></span>
+<span id="cb252-25"><a href="#cb252-25" aria-hidden="true" tabindex="-1"></a>  nlbis.hor<span class="sc">$</span>total_nitrogen_ncs <span class="ot">=</span> nlbis.hor<span class="sc">$</span>N_tot_mgkg<span class="sc">/</span><span class="dv">1000</span></span>
+<span id="cb252-26"><a href="#cb252-26" aria-hidden="true" tabindex="-1"></a>  <span class="co">#summary(nlbis.hor$d_upper)</span></span>
+<span id="cb252-27"><a href="#cb252-27" aria-hidden="true" tabindex="-1"></a>  <span class="do">##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's </span></span>
+<span id="cb252-28"><a href="#cb252-28" aria-hidden="true" tabindex="-1"></a>  <span class="do">##   0.000   2.907  17.442  83.267  58.140 575.581   22417 </span></span>
+<span id="cb252-29"><a href="#cb252-29" aria-hidden="true" tabindex="-1"></a>  <span class="co">#summary(nlbis.hor$BD_gcm3)</span></span>
+<span id="cb252-30"><a href="#cb252-30" aria-hidden="true" tabindex="-1"></a>  nlbis.hor<span class="sc">$</span>oc_d <span class="ot">=</span> <span class="fu">signif</span>(nlbis.hor<span class="sc">$</span>organic_carbon <span class="sc">*</span> nlbis.hor<span class="sc">$</span>BD_gcm3, <span class="dv">3</span>)</span>
+<span id="cb252-31"><a href="#cb252-31" aria-hidden="true" tabindex="-1"></a>  <span class="co">#summary(nlbis.hor$oc_d)</span></span>
+<span id="cb252-32"><a href="#cb252-32" aria-hidden="true" tabindex="-1"></a>  <span class="co">#  Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's </span></span>
+<span id="cb252-33"><a href="#cb252-33" aria-hidden="true" tabindex="-1"></a>  <span class="co">#  0.00   10.25   15.20   21.95   30.90   63.80  215900  </span></span>
+<span id="cb252-34"><a href="#cb252-34" aria-hidden="true" tabindex="-1"></a>  nlbis.name <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"site_id"</span>, <span class="st">"upedonid"</span>, <span class="st">"year"</span>, <span class="st">"longitude_decimal_degrees"</span>, </span>
+<span id="cb252-35"><a href="#cb252-35" aria-hidden="true" tabindex="-1"></a>               <span class="st">"latitude_decimal_degrees"</span>, <span class="st">"SSL_classification_name"</span>,  </span>
+<span id="cb252-36"><a href="#cb252-36" aria-hidden="true" tabindex="-1"></a>               <span class="st">"sample_id"</span>, <span class="st">"layer_key"</span>, <span class="st">"hor_nr"</span>, <span class="st">"d_upper"</span>, <span class="st">"d_lower"</span>, </span>
+<span id="cb252-37"><a href="#cb252-37" aria-hidden="true" tabindex="-1"></a>              <span class="st">"hor"</span>, <span class="st">"texture_description"</span>, <span class="st">"texture_lab"</span>, <span class="st">"clay_per"</span>, <span class="st">"silt_per"</span>, </span>
+<span id="cb252-38"><a href="#cb252-38" aria-hidden="true" tabindex="-1"></a>              <span class="st">"sand_per"</span>, <span class="st">"organic_carbon"</span>, <span class="st">"oc_d"</span>, <span class="st">"total_carbon_ncs"</span>, <span class="st">"total_nitrogen_ncs"</span>, </span>
+<span id="cb252-39"><a href="#cb252-39" aria-hidden="true" tabindex="-1"></a>              <span class="st">"pH_KCl"</span>, <span class="st">"ph_h2o"</span>, <span class="st">"ph_cacl2"</span>, </span>
+<span id="cb252-40"><a href="#cb252-40" aria-hidden="true" tabindex="-1"></a>              <span class="st">"sum_of_cations_cec_pH_8_2"</span>, <span class="st">"cec_nh4_ph_7"</span>, <span class="st">"ecec_base_plus_aluminum"</span>, </span>
+<span id="cb252-41"><a href="#cb252-41" aria-hidden="true" tabindex="-1"></a>              <span class="st">"total_frag_wt_pct_gt_2_mm_ws"</span>, <span class="st">"BD_gcm3"</span>, <span class="st">"ca_ext"</span>, <span class="st">"mg_ext"</span>, </span>
+<span id="cb252-42"><a href="#cb252-42" aria-hidden="true" tabindex="-1"></a>              <span class="st">"na_ext"</span>, <span class="st">"k_ext"</span>, <span class="st">"ec_water_extractable"</span>, <span class="st">"ec_predict_one_to_two"</span>)</span>
+<span id="cb252-43"><a href="#cb252-43" aria-hidden="true" tabindex="-1"></a>  x.na <span class="ot">=</span> nlbis.name[<span class="fu">which</span>(<span class="sc">!</span>nlbis.name <span class="sc">%in%</span> <span class="fu">names</span>(nlbis.hor))]</span>
+<span id="cb252-44"><a href="#cb252-44" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">length</span>(x.na)<span class="sc">&gt;</span><span class="dv">0</span>){ <span class="cf">for</span>(i <span class="cf">in</span> x.na){ nlbis.hor[,i] <span class="ot">=</span> <span class="cn">NA</span> } }</span>
+<span id="cb252-45"><a href="#cb252-45" aria-hidden="true" tabindex="-1"></a>  chemsprops.NLBIS <span class="ot">=</span> nlbis.hor[,nlbis.name]</span>
+<span id="cb252-46"><a href="#cb252-46" aria-hidden="true" tabindex="-1"></a>  chemsprops.NLBIS<span class="sc">$</span>source_db <span class="ot">=</span> <span class="st">"Netherlands.BIS"</span></span>
+<span id="cb252-47"><a href="#cb252-47" aria-hidden="true" tabindex="-1"></a>  chemsprops.NLBIS<span class="sc">$</span>confidence_degree <span class="ot">=</span> <span class="dv">4</span></span>
+<span id="cb252-48"><a href="#cb252-48" aria-hidden="true" tabindex="-1"></a>  chemsprops.NLBIS<span class="sc">$</span>project_url <span class="ot">=</span> <span class="st">"https://git.wageningenur.nl/helfe001/bis-4d"</span></span>
+<span id="cb252-49"><a href="#cb252-49" aria-hidden="true" tabindex="-1"></a>  chemsprops.NLBIS<span class="sc">$</span>citation_url <span class="ot">=</span> <span class="st">"https://doi.org/10.5194/essd-16-2941-2024"</span></span>
+<span id="cb252-50"><a href="#cb252-50" aria-hidden="true" tabindex="-1"></a>  chemsprops.NLBIS <span class="ot">=</span> <span class="fu">complete.vars</span>(chemsprops.NLBIS, <span class="at">sel =</span> <span class="fu">c</span>(<span class="st">"organic_carbon"</span>, <span class="st">"pH_KCl"</span>))</span>
+<span id="cb252-51"><a href="#cb252-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">saveRDS.gz</span>(chemsprops.NLBIS, <span class="st">"/mnt/diskstation/data/Soil_points/Netherlands/chemsprops.NLBIS.rds"</span>)</span>
+<span id="cb252-52"><a href="#cb252-52" aria-hidden="true" tabindex="-1"></a><span class="do">##  writeVector(terra::vect(chemsprops.NLBIS, geom=c("longitude_decimal_degrees", "latitude_decimal_degrees"), crs="EPSG:4326"), "/data/wri_soil/chemsprops.NLBIS.gpkg")</span></span>
+<span id="cb252-53"><a href="#cb252-53" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Rows: 15871 Columns: 13
+<pre><code>Rows: 855950 Columns: 13
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (3): BIS_tbl, BIS_type, hor
+dbl (9): site_id, X, Y, hor_nr, d_upper, d_lower, d_mid, year, SOM_per
+lgl (1): sample_id
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+Rows: 15871 Columns: 13
 ── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
 chr (3): BIS_tbl, BIS_type, hor
@@ -3115,36 +3128,13 @@ lgl (3): sample_id, hor_nr, hor
 
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-Rows: 855950 Columns: 13
-── Column specification ────────────────────────────────────────────────────────
-Delimiter: ","
-chr (3): BIS_tbl, BIS_type, hor
-dbl (9): site_id, X, Y, hor_nr, d_upper, d_lower, d_mid, year, SOM_per
-lgl (1): sample_id
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-Joining by: BIS_tbl, BIS_type, sample_id, site_id, X, Y, hor_nr, hor, d_upper, d_lower, d_mid, year
-
-Joining by: BIS_tbl, BIS_type, sample_id, site_id, X, Y, hor_nr, hor, d_upper, d_lower, d_mid, year
-
-Joining by: BIS_tbl, BIS_type, sample_id, site_id, X, Y, hor_nr, hor, d_upper, d_lower, d_mid, year
-
-Joining by: BIS_tbl, BIS_type, sample_id, site_id, X, Y, hor_nr, hor, d_upper, d_lower, d_mid, year
-
-Joining by: BIS_tbl, BIS_type, sample_id, site_id, X, Y, hor_nr, hor, d_upper, d_lower, d_mid, year
-
-Joining by: BIS_tbl, BIS_type, sample_id, site_id, X, Y, hor_nr, hor, d_upper, d_lower, d_mid, year
-
-Joining by: BIS_tbl, BIS_type, sample_id, site_id, X, Y, hor_nr, hor, d_upper, d_lower, d_mid, year
-
-Joining by: BIS_tbl, BIS_type, sample_id, site_id, X, Y, hor_nr, hor, d_upper, d_lower, d_mid, year</code></pre>
+Joining with `by = join_by(BIS_tbl, BIS_type, sample_id, site_id, X, Y, hor_nr, hor, d_upper, d_lower, d_mid, year)`</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb254"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb254-1"><a href="#cb254-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(chemsprops.NLBIS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 116533     39</code></pre>
+<pre><code>[1] 116204     39</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb256"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb256-1"><a href="#cb256-1" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 116533     39</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb256"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb256-1"><a href="#cb256-1" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 116290     39</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="chilean-soil-organic-carbon-database" class="level4">
@@ -3475,50 +3465,90 @@ Joining by: location_id</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb284"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb284-1"><a href="#cb284-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">exists</span>(<span class="st">"chemsprops.GLANCE"</span>)){</span>
 <span id="cb284-2"><a href="#cb284-2" aria-hidden="true" tabindex="-1"></a>  <span class="do">## 0 soil organic carbon + 99% sand content (deserts)</span></span>
-<span id="cb284-3"><a href="#cb284-3" aria-hidden="true" tabindex="-1"></a>  bare <span class="ot">=</span> <span class="fu">read_sf</span>(<span class="st">"/mnt/landmark/GLANCE/bu_glance_training_dataV1.gpkg"</span>)</span>
+<span id="cb284-3"><a href="#cb284-3" aria-hidden="true" tabindex="-1"></a>  bare <span class="ot">=</span> <span class="fu">read_sf</span>(<span class="st">"/data/wri_soil/bu_glance_training_dataV1.gpkg"</span>)</span>
 <span id="cb284-4"><a href="#cb284-4" aria-hidden="true" tabindex="-1"></a>  <span class="do">## Level 2 land cover value (integer): 1 (Water), 2 (Ice/snow), 3 (Developed), 4 (Soil), </span></span>
 <span id="cb284-5"><a href="#cb284-5" aria-hidden="true" tabindex="-1"></a>  <span class="do">## 5 (Rock), 6 (Beach/sand), 7 (Deciduous), 8 (Evergreen), 9 (Mixed), 10 (Shrub), </span></span>
 <span id="cb284-6"><a href="#cb284-6" aria-hidden="true" tabindex="-1"></a>  <span class="do">## 11 (Grassland), 12 (Agriculture), and 13 (Moss/lichen). NaN values present.</span></span>
-<span id="cb284-7"><a href="#cb284-7" aria-hidden="true" tabindex="-1"></a>  <span class="co">#bare = bare[(bare$Glance_Class_ID_level2==5|bare$Glance_Class_ID_level2==6),]</span></span>
-<span id="cb284-8"><a href="#cb284-8" aria-hidden="true" tabindex="-1"></a>  bare <span class="ot">=</span> bare[bare<span class="sc">$</span>Glance_Class_ID_level2<span class="sc">==</span><span class="dv">6</span>,]</span>
-<span id="cb284-9"><a href="#cb284-9" aria-hidden="true" tabindex="-1"></a>  <span class="co">#plot(bare["Dataset_Code"])</span></span>
-<span id="cb284-10"><a href="#cb284-10" aria-hidden="true" tabindex="-1"></a>  <span class="co">#write_sf(bare, "bu_glance_sand_barerock_V1.gpkg")</span></span>
-<span id="cb284-11"><a href="#cb284-11" aria-hidden="true" tabindex="-1"></a>  <span class="co">#plot(bare["Glance_Class_ID_level2"])</span></span>
-<span id="cb284-12"><a href="#cb284-12" aria-hidden="true" tabindex="-1"></a>  <span class="co">#str(bare)</span></span>
-<span id="cb284-13"><a href="#cb284-13" aria-hidden="true" tabindex="-1"></a>  <span class="do">## 3085 points</span></span>
-<span id="cb284-14"><a href="#cb284-14" aria-hidden="true" tabindex="-1"></a>  bare.df <span class="ot">=</span> data.table<span class="sc">::</span><span class="fu">data.table</span>(<span class="fu">cbind</span>(<span class="fu">as.data.frame</span>(bare), <span class="fu">st_coordinates</span>(bare)))</span>
-<span id="cb284-15"><a href="#cb284-15" aria-hidden="true" tabindex="-1"></a>  <span class="do">## Extend to start end periods:</span></span>
-<span id="cb284-16"><a href="#cb284-16" aria-hidden="true" tabindex="-1"></a>  bare.ex <span class="ot">=</span> <span class="fu">as.data.frame</span>(data.table<span class="sc">::</span><span class="fu">setDT</span>(bare.df)[ , <span class="fu">list</span>(<span class="at">site_key=</span>Glance_ID, <span class="at">X=</span>X, <span class="at">Y=</span>Y, <span class="at">longitude_decimal_degrees=</span>Lon, <span class="at">latitude_decimal_degrees=</span>Lat, <span class="at">site_obsdate =</span> <span class="fu">seq</span>(Start_Year, End_Year)), <span class="at">by =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(bare.df)])</span>
-<span id="cb284-17"><a href="#cb284-17" aria-hidden="true" tabindex="-1"></a>  <span class="do">## 50220</span></span>
-<span id="cb284-18"><a href="#cb284-18" aria-hidden="true" tabindex="-1"></a>  <span class="do">## insert zeros for all nutrients except for the once we are not sure:</span></span>
-<span id="cb284-19"><a href="#cb284-19" aria-hidden="true" tabindex="-1"></a>  <span class="do">## http://www.decodedscience.org/chemistry-sahara-sand-elements-dunes/45828</span></span>
-<span id="cb284-20"><a href="#cb284-20" aria-hidden="true" tabindex="-1"></a>  bare.ex<span class="sc">$</span>oc_d <span class="ot">=</span> <span class="dv">0</span></span>
-<span id="cb284-21"><a href="#cb284-21" aria-hidden="true" tabindex="-1"></a>  bare.ex<span class="sc">$</span>organic_carbon <span class="ot">=</span> <span class="dv">0</span></span>
-<span id="cb284-22"><a href="#cb284-22" aria-hidden="true" tabindex="-1"></a>  bare.ex<span class="sc">$</span>total_carbon_ncs <span class="ot">=</span> <span class="dv">0</span></span>
-<span id="cb284-23"><a href="#cb284-23" aria-hidden="true" tabindex="-1"></a>  bare.ex<span class="sc">$</span>total_nitrogen_ncs <span class="ot">=</span> <span class="dv">0</span></span>
-<span id="cb284-24"><a href="#cb284-24" aria-hidden="true" tabindex="-1"></a>  bare.ex<span class="sc">$</span>k_ext <span class="ot">=</span> <span class="dv">0</span></span>
-<span id="cb284-25"><a href="#cb284-25" aria-hidden="true" tabindex="-1"></a>  bare.ex<span class="sc">$</span>mg_ext <span class="ot">=</span> <span class="dv">0</span></span>
-<span id="cb284-26"><a href="#cb284-26" aria-hidden="true" tabindex="-1"></a>  bare.ex<span class="sc">$</span>clay_total <span class="ot">=</span> <span class="dv">0</span></span>
-<span id="cb284-27"><a href="#cb284-27" aria-hidden="true" tabindex="-1"></a>  bare.ex<span class="sc">$</span>sand_total <span class="ot">=</span> <span class="dv">99</span></span>
-<span id="cb284-28"><a href="#cb284-28" aria-hidden="true" tabindex="-1"></a>  bare.ex<span class="sc">$</span>silt_total <span class="ot">=</span> <span class="dv">1</span></span>
-<span id="cb284-29"><a href="#cb284-29" aria-hidden="true" tabindex="-1"></a>  bare.ex<span class="sc">$</span>bulk_density_oven_dry <span class="ot">=</span> <span class="fl">1.6</span></span>
-<span id="cb284-30"><a href="#cb284-30" aria-hidden="true" tabindex="-1"></a>  bare.ex<span class="sc">$</span>source_db <span class="ot">=</span> <span class="st">"GLANCE"</span></span>
-<span id="cb284-31"><a href="#cb284-31" aria-hidden="true" tabindex="-1"></a>  bare.ex<span class="sc">$</span>hzn_top <span class="ot">=</span> <span class="dv">0</span></span>
-<span id="cb284-32"><a href="#cb284-32" aria-hidden="true" tabindex="-1"></a>  bare.ex<span class="sc">$</span>hzn_bot <span class="ot">=</span> <span class="dv">30</span></span>
-<span id="cb284-33"><a href="#cb284-33" aria-hidden="true" tabindex="-1"></a>  bare.ex<span class="sc">$</span>source_db <span class="ot">=</span> <span class="st">"GLanCE.points"</span></span>
-<span id="cb284-34"><a href="#cb284-34" aria-hidden="true" tabindex="-1"></a>  bare.ex<span class="sc">$</span>confidence_degree <span class="ot">=</span> <span class="dv">4</span></span>
-<span id="cb284-35"><a href="#cb284-35" aria-hidden="true" tabindex="-1"></a>  x.na <span class="ot">=</span> col.names[<span class="fu">which</span>(<span class="sc">!</span>col.names <span class="sc">%in%</span> <span class="fu">names</span>(bare.ex))]</span>
-<span id="cb284-36"><a href="#cb284-36" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">length</span>(x.na)<span class="sc">&gt;</span><span class="dv">0</span>){ <span class="cf">for</span>(i <span class="cf">in</span> x.na){ bare.ex[,i] <span class="ot">=</span> <span class="cn">NA</span> } }</span>
-<span id="cb284-37"><a href="#cb284-37" aria-hidden="true" tabindex="-1"></a>  chemsprops.SIM <span class="ot">=</span> bare.ex[,col.names]</span>
-<span id="cb284-38"><a href="#cb284-38" aria-hidden="true" tabindex="-1"></a>  chemsprops.SIM<span class="sc">$</span>project_url <span class="ot">=</span> <span class="st">"https://doi.org/10.34911/rdnt.x4xfh3"</span></span>
-<span id="cb284-39"><a href="#cb284-39" aria-hidden="true" tabindex="-1"></a>  chemsprops.SIM<span class="sc">$</span>citation_url <span class="ot">=</span> <span class="st">"https://doi.org/10.1038/s41597-023-02798-5"</span></span>
-<span id="cb284-40"><a href="#cb284-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">saveRDS.gz</span>(chemsprops.SIM, <span class="st">"/mnt/diskstation/data/Soil_points/INT/chemsprops.SIM.rds"</span>)</span>
-<span id="cb284-41"><a href="#cb284-41" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb284-42"><a href="#cb284-42" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(chemsprops.SIM)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb284-7"><a href="#cb284-7" aria-hidden="true" tabindex="-1"></a>  bare <span class="ot">=</span> bare[(bare<span class="sc">$</span>Glance_Class_ID_level2<span class="sc">==</span><span class="dv">5</span><span class="sc">|</span>bare<span class="sc">$</span>Glance_Class_ID_level2<span class="sc">==</span><span class="dv">6</span>),]</span>
+<span id="cb284-8"><a href="#cb284-8" aria-hidden="true" tabindex="-1"></a>  <span class="co">#dim(bare)</span></span>
+<span id="cb284-9"><a href="#cb284-9" aria-hidden="true" tabindex="-1"></a>  <span class="co">#[1] 13057    21</span></span>
+<span id="cb284-10"><a href="#cb284-10" aria-hidden="true" tabindex="-1"></a>  <span class="co">#summary(as.factor(bare$Glance_Class_ID_level2))</span></span>
+<span id="cb284-11"><a href="#cb284-11" aria-hidden="true" tabindex="-1"></a>  <span class="co">#    5    6 </span></span>
+<span id="cb284-12"><a href="#cb284-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 9972 3085  </span></span>
+<span id="cb284-13"><a href="#cb284-13" aria-hidden="true" tabindex="-1"></a>  <span class="co">#bare = bare[bare$Glance_Class_ID_level2==6,]</span></span>
+<span id="cb284-14"><a href="#cb284-14" aria-hidden="true" tabindex="-1"></a>  <span class="do">## Not all "Rock" classes are surface rock - needs visual check</span></span>
+<span id="cb284-15"><a href="#cb284-15" aria-hidden="true" tabindex="-1"></a>  g100km <span class="ot">=</span> terra<span class="sc">::</span><span class="fu">vect</span>(<span class="st">"/data/CCI_LandCover/tiles_GH_100km_land.gpkg"</span>)</span>
+<span id="cb284-16"><a href="#cb284-16" aria-hidden="true" tabindex="-1"></a>  ov.g100km <span class="ot">=</span> <span class="fu">extract</span>(g100km, terra<span class="sc">::</span><span class="fu">project</span>(terra<span class="sc">::</span><span class="fu">vect</span>(bare), <span class="fu">crs</span>(g100km)))</span>
+<span id="cb284-17"><a href="#cb284-17" aria-hidden="true" tabindex="-1"></a>  ov.g100km<span class="sc">$</span>Glance_ID <span class="ot">=</span> bare<span class="sc">$</span>Glance_ID</span>
+<span id="cb284-18"><a href="#cb284-18" aria-hidden="true" tabindex="-1"></a>  <span class="co">#summary(as.factor(ov.g100km$ID))</span></span>
+<span id="cb284-19"><a href="#cb284-19" aria-hidden="true" tabindex="-1"></a>  <span class="do">## randomly subset up to max 30 points per 100x100km tile</span></span>
+<span id="cb284-20"><a href="#cb284-20" aria-hidden="true" tabindex="-1"></a>  ov.g100km.s <span class="ot">&lt;-</span> ov.g100km[,<span class="fu">c</span>(<span class="st">"Glance_ID"</span>, <span class="st">"ID"</span>)] <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(ID) <span class="sc">%&gt;%</span> <span class="fu">slice</span>(<span class="fu">sample</span>(<span class="fu">n</span>(), <span class="fu">min</span>(<span class="dv">30</span>, <span class="fu">n</span>()))) <span class="sc">%&gt;%</span> <span class="fu">ungroup</span>()</span>
+<span id="cb284-21"><a href="#cb284-21" aria-hidden="true" tabindex="-1"></a>  <span class="do">## 6878 points in total</span></span>
+<span id="cb284-22"><a href="#cb284-22" aria-hidden="true" tabindex="-1"></a>  <span class="co">#summary(as.factor(ov.g100km.s$ID))</span></span>
+<span id="cb284-23"><a href="#cb284-23" aria-hidden="true" tabindex="-1"></a>  <span class="co">#plot(bare["Dataset_Code"])</span></span>
+<span id="cb284-24"><a href="#cb284-24" aria-hidden="true" tabindex="-1"></a>  <span class="co">#write_sf(bare, "/data/wri_soil/bu_glance_sand_barerock_V1.gpkg")</span></span>
+<span id="cb284-25"><a href="#cb284-25" aria-hidden="true" tabindex="-1"></a>  bare.s <span class="ot">=</span> bare[bare<span class="sc">$</span>Glance_ID <span class="sc">%in%</span> ov.g100km.s<span class="sc">$</span>Glance_ID,]</span>
+<span id="cb284-26"><a href="#cb284-26" aria-hidden="true" tabindex="-1"></a>  <span class="co">#plot(bare.s["Glance_Class_ID_level2"])</span></span>
+<span id="cb284-27"><a href="#cb284-27" aria-hidden="true" tabindex="-1"></a>  <span class="co">#str(bare.s)</span></span>
+<span id="cb284-28"><a href="#cb284-28" aria-hidden="true" tabindex="-1"></a>  <span class="do">## 6,878 points</span></span>
+<span id="cb284-29"><a href="#cb284-29" aria-hidden="true" tabindex="-1"></a>  <span class="do">## Add world peaks (http://www.peaklist.org/ultras.html)</span></span>
+<span id="cb284-30"><a href="#cb284-30" aria-hidden="true" tabindex="-1"></a>  pks <span class="ot">=</span> <span class="fu">read_sf</span>(<span class="st">"/data/CCI_LandCover/ultrasgoogle052007.KMZ"</span>)</span>
+<span id="cb284-31"><a href="#cb284-31" aria-hidden="true" tabindex="-1"></a>  pks.df <span class="ot">=</span> data.table<span class="sc">::</span><span class="fu">data.table</span>(<span class="fu">cbind</span>(<span class="fu">as.data.frame</span>(pks), <span class="fu">st_coordinates</span>(pks)))</span>
+<span id="cb284-32"><a href="#cb284-32" aria-hidden="true" tabindex="-1"></a>  <span class="do">## 1524 world peaks</span></span>
+<span id="cb284-33"><a href="#cb284-33" aria-hidden="true" tabindex="-1"></a>  pks.df<span class="sc">$</span>Start_Year <span class="ot">=</span> <span class="dv">2000</span></span>
+<span id="cb284-34"><a href="#cb284-34" aria-hidden="true" tabindex="-1"></a>  pks.df<span class="sc">$</span>End_Year <span class="ot">=</span> <span class="dv">2022</span></span>
+<span id="cb284-35"><a href="#cb284-35" aria-hidden="true" tabindex="-1"></a>  pks.df<span class="sc">$</span>Glance_ID <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">"ultras_"</span>, <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(pks.df))</span>
+<span id="cb284-36"><a href="#cb284-36" aria-hidden="true" tabindex="-1"></a>  pks.df<span class="sc">$</span>Lon <span class="ot">=</span> pks.df<span class="sc">$</span>X</span>
+<span id="cb284-37"><a href="#cb284-37" aria-hidden="true" tabindex="-1"></a>  pks.df<span class="sc">$</span>Lat <span class="ot">=</span> pks.df<span class="sc">$</span>Y</span>
+<span id="cb284-38"><a href="#cb284-38" aria-hidden="true" tabindex="-1"></a>  pks.df<span class="sc">$</span>Glance_Class_ID_level2 <span class="ot">=</span> <span class="dv">5</span></span>
+<span id="cb284-39"><a href="#cb284-39" aria-hidden="true" tabindex="-1"></a>  <span class="do">## bind GLANCE and Ultras</span></span>
+<span id="cb284-40"><a href="#cb284-40" aria-hidden="true" tabindex="-1"></a>  sel.glnc <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"Glance_ID"</span>, <span class="st">"Lon"</span>, <span class="st">"Lat"</span>, <span class="st">"Start_Year"</span>, <span class="st">"End_Year"</span>, <span class="st">"Glance_Class_ID_level2"</span>)</span>
+<span id="cb284-41"><a href="#cb284-41" aria-hidden="true" tabindex="-1"></a>  bare.df <span class="ot">=</span> <span class="fu">cbind</span>(<span class="fu">as.data.frame</span>(bare.s)[,sel.glnc], <span class="fu">st_coordinates</span>(bare.s))</span>
+<span id="cb284-42"><a href="#cb284-42" aria-hidden="true" tabindex="-1"></a>  bare.df <span class="ot">=</span> data.table<span class="sc">::</span><span class="fu">data.table</span>(dplyr<span class="sc">::</span><span class="fu">bind_rows</span>(bare.df, <span class="fu">as.data.frame</span>(pks.df)[,<span class="fu">names</span>(bare.df)]))</span>
+<span id="cb284-43"><a href="#cb284-43" aria-hidden="true" tabindex="-1"></a>  <span class="co">#View(bare.df)</span></span>
+<span id="cb284-44"><a href="#cb284-44" aria-hidden="true" tabindex="-1"></a>  <span class="do">## Extend to start end periods:</span></span>
+<span id="cb284-45"><a href="#cb284-45" aria-hidden="true" tabindex="-1"></a>  bare.ex <span class="ot">=</span> <span class="fu">as.data.frame</span>(data.table<span class="sc">::</span><span class="fu">setDT</span>(bare.df)[ , <span class="fu">list</span>(<span class="at">site_key=</span>Glance_ID, <span class="at">Glance_Class_ID_level2=</span>Glance_Class_ID_level2, <span class="at">X=</span>X, <span class="at">Y=</span>Y, <span class="at">longitude_decimal_degrees=</span>Lon, <span class="at">latitude_decimal_degrees=</span>Lat, <span class="at">site_obsdate =</span> <span class="fu">seq</span>(Start_Year, End_Year)), <span class="at">by =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(bare.df)])</span>
+<span id="cb284-46"><a href="#cb284-46" aria-hidden="true" tabindex="-1"></a>  <span class="co">#dim(bare.ex)</span></span>
+<span id="cb284-47"><a href="#cb284-47" aria-hidden="true" tabindex="-1"></a>  <span class="do">## 151320 spacetime points!</span></span>
+<span id="cb284-48"><a href="#cb284-48" aria-hidden="true" tabindex="-1"></a>  <span class="co">#write.csv(bare.ex, gzfile("/data/wri_soil/bare_soil_pnts.csv.gz"))</span></span>
+<span id="cb284-49"><a href="#cb284-49" aria-hidden="true" tabindex="-1"></a>  <span class="do">## Remove all points that are NOT bare areas on the most detailed GLC (30m resolution)</span></span>
+<span id="cb284-50"><a href="#cb284-50" aria-hidden="true" tabindex="-1"></a>  ov.bare.ex <span class="ot">=</span> terra<span class="sc">::</span><span class="fu">extract</span>(</span>
+<span id="cb284-51"><a href="#cb284-51" aria-hidden="true" tabindex="-1"></a>    terra<span class="sc">::</span><span class="fu">rast</span>(<span class="st">"/data/CCI_LandCover/lc_glc.fcs30d_c_30m_s_20220101_20221231_go_epsg.4326_v20231026.tif"</span>), </span>
+<span id="cb284-52"><a href="#cb284-52" aria-hidden="true" tabindex="-1"></a>          terra<span class="sc">::</span><span class="fu">vect</span>(bare.ex, <span class="at">geom=</span><span class="fu">c</span>(<span class="st">"longitude_decimal_degrees"</span>, <span class="st">"latitude_decimal_degrees"</span>), <span class="at">crs=</span><span class="st">"EPSG:4326"</span>))</span>
+<span id="cb284-53"><a href="#cb284-53" aria-hidden="true" tabindex="-1"></a>  bare.ex <span class="ot">=</span> bare.ex[ov.bare.ex[,<span class="dv">2</span>] <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">190</span>,<span class="dv">200</span>,<span class="dv">201</span>,<span class="dv">202</span>,<span class="dv">220</span>),]</span>
+<span id="cb284-54"><a href="#cb284-54" aria-hidden="true" tabindex="-1"></a>  <span class="co">#str(bare.ex)</span></span>
+<span id="cb284-55"><a href="#cb284-55" aria-hidden="true" tabindex="-1"></a>  <span class="do">## 80652 spacetime pnts </span></span>
+<span id="cb284-56"><a href="#cb284-56" aria-hidden="true" tabindex="-1"></a>  <span class="co">#str(levels(as.factor(bare.ex$site_key)))</span></span>
+<span id="cb284-57"><a href="#cb284-57" aria-hidden="true" tabindex="-1"></a>  <span class="do">## 4680 unique locations</span></span>
+<span id="cb284-58"><a href="#cb284-58" aria-hidden="true" tabindex="-1"></a>  <span class="do">## insert zeros for all nutrients except for the once we are not sure:</span></span>
+<span id="cb284-59"><a href="#cb284-59" aria-hidden="true" tabindex="-1"></a>  <span class="do">## http://www.decodedscience.org/chemistry-sahara-sand-elements-dunes/45828</span></span>
+<span id="cb284-60"><a href="#cb284-60" aria-hidden="true" tabindex="-1"></a>  bare.ex<span class="sc">$</span>oc_d <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb284-61"><a href="#cb284-61" aria-hidden="true" tabindex="-1"></a>  bare.ex<span class="sc">$</span>organic_carbon <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb284-62"><a href="#cb284-62" aria-hidden="true" tabindex="-1"></a>  bare.ex<span class="sc">$</span>total_carbon_ncs <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb284-63"><a href="#cb284-63" aria-hidden="true" tabindex="-1"></a>  bare.ex<span class="sc">$</span>total_nitrogen_ncs <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb284-64"><a href="#cb284-64" aria-hidden="true" tabindex="-1"></a>  bare.ex<span class="sc">$</span>k_ext <span class="ot">=</span> <span class="fu">ifelse</span>(bare.ex<span class="sc">$</span>Glance_Class_ID_level2<span class="sc">==</span><span class="dv">6</span>, <span class="dv">0</span>, <span class="cn">NA</span>)</span>
+<span id="cb284-65"><a href="#cb284-65" aria-hidden="true" tabindex="-1"></a>  bare.ex<span class="sc">$</span>mg_ext <span class="ot">=</span> <span class="fu">ifelse</span>(bare.ex<span class="sc">$</span>Glance_Class_ID_level2<span class="sc">==</span><span class="dv">6</span>, <span class="dv">0</span>, <span class="cn">NA</span>)</span>
+<span id="cb284-66"><a href="#cb284-66" aria-hidden="true" tabindex="-1"></a>  bare.ex<span class="sc">$</span>clay_total <span class="ot">=</span> <span class="fu">ifelse</span>(bare.ex<span class="sc">$</span>Glance_Class_ID_level2<span class="sc">==</span><span class="dv">6</span>, <span class="dv">0</span>, <span class="cn">NA</span>)</span>
+<span id="cb284-67"><a href="#cb284-67" aria-hidden="true" tabindex="-1"></a>  bare.ex<span class="sc">$</span>sand_total <span class="ot">=</span> <span class="fu">ifelse</span>(bare.ex<span class="sc">$</span>Glance_Class_ID_level2<span class="sc">==</span><span class="dv">6</span>, <span class="dv">100</span>, <span class="cn">NA</span>)</span>
+<span id="cb284-68"><a href="#cb284-68" aria-hidden="true" tabindex="-1"></a>  bare.ex<span class="sc">$</span>silt_total <span class="ot">=</span> <span class="fu">ifelse</span>(bare.ex<span class="sc">$</span>Glance_Class_ID_level2<span class="sc">==</span><span class="dv">6</span>, <span class="dv">0</span>, <span class="cn">NA</span>)</span>
+<span id="cb284-69"><a href="#cb284-69" aria-hidden="true" tabindex="-1"></a>  bare.ex<span class="sc">$</span>bulk_density_oven_dry <span class="ot">=</span> <span class="fu">ifelse</span>(bare.ex<span class="sc">$</span>Glance_Class_ID_level2<span class="sc">==</span><span class="dv">6</span>, <span class="fl">1.6</span>, <span class="cn">NA</span>)</span>
+<span id="cb284-70"><a href="#cb284-70" aria-hidden="true" tabindex="-1"></a>  bare.ex<span class="sc">$</span>source_db <span class="ot">=</span> <span class="st">"GLANCE"</span></span>
+<span id="cb284-71"><a href="#cb284-71" aria-hidden="true" tabindex="-1"></a>  bare.ex<span class="sc">$</span>hzn_top <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb284-72"><a href="#cb284-72" aria-hidden="true" tabindex="-1"></a>  bare.ex<span class="sc">$</span>hzn_bot <span class="ot">=</span> <span class="dv">30</span></span>
+<span id="cb284-73"><a href="#cb284-73" aria-hidden="true" tabindex="-1"></a>  bare.ex<span class="sc">$</span>source_db <span class="ot">=</span> <span class="st">"GLanCE.points"</span></span>
+<span id="cb284-74"><a href="#cb284-74" aria-hidden="true" tabindex="-1"></a>  bare.ex<span class="sc">$</span>confidence_degree <span class="ot">=</span> <span class="dv">4</span></span>
+<span id="cb284-75"><a href="#cb284-75" aria-hidden="true" tabindex="-1"></a>  x.na <span class="ot">=</span> col.names[<span class="fu">which</span>(<span class="sc">!</span>col.names <span class="sc">%in%</span> <span class="fu">names</span>(bare.ex))]</span>
+<span id="cb284-76"><a href="#cb284-76" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">length</span>(x.na)<span class="sc">&gt;</span><span class="dv">0</span>){ <span class="cf">for</span>(i <span class="cf">in</span> x.na){ bare.ex[,i] <span class="ot">=</span> <span class="cn">NA</span> } }</span>
+<span id="cb284-77"><a href="#cb284-77" aria-hidden="true" tabindex="-1"></a>  chemsprops.SIM <span class="ot">=</span> bare.ex[,col.names]</span>
+<span id="cb284-78"><a href="#cb284-78" aria-hidden="true" tabindex="-1"></a>  chemsprops.SIM<span class="sc">$</span>project_url <span class="ot">=</span> <span class="st">"https://doi.org/10.34911/rdnt.x4xfh3"</span></span>
+<span id="cb284-79"><a href="#cb284-79" aria-hidden="true" tabindex="-1"></a>  chemsprops.SIM<span class="sc">$</span>citation_url <span class="ot">=</span> <span class="st">"https://doi.org/10.1038/s41597-023-02798-5"</span></span>
+<span id="cb284-80"><a href="#cb284-80" aria-hidden="true" tabindex="-1"></a>  <span class="fu">saveRDS.gz</span>(chemsprops.SIM, <span class="st">"/mnt/diskstation/data/Soil_points/INT/chemsprops.SIM.rds"</span>)</span>
+<span id="cb284-81"><a href="#cb284-81" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb284-82"><a href="#cb284-82" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(chemsprops.SIM)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 50220    39</code></pre>
+<pre><code>[1] 80604    39</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb286"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb286-1"><a href="#cb286-1" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 50220    39</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb286"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb286-1"><a href="#cb286-1" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 80652    39</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Other potential large soil profile DBs of interest:</p>
 <ul>
@@ -3566,7 +3596,7 @@ Warning: NAs introduced by coercion</code></pre>
 <span id="cb290-2"><a href="#cb290-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(tex.rm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
--2997.0   100.0   100.0   100.2   100.0  2997.0  526844 </code></pre>
+-2997.0   100.0   100.0   100.2   100.0  2997.0  564826 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb292"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb292-1"><a href="#cb292-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(j <span class="cf">in</span> <span class="fu">c</span>(<span class="st">"clay_total"</span>, <span class="st">"silt_total"</span>, <span class="st">"sand_total"</span>, <span class="st">"total_frag_wt_pct_gt_2_mm_ws"</span>)){</span>
 <span id="cb292-2"><a href="#cb292-2" aria-hidden="true" tabindex="-1"></a>  tot_sprops[,j] <span class="ot">=</span> <span class="fu">ifelse</span>(tot_sprops[,j]<span class="sc">&gt;</span><span class="dv">100</span><span class="sc">|</span>tot_sprops[,j]<span class="sc">&lt;</span><span class="dv">0</span>, <span class="cn">NA</span>, tot_sprops[,j])</span>
@@ -3591,7 +3621,7 @@ Warning: NAs introduced by coercion</code></pre>
 <span id="cb293-3"><a href="#cb293-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">is.na</span>(tot_sprops<span class="sc">$</span>hzn_depth))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Mode   FALSE    TRUE 
-logical 1524371   33510 </code></pre>
+logical 1550823   33306 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb295"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb295-1"><a href="#cb295-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 33199</span></span>
 <span id="cb295-2"><a href="#cb295-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Note: large number of horizons without a depth</span></span>
@@ -3607,13 +3637,13 @@ logical 1524371   33510 </code></pre>
 <pre><code>             AfSIS1              AfSPDB     Alaska_interior              BZE_LW 
                4369               68794                4011               17189 
         Canada_CUFS         Canada_NPDB    Canada_subarctic       Chilean_SOCDB 
-              15873               53663                1381               16887 
+              15873               50060                1381               16887 
         China_SOTER               CIFOR           CostaRica Croatian_Soil_Pedon 
                5115                 577                2037                5757 
       CSIRO_NatSoil        Ecuador_HESD                FEBR                FRED 
               89645               30167               24353               12758 
          GEMAS_2009       GLanCE.points               GROOT    Guatemala_GTMSOC 
-               4131               50220               16271                 910 
+               4131               80604               16271                 910 
           Iran_SPDB               ISCND                ISDA          ISRIC_WISE 
                4859                4114               49225               37443 
             LandPKS          LUCAS_2009          LUCAS_2015          LUCAS_2018 
@@ -3621,7 +3651,7 @@ logical 1524371   33510 </code></pre>
         MangrovesDB         MexicoINEGI            NAMSOTER               NCSCD 
                7986               16820                2943                7348 
     Netherlands.BIS   Portugal.INFOSOLO   Potash_et_al_2023          PRONASOLOS 
-             116533                9934                3977               32615 
+             116204                9934                3977               32615 
           QuebecTEX        Russia_EGRPR       ScotlandNSIS1              SISLAC 
               29570                4506                3091               92121 
       Slovenia.SPDB              SOCPDB               SoDaH        SoilHealthDB 
@@ -3641,9 +3671,9 @@ logical 1524371   33510 </code></pre>
 <div class="sourceCode cell-code" id="cb299"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb299-1"><a href="#cb299-1" aria-hidden="true" tabindex="-1"></a>tot_sprops<span class="sc">$</span>olc_id <span class="ot">=</span> olctools<span class="sc">::</span><span class="fu">encode_olc</span>(tot_sprops<span class="sc">$</span>latitude_decimal_degrees, tot_sprops<span class="sc">$</span>longitude_decimal_degrees, <span class="dv">11</span>)</span>
 <span id="cb299-2"><a href="#cb299-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">levels</span>(<span class="fu">as.factor</span>(tot_sprops<span class="sc">$</span>olc_id)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 342293</code></pre>
+<pre><code>[1] 343737</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb301"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb301-1"><a href="#cb301-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 342,368</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb301"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb301-1"><a href="#cb301-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 343814</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb302"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb302-1"><a href="#cb302-1" aria-hidden="true" tabindex="-1"></a>tot_sprops.pnts <span class="ot">=</span> tot_sprops[<span class="sc">!</span><span class="fu">duplicated</span>(tot_sprops<span class="sc">$</span>olc_id),<span class="fu">c</span>(<span class="st">"site_key"</span>, <span class="st">"source_db"</span>, <span class="st">"longitude_decimal_degrees"</span>, <span class="st">"latitude_decimal_degrees"</span>, <span class="st">"site_obsdate"</span>, <span class="st">"olc_id"</span>, <span class="st">"project_url"</span>, <span class="st">"citation_url"</span>)]</span>
@@ -3684,9 +3714,9 @@ logical 1524371   33510 </code></pre>
 <span id="cb304-10"><a href="#cb304-10" aria-hidden="true" tabindex="-1"></a><span class="do">## final number of unique spatial locations:</span></span>
 <span id="cb304-11"><a href="#cb304-11" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(tot_sprops.pnts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 342293</code></pre>
+<pre><code>[1] 343737</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb306"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb306-1"><a href="#cb306-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 342368</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb306"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb306-1"><a href="#cb306-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 343814</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="histogram-plots" class="level4">
@@ -3696,7 +3726,7 @@ logical 1524371   33510 </code></pre>
 <div class="sourceCode cell-code" id="cb307"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb307-1"><a href="#cb307-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb307-2"><a href="#cb307-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tot_sprops, <span class="fu">aes</span>(<span class="at">x=</span>source_db, <span class="at">y=</span><span class="fu">log1p</span>(organic_carbon))) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 430733 rows containing non-finite outside the scale range
+<pre><code>Warning: Removed 426670 rows containing non-finite outside the scale range
 (`stat_boxplot()`).</code></pre>
 </div>
 <div class="cell-output-display">
@@ -3723,7 +3753,7 @@ logical 1524371   33510 </code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb310"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb310-1"><a href="#cb310-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tot_sprops, <span class="fu">aes</span>(<span class="at">x=</span>source_db, <span class="at">y=</span>bulk_density_oven_dry)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 1243780 rows containing non-finite outside the scale range
+<pre><code>Warning: Removed 1281894 rows containing non-finite outside the scale range
 (`stat_boxplot()`).</code></pre>
 </div>
 <div class="cell-output-display">
@@ -3748,7 +3778,7 @@ logical 1524371   33510 </code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb313"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb313-1"><a href="#cb313-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tot_sprops, <span class="fu">aes</span>(<span class="at">x=</span>source_db, <span class="at">y=</span><span class="fu">log1p</span>(oc_d))) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 1235543 rows containing non-finite outside the scale range
+<pre><code>Warning: Removed 1231342 rows containing non-finite outside the scale range
 (`stat_boxplot()`).</code></pre>
 </div>
 <div class="cell-output-display">
@@ -3788,7 +3818,7 @@ logical 1524371   33510 </code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb317"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb317-1"><a href="#cb317-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tot_sprops, <span class="fu">aes</span>(<span class="at">x=</span>source_db, <span class="at">y=</span>ph_h2o)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 710996 rows containing non-finite outside the scale range
+<pre><code>Warning: Removed 737396 rows containing non-finite outside the scale range
 (`stat_boxplot()`).</code></pre>
 </div>
 <div class="cell-output-display">
@@ -3847,7 +3877,7 @@ logical 1524371   33510 </code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb323"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb323-1"><a href="#cb323-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tot_sprops, <span class="fu">aes</span>(<span class="at">x=</span>source_db, <span class="at">y=</span>clay_total)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 543655 rows containing non-finite outside the scale range
+<pre><code>Warning: Removed 581776 rows containing non-finite outside the scale range
 (`stat_boxplot()`).</code></pre>
 </div>
 <div class="cell-output-display">
@@ -3875,7 +3905,7 @@ logical 1524371   33510 </code></pre>
 <pre><code>Warning in log1p(sum_of_cations_cec_pH_8_2): NaNs produced</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 1085632 rows containing non-finite outside the scale range
+<pre><code>Warning: Removed 1111330 rows containing non-finite outside the scale range
 (`stat_boxplot()`).</code></pre>
 </div>
 <div class="cell-output-display">
@@ -3892,7 +3922,7 @@ logical 1524371   33510 </code></pre>
 <pre><code>Warning in log1p(total_nitrogen_ncs): NaNs produced</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 1010476 rows containing non-finite outside the scale range
+<pre><code>Warning: Removed 1005732 rows containing non-finite outside the scale range
 (`stat_boxplot()`).</code></pre>
 </div>
 <div class="cell-output-display">
@@ -3909,7 +3939,7 @@ logical 1524371   33510 </code></pre>
 <pre><code>Warning in log1p(k_ext): NaNs produced</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 861125 rows containing non-finite outside the scale range
+<pre><code>Warning: Removed 898720 rows containing non-finite outside the scale range
 (`stat_boxplot()`).</code></pre>
 </div>
 <div class="cell-output-display">
@@ -3923,7 +3953,7 @@ logical 1524371   33510 </code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb335"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb335-1"><a href="#cb335-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tot_sprops, <span class="fu">aes</span>(<span class="at">x=</span>source_db, <span class="at">y=</span><span class="fu">log1p</span>(ec_water_extractable))) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 1375254 rows containing non-finite outside the scale range
+<pre><code>Warning: Removed 1401706 rows containing non-finite outside the scale range
 (`stat_boxplot()`).</code></pre>
 </div>
 <div class="cell-output-display">
@@ -3945,7 +3975,7 @@ logical 1524371   33510 </code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb340"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb340-1"><a href="#cb340-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sprops_yrs, <span class="fu">aes</span>(<span class="at">x=</span>source_db, <span class="at">y=</span>year)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 159227 rows containing non-finite outside the scale range
+<pre><code>Warning: Removed 159248 rows containing non-finite outside the scale range
 (`stat_boxplot()`).</code></pre>
 </div>
 <div class="cell-output-display">
