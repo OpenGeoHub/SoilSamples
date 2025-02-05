@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.549">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>An open compendium of global soil samples and observations</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<meta property="og:title" content="An open compendium of global soil samples and observations">
+<meta property="og:description" content="This is a public compendium of global, regional, national and sub-national soil samples and/or soil profile datasets (points with Observations and Measurements of soil properties and characteristics). Data sets listed here, assuming compatible open license, are afterwards imported into a common library. Contributions are welcome. To discuss issues or report a bug please use the repository homepage. If you have an addition or correction, make changes to the Rmd’s and make pull-request.">
+<meta property="og:site_name" content="An open compendium of global soil samples and observations">
+<meta name="twitter:title" content="An open compendium of global soil samples and observations">
+<meta name="twitter:image" content="img/sol_chem.pnts_sites.png">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="././img/openlandmap_v2_logo.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">An open compendium of global soil samples and observations</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="./index.html" aria-current="page"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://OpenLandMap.org"> 
+<span class="menu-text">OpenLandMap.org</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://EarthMonitor.org"> 
+<span class="menu-text">Open-Earth-Monitor</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://landcarbonlab.org"> 
+<span class="menu-text">Land Carbon Lab</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools tools-wide">
+    <a href="https://fosstodon.org/@opengeohub" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-mastodon"></i></a>
+    <a href="https://opengeohub.medium.com/" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-medium"></i></a>
+    <a href="https://twitter.com/opengeohub" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-twitter"></i></a>
+    <div class="dropdown">
+      <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label=""><i class="bi bi-github"></i></a>
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://github.com/OpenGeoHub/SoilSamples">
+            Source Code
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://github.com/OpenGeoHub/SoilSamples/issues">
+            Report a Bug
+            </a>
+          </li>
+      </ul>
+    </div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./035-import_wrb_data.html">Tutorials</a></li><li class="breadcrumb-item"><a href="./040-import_usda_soil_tax_data.html">USDA Soil Taxonomy training points</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Data import</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./010-start_here.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">New to markdown</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./015-dataset_communities.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Soil data communities and mailing lists</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./020-dataset_list.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Datasets</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./025-import_chemical_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Soil chemical and physical properties</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Tutorials</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./035-import_wrb_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">WRB soil types</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./040-import_usda_soil_tax_data.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">USDA Soil Taxonomy training points</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#usda-soil-taxonomy-training-points" id="toc-usda-soil-taxonomy-training-points" class="nav-link active" data-scroll-target="#usda-soil-taxonomy-training-points">USDA Soil Taxonomy training points</a>
+  <ul class="collapse">
+  <li><a href="#usda-soil-taxonomy" id="toc-usda-soil-taxonomy" class="nav-link" data-scroll-target="#usda-soil-taxonomy">USDA soil taxonomy</a></li>
+  <li><a href="#preparation-of-the-standard-finit-legend" id="toc-preparation-of-the-standard-finit-legend" class="nav-link" data-scroll-target="#preparation-of-the-standard-finit-legend">Preparation of the standard finit legend</a></li>
+  <li><a href="#fuzzy-search" id="toc-fuzzy-search" class="nav-link" data-scroll-target="#fuzzy-search">Fuzzy search</a></li>
+  <li><a href="#final-bind" id="toc-final-bind" class="nav-link" data-scroll-target="#final-bind">Final bind</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/OpenGeoHub/SoilSamples/edit/main/040-import_usda_soil_tax_data.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/OpenGeoHub/SoilSamples/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+
+
+<section id="usda-soil-taxonomy-training-points" class="level1">
+<h1>USDA Soil Taxonomy training points</h1>
+<section id="usda-soil-taxonomy" class="level2">
+<h2 class="anchored" data-anchor-id="usda-soil-taxonomy">USDA soil taxonomy</h2>
+<p><a href="https://en.wikipedia.org/wiki/USDA_soil_taxonomy">USDA Soil Taxonomy</a> is among the most described soil classification system in the world with many documents available in open domain and maintained (curtesy of USDA and USGS). The current edition of the Soil Taxonomy is 13 and has <a href="https://soilmapper.org/soil-variables-chapter.html#soil-class-data">6 levels</a>: Order, Suborder, Great Group, Subgroup, Family, and Series. In this notebook we explain how to produce consistent global analysis-ready point data set with soil taxonomy subgroup labels. Note: this code is continuously being updated. If you have more data you would like to share and add to this list, please <a href="https://opengeohub.org/contribute-training-data-openlandmap/">contact us</a>.</p>
+<p>First we will define two functions to help us clean-up and bind soil type labels. The first function is used to add “s” at the end of the soil label (often ommitted), the second function is used to do a fuzzy search to find is some label appears in complex text:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>add_s <span class="ot">=</span> <span class="cf">function</span>(x){</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"*and$"</span>, <span class="st">"*bel$"</span>, <span class="st">"*tel$"</span>, <span class="st">"*hel$"</span>, <span class="st">"*uod$"</span>, <span class="st">"*yod$"</span>, <span class="st">"*hod$"</span>, <span class="st">"*mod$"</span>, <span class="st">"*ent$"</span>, <span class="st">"*ert$"</span>, <span class="st">"*ept$"</span>, <span class="st">"*ult$"</span>, <span class="st">"*cid$"</span>, <span class="st">"*bid$"</span>, <span class="st">"*lid$"</span>, <span class="st">"*gid$"</span>, <span class="st">"*hid$"</span>, <span class="st">"*rid$"</span>, <span class="st">"*sid$"</span>, <span class="st">"*alf$"</span>, <span class="st">"*oll$"</span>, <span class="st">"*ist$"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  s <span class="ot">=</span> <span class="fu">sapply</span>(y, <span class="cf">function</span>(i){<span class="fu">grep</span>(i, x)})</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">sum</span>(<span class="fu">unlist</span>(s))<span class="sc">&gt;</span><span class="dv">0</span>){</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">=</span> <span class="fu">paste0</span>(x, <span class="st">"s"</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  x</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>match_tax <span class="ot">=</span> <span class="cf">function</span>(i, x){</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> x[<span class="fu">agrep</span>(i, x<span class="sc">$</span>SSL_classification_name, <span class="at">ignore.case=</span><span class="cn">TRUE</span>, <span class="at">max.distance=</span><span class="fl">0.02</span>),]</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">nrow</span>(x)<span class="sc">&gt;</span><span class="dv">0</span>){</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    x<span class="sc">$</span>taxsubgrp <span class="ot">&lt;-</span> i</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(x)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This is an example of addition of “s” at the end of soil type:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(<span class="fu">c</span>(<span class="st">"typic argiustoll"</span>, <span class="st">"typic argiustolls"</span>, <span class="st">"typic haploperox"</span>, <span class="st">"aquollic hapludalf"</span>, <span class="st">"aquollic hapludalfs"</span>), add_s)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     typic argiustoll     typic argiustolls      typic haploperox 
+  "typic argiustolls"   "typic argiustolls"    "typic haploperox" 
+   aquollic hapludalf   aquollic hapludalfs 
+"aquollic hapludalfs" "aquollic hapludalfs" </code></pre>
+</div>
+</div>
+<p>This is an example of fuzzy search of some target term:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">SSL_classification_name=</span><span class="fu">c</span>(<span class="st">"pachic argiustolls"</span>, <span class="st">"typic argiustoll"</span>, </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>           <span class="st">"argiustolls"</span>, <span class="st">"Typic Argiustolls"</span>, <span class="st">"typic Argiustols"</span>), <span class="at">row.no=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">match_tax</span>(<span class="at">i=</span><span class="st">"typic argiustolls"</span>, x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  SSL_classification_name row.no         taxsubgrp
+2        typic argiustoll      2 typic argiustolls
+4       Typic Argiustolls      4 typic argiustolls
+5        typic Argiustols      5 typic argiustolls</code></pre>
+</div>
+</div>
+<p>As demonstrated, this will take care of typos and any capital letter issues.</p>
+<p>Note that many soil data bases do not have standardized way the soil types are entered and hence some clean-up and sorting is often required. In the case of the <a href="https://ncsslabdatamart.sc.egov.usda.gov/">National Cooperative Soil Survey Characterization Database</a>, soil types are entered via several columns, which can also be split if needed:</p>
+<pre><code> $ SSL_name                 : chr  NA NA "Cathay" NA ...
+ $ SSL_class_type           : chr  NA NA "series" NA ...
+ $ SSL_classdate            : chr  NA NA "1991/10/03 00:00:00+00" NA ...
+ $ SSL_classification_name  : chr  NA NA "Fine-loamy, mixed, frigid Udic Argiboroll" NA ...
+ $ SSL_taxorder             : chr  NA NA "mollisols" NA ...
+ $ SSL_taxsuborder          : chr  NA NA "borolls" NA ...
+ $ SSL_taxgrtgroup          : chr  NA NA "argiborolls" NA ...
+ $ SSL_taxsubgrp            : chr  NA NA "udic argiborolls" NA ...
+ $ SSL_taxpartsize          : chr  NA NA "fine-loamy" NA ...
+ $ SSL_taxpartsizemod       : chr  NA NA NA NA ...
+ $ SSL_taxceactcl           : chr  NA NA NA NA ...
+ $ SSL_taxreaction          : chr  NA NA NA NA ...
+ $ SSL_taxtempcl            : chr  NA NA "frigid" NA ...
+ $ SSL_taxmoistscl          : chr  NA NA NA NA ...
+ $ SSL_taxtempregime        : chr  NA NA "frigid" NA ...
+ $ SSL_taxminalogy          : chr  NA NA "mixed" NA ...
+ $ SSL_taxother             : chr  NA NA NA NA ...
+ $ SSL_osdtypelocflag       : int  NA NA NA NA NA NA NA NA NA NA ...</code></pre>
+<p>The table <code>TAXOUSDA_GreatGroups.csv</code> contains all combinations of USDA great-groups</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>sel.tax.vars <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"site_key"</span>, <span class="st">"olc_id"</span>, <span class="st">"year"</span>, <span class="st">"source_db"</span>, <span class="st">"longitude_decimal_degrees"</span>, <span class="st">"latitude_decimal_degrees"</span>, <span class="st">"taxsubgrp"</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>usda_tax <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">"./correlation/TAXOUSDA_GreatGroups.csv"</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(usda_tax)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Great_Group Suborder    Order                           TAX Organic_soils
+1   Albaqualfs  Aqualfs Alfisols   Alfisols_Aqualfs_Albaqualfs             0
+2   Cryaqualfs  Aqualfs Alfisols   Alfisols_Aqualfs_Cryaqualfs             0
+3   Duraqualfs  Aqualfs Alfisols   Alfisols_Aqualfs_Duraqualfs             0
+4  Endoaqualfs  Aqualfs Alfisols  Alfisols_Aqualfs_Endoaqualfs             0
+5   Epiaqualfs  Aqualfs Alfisols   Alfisols_Aqualfs_Epiaqualfs             0
+6 Fragiaqualfs  Aqualfs Alfisols Alfisols_Aqualfs_Fragiaqualfs             0</code></pre>
+</div>
+</div>
+</section>
+<section id="preparation-of-the-standard-finit-legend" class="level2">
+<h2 class="anchored" data-anchor-id="preparation-of-the-standard-finit-legend">Preparation of the standard finit legend</h2>
+<p>In this section we show how to prepare a fixed legend for the purpose of spatial analysis, and which we think represent all world soils. We focus on the “subgroup” e.g.&nbsp;“aeric fluvaquents” (order: Entisols, suborder: Aquents, great group: Fluvaquents), which is an Entisols on floodplains with aquic moisture regimes that are not so wet. They are better aerated in the “upper” part of the soil profile.</p>
+<p>To create a representative legend, we will use the highest quality data with soil types quality controlled and described in metadata:</p>
+<ul>
+<li><a href="https://www.nrcs.usda.gov/resources/education-and-teaching-materials/national-soil-information-system-nasis">National Soil Information System (NASIS)</a> profiles and semi-profiles,</li>
+<li><a href="http://ncsslabdatamart.sc.egov.usda.gov/">National Cooperative Soil Survey Characterization Database</a>,</li>
+<li><a href="https://www.isric.org/explore/wosis">WoSIS soil profiles and samples</a>,</li>
+</ul>
+<p>We import the 3 data sets in R:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">exists</span>(<span class="st">"tax_nasis"</span>)){</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="do">## USDA legacy points ----</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  tax_nasis <span class="ot">=</span> <span class="fu">readRDS.gz</span>(<span class="st">"/mnt/diskstation/data/Soil_points/USA/NASIS_PNTS/nasis_tax_sites.rds"</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  tax_nasis <span class="ot">=</span> plyr<span class="sc">::</span><span class="fu">rename</span>(tax_nasis, <span class="fu">c</span>(<span class="st">"x_std"</span><span class="ot">=</span><span class="st">"longitude_decimal_degrees"</span>, <span class="st">"y_std"</span><span class="ot">=</span><span class="st">"latitude_decimal_degrees"</span>, <span class="st">"obsdate"</span><span class="ot">=</span><span class="st">"site_obsdate"</span>))</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  tax_nasis<span class="sc">$</span>source_db <span class="ot">=</span> <span class="st">"USDA_NASIS"</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  tax_nasis<span class="sc">$</span>site_key <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">"NASIS."</span>, tax_nasis<span class="sc">$</span>peiid)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  tax_nasis<span class="sc">$</span>olc_id <span class="ot">=</span> olctools<span class="sc">::</span><span class="fu">encode_olc</span>(tax_nasis<span class="sc">$</span>latitude_decimal_degrees, tax_nasis<span class="sc">$</span>longitude_decimal_degrees, <span class="dv">11</span>)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="co">#summary(as.factor(tax_nasis$taxsubgrp))</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  tax_nasis<span class="sc">$</span>year <span class="ot">=</span> <span class="fu">as.numeric</span>(<span class="fu">substr</span>(tax_nasis<span class="sc">$</span>site_obsdate, <span class="dv">1</span>, <span class="dv">4</span>))</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  tax_nasis <span class="ot">=</span> tax_nasis[,sel.tax.vars]</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  tax_nasis <span class="ot">=</span> tax_nasis[<span class="sc">!</span><span class="fu">is.na</span>(tax_nasis<span class="sc">$</span>taxsubgrp) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(tax_nasis<span class="sc">$</span>longitude_decimal_degrees),]</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(tax_nasis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   314560 obs. of  7 variables:
+ $ site_key                 : chr  "NASIS.115624" "NASIS.115623" "NASIS.9914" "NASIS.9948" ...
+ $ olc_id                   : chr  "85V4PQC2+G3V" "85V4QW49+6PQ" "84PRGC6X+2JP" "84PRCCV7+MXV" ...
+ $ year                     : num  2000 2000 2000 2000 2000 2000 2000 2000 2000 2000 ...
+ $ source_db                : chr  "USDA_NASIS" "USDA_NASIS" "USDA_NASIS" "USDA_NASIS" ...
+ $ longitude_decimal_degrees: num  -117 -117 -124 -124 -117 ...
+ $ latitude_decimal_degrees : num  47.7 47.8 44.5 44.4 47.2 ...
+ $ taxsubgrp                : chr  "xeric argialbolls" "aquandic humaquepts" "pachic fulvicryands" "lithic hapludands" ...</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">exists</span>(<span class="st">"ncss.site"</span>)){</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  ncss.site <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"/mnt/diskstation/data/Soil_points/INT/USDA_NCSS/ncss_labdata_locations.csv.gz"</span>, <span class="at">fill =</span> <span class="cn">TRUE</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep=</span><span class="st">","</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">#str(ncss.site)</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  ncss.site <span class="ot">=</span> plyr<span class="sc">::</span><span class="fu">rename</span>(ncss.site, <span class="fu">c</span>(<span class="st">"corr_taxsubgrp"</span><span class="ot">=</span><span class="st">"taxsubgrp"</span>))</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  ncss.site<span class="sc">$</span>source_db <span class="ot">=</span> <span class="st">"USDA_NCSS"</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  ncss.site<span class="sc">$</span>year <span class="ot">=</span> <span class="fu">as.numeric</span>(<span class="fu">substr</span>(ncss.site<span class="sc">$</span>site_obsdate, <span class="dv">1</span>, <span class="dv">4</span>))</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  ncss.site<span class="sc">$</span>olc_id <span class="ot">=</span> olctools<span class="sc">::</span><span class="fu">encode_olc</span>(ncss.site<span class="sc">$</span>latitude_decimal_degrees, ncss.site<span class="sc">$</span>longitude_decimal_degrees, <span class="dv">11</span>)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  ncss.site <span class="ot">=</span> ncss.site[,sel.tax.vars]</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  ncss.site <span class="ot">=</span> ncss.site[<span class="sc">!</span><span class="fu">is.na</span>(ncss.site<span class="sc">$</span>taxsubgrp) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(ncss.site<span class="sc">$</span>longitude_decimal_degrees),]</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  <span class="co">#summary(as.factor(ncss.site$taxsubgrp))</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(ncss.site)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 33235     7</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">exists</span>(<span class="st">"tax_wosis"</span>)){</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  tax_wosis <span class="ot">=</span> readr<span class="sc">::</span><span class="fu">read_tsv</span>(<span class="fu">gzfile</span>(<span class="st">'/mnt/diskstation/data/Soil_points/INT/WoSIS/WoSIS_2023_December/wosis_202312_profiles.tsv.gz'</span>), <span class="at">col_types=</span><span class="st">'icciccddcccccciccccicccci'</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  tax_wosis <span class="ot">=</span> plyr<span class="sc">::</span><span class="fu">rename</span>(tax_wosis, <span class="fu">c</span>(<span class="st">"longitude"</span><span class="ot">=</span><span class="st">"longitude_decimal_degrees"</span>, <span class="st">"latitude"</span><span class="ot">=</span><span class="st">"latitude_decimal_degrees"</span>, <span class="st">"dataset_code"</span><span class="ot">=</span><span class="st">"source_db"</span>))</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  tax_wosis <span class="ot">=</span> tax_wosis[<span class="sc">!</span><span class="fu">is.na</span>(tax_wosis<span class="sc">$</span>usda_great_group),]</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  tax_wosis<span class="sc">$</span>taxsubgrp <span class="ot">=</span> <span class="fu">tolower</span>(<span class="fu">paste</span>(tax_wosis<span class="sc">$</span>usda_subgroup, tax_wosis<span class="sc">$</span>usda_great_group))</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  tax_wosis<span class="sc">$</span>site_key <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">"WOSIS."</span>, tax_wosis<span class="sc">$</span>site_id)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  tax_wosis<span class="sc">$</span>year <span class="ot">=</span> <span class="fu">as.numeric</span>(<span class="fu">substr</span>(tax_wosis<span class="sc">$</span>usda_publication_year, <span class="dv">1</span>, <span class="dv">4</span>))</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  tax_wosis<span class="sc">$</span>olc_id <span class="ot">=</span> olctools<span class="sc">::</span><span class="fu">encode_olc</span>(tax_wosis<span class="sc">$</span>latitude_decimal_degrees, tax_wosis<span class="sc">$</span>longitude_decimal_degrees, <span class="dv">11</span>)</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  tax_wosis <span class="ot">=</span> tax_wosis[,sel.tax.vars]</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  tax_wosis <span class="ot">=</span> tax_wosis[<span class="sc">!</span><span class="fu">is.na</span>(tax_wosis<span class="sc">$</span>taxsubgrp) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(tax_wosis<span class="sc">$</span>longitude_decimal_degrees),]</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  <span class="co">#summary(as.factor(tax_wosis$taxsubgrp))</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(tax_wosis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 30998     7</code></pre>
+</div>
+</div>
+<p>Next, we can bind the 3 data sets to produce 1 consistent legend with finite number of classes and names strictly standardized. We also add “s” to fix typos etc.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">exists</span>(<span class="st">"tax_all"</span>)){</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  tax_all <span class="ot">=</span> <span class="fu">do.call</span>(rbind, <span class="fu">list</span>(tax_nasis, tax_wosis, ncss.site))</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">#str(tax_all)</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="do">## 378793 obs. of  7 variables</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="do">## add missing "s"</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="co">#tax_all$taxsubgrp = sapply(tax_all$taxsubgrp, add_s)</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  tax_all<span class="sc">$</span>taxsubgrp <span class="ot">=</span> <span class="fu">unlist</span>(parallel<span class="sc">::</span><span class="fu">mclapply</span>(tax_all<span class="sc">$</span>taxsubgrp, add_s, <span class="at">mc.cores =</span> <span class="dv">32</span>))</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co">#summary(as.factor(tax_all$taxsubgrp[grep("boralf", tax_all$taxsubgrp)]))</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">as.factor</span>(tax_all<span class="sc">$</span>taxsubgrp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          typic hapludalfs           typic hapludults 
+                      8481                       6832 
+         typic argiustolls         pachic argiustolls 
+                      6467                       4611 
+          typic argiudolls          mollic hapludalfs 
+                      4561                       4516 
+        aridic argiustolls           typic paleudults 
+                      4131                       4124 
+         typic endoaquolls           aquic hapludalfs 
+                      3855                       3780 
+         typic dystrudepts         aridic haplustalfs 
+                      3689                       3682 
+         typic haplustolls        aridic calciustepts 
+                      3590                       3479 
+       oxyaquic hapludalfs         ustic haplocalcids 
+                      3389                       2979 
+         typic haplustalfs           ultic hapludalfs 
+                      2832                       2738 
+          typic paleudalfs          typic argiaquolls 
+                      2685                       2578 
+         typic haplustepts         aridic haplustepts 
+                      2560                       2521 
+        typic udipsamments           typic hapludolls 
+                      2369                       2309 
+       aridic calciustolls         ustic haplocambids 
+                      2258                       2256 
+       typic torriorthents         lithic haplustolls 
+                      2162                       2122 
+          aeric epiaqualfs          ustic calciargids 
+                      2109                       1991 
+      typic torripsamments         cumulic hapludolls 
+                      1960                       1934 
+       cumulic haplustolls           ustic haplargids 
+                      1918                       1836 
+          udic argiustolls         aridic paleustolls 
+                      1815                       1810 
+          aquic argiudolls        ustic torriorthents 
+                      1798                       1738 
+        aridic haplustolls lithic ustic torriorthents 
+                      1736                       1697 
+        typic haplocalcids         pachic haplustolls 
+                      1662                       1623 
+          aquic hapludults          andic haplocryods 
+                      1563                       1547 
+        ultic haploxeralfs       calcidic argiustolls 
+                      1543                       1541 
+       oxyaquic argiudolls           typic udorthents 
+                      1539                       1538 
+         typic fragiudults         aridic paleustalfs 
+                      1506                       1446 
+       cumulic endoaquolls        typic dystrocryepts 
+                      1414                       1394 
+        typic haplocryepts         typic eutrocryepts 
+                      1375                       1358 
+      ustic torripsamments         aridic ustorthents 
+                      1348                       1342 
+       aquertic argiudolls           udic haplusterts 
+                      1323                       1312 
+         typic cryorthents   fluvaquentic endoaquepts 
+                      1305                       1298 
+         ustic argicryolls          typic argixerolls 
+                      1290                       1285 
+       typic kanhapludults       terric haplosaprists 
+                      1222                       1211 
+        typic calciustolls         lithic argixerolls 
+                      1207                       1204 
+         typic udifluvents          typic ustorthents 
+                      1204                       1195 
+         typic haplorthods         dystric eutrudepts 
+                      1194                       1186 
+      oxyaquic fragiudalfs           typic eutrudepts 
+                      1184                       1173 
+  fluvaquentic endoaquolls         typic histoturbels 
+                      1163                       1162 
+          aquic hapludolls         pachic argicryolls 
+                      1139                       1133 
+      calcidic haplustalfs   petrocalcic calciustolls 
+                      1102                       1083 
+        typic haplocambids           typic haplargids 
+                      1081                       1052 
+       calcic petrocalcids          typic endoaqualfs 
+                      1027                       1017 
+         lithic hapludolls           xeric haplargids 
+                      1009                        965 
+      lithic torriorthents         typic glossaqualfs 
+                       957                        957 
+      oxyaquic glossudalfs        typic ustipsamments 
+                       949                        928 
+        aeric calciaquolls           udic haplustalfs 
+                       923                        904 
+         typic haplocryods     typic quartzipsamments 
+                       901                        893 
+       typic haplosaprists         lithic ustorthents 
+                       891                        882 
+     vitrandic argixerolls         xeric haplocalcids 
+                       879                        839 
+        pachic argixerolls        typic torrifluvents 
+                       836                        825 
+oxyaquic vertic argiudolls                    (Other) 
+                       824                     185042 </code></pre>
+</div>
+</div>
+<p>This shows which are the world’s most frequent subgroup classes. Next we can complete the final legend. For practical purposes, we limit to classes that have at least 30 observations, which gives a total of 818 classes.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#write.csv(ext.l, "tax_extensions_summary.csv")</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>tax.sm <span class="ot">=</span> <span class="fu">summary</span>(<span class="fu">as.factor</span>(tax_all<span class="sc">$</span>taxsubgrp), <span class="at">maxsum =</span> <span class="dv">820</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>tax.s <span class="ot">=</span> <span class="fu">as.data.frame</span>(tax.sm)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>levels <span class="ot">=</span> <span class="fu">attr</span>(tax.sm, <span class="st">"names"</span>)[<span class="dv">1</span><span class="sc">:</span><span class="dv">818</span>]</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co">#write.csv(tax.s, "tax_taxsubgrp_summary.csv")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>It is important for further spatial analysis that the number of classes is finite and that there are enough points for Machine Learning for example.</p>
+</section>
+<section id="fuzzy-search" class="level2">
+<h2 class="anchored" data-anchor-id="fuzzy-search">Fuzzy search</h2>
+<p>Next, we would also like to add points from national and regional soil profiles that are not listed above and that could help increase representation of points geographically. For this we use the previously compiled soil data described in the previous sections:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">exists</span>(<span class="st">"tax_spropsA"</span>)){</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  tax_sprops0 <span class="ot">=</span> <span class="fu">as.data.frame</span>( <span class="fu">rbind</span>(<span class="fu">data.table</span>(<span class="fu">readRDS.gz</span>(<span class="st">"/mnt/diskstation/data/Soil_points/sol_chem.pnts_horizons.rds"</span>)),</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>                                     <span class="fu">data.table</span>(<span class="fu">readRDS.gz</span>(<span class="st">"/mnt/diskstation/data/Soil_points/sol_chem.pnts_horizons_TMP.rds"</span>)), <span class="at">fill=</span><span class="cn">TRUE</span>, <span class="at">ignore.attr=</span><span class="cn">TRUE</span>))</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  tax_sprops0 <span class="ot">=</span> tax_sprops0[<span class="sc">!</span>tax_sprops0<span class="sc">$</span>source_db<span class="sc">==</span><span class="st">"USDA_NCSS"</span> <span class="sc">&amp;</span> <span class="sc">!</span>(tax_sprops0<span class="sc">$</span>SSL_classification_name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">""</span>, <span class="st">"NA / NA"</span>, <span class="st">"#N/A / #N/A"</span>, <span class="st">" / "</span>)),]</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  tax_sprops0<span class="sc">$</span>year <span class="ot">=</span> <span class="fu">substr</span>(tax_sprops0<span class="sc">$</span>site_obsdate, <span class="dv">1</span>, <span class="dv">4</span>)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  tax_sprops0 <span class="ot">=</span> tax_sprops0[<span class="sc">!</span><span class="fu">duplicated</span>(tax_sprops0<span class="sc">$</span>olc_id),]</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  tax_sprops0<span class="sc">$</span>SSL_classification_name <span class="ot">=</span> <span class="fu">tolower</span>(tax_sprops0<span class="sc">$</span>SSL_classification_name)</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>  tax_sprops0 <span class="ot">=</span> tax_sprops0[<span class="sc">!</span><span class="fu">is.na</span>(tax_sprops0<span class="sc">$</span>SSL_classification_name),]</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>  <span class="co">#dim(tax_sprops0)</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>  <span class="do">## 35437    45</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>  <span class="co">#summary(as.factor(tax_sprops0$source_db))</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>  <span class="co">#str(tax_sprops0$SSL_classification_name)</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>  tax_c1 <span class="ot">=</span> <span class="fu">sapply</span>(tax_sprops0<span class="sc">$</span>SSL_classification_name, <span class="cf">function</span>(i){<span class="fu">strsplit</span>(i, <span class="st">" / "</span>)[[<span class="dv">1</span>]][<span class="dv">1</span>]})</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>  tax_c2 <span class="ot">=</span> <span class="fu">sapply</span>(tax_sprops0<span class="sc">$</span>SSL_classification_name, <span class="cf">function</span>(i){<span class="fu">strsplit</span>(i, <span class="st">" / "</span>)[[<span class="dv">1</span>]][<span class="dv">2</span>]})</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>  sel.tax.vars0 <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"site_key"</span>, <span class="st">"olc_id"</span>, <span class="st">"year"</span>, <span class="st">"source_db"</span>, <span class="st">"longitude_decimal_degrees"</span>, <span class="st">"latitude_decimal_degrees"</span>)</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>  tax_spropsA <span class="ot">=</span> <span class="fu">rbind</span>(<span class="fu">cbind</span>(tax_sprops0[,sel.tax.vars0], <span class="fu">data.frame</span>(<span class="at">SSL_classification_name=</span>tax_c1)),</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">cbind</span>(tax_sprops0[,sel.tax.vars0], <span class="fu">data.frame</span>(<span class="at">SSL_classification_name=</span>tax_c2)))</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(tax_spropsA)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   70874 obs. of  7 variables:
+ $ site_key                 : chr  "15" "17" "18" "19" ...
+ $ olc_id                   : chr  "9F6FRM8J+J62" "9F6CPWCV+9M9" "9F6FP2XH+P9C" "9F6FQ52P+RHW" ...
+ $ year                     : chr  "2016" "2016" "2015" "2016" ...
+ $ source_db                : chr  "BZE_LW" "BZE_LW" "BZE_LW" "BZE_LW" ...
+ $ longitude_decimal_degrees: num  9.68 8.94 9.03 9.19 9.78 ...
+ $ latitude_decimal_degrees : num  54.8 54.7 54.7 54.8 54.7 ...
+ $ SSL_classification_name  : chr  "typic argiudoll" "aeric tropaquept" "humaquept" "humaquept" ...</code></pre>
+</div>
+</div>
+<p>This gives us additional 71k points with soil classification name. These points need to be cleaned up to match exactly the previously produced legend. Because fuzzy matching can be computational as the algorithm looks for N classes in M rows, we run this matching in parallel:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(parallel)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>tax_spropsA.lst <span class="ot">=</span> parallel<span class="sc">::</span><span class="fu">mclapply</span>(levels, <span class="cf">function</span>(i){<span class="fu">match_tax</span>(i, tax_spropsA)}, <span class="at">mc.cores=</span><span class="dv">30</span>)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>tax_spropsV <span class="ot">=</span> <span class="fu">do.call</span>(rbind, tax_spropsA.lst)</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Add missing "S" on the end:</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="do">## "paleustollic chromustert" -&gt; "paleustollic chromusterts"</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>tax_spropsV<span class="sc">$</span>taxsubgrp <span class="ot">=</span> <span class="fu">unlist</span>(parallel<span class="sc">::</span><span class="fu">mclapply</span>(tax_spropsV<span class="sc">$</span>taxsubgrp, add_s, <span class="at">mc.cores =</span> <span class="dv">32</span>))</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(tax_spropsV)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   24869 obs. of  8 variables:
+ $ site_key                 : chr  "67" "75" "91" "114" ...
+ $ olc_id                   : chr  "9F6GC5XP+856" "9F6M9JCF+J75" "9F6J9Q4H+GM2" "9F6G7RV2+PW5" ...
+ $ year                     : chr  "2016" "2014" "2014" "2016" ...
+ $ source_db                : chr  "BZE_LW" "BZE_LW" "BZE_LW" "BZE_LW" ...
+ $ longitude_decimal_degrees: num  10.2 13.6 12.8 10.8 10.1 ...
+ $ latitude_decimal_degrees : num  54.4 54.4 54.4 54.3 54.2 ...
+ $ SSL_classification_name  : chr  "typic hapludalfs" "typic hapludalfs" "typic hapludalfs" "typic hapludalfs" ...
+ $ taxsubgrp                : chr  "typic hapludalfs" "typic hapludalfs" "typic hapludalfs" "typic hapludalfs" ...</code></pre>
+</div>
+</div>
+<p>this shows that only 25k have an actually matching soil type that we can use.</p>
+</section>
+<section id="final-bind" class="level2">
+<h2 class="anchored" data-anchor-id="final-bind">Final bind</h2>
+<p>We can finally bind and export the final Analysis-Ready table with training points matching our target legend:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>tax_allT <span class="ot">=</span> <span class="fu">do.call</span>(rbind, <span class="fu">list</span>(tax_all, tax_spropsV[,sel.tax.vars]))</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(tax_allT)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   403662 obs. of  7 variables:
+ $ site_key                 : chr  "NASIS.115624" "NASIS.115623" "NASIS.9914" "NASIS.9948" ...
+ $ olc_id                   : chr  "85V4PQC2+G3V" "85V4QW49+6PQ" "84PRGC6X+2JP" "84PRCCV7+MXV" ...
+ $ year                     : chr  "2000" "2000" "2000" "2000" ...
+ $ source_db                : chr  "USDA_NASIS" "USDA_NASIS" "USDA_NASIS" "USDA_NASIS" ...
+ $ longitude_decimal_degrees: num  -117 -117 -124 -124 -117 ...
+ $ latitude_decimal_degrees : num  47.7 47.8 44.5 44.4 47.2 ...
+ $ taxsubgrp                : chr  "xeric argialbolls" "aquandic humaquepts" "pachic fulvicryands" "lithic hapludands" ...</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 403662 obs. of  7 variables</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="do">## we do need duplicates as some translations lead to 2-3 classes</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co">#tax_allT = tax_allT[!duplicated(tax_allT$olc_id),]</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="do">## remove all points with exactly the same TAX and olc_id</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>dup <span class="ot">=</span> <span class="fu">duplicated</span>(<span class="fu">gsub</span>(<span class="st">" "</span>, <span class="st">"_"</span>, <span class="fu">paste</span>(tax_allT<span class="sc">$</span>olc_id, tax_allT<span class="sc">$</span>taxsubgrp, <span class="at">sep=</span><span class="st">" "</span>)))</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(dup) <span class="do">## 47662 complete duplicates</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Mode   FALSE    TRUE 
+logical  356000   47662 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>tax_allT <span class="ot">=</span> tax_allT[<span class="sc">!</span>dup,]</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co">#summary(as.factor(tax_allT$source_db))</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="do">## use only points from the target legend:</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>tax_allT0 <span class="ot">=</span> tax_allT[<span class="fu">which</span>(tax_allT<span class="sc">$</span>taxsubgrp <span class="sc">%in%</span> levels),]</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(tax_allT0)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   334761 obs. of  7 variables:
+ $ site_key                 : chr  "NASIS.275760" "NASIS.9655" "NASIS.9669" "NASIS.9730" ...
+ $ olc_id                   : chr  "85V565W5+4Q8" "84QRQJP7+9P8" "84QRFHF7+WX6" "84QRMJ24+MPW" ...
+ $ year                     : chr  "2000" "2000" "2000" "2000" ...
+ $ source_db                : chr  "USDA_NASIS" "USDA_NASIS" "USDA_NASIS" "USDA_NASIS" ...
+ $ longitude_decimal_degrees: num  -117 -123 -123 -123 -123 ...
+ $ latitude_decimal_degrees : num  47.2 45.8 45.5 45.7 44.4 ...
+ $ taxsubgrp                : chr  "vitrandic haploxerolls" "dystric eutrudepts" "andic dystrudepts" "humic dystrudepts" ...</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">#write.csv(tax_allT0, gzfile("taxsubgrp_pnts_global_xyt_v20250204.csv.gz"))</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="co">#writeVector(vect(tax_allT0, geom=c("longitude_decimal_degrees", "latitude_decimal_degrees"), crs="EPSG:4326"), "taxsubgrp_pnts_global_xyt.gpkg", overwrite=TRUE)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Note, we removed some duplicates as many data sets are compilations so some points appear in multiple data sets.</p>
+<p>We can plot the density of points in Goode Homolosize Interupted projection so that areas are shown realistically:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>g1 <span class="ot">=</span> terra<span class="sc">::</span><span class="fu">vect</span>(<span class="st">"/mnt/diskstation/data/Soil_points/tiles_GH_100km_land.gpkg"</span>)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>ovt.g1 <span class="ot">=</span> terra<span class="sc">::</span><span class="fu">extract</span>(g1[<span class="st">"ID"</span>], terra<span class="sc">::</span><span class="fu">project</span>(terra<span class="sc">::</span><span class="fu">vect</span>(tax_allT, <span class="at">geom=</span><span class="fu">c</span>(<span class="st">"longitude_decimal_degrees"</span>, <span class="st">"latitude_decimal_degrees"</span>), <span class="at">crs=</span><span class="st">"EPSG:4326"</span>), <span class="fu">crs</span>(g1)))</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>g1t.c <span class="ot">=</span> <span class="fu">summary</span>(<span class="fu">as.factor</span>(ovt.g1<span class="sc">$</span>ID), <span class="at">maxsum =</span> <span class="fu">length</span>(<span class="fu">levels</span>(<span class="fu">as.factor</span>(ovt.g1<span class="sc">$</span>ID))))</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>g1t.df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">count=</span>g1t.c, <span class="at">ID=</span><span class="fu">attr</span>(g1t.c, <span class="st">"names"</span>))</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>g1<span class="sc">$</span>count <span class="ot">=</span> dplyr<span class="sc">::</span><span class="fu">left_join</span>(<span class="fu">data.frame</span>(<span class="at">ID=</span>g1<span class="sc">$</span>ID), g1t.df)<span class="sc">$</span>count</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="co">#plot(g1["count"])</span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="co">#writeVector(g1["count"], "/data/dev/tiles_GH_100km_tax.dens.gpkg", overwrite=TRUE)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/fig_density_training_tax.pnts.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>Density of points with soil taxonomy class based on 100 by 100 km blocks in IGH projection.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Save temp object:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save.image.pigz</span>(<span class="at">file=</span><span class="st">"soilusda.RData"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2024, OpenGeoHub foundation</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/OpenGeoHub/SoilSamples/edit/main/040-import_usda_soil_tax_data.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/OpenGeoHub/SoilSamples/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/OpenGeoHub/SoilSamples">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://fosstodon.org/@opengeohub">
+      <i class="bi bi-mastodon" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/opengeohub">
+      <i class="bi bi-twitter" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/company/opengeohub-foundation/">
+      <i class="bi bi-linkedin" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.youtube.com/c/OpenGeoHubFoundation">
+      <i class="bi bi-youtube" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

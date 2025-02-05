@@ -591,6 +591,83 @@ dim(chemsprops.WISE)
 ## [1] 37443    39
 ```
 
+#### International Soil Carbon Network (compilation)
+
+- Nave, L., K. Johnson, C. van Ingen, D. Agarwal, M. Humphrey, and N. Beekwilder. 2022. International Soil Carbon Network version 3 Database (ISCN3) ver 1. Environmental Data Initiative. <https://doi.org/10.6073/pasta/cc751923c5576b95a6d6a227d5afe8ba> (Accessed 2025-02-03). Data download URL: <https://portal.edirepository.org/nis/mapbrowse?packageid=edi.1160.1>  
+- Malhotra, A., Todd-Brown, K., Nave, L. E., Batjes, N. H., Holmquist, J. R., Hoyt, A. M., ... & Harden, J. (2019). The landscape of soil carbon data: emerging questions, synergies and databases. Progress in Physical Geography: Earth and Environment, 43(5), 707-719. <https://doi.org/10.1177/0309133319873309>
+
+```{r}
+if(!exists("chemsprops.ISCN")){
+  path.iscn = "/mnt/diskstation/data/Soil_points/INT/ISCNData/"
+  iscn.hor <- dplyr::left_join(vroom::vroom(paste0(path.iscn, "ISCN3_layer.csv.gz"), delim=";", col_types = strrep('c', times = 95)), vroom::vroom(paste0(path.iscn, "ISCN3_profile.csv.gz"), delim=";", col_types = strrep('c', times = 44)), by=c("site_name","profile_name"), multiple = "first")
+  ## Rows: 445829 Columns: 95
+  #summary(as.factor(iscn.hor$dataset_name_sub.x))
+  ## For citations see: 'ISCN3_citation.csv'
+  ## Some data sets already imported via original data!
+  iscn.rm = which(iscn.hor$dataset_name_sub.x %in% c("NRCS Sept/2014", "Worldwide soil carbon and nitrogen data", "Northern Circumpolar Soil Carbon Database (NCSCD)"))
+  iscn.hor = iscn.hor[-iscn.rm,]
+  iscn.hor = iscn.hor[!is.na(iscn.hor$`long (dec. deg).x`),]
+  #dim(iscn.hor)
+  ## 35650   137
+  #str(iscn.hor$soil_taxon.x)
+  #summary(as.factor(iscn.hor$`datum (datum).x`))
+  ## NAD27 NAD83 WGS84  NA's 
+  #    976  8433 26241 11099
+  iscn.hor$longitude_decimal_degrees = as.numeric(iscn.hor$`long (dec. deg).x`)
+  iscn.hor$latitude_decimal_degrees = as.numeric(iscn.hor$`lat (dec. deg).x`)
+  for(j in c("NAD27","NAD83")){
+    sel <- which(iscn.hor$`datum (datum).x`==j)
+    xy <- iscn.hor[sel,c("longitude_decimal_degrees","latitude_decimal_degrees","profile_name")]
+    if(j=="NAD 83"|j=="NAD83"|j=="NAD83?"){
+      xy.v <- terra::vect(xy, geom=c("longitude_decimal_degrees", "latitude_decimal_degrees"), crs="+proj=longlat +datum=NAD83")
+    }
+    if(j=="NAD27"){
+      xy.v <- terra::vect(xy, geom=c("longitude_decimal_degrees", "latitude_decimal_degrees"), crs="+proj=longlat +datum=NAD27")
+    }
+    xy.t <- terra::project(xy.v, "EPSG:4326")
+    iscn.hor[sel,"longitude_decimal_degrees"] = terra::geom(xy.t)[,"x"]
+    iscn.hor[sel,"latitude_decimal_degrees"] = terra::geom(xy.t)[,"y"]
+  }
+  #plot(iscn.hor[,c("longitude_decimal_degrees","latitude_decimal_degrees")], pch="+")
+  iscn.hor$SSL_classification_name <- ifelse(is.na(iscn.hor$soil_taxon.x), paste(iscn.hor$soil_series.x), paste(iscn.hor$soil_taxon.x))
+  #summary(as.factor(iscn.hor$SSL_classification_name))
+  ## Strange Date format - https://github.com/ISCN/SOCDRaHR2/blob/master/R/ISCN3_3.R
+  iscn.hor$site_obsdate <- lubridate::as_date(as.numeric(iscn.hor$`observation_date (YYYY-MM-DD).x`), origin = lubridate::ymd('1899-12-31'))
+  #summary(iscn.hor$site_obsdate)
+  #summary(as.factor(iscn.hor$c_method))
+  ## some 5+ methods, mainly Dry combustion
+  iscn.hor$organic_carbon <- as.numeric(iscn.hor$`oc (percent)`) * 10 
+  iscn.hor$total_carbon_ncs <- as.numeric(iscn.hor$`c_tot (percent)`) * 10
+  iscn.hor$total_nitrogen_ncs <- as.numeric(iscn.hor$`n_tot (percent)`) * 10
+  iscn.hor$bulk_density_oven_dry = rowMeans( sapply(iscn.hor[,c("bd_samp (g cm-3)", "bd_other (g cm-3)", "bd_whole (g cm-3)")], as.numeric), na.rm=TRUE)
+  iscn.hor$bulk_density_oven_dry = ifelse(iscn.hor$bulk_density_oven_dry < 0.02 | iscn.hor$bulk_density_oven_dry > 2.6, NA, iscn.hor$bulk_density_oven_dry)
+  #summary(iscn.hor$bulk_density_oven_dry)
+  #iscn.hor$oc_d <- iscn.hor$`soc (g cm-2).x` / ((iscn.hor$`layer_bot (cm).x` - iscn.hor$`layer_top (cm).x`)/100)
+  iscn.hor$oc_d <- iscn.hor$organic_carbon * iscn.hor$bulk_density_oven_dry * (1-(ifelse(is.na(iscn.hor$`wpg2 (percent)`), 0, as.numeric(iscn.hor$`wpg2 (percent)`))/100))
+  #summary(iscn.hor$oc_d)
+  iscn.lst <- c("site_name", "profile_name", "site_obsdate", "longitude_decimal_degrees", 
+      "latitude_decimal_degrees", "SSL_classification_name", 
+      "labsampnum", "layer_key", "layer_sequence", "layer_top (cm).x", "layer_bot (cm).x", 
+      "hzn_desgn", "texture_description", "texture_lab", "clay_tot_psa (percent)", "silt_tot_psa (percent)", 
+      "sand_tot_psa (percent)", "organic_carbon", "oc_d", "total_carbon_ncs", "total_nitrogen_ncs", 
+      "ph_kcl", "ph_h2o", "ph_cacl2", "sum_of_cations_cec_pH_8_2", "cec_nh4_ph_7", "ecec_base_plus_aluminum", 
+      "wpg2 (percent)", "bulk_density_oven_dry", "ca_ext", "mg_ext", 
+      "na_ext", "k_ext", "ec_water_extractable", "ec_predict_one_to_two")
+  x.na = iscn.lst[which(!iscn.lst %in% names(iscn.hor))]
+  if(length(x.na)>0){ for(i in x.na){ iscn.hor[,i] = NA } }
+  chemsprops.ISCN = iscn.hor[,iscn.lst]
+  chemsprops.ISCN$source_db = "ISCN"
+  chemsprops.ISCN$confidence_degree = 6
+  chemsprops.ISCN$project_url = "http://iscn.fluxdata.org/"  
+  chemsprops.ISCN$citation_url = "https://doi.org/10.6073/pasta/cc751923c5576b95a6d6a227d5afe8ba"
+  chemsprops.ISCN = complete.vars(chemsprops.ISCN, sel = c("organic_carbon", "oc_d", "ph_h2o", "clay_tot_psa (percent)", "SSL_classification_name"))
+  saveRDS.gz(chemsprops.ISCN, "/mnt/diskstation/data/Soil_points/INT/ISCNData/chemsprops.ISCN.rds")
+}
+dim(chemsprops.ISCN)
+## 35650    39
+```
+
+
 #### GEMAS
 
 - Reimann, C., Fabian, K., Birke, M., Filzmoser, P., Demetriades, A., Négrel, P., ... & Anderson, M. (2018). [GEMAS: Establishing geochemical background and threshold for 53 chemical elements in European agricultural soil](https://doi.org/10.1016/j.apgeochem.2017.01.021). Applied Geochemistry, 88, 302-318. Data download URL: <http://gemas.geolba.ac.at/>
@@ -1197,8 +1274,8 @@ dim(chemsprops.FEBR)
 
 #### PRONASOLOS
 
-- POLIDORO, J., COELHO, M., CARVALHO FILHO, A. D., LUMBRERAS, J., de OLIVEIRA, A. P., VASQUES, G. D. M., ... & BREFIN, M. (2021). [Programa Nacional de Levantamento e Interpretação de Solos do Brasil (PronaSolos): diretrizes para implementação](https://www.infoteca.cnptia.embrapa.br/infoteca/handle/doc/1135056). Embrapa Solos-Documentos (INFOTECA-E).
-- Download URL:<http://geoinfo.cnps.embrapa.br/documents/3013/download>
+- POLIDORO, J., COELHO, M., CARVALHO FILHO, A. D., LUMBRERAS, J., de OLIVEIRA, A. P., VASQUES, G. D. M., ... & BREFIN, M. (2021). [Programa Nacional de Levantamento e Interpretação de Solos do Brasil (PronaSolos): diretrizes para implementação](https://www.infoteca.cnptia.embrapa.br/infoteca/handle/doc/1135056). Embrapa Solos-Documentos (INFOTECA-E).  
+- Download URL: <http://geoinfo.cnps.embrapa.br/documents/3013/download>  
 
 ```{r}
 if(!exists("chemsprops.PRONASOLOS")){
@@ -1534,7 +1611,7 @@ knitr::include_graphics("img/fig_histogram_soc_bld_NCSCD.png")
 #### CSIRO National Soil Site Database
 
 - CSIRO (2020). CSIRO National Soil Site Database. v4. CSIRO. Data Collection. <https://data.csiro.au/collections/collection/CIcsiro:7526v004>. Data download URL: <https://doi.org/10.25919/5eeb2a56eac12> (available upon request)  
-- Searle, R. (2014). The Australian site data collation to support the GlobalSoilMap. GlobalSoilMap: Basis of the global spatial soil information system, 127. 
+- Searle, R. (2014). The Australian site data collation to support the GlobalSoilMap. GlobalSoilMap: Basis of the global spatial soil information system, 127.  
 
 ```{r}
 if(!exists("chemsprops.NatSoil")){
@@ -2339,8 +2416,8 @@ Note: This is relatively small data set focused on 8 commercial fields / farms.
 
 ```{r}
 if(!exists("chemsprops.Potash2023")){
-  multisite.xy = read.csv("/mnt/landmark/Soil_points/USA/Multi_site_evaluation/locations.csv")
-  multisite.lb = read.csv("/mnt/landmark/Soil_points/USA/Multi_site_evaluation/measurements.csv")
+  multisite.xy = read.csv("/mnt/diskstation/data/Soil_points/USA/Multi_site_evaluation/locations.csv")
+  multisite.lb = read.csv("/mnt/diskstation/data/Soil_points/USA/Multi_site_evaluation/measurements.csv")
   multisite.lb$oc_d = round(as.numeric(multisite.lb$SOCc) * 10 * multisite.lb$BD, 2)
   #summary(multisite.lb$oc_d)
   multisite.lb$organic_carbon = multisite.lb$SOCc*10
@@ -2424,7 +2501,7 @@ if(!exists("chemsprops.GLANCE")){
   ov.bare.ex = terra::extract(
     terra::rast("/data/CCI_LandCover/lc_glc.fcs30d_c_30m_s_20220101_20221231_go_epsg.4326_v20231026.tif"), 
           terra::vect(bare.ex, geom=c("longitude_decimal_degrees", "latitude_decimal_degrees"), crs="EPSG:4326"))
-  bare.ex = bare.ex[ov.bare.ex[,2] %in% c(190,200,201,202,220),]
+  bare.ex = bare.ex[ov.bare.ex[,"lc_glc.fcs30d_c_30m_s_20220101_20221231_go_epsg.4326_v20231026"] %in% c(190,200,201,202,220),]
   #str(bare.ex)
   ## 80652 spacetime pnts 
   #str(levels(as.factor(bare.ex$site_key)))
@@ -2469,7 +2546,7 @@ Other potential large soil profile DBs of interest:
 
 ```{r}
 ds.n = ls(pattern=glob2rx("chemsprops.*"))
-## 49 data sets
+## 50 data sets
 nm.l = lapply(ds.n, function(i){ names(get(i)) })
 #x = lapply(nm.l, length)
 nm.df = data.frame(do.call(rbind, nm.l))
@@ -2501,7 +2578,7 @@ for(j in c("clay_total", "silt_total", "sand_total", "total_frag_wt_pct_gt_2_mm_
 for(j in c("ph_h2o","ph_kcl","ph_cacl2")){
   tot_sprops[,j] = ifelse(tot_sprops[,j]>12|tot_sprops[,j]<2, NA, tot_sprops[,j])
 }
-#hist(tot_sprops$db_od)
+#hist(tot_sprops$bulk_density_oven_dry)
 for(j in c("bulk_density_oven_dry")){
   tot_sprops[,j] = ifelse(tot_sprops[,j]>2.4|tot_sprops[,j]<0.03, NA, tot_sprops[,j])
 }
@@ -2542,7 +2619,7 @@ Add unique location based on the [Open Location Code](https://cran.r-project.org
 ```{r}
 tot_sprops$olc_id = olctools::encode_olc(tot_sprops$latitude_decimal_degrees, tot_sprops$longitude_decimal_degrees, 11)
 length(levels(as.factor(tot_sprops$olc_id)))
-## 343814
+## 346748
 ```
 
 ```{r}
@@ -2581,7 +2658,7 @@ mask = terra::rast("/data/CCI_LandCover/land.cover_copernicus_c_100m_s_20150101_
 #}
 ## final number of unique spatial locations:
 nrow(tot_sprops.pnts)
-## 343814
+## 346748
 ```
 
 #### Histogram plots
@@ -2596,7 +2673,7 @@ ggplot(tot_sprops, aes(x=source_db, y=log1p(organic_carbon))) + geom_boxplot() +
 ```
 
 ```{r}
-sel.db = c("ISRIC_WISE", "Canada_CUFS", "USDA_NCSS", "AfSPDB", "Canada_NPDB", "PRONASOLOS", "CSIRO_NatSoil", "Netherlands.BIS")
+sel.db = c("ISRIC_WISE", "Canada_CUFS", "USDA_NCSS", "AfSPDB", "Canada_NPDB", "PRONASOLOS", "CSIRO_NatSoil", "ISCN")
 openair::scatterPlot(tot_sprops[tot_sprops$source_db %in% sel.db,], x = "hzn_depth", y = "organic_carbon", method = "hexbin", 
   col = "increment", type = "source_db", log.x = TRUE, log.y=TRUE, ylab="SOC [g/kg]", xlab="depth in cm")
 ```

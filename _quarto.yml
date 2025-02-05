@@ -9,6 +9,7 @@ project:
     - 025-import_chemical_data.qmd
 #    - 030-import_physical_data.qmd
     - 035-import_wrb_data.qmd
+    - 040-import_usda_soil_tax_data.qmd
 
 website:
   navbar:
@@ -54,6 +55,7 @@ website:
       - section: "Tutorials"
         contents:
           - 035-import_wrb_data.qmd
+          - 040-import_usda_soil_tax_data.qmd
   page-footer:
     background: light
     left: "© 2024, OpenGeoHub foundation"

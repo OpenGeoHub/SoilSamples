@@ -1,0 +1,299 @@
+---
+aliases:
+  - import-usda-soil-types.html
+---
+
+# USDA Soil Taxonomy training points
+
+```{r, include=FALSE, message=FALSE, results='hide'}
+ls <- c("terra", "dplyr", "ggplot2", "tidyverse", "Hmisc")
+new.packages <- ls[!(ls %in% installed.packages()[,"Package"])]
+if(length(new.packages)) install.packages(new.packages)
+lapply(ls, require, character.only = TRUE)
+```
+
+```{r librs, include=FALSE}
+library(plyr)
+library(dplyr)
+library(fastSave)
+library(ggplot2)
+library(data.table)
+library(terra)
+#load.pigz("soilusda.RData")
+source('./R/data_functions.R')
+```
+
+## USDA soil taxonomy
+
+[USDA Soil Taxonomy](https://en.wikipedia.org/wiki/USDA_soil_taxonomy) is among the most described soil classification system in 
+the world with many documents available in open domain and maintained (curtesy of USDA and USGS). The current 
+edition of the Soil Taxonomy is 13 and has [6 levels](https://soilmapper.org/soil-variables-chapter.html#soil-class-data): Order, Suborder, Great Group, 
+Subgroup, Family, and Series. In this notebook we explain how to produce consistent 
+global analysis-ready point data set with soil taxonomy subgroup labels. 
+Note: this code is continuously being updated. If you have more data you would like 
+to share and add to this list, please [contact us](https://opengeohub.org/contribute-training-data-openlandmap/).
+
+First we will define two functions to help us clean-up and bind soil type labels. 
+The first function is used to add "s" at the end of the soil label (often ommitted), the second 
+function is used to do a fuzzy search to find is some label appears in complex 
+text:
+
+```{r}
+add_s = function(x){
+  y = c("*and$", "*bel$", "*tel$", "*hel$", "*uod$", "*yod$", "*hod$", "*mod$", "*ent$", "*ert$", "*ept$", "*ult$", "*cid$", "*bid$", "*lid$", "*gid$", "*hid$", "*rid$", "*sid$", "*alf$", "*oll$", "*ist$")
+  s = sapply(y, function(i){grep(i, x)})
+  if(sum(unlist(s))>0){
+    x = paste0(x, "s")
+  }
+  x
+}
+match_tax = function(i, x){
+  x <- x[agrep(i, x$SSL_classification_name, ignore.case=TRUE, max.distance=0.02),]
+  if(nrow(x)>0){
+    x$taxsubgrp <- i
+    return(x)
+  }
+}
+```
+
+This is an example of addition of "s" at the end of soil type:
+
+```{r}
+sapply(c("typic argiustoll", "typic argiustolls", "typic haploperox", "aquollic hapludalf", "aquollic hapludalfs"), add_s)
+```
+
+This is an example of fuzzy search of some target term:
+
+```{r}
+x = data.frame(SSL_classification_name=c("pachic argiustolls", "typic argiustoll", 
+           "argiustolls", "Typic Argiustolls", "typic Argiustols"), row.no=1:5)
+match_tax(i="typic argiustolls", x)
+```
+
+As demonstrated, this will take care of typos and any capital letter issues.
+
+Note that many soil data bases do not have standardized way the soil types are entered and hence some clean-up and sorting is often required. 
+In the case of the [National Cooperative Soil Survey Characterization Database](https://ncsslabdatamart.sc.egov.usda.gov/), 
+soil types are entered via several columns, which can also be split if needed:
+
+```
+ $ SSL_name                 : chr  NA NA "Cathay" NA ...
+ $ SSL_class_type           : chr  NA NA "series" NA ...
+ $ SSL_classdate            : chr  NA NA "1991/10/03 00:00:00+00" NA ...
+ $ SSL_classification_name  : chr  NA NA "Fine-loamy, mixed, frigid Udic Argiboroll" NA ...
+ $ SSL_taxorder             : chr  NA NA "mollisols" NA ...
+ $ SSL_taxsuborder          : chr  NA NA "borolls" NA ...
+ $ SSL_taxgrtgroup          : chr  NA NA "argiborolls" NA ...
+ $ SSL_taxsubgrp            : chr  NA NA "udic argiborolls" NA ...
+ $ SSL_taxpartsize          : chr  NA NA "fine-loamy" NA ...
+ $ SSL_taxpartsizemod       : chr  NA NA NA NA ...
+ $ SSL_taxceactcl           : chr  NA NA NA NA ...
+ $ SSL_taxreaction          : chr  NA NA NA NA ...
+ $ SSL_taxtempcl            : chr  NA NA "frigid" NA ...
+ $ SSL_taxmoistscl          : chr  NA NA NA NA ...
+ $ SSL_taxtempregime        : chr  NA NA "frigid" NA ...
+ $ SSL_taxminalogy          : chr  NA NA "mixed" NA ...
+ $ SSL_taxother             : chr  NA NA NA NA ...
+ $ SSL_osdtypelocflag       : int  NA NA NA NA NA NA NA NA NA NA ...
+```
+
+The table `TAXOUSDA_GreatGroups.csv` contains all combinations of USDA great-groups
+
+```{r}
+sel.tax.vars = c("site_key", "olc_id", "year", "source_db", "longitude_decimal_degrees", "latitude_decimal_degrees", "taxsubgrp")
+usda_tax = read.csv("./correlation/TAXOUSDA_GreatGroups.csv")
+head(usda_tax)
+```
+
+## Preparation of the standard finit legend
+
+In this section we show how to prepare a fixed legend for the purpose of spatial 
+analysis, and which we think represent all world soils. We focus on the "subgroup" 
+e.g. "aeric fluvaquents" (order: Entisols, suborder: Aquents, great group: Fluvaquents), which is an Entisols on floodplains with aquic moisture 
+regimes that are not so wet. They are better aerated in the "upper" part of the 
+soil profile.
+
+To create a representative legend, we will use the highest quality data with 
+soil types quality controlled and described in metadata:
+
+- [National Soil Information System (NASIS)](https://www.nrcs.usda.gov/resources/education-and-teaching-materials/national-soil-information-system-nasis) profiles and semi-profiles,
+- [National Cooperative Soil Survey Characterization Database](http://ncsslabdatamart.sc.egov.usda.gov/),
+- [WoSIS soil profiles and samples](https://www.isric.org/explore/wosis),
+
+We import the 3 data sets in R:
+
+```{r}
+if(!exists("tax_nasis")){
+  ## USDA legacy points ----
+  tax_nasis = readRDS.gz("/mnt/diskstation/data/Soil_points/USA/NASIS_PNTS/nasis_tax_sites.rds")
+  tax_nasis = plyr::rename(tax_nasis, c("x_std"="longitude_decimal_degrees", "y_std"="latitude_decimal_degrees", "obsdate"="site_obsdate"))
+  tax_nasis$source_db = "USDA_NASIS"
+  tax_nasis$site_key = paste0("NASIS.", tax_nasis$peiid)
+  tax_nasis$olc_id = olctools::encode_olc(tax_nasis$latitude_decimal_degrees, tax_nasis$longitude_decimal_degrees, 11)
+  #summary(as.factor(tax_nasis$taxsubgrp))
+  tax_nasis$year = as.numeric(substr(tax_nasis$site_obsdate, 1, 4))
+  tax_nasis = tax_nasis[,sel.tax.vars]
+  tax_nasis = tax_nasis[!is.na(tax_nasis$taxsubgrp) & !is.na(tax_nasis$longitude_decimal_degrees),]
+}
+str(tax_nasis)
+```
+
+
+```{r}
+if(!exists("ncss.site")){
+  ncss.site <- read.table("/mnt/diskstation/data/Soil_points/INT/USDA_NCSS/ncss_labdata_locations.csv.gz", fill = TRUE, header = TRUE, sep=",")
+  #str(ncss.site)
+  ncss.site = plyr::rename(ncss.site, c("corr_taxsubgrp"="taxsubgrp"))
+  ncss.site$source_db = "USDA_NCSS"
+  ncss.site$year = as.numeric(substr(ncss.site$site_obsdate, 1, 4))
+  ncss.site$olc_id = olctools::encode_olc(ncss.site$latitude_decimal_degrees, ncss.site$longitude_decimal_degrees, 11)
+  ncss.site = ncss.site[,sel.tax.vars]
+  ncss.site = ncss.site[!is.na(ncss.site$taxsubgrp) & !is.na(ncss.site$longitude_decimal_degrees),]
+  #summary(as.factor(ncss.site$taxsubgrp))
+}
+dim(ncss.site)
+```
+
+```{r}
+if(!exists("tax_wosis")){
+  tax_wosis = readr::read_tsv(gzfile('/mnt/diskstation/data/Soil_points/INT/WoSIS/WoSIS_2023_December/wosis_202312_profiles.tsv.gz'), col_types='icciccddcccccciccccicccci')
+  tax_wosis = plyr::rename(tax_wosis, c("longitude"="longitude_decimal_degrees", "latitude"="latitude_decimal_degrees", "dataset_code"="source_db"))
+  tax_wosis = tax_wosis[!is.na(tax_wosis$usda_great_group),]
+  tax_wosis$taxsubgrp = tolower(paste(tax_wosis$usda_subgroup, tax_wosis$usda_great_group))
+  tax_wosis$site_key = paste0("WOSIS.", tax_wosis$site_id)
+  tax_wosis$year = as.numeric(substr(tax_wosis$usda_publication_year, 1, 4))
+  tax_wosis$olc_id = olctools::encode_olc(tax_wosis$latitude_decimal_degrees, tax_wosis$longitude_decimal_degrees, 11)
+  tax_wosis = tax_wosis[,sel.tax.vars]
+  tax_wosis = tax_wosis[!is.na(tax_wosis$taxsubgrp) & !is.na(tax_wosis$longitude_decimal_degrees),]
+  #summary(as.factor(tax_wosis$taxsubgrp))
+}
+dim(tax_wosis)
+```
+
+Next, we can bind the 3 data sets to produce 1 consistent legend with finite number 
+of classes and names strictly standardized. We also add "s" to fix typos etc.
+
+```{r}
+if(!exists("tax_all")){
+  tax_all = do.call(rbind, list(tax_nasis, tax_wosis, ncss.site))
+  #str(tax_all)
+  ## 378793 obs. of  7 variables
+  ## add missing "s"
+  #tax_all$taxsubgrp = sapply(tax_all$taxsubgrp, add_s)
+  tax_all$taxsubgrp = unlist(parallel::mclapply(tax_all$taxsubgrp, add_s, mc.cores = 32))
+}
+#summary(as.factor(tax_all$taxsubgrp[grep("boralf", tax_all$taxsubgrp)]))
+summary(as.factor(tax_all$taxsubgrp))
+```
+
+This shows which are the world's most frequent subgroup classes.
+Next we can complete the final legend. For practical purposes, we limit to 
+classes that have at least 30 observations, which gives a total of 818 classes.
+
+```{r}
+#write.csv(ext.l, "tax_extensions_summary.csv")
+tax.sm = summary(as.factor(tax_all$taxsubgrp), maxsum = 820)
+tax.s = as.data.frame(tax.sm)
+levels = attr(tax.sm, "names")[1:818]
+#write.csv(tax.s, "tax_taxsubgrp_summary.csv")
+```
+
+It is important for further spatial analysis that the number of classes is finite and 
+that there are enough points for Machine Learning for example.
+
+## Fuzzy search
+
+Next, we would also like to add points from national and regional soil profiles 
+that are not listed above and that could help increase representation of points 
+geographically. For this we use the previously compiled soil data described in the 
+previous sections:
+
+```{r}
+if(!exists("tax_spropsA")){
+  tax_sprops0 = as.data.frame( rbind(data.table(readRDS.gz("/mnt/diskstation/data/Soil_points/sol_chem.pnts_horizons.rds")),
+                                     data.table(readRDS.gz("/mnt/diskstation/data/Soil_points/sol_chem.pnts_horizons_TMP.rds")), fill=TRUE, ignore.attr=TRUE))
+  tax_sprops0 = tax_sprops0[!tax_sprops0$source_db=="USDA_NCSS" & !(tax_sprops0$SSL_classification_name %in% c("", "NA / NA", "#N/A / #N/A", " / ")),]
+  tax_sprops0$year = substr(tax_sprops0$site_obsdate, 1, 4)
+  tax_sprops0 = tax_sprops0[!duplicated(tax_sprops0$olc_id),]
+  tax_sprops0$SSL_classification_name = tolower(tax_sprops0$SSL_classification_name)
+  tax_sprops0 = tax_sprops0[!is.na(tax_sprops0$SSL_classification_name),]
+  #dim(tax_sprops0)
+  ## 35437    45
+  #summary(as.factor(tax_sprops0$source_db))
+  #str(tax_sprops0$SSL_classification_name)
+  tax_c1 = sapply(tax_sprops0$SSL_classification_name, function(i){strsplit(i, " / ")[[1]][1]})
+  tax_c2 = sapply(tax_sprops0$SSL_classification_name, function(i){strsplit(i, " / ")[[1]][2]})
+  sel.tax.vars0 = c("site_key", "olc_id", "year", "source_db", "longitude_decimal_degrees", "latitude_decimal_degrees")
+  tax_spropsA = rbind(cbind(tax_sprops0[,sel.tax.vars0], data.frame(SSL_classification_name=tax_c1)),
+                      cbind(tax_sprops0[,sel.tax.vars0], data.frame(SSL_classification_name=tax_c2)))
+}
+str(tax_spropsA)
+```
+
+This gives us additional 71k points with soil classification name. These points 
+need to be cleaned up to match exactly the previously produced legend. Because 
+fuzzy matching can be computational as the algorithm looks for N classes in M rows, 
+we run this matching in parallel:
+
+```{r}
+library(parallel)
+tax_spropsA.lst = parallel::mclapply(levels, function(i){match_tax(i, tax_spropsA)}, mc.cores=30)
+tax_spropsV = do.call(rbind, tax_spropsA.lst)
+## Add missing "S" on the end:
+## "paleustollic chromustert" -> "paleustollic chromusterts"
+tax_spropsV$taxsubgrp = unlist(parallel::mclapply(tax_spropsV$taxsubgrp, add_s, mc.cores = 32))
+str(tax_spropsV)
+
+```
+
+this shows that only 25k have an actually matching soil type that we can use.
+
+## Final bind
+
+We can finally bind and export the final Analysis-Ready table with training points 
+matching our target legend:
+
+```{r}
+tax_allT = do.call(rbind, list(tax_all, tax_spropsV[,sel.tax.vars]))
+str(tax_allT)
+## 403662 obs. of  7 variables
+## we do need duplicates as some translations lead to 2-3 classes
+#tax_allT = tax_allT[!duplicated(tax_allT$olc_id),]
+## remove all points with exactly the same TAX and olc_id
+dup = duplicated(gsub(" ", "_", paste(tax_allT$olc_id, tax_allT$taxsubgrp, sep=" ")))
+summary(dup) ## 47662 complete duplicates
+tax_allT = tax_allT[!dup,]
+#summary(as.factor(tax_allT$source_db))
+## use only points from the target legend:
+tax_allT0 = tax_allT[which(tax_allT$taxsubgrp %in% levels),]
+str(tax_allT0)
+#write.csv(tax_allT0, gzfile("taxsubgrp_pnts_global_xyt_v20250204.csv.gz"))
+#writeVector(vect(tax_allT0, geom=c("longitude_decimal_degrees", "latitude_decimal_degrees"), crs="EPSG:4326"), "taxsubgrp_pnts_global_xyt.gpkg", overwrite=TRUE)
+```
+
+Note, we removed some duplicates as many data sets are compilations so some points 
+appear in multiple data sets.
+
+We can plot the density of points in Goode Homolosize Interupted projection so that 
+areas are shown realistically:
+
+```{r, eval=FALSE}
+g1 = terra::vect("/mnt/diskstation/data/Soil_points/tiles_GH_100km_land.gpkg")
+ovt.g1 = terra::extract(g1["ID"], terra::project(terra::vect(tax_allT, geom=c("longitude_decimal_degrees", "latitude_decimal_degrees"), crs="EPSG:4326"), crs(g1)))
+g1t.c = summary(as.factor(ovt.g1$ID), maxsum = length(levels(as.factor(ovt.g1$ID))))
+g1t.df = data.frame(count=g1t.c, ID=attr(g1t.c, "names"))
+g1$count = dplyr::left_join(data.frame(ID=g1$ID), g1t.df)$count
+#plot(g1["count"])
+#writeVector(g1["count"], "/data/dev/tiles_GH_100km_tax.dens.gpkg", overwrite=TRUE)
+```
+
+
+```{r IGH-tax.density, echo=FALSE, fig.cap="Density of points with soil taxonomy class based on 100 by 100 km blocks in IGH projection.", out.width="100%"}
+knitr::include_graphics("img/fig_density_training_tax.pnts.png")
+```
+
+Save temp object:
+
+```{r, eval=FALSE}
+save.image.pigz(file="soilusda.RData")
+```
